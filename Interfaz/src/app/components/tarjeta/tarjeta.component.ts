@@ -28,6 +28,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
     console.log(this.registroEnviar , 'componente Padre');
     //Hoolaaa , probando........
     //lksajdshfdhsdkjfhdsjfh
+    //daaaaaaaaaaaaaaaaaani
   }
 
 
