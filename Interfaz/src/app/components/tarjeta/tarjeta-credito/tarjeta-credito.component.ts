@@ -18,10 +18,6 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
 
   @Output() registroDevuelto: EventEmitter<any> = new EventEmitter();
 
-  @Output() registroDevuelto2: EventEmitter<any> = new EventEmitter();
-
-  @Output() cambioSexo: EventEmitter<any> = new EventEmitter();
-
   form: FormGroup;
 
   globalForm: FormGroup;
@@ -142,8 +138,11 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
-        console.log(data);
-        this.registroDevuelto.emit(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false
+        }
+        this.registroDevuelto.emit(infoEnviada);
       });
 
       console.log('Borrando defuncion...');
@@ -168,8 +167,11 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
-        console.log(data);
-        this.registroDevuelto.emit(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false
+        }
+        this.registroDevuelto.emit(infoEnviada);
       });
 
       break;
@@ -192,8 +194,11 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
-        console.log(data);
-        this.registroDevuelto.emit(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false
+        }
+        this.registroDevuelto.emit(infoEnviada);
       });
       console.log('Borrando nacimiento...');
 
@@ -217,8 +222,11 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
-        console.log(data);
-        this.registroDevuelto.emit(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false
+        }
+        this.registroDevuelto.emit(infoEnviada);
       });
       console.log('Subiendo acta nacimiento (forzada)...');
 
@@ -241,8 +249,11 @@ ejecutarGlobal(){
       }
       this.tarjetaService.postCirrTa09NapeticionF(form09f).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
-        console.log(data);
-        this.registroDevuelto.emit(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false
+        }
+        this.registroDevuelto.emit(infoEnviada);
       });
       break;
     case "forzarSubirDef":
@@ -264,8 +275,11 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
-        console.log(data);
-        this.registroDevuelto.emit(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false
+        }
+        this.registroDevuelto.emit(infoEnviada);
       });
 
       console.log('Subiendo acta defuncion (forzada)...');
@@ -273,7 +287,11 @@ ejecutarGlobal(){
       break;
 
     case "cambioSexo":
-      this.cambioSexo.emit(true);
+      let infoEnviada = {
+        registro: this.globalForm.get('cadena')?.value,
+        habilitarForm: true
+      }
+      this.registroDevuelto.emit(infoEnviada);
       console.log('llegue cambio de sexo');
       
       break;

@@ -8475,24 +8475,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrador\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Administrador\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
+      "projectUniqueName": "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
       "projectName": "procedimientos-interconexion",
-      "projectPath": "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
+      "projectPath": "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
       "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\obj\\",
+      "outputPath": "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8500,7 +8495,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
