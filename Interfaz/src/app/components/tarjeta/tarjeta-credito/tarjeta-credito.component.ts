@@ -293,6 +293,10 @@ ejecutarGlobal(){
       }
       this.registroDevuelto.emit(infoEnviada);
       console.log('llegue cambio de sexo');
+      this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe( data => {
+        console.log(data,'llegue al servicio ');
+        
+      })
       
       break;
 

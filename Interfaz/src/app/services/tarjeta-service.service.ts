@@ -131,16 +131,17 @@ export class TarjetaServiceService {
         this.list09 = data as CirrTa09Mapeticion[];
       });
   }
+   //GET CirrTa09Mapeticion MA
   getCirrTa09MapeticionId(): Observable<CirrTa09Mapeticion> {
     return this.http.get<CirrTa09Mapeticion>(this.myAppUrl_Ma + this.myApiUrl_Ma + '1765813');
   }
-
+  //POST CirrTa09Mapeticion
   postCirrTa09Napeticion(registro: CirrTa09Mapeticion): Observable<any> {
     console.log('llegue al servicio 09', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_Ma, registro);
   }
-
+  //POST CirrTa09MapeticionF
   postCirrTa09NapeticionF(registro: CirrTa09Mapeticion): Observable<any> {
     console.log('llegue al servicio 09 forzar subir', registro);
 
@@ -151,9 +152,12 @@ export class TarjetaServiceService {
   getNrcmatrimoniosId(cadena: number): Observable<Nrc_Matrimonios> {
     return this.http.get<Nrc_Matrimonios>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + cadena);
   }
+  //PUT NRC_MATRIMONIOS
   putNrcMatrimonios(registro:Nrc_Matrimonios, id:number):Observable<any>{
-    console.log('llegue al servicio 09 forzar subir', registro);
+    console.log('llegue al servicio Nrc_Matrimonios', registro);
 
     return this.http.put<any>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + id , registro);
   }
+ 
+
 }

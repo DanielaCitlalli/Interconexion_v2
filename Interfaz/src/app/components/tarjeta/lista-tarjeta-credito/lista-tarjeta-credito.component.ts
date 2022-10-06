@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
+
 // creo que nos hablan 
 
 
@@ -21,7 +23,10 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
     registroTa01?: CirrTa01Napeticion;
     registroTa03?: CirrTa03Depeticion; 
     registroTa09?: CirrTa09Mapeticion;
+    registroTa04?: Nrc_Matrimonios;
     
+
+  private readonly newProperty = 'id';
 
   constructor(public tarjetaService: TarjetaServiceService,
               public toast: ToastrService) { }
@@ -53,6 +58,7 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
       console.log(data ,'09!!!!');
       
     });
+   
   }
 //ahora si nomas quitale los parentesis
   eliminarTarjeta(id: number | undefined){
