@@ -23,12 +23,21 @@ export class TarjetaComponent implements OnInit, OnChanges {
     console.log(changes);
   }
 
+  //Recibe el valor que se emita por Output en tarjeta-credito
   mostrarRegistroDevuleto(event: any){
-    this.registroEnviar = event;
-    console.log(this.registroEnviar , 'componente Padre');
-    //Hoolaaa , probando........
-    //lksajdshfdhsdkjfhdsjfh
-    //daaaaaaaaaaaaaaaaaani
+    // if(event !== true){
+    //   this.registroEnviar = event;
+    //   console.log(this.registroEnviar , 'componente Padre');
+    // }
+    // else{
+    //   //Si es igual true, habilita el segundo formulario
+    //   this.cambioSexoDisponible = event;
+    // }
+
+    this.registroEnviar = event.registro;
+    this.cambioSexoDisponible = event.habilitarForm;
+    console.log(this.registroEnviar , this.cambioSexoDisponible);
+    
   }
 
 

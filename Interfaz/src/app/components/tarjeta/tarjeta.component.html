@@ -11,18 +11,14 @@
                 Tipo de Proceso
             </h6>
             <div class="col-md-12">
-                <app-tarjeta-credito (registroDevuelto)="mostrarRegistroDevuleto($event)"
-                                     (cambioSexo)="cambioSexoDisponible"></app-tarjeta-credito>
-
-                <div *ngIf="cambioSexoDisponible === true">
-                    <h1>probando 1.2.3</h1>
-                    <app-segundo-formulario [verSegundoFormulario]="cambioSexoDisponible"  ></app-segundo-formulario>
-                </div>
-
+                <app-tarjeta-credito (registroDevuelto)="mostrarRegistroDevuleto($event)"></app-tarjeta-credito>
             </div>
             <br>
             <div class="col-md-12">
                 <app-lista-tarjeta-credito [registroAgregado]="registroEnviar"></app-lista-tarjeta-credito>
+
+                <app-segundo-formulario [verSegundoFormulario]="cambioSexoDisponible"  
+                                        *ngIf="cambioSexoDisponible === true"></app-segundo-formulario>
             </div>
         
         </div>
