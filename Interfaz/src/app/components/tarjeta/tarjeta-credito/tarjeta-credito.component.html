@@ -9,7 +9,7 @@
             <div class="input-group-text bg-white">
                 <i class="fas fa-duotone fa-magnifying-glass"></i>
             </div>
-            <select class="form-select" aria-label="Default select example" formControlName="proceso">
+            <select class="form-select" aria-label="Default select example" formControlName="proceso"(change)="validar()">
                 
                 <option value="borrarDef">Borrar Defunciones </option>
                 <option value="borrarMat">Borrar Matrimonios </option>
@@ -18,6 +18,7 @@
                 <option value="forzarSubirNac">Forzar subir Acta Nacimientos </option>
                 <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
                 <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
+
             </select>
         </div>
     </div>
@@ -48,7 +49,7 @@
     <div class="form-group">
         <div class="d-grid gap-2">
             <button class="btn btn-primary btn-lg" 
-            [disabled]="globalForm.invalid">
+            [disabled]="globalForm.invalid" >
                     <i class="fas fa-sharp fa-solid fa-circle-check"></i>
                 Ejecutar
             </button>

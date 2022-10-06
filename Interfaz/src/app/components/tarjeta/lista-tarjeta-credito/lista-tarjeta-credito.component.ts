@@ -17,6 +17,7 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
 
  @Input() registroAgregado: any;
 
+
   
     registroTa01?: CirrTa01Napeticion;
     registroTa03?: CirrTa03Depeticion; 
@@ -52,6 +53,7 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
       this.registroTa09 = data;
       console.log(data ,'09!!!!');
       
+
     });
   }
 //ahora si nomas quitale los parentesis
@@ -72,3 +74,7 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
   }
 
 }
+
+
+
+
