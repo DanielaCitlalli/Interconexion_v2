@@ -35,8 +35,8 @@ namespace procedimientos_interconexion.Controllers
 
             if (nrcMatrimonios == null)
             {
-                return NotFound();
-                //return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
+                //return NotFound();
+                return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
             }
 
             return nrcMatrimonios;
