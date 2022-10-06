@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { resetFakeAsyncZone } from '@angular/core/testing';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
@@ -7,6 +8,8 @@ import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service'
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
+import { ListaTarjetaCreditoComponent } from '../lista-tarjeta-credito/lista-tarjeta-credito.component';
+
 
 @Component({
   selector: 'app-tarjeta-credito',
@@ -17,6 +20,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
 
 
   @Output() registroDevuelto: EventEmitter<any> = new EventEmitter();
+  
 
   form: FormGroup;
 
@@ -43,6 +47,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
       proceso: ['' , [Validators.required]],
       cadena: ['' , [Validators.required , Validators.maxLength(20) , Validators.minLength(20) , Validators.pattern(this.tarjetaService.rxCadena)]]
     });
+    
 
 
   }                                                                                                                                           
@@ -75,6 +80,8 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     }
     
   }
+
+  
 
   agregar(){
     const tarjeta: TarjetaCredito = {
@@ -113,8 +120,24 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     return this.globalForm.controls[campo].errors &&
             this.globalForm.controls[campo].touched
   }
+   
+  validar()
+{
+
+if( this.globalForm !== undefined){
+  let infoEnviada = {
+    habilitarForm: false
+  }
+  this.registroDevuelto.emit(infoEnviada)
+  
+}
+ 
+ 
+}
+
 
 ejecutarGlobal(){
+
   const procesoValue = this.globalForm.get('proceso')?.value;
   console.log(this.globalForm.get('proceso')?.value);
 
@@ -138,11 +161,13 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
+        this.globalForm.reset();
         let infoEnviada = {
           registro: data,
           habilitarForm: false
         }
         this.registroDevuelto.emit(infoEnviada);
+        
       });
 
       console.log('Borrando defuncion...');
@@ -167,6 +192,7 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
+        this.globalForm.reset();
         let infoEnviada = {
           registro: data,
           habilitarForm: false
@@ -194,6 +220,7 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
+        this.globalForm.reset();
         let infoEnviada = {
           registro: data,
           habilitarForm: false
@@ -222,6 +249,7 @@ ejecutarGlobal(){
 
       this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
+        this.globalForm.reset();
         let infoEnviada = {
           registro: data,
           habilitarForm: false
@@ -249,6 +277,7 @@ ejecutarGlobal(){
       }
       this.tarjetaService.postCirrTa09NapeticionF(form09f).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
+        this.globalForm.reset();
         let infoEnviada = {
           registro: data,
           habilitarForm: false
@@ -270,11 +299,13 @@ ejecutarGlobal(){
         ta03ESecuencia: null,
         ta03FAtencion: null,
         ta03ECuantos: 0
-
+        
       }
+      
 
       this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data => {
         this.toastr.success('Dato ingresado con exito');
+        this.globalForm.reset();
         let infoEnviada = {
           registro: data,
           habilitarForm: false
@@ -290,9 +321,11 @@ ejecutarGlobal(){
       let infoEnviada = {
         registro: this.globalForm.get('cadena')?.value,
         habilitarForm: true
+        
       }
       this.registroDevuelto.emit(infoEnviada);
       console.log('llegue cambio de sexo');
+      this.globalForm.reset();
       
       break;
 
