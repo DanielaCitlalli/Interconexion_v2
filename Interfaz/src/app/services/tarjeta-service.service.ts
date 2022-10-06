@@ -6,6 +6,7 @@ import { CirrTa01Napeticion } from '../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../models/CirrTa09Mapeticion.model';
 import { environment } from 'src/environments/environment.prod';
+import { Nrc_Matrimonios } from '../models/Nrc_Matrimonios';
 
 
 @Injectable({
@@ -32,10 +33,14 @@ export class TarjetaServiceService {
   myApiUrl_Ma = 'api/CirrTa09Mapeticion/';
   myApiUrl_MaF = 'api/CirrTa09Mapeticion/SubirActaMatrimonio';
 
+  myAppUrl_NRC_Matrimonios = environment.apiUrl_inter;
+  myApiUrl_NRC_Matrimonios = 'api/NrcMatrimonios/';
+
   registroTa01: CirrTa01Napeticion[] = [];
   list01: CirrTa01Napeticion[] = [];
   list03: CirrTa03Depeticion[] = [];
   list09: CirrTa09Mapeticion[] = [];
+  lista04: Nrc_Matrimonios [] = [];
 
 
   private actualizarFormulario = new BehaviorSubject<TarjetaCredito>({} as any);
@@ -142,4 +147,13 @@ export class TarjetaServiceService {
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_MaF, registro);
   }
 
+  //GET NRC_MATRIMONIOS
+  getNrcmatrimoniosId(cadena: number): Observable<Nrc_Matrimonios> {
+    return this.http.get<Nrc_Matrimonios>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + cadena);
+  }
+  putNrcMatrimonios(registro:Nrc_Matrimonios, id:number):Observable<any>{
+    console.log('llegue al servicio 09 forzar subir', registro);
+
+    return this.http.put<any>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + id , registro);
+  }
 }
