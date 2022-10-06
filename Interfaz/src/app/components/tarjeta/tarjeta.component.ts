@@ -40,5 +40,4 @@ export class TarjetaComponent implements OnInit, OnChanges {
     
   }
 
-
 }
