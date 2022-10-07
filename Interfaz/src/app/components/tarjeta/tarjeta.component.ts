@@ -10,6 +10,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
 
   registroEnviar: any;
   cambioSexoDisponible: boolean = false;
+  datos: any;
 
 
   constructor() { }
@@ -33,8 +34,11 @@ export class TarjetaComponent implements OnInit, OnChanges {
     //   //Si es igual true, habilita el segundo formulario
     //   this.cambioSexoDisponible = event;
     // }
-
+    console.log('prueba ' , event);
+    
     this.registroEnviar = event.registro;
+
+    this.datos = event;
     this.cambioSexoDisponible = event.habilitarForm;
     console.log(this.registroEnviar , this.cambioSexoDisponible);
     
