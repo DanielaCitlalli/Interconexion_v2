@@ -13,3 +13,11 @@ input.ng-valid{
 .red-icon{
     color: #dc3545;
 }
+
+body {
+    background-image: url('https://seeklogo.com/images/G/gto-grandeza-de-mexico-logo-0476891181-seeklogo.com.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 35% 65%;
+    background-position: center;
+  }
