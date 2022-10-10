@@ -160,17 +160,21 @@ ejecutarGlobal(){
       }
 
       this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
-        this.toastr.success('Dato ingresado con exito');
-        this.globalForm.reset();
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false
+
+        if(data !== null && data !== undefined){
+          this.toastr.success('Dato ingresado con exito');
+          this.globalForm.reset();
+          let infoEnviada = {
+            registro: data,
+            habilitarForm: false
+          }
+          this.registroDevuelto.emit(infoEnviada);
         }
-        this.registroDevuelto.emit(infoEnviada);
+        else{
+          this.toastr.error('Error al ingresar dato');
+        }
         
       });
-
-      console.log('Borrando defuncion...');
 
       break;
     case "borrarMat":
@@ -191,13 +195,20 @@ ejecutarGlobal(){
       }
 
       this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
-        this.toastr.success('Dato ingresado con exito');
-        this.globalForm.reset();
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false
+
+        if(data !== null && data !== undefined){
+          this.toastr.success('Dato ingresado con exito');
+          this.globalForm.reset();
+          let infoEnviada = {
+            registro: data,
+            habilitarForm: false
+          }
+          this.registroDevuelto.emit(infoEnviada);
         }
-        this.registroDevuelto.emit(infoEnviada);
+        else{
+          this.toastr.error('Error al ingresar dato');  
+        }
+
       });
 
       break;
@@ -219,15 +230,21 @@ ejecutarGlobal(){
       }
 
       this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
-        this.toastr.success('Dato ingresado con exito');
-        this.globalForm.reset();
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false
+
+        if(data !== null && data !== undefined){
+          this.toastr.success('Dato ingresado con exito');
+          this.globalForm.reset();
+          let infoEnviada = {
+            registro: data,
+            habilitarForm: false
+          }
+          this.registroDevuelto.emit(infoEnviada);
         }
-        this.registroDevuelto.emit(infoEnviada);
+        else{
+          this.toastr.error('Error al ingresar dato');  
+        }
+
       });
-      console.log('Borrando nacimiento...');
 
       break;
     case "forzarSubirNac":
@@ -248,15 +265,21 @@ ejecutarGlobal(){
       }
 
       this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
-        this.toastr.success('Dato ingresado con exito');
-        this.globalForm.reset();
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false
+
+        if(data !== null && data !== undefined){
+          this.toastr.success('Dato ingresado con exito');
+          this.globalForm.reset();
+          let infoEnviada = {
+            registro: data,
+            habilitarForm: false
+          }
+          this.registroDevuelto.emit(infoEnviada);
         }
-        this.registroDevuelto.emit(infoEnviada);
+        else{
+          this.toastr.error('Error al ingresar dato');  
+        }
+
       });
-      console.log('Subiendo acta nacimiento (forzada)...');
 
       break;
     case "forzarSubirMat":
@@ -276,13 +299,20 @@ ejecutarGlobal(){
 
       }
       this.tarjetaService.postCirrTa09NapeticionF(form09f).subscribe(data => {
-        this.toastr.success('Dato ingresado con exito');
-        this.globalForm.reset();
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false
+        
+        if(data !== null && data !== undefined){
+          this.toastr.success('Dato ingresado con exito');
+          this.globalForm.reset();
+          let infoEnviada = {
+            registro: data,
+            habilitarForm: false
+          }
+          this.registroDevuelto.emit(infoEnviada);
         }
-        this.registroDevuelto.emit(infoEnviada);
+        else{
+          this.toastr.error('Error al ingresar dato');  
+        }
+
       });
       break;
     case "forzarSubirDef":
@@ -304,16 +334,23 @@ ejecutarGlobal(){
       
 
       this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data => {
-        this.toastr.success('Dato ingresado con exito');
-        this.globalForm.reset();
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false
+
+        if(data !== null && data !== undefined){
+          this.toastr.success('Dato ingresado con exito');
+          this.globalForm.reset();
+          let infoEnviada = {
+            registro: data,
+            habilitarForm: false
+          }
+          this.registroDevuelto.emit(infoEnviada);
         }
-        this.registroDevuelto.emit(infoEnviada);
+        else{
+          this.toastr.error('Error al ingresar dato');  
+        }
+
+
       });
 
-      console.log('Subiendo acta defuncion (forzada)...');
 
       break;
 
