@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Genericos } from 'src/app/models/Genericos.model';
 import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
-import { Toast, ToastrService } from 'ngx-toastr';
-import { ThisReceiver } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-segundo-formulario',
@@ -26,18 +25,19 @@ export class SegundoFormularioComponent implements OnInit {
   @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
   
 
-  constructor(private formBuilder: FormBuilder,
-    private toastr: ToastrService
+  constructor(private formBuilder: FormBuilder
+    , private toastr: ToastrService
     , private servicioeditar: TarjetaServiceService) { 
     this.formCambioSexo = this.formBuilder.group({
-      p1Nombres: [{value: '' , disabled: true} , [Validators.required]],
-      p1Primerapellido: [{value: '' , disabled: true} , [Validators.required]],
-      p1Segundoapellido: [{value: '' , disabled: true} , [Validators.required]],
+      p1Nombres: ['' , [Validators.required]],
+      p1Primerapellido: ['' , [Validators.required]],
+      p1Segundoapellido: ['' , [Validators.required]],
       p1Sexo: ['' , [Validators.required]],
       
-      p2Nombres: [{value: '' , disabled: true} , [Validators.required]],
-      p2Primerapellido: [{value: '' , disabled: true} , [Validators.required]],
-      p2Segundoapellido: [{value: '' , disabled: true} , [Validators.required]],
+      p2Nombres: ['' , [Validators.required]],
+      p2Primerapellido: ['' , [Validators.required]],
+      p2Segundoapellido: ['' , [Validators.required]],
+      
       p2Sexo: ['' , [Validators.required]],
      
     })
@@ -50,6 +50,7 @@ export class SegundoFormularioComponent implements OnInit {
       
     }
     console.log(this.datosRetornados);
+    this.formCambioSexo.get('p1_nombres')?.disable();
     
   }
 
