@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Genericos } from 'src/app/models/Genericos.model';
 import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
-import { ToastrService } from 'ngx-toastr';
+import { Toast, ToastrService } from 'ngx-toastr';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-segundo-formulario',
@@ -23,7 +24,8 @@ export class SegundoFormularioComponent implements OnInit {
   @Input()datosRetornados: any;
   
 
-  constructor(private formBuilder: FormBuilder
+  constructor(private formBuilder: FormBuilder,
+    private toastr: ToastrService
     , private servicioeditar: TarjetaServiceService) { 
     this.formCambioSexo = this.formBuilder.group({
       p1Nombres: ['' , [Validators.required]],
@@ -72,7 +74,7 @@ export class SegundoFormularioComponent implements OnInit {
     this.servicioeditar.putNrcMatrimonios(this.datosRetornados.registro.cadena, formMatrimonio).subscribe( data=> {
     console.log(data);
   })
-    
+    this.toastr.success("Cambio de sexo actualizado")
     console.log('Guardar cambios' , this.formCambioSexo.value);
     
   }
