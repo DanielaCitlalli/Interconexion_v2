@@ -16,6 +16,7 @@ import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
 export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
 
  @Input() registroAgregado: any;
+ @Input() registroAgregadoCambioSexo: any;
 
 
   
@@ -55,8 +56,11 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
       
 
     });
+
+    console.log(this.registroAgregado);
+    
   }
-//ahora si nomas quitale los parentesis
+
   eliminarTarjeta(id: number | undefined){
 
     if(confirm('Estas seguro de eliminar esta tarjeta?')){

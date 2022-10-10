@@ -353,7 +353,6 @@ ejecutarGlobal(){
 
 
       break;
-
     case "cambioSexo":
       
       this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
