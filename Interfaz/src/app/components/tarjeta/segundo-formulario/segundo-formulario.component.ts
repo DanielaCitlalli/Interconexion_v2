@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Genericos } from 'src/app/models/Genericos.model';
 import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
@@ -21,9 +21,12 @@ export class SegundoFormularioComponent implements OnInit {
 
   // @Input()verSegundoFormulario: boolean = false;
   @Input()datosRetornados: any;
+
+  @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
   
 
   constructor(private formBuilder: FormBuilder
+    , private toastr: ToastrService
     , private servicioeditar: TarjetaServiceService) { 
     this.formCambioSexo = this.formBuilder.group({
       p1Nombres: ['' , [Validators.required]],
@@ -70,11 +73,23 @@ export class SegundoFormularioComponent implements OnInit {
     formMatrimonio.p1sexo = this.formCambioSexo.get('p1Sexo')?.value;
     formMatrimonio.p2sexo = this.formCambioSexo.get('p2Sexo')?.value;
 
-    this.servicioeditar.putNrcMatrimonios(this.datosRetornados.registro.cadena, formMatrimonio).subscribe( data=> {
-    console.log(data);
+    this.servicioeditar.putNrcMatrimonios(this.datosRetornados.registro.cadena, formMatrimonio).subscribe(data => {
+
+      if(data !== null && data !== undefined){
+        this.toastr.success("Cambio de sexo actualizado");
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false
+        }
+        this.enviarRegistro.emit(data);
+        console.log(data);
+        
+      }
+      else{
+        this.toastr.error("Ocurrio un error al actualizar")
+      }
+
   })
-    
-    console.log('Guardar cambios' , this.formCambioSexo.value);
     
   }
 

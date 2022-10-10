@@ -9,6 +9,7 @@ import { CirrTa03Depeticion } from 'src/app/models/CirrTa03Depeticion.model';
 export class TarjetaComponent implements OnInit, OnChanges {
 
   registroEnviar: any;
+  registroEnviarCambioSexo:  any;
   cambioSexoDisponible: boolean = false;
   datos: any;
 
@@ -40,8 +41,14 @@ export class TarjetaComponent implements OnInit, OnChanges {
 
     this.datos = event;
     this.cambioSexoDisponible = event.habilitarForm;
+    this.registroEnviarCambioSexo = null;
     console.log(this.registroEnviar , this.cambioSexoDisponible);
     
+  }
+
+  mostrarRegistroDevuletoCambioSexo(event: any){
+    this.registroEnviarCambioSexo = event;
+    this.cambioSexoDisponible = false;
   }
 
 }

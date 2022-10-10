@@ -17,12 +17,16 @@
             </div>
             <br>
             <div class="col-md-12">
+                <!-- registroAgregado - Para cuando se realizan procesos de borrado o forzar subir actas
+                     registroAgregadoCambioSexo - Para cuando se realiza proceso de cambio de sexo en Matrimonios -->
                 <app-lista-tarjeta-credito [registroAgregado]="registroEnviar"
+                                           [registroAgregadoCambioSexo]="registroEnviarCambioSexo"
                 ></app-lista-tarjeta-credito>
                                         
 
                 <app-segundo-formulario [datosRetornados]="datos"  
-                                        *ngIf="cambioSexoDisponible === true"></app-segundo-formulario>
+                                        *ngIf="cambioSexoDisponible === true"
+                                        (enviarRegistro)="mostrarRegistroDevuletoCambioSexo($event)"></app-segundo-formulario>
             </div>
         
         </div>
