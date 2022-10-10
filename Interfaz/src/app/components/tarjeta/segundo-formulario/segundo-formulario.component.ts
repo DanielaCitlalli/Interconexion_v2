@@ -34,6 +34,7 @@ export class SegundoFormularioComponent implements OnInit {
       p2Nombres: ['' , [Validators.required]],
       p2Primerapellido: ['' , [Validators.required]],
       p2Segundoapellido: ['' , [Validators.required]],
+      
       p2Sexo: ['' , [Validators.required]],
      
     })
