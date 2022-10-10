@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Genericos } from 'src/app/models/Genericos.model';
+import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
+import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-segundo-formulario',
@@ -16,41 +19,73 @@ export class SegundoFormularioComponent implements OnInit {
     { valor: 'M', nombre: 'Masculino'}
   ]
 
-  @Input()verSegundoFormulario: boolean = false;
+  // @Input()verSegundoFormulario: boolean = false;
+  @Input()datosRetornados: any;
+  
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder
+    , private servicioeditar: TarjetaServiceService) { 
     this.formCambioSexo = this.formBuilder.group({
-      p1_nombres: ['' , [Validators.required]],
-      p1_primerApellido: ['' , [Validators.required]],
-      p1_segundoApellido: ['' , [Validators.required]],
-      p1_sexo: ['' , [Validators.required]],
-      p1_paisNacimiento: ['' , [Validators.required]],
-      p1_nacionalidad: ['' , [Validators.required]],
-      p1_edad: ['' , [Validators.required]],
-      p2_nombres: ['' , [Validators.required]],
-      p2_primerApellido: ['' , [Validators.required]],
-      p2_segundoApellido: ['' , [Validators.required]],
-      p2_sexo: ['' , [Validators.required]],
-      p2_paisNacimiento: ['' , [Validators.required]],
-      p2_nacionalidad: ['' , [Validators.required]],
-      p2_edad: ['' , [Validators.required]]
+      p1Nombres: ['' , [Validators.required]],
+      p1Primerapellido: ['' , [Validators.required]],
+      p1Segundoapellido: ['' , [Validators.required]],
+      p1Sexo: ['' , [Validators.required]],
+      
+      p2Nombres: ['' , [Validators.required]],
+      p2Primerapellido: ['' , [Validators.required]],
+      p2Segundoapellido: ['' , [Validators.required]],
+      p2Sexo: ['' , [Validators.required]],
+     
     })
   }
 
   ngOnInit(): void {
-    console.log(this.verSegundoFormulario);
+    if(this.datosRetornados.habilitarForm === true){
+      this.actualizar()
+      console.log(this.datosRetornados.registro.cadena);
+      
+    }
+    console.log(this.datosRetornados);
     this.formCambioSexo.get('p1_nombres')?.disable();
     
   }
 
   guardarCambios(){
-    console.log('Cambiando de sexo...');
+
+    // const formMatrimonio: Nrc_Matrimonios = {
+    //   numeroacta: this.datosRetornados.registro.numeroacta,
+    //   anioregistro:this.datosRetornados.registro.anioregistro,
+    //   tipodocumento:this.datosRetornados.registro.tipodocumento,
+    //   entidadregistro:this.datosRetornados.registro.entidadregistro,
+    //   municipioregistro:this.datosRetornados.registro.municipioregistro,
+    //   oficilia:this.datosRetornados.registro.oficilia,
+    //   actabis:this.datosRetornados.registro.actabis,
+    //   cadena:this.datosRetornados.registro.cadena,
+    //   p1sexo: this.formCambioSexo.get('p1Sexo')?.value,
+    //   p2sexo: this.formCambioSexo.get('p2Sexo')?.value
+
+    // }
+    const formMatrimonio: Nrc_Matrimonios =this.datosRetornados.registro;
+    formMatrimonio.p1sexo = this.formCambioSexo.get('p1Sexo')?.value;
+    formMatrimonio.p2sexo = this.formCambioSexo.get('p2Sexo')?.value;
+
+    this.servicioeditar.putNrcMatrimonios(this.datosRetornados.registro.cadena, formMatrimonio).subscribe( data=> {
+    console.log(data);
+  })
+    
+    console.log('Guardar cambios' , this.formCambioSexo.value);
     
   }
 
   campoNoEsValido(campo: string){
     return this.formCambioSexo.controls[campo].errors &&
             this.formCambioSexo.controls[campo].touched
+  }
+
+  actualizar(){
+    this.formCambioSexo.patchValue(this.datosRetornados.registro)
+    console.log('llegue actualizar' , this.formCambioSexo.value);
+    
   }
 
 }

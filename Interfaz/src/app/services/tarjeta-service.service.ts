@@ -151,7 +151,7 @@ export class TarjetaServiceService {
   getNrcmatrimoniosId(cadena: number): Observable<Nrc_Matrimonios> {
     return this.http.get<Nrc_Matrimonios>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + cadena);
   }
-  putNrcMatrimonios(registro:Nrc_Matrimonios, id:number):Observable<any>{
+  putNrcMatrimonios(id:string,registro:Nrc_Matrimonios):Observable<any>{
     console.log('llegue al servicio 09 forzar subir', registro);
 
     return this.http.put<any>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + id , registro);

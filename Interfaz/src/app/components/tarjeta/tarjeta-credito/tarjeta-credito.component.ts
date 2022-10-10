@@ -318,12 +318,17 @@ ejecutarGlobal(){
       break;
 
     case "cambioSexo":
-      let infoEnviada = {
-        registro: this.globalForm.get('cadena')?.value,
-        habilitarForm: true
+      
+      this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
+        console.log(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: true
+          
+        }
+        this.registroDevuelto.emit(infoEnviada);
         
-      }
-      this.registroDevuelto.emit(infoEnviada);
+      });
       console.log('llegue cambio de sexo');
       this.globalForm.reset();
       
