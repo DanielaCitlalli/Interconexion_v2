@@ -47,6 +47,8 @@ export class TarjetaComponent implements OnInit, OnChanges {
   }
 
   mostrarRegistroDevuletoCambioSexo(event: any){
+    console.log(event);
+    
     this.registroEnviarCambioSexo = event;
     this.cambioSexoDisponible = false;
   }
