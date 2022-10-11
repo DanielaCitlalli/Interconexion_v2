@@ -1,43 +1,18 @@
-<!-- <table class="table table-sm">
-    <tr *ngFor="let tarjeta of tarjetaService.list">
-        <td>{{tarjeta.Ta01EOid}}</td>
-        <td>{{tarjeta.Ta01ESecuencia}}</td>
-        <td>{{tarjeta.Ta01EPrioridad}}</td>
-        <td>{{tarjeta.Ta01EOperacionacto}}</td>
-        <td>{{tarjeta.Ta01CCadena}}</td>
-        <td>{{tarjeta.Ta01FEntrada}}</td>
-        <td>{{tarjeta.Ta01EEstatus}}</td>
-        <td>{{tarjeta.Ta07EEstadodest}}</td>
-        <td>{{tarjeta.Ta07EOiddestino}}</td>
-        <td>{{tarjeta.Ta07ESolicitarimagen}}</td>
-        <td>{{tarjeta.Ta01FAtencion}}</td>
-        <td>{{tarjeta.Ta01ECuantos}}</td>
-
-creo que aqui esta bien todo, ya deberia jalar ejecutalo osccarrrrrr
-        <td>
-            <i class="far fa-edit fa-lg text-info" 
-               style="cursor: pointer;"
-               (click)="editar(tarjeta)"></i>
-        </td>
-        <td>
-            <i class="far fa-trash-alt fa-lg text-danger" 
-               style="cursor: pointer;"
-               (click)="eliminarTarjeta(tarjeta.id)"></i>
-        </td>
-    </tr>
-</table> -->
 
 <!--Tabla 01-->
 <div class="container ">
   
   <div class=" table-info" *ngIf="registroAgregado?.ta01EOid !== null && registroAgregado?.ta09EOid !== null && registroAgregado?.ta03EOid !== null" >
 
-    <h2 class="text-center" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null">
+    <h2 class="text-center" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null ||
+                            registroAgregado?.ta03EOid !== undefined && registroAgregado?.ta03EOid !== null ||
+                            registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null ||
+                            registroAgregado?.cadena !== undefined && registroAgregado?.cadena !== null">
       Resultado 
   </h2>
   <br>
   <table class="table table-hover table-sm">
-  <!-- <thead class="table-primary "> -->
+
     <tr class="row" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null">
       
       <div class="celda col-4">
@@ -64,11 +39,7 @@ creo que aqui esta bien todo, ya deberia jalar ejecutalo osccarrrrrr
         <th scope="col">taCCadena</th>
         <td scope="row">{{ registroAgregado?.ta01CCadena }}</td>
       </div>
-      <!-- <th scope="col">taEPrioridad </th>
-      <th scope="col">taEOperacionacto</th>
-      <th scope="col">taCCadena</th>
-      <th scope="col">taEEstatus</th>
-      <th scope="col">taECuantos</th> -->
+
     </tr>
     <tr class="row" *ngIf="registroAgregado?.ta03EOid!== undefined && registroAgregado?.ta03EOid !== null">
       <div class="celda col-4">
@@ -95,11 +66,6 @@ creo que aqui esta bien todo, ya deberia jalar ejecutalo osccarrrrrr
         <th scope="col">taCCadena</th>
         <td scope="row">{{ registroAgregado?.ta03CCadena }}</td>
       </div>
-      <!-- <th scope="col">taEPrioridad </th>
-      <th scope="col">taEOperacionacto</th>
-      <th scope="col">taCCadena</th>
-      <th scope="col">taEEstatus</th>
-      <th scope="col">taECuantos</th> -->
     </tr>
     <tr class="row" *ngIf="registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null">
       <div class="celda col-4">
@@ -126,11 +92,6 @@ creo que aqui esta bien todo, ya deberia jalar ejecutalo osccarrrrrr
         <th scope="col">taCCadena</th>
         <td scope="row">{{ registroAgregado?.ta09CCadena }}</td>
       </div>
-      <!-- <th scope="col">taEPrioridad </th>
-      <th scope="col">taEOperacionacto</th>
-      <th scope="col">taCCadena</th>
-      <th scope="col">taEEstatus</th>
-      <th scope="col">taECuantos</th> -->
     </tr>
     <tr class="row" *ngIf="registroAgregadoCambioSexo?.cadena !== undefined && registroAgregadoCambioSexo?.cadena !== null">
       <div class="celda col-4">
@@ -153,67 +114,9 @@ creo que aqui esta bien todo, ya deberia jalar ejecutalo osccarrrrrr
         <th scope="col">Sexo Persona 2</th>
         <td scope="row">{{ registroAgregado?.p2sexo }}</td>
       </div>
-      <!-- <th scope="col">taEPrioridad </th>
-      <th scope="col">taEOperacionacto</th>
-      <th scope="col">taCCadena</th>
-      <th scope="col">taEEstatus</th>
-      <th scope="col">taECuantos</th> -->
-    </tr>
-  <!-- </thead>
-  <tbody > -->
-    <!-- <tr> -->
-    <!-- <tr *ngFor="let tarjeta of registroTa01">
 
-      
-      <td scope="row">{{ tarjeta.Ta01EOid }}</td>
-      <td scope="row">{{ tarjeta.Ta01ESecuencia }}</td>
-      <td scope="row">{{ tarjeta.Ta01EPrioridad }}</td>
-      <td scope="row">{{ tarjeta.Ta01EOperacionacto }}</td>
-      <td scope="row">{{ tarjeta.Ta01CCadena }}</td>
-      <td scope="row">{{ tarjeta.Ta01FEntrada }}</td>
-      <td scope="row">{{ tarjeta.Ta01EEstatus }}</td>
-      <td scope="row">{{ tarjeta.Ta07EEstadodest }}</td>
-      <td scope="row">{{ tarjeta.Ta07EOiddestino }}</td>
-      <td scope="row">{{ tarjeta.Ta07ESolicitarimagen }}</td>
-      <td scope="row">{{ tarjeta.Ta01FAtencion }}</td>
-      <td scope="row">{{ tarjeta.Ta01ECuantos }}</td>
-    </tr> -->
-    <!-- <tr *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null">
-      <td scope="row">{{ registroAgregado?.ta01EOid }}</td>
-      <td scope="row">{{ registroAgregado?.ta01EPrioridad }}</td>
-      <td scope="row">{{ registroAgregado?.ta01EOperacionacto }}</td>
-      <td scope="row">{{ registroAgregado?.ta01CCadena }}</td>
-      <td scope="row">{{ registroAgregado?.ta01EEstatus }}</td>
-      <td scope="row">{{ registroAgregado?.ta01ECuantos }}</td>
-      
     </tr>
-    <tr *ngIf="registroAgregado?.ta03EOid!== undefined && registroAgregado?.ta03EOid !== null">
-      <td scope="row">{{ registroAgregado?.ta03EOid}}</td>
-      <td scope="row">{{ registroAgregado?.ta03EPrioridad }}</td>
-      <td scope="row">{{ registroAgregado?.ta03EOperacionacto }}</td>
-      <td scope="row">{{ registroAgregado?.ta03CCadena }}</td>
-      <td scope="row">{{ registroAgregado?.ta03EEstatus }}</td>
-      <td scope="row">{{ registroAgregado?. ta03ECuantos}}</td>
-    </tr>
-
-    <tr *ngIf="registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null">
-      <td scope="row">{{ registroAgregado?.ta09EOid }}</td>
-      <td scope="row">{{ registroAgregado?.ta09EPrioridad }}</td>
-      <td scope="row">{{ registroAgregado?.ta09EOperacionacto }}</td>
-      <td scope="row">{{ registroAgregado?.ta09CCadena }}</td>
-      <td scope="row">{{ registroAgregado?.ta09EEstatus }}</td>
-      <td scope="row">{{ registroAgregado?.ta09ECuantos }}</td>
-    </tr>
-       -->
-
-  <!-- </tbody> -->
 </table>
-
-
-<!--tabla 2-->
-<!-- <p *ngIf="registroTa03 !== undefined">
-  probandooo02 {{registroTa03 | json}}
-</p> -->
 
 
 
