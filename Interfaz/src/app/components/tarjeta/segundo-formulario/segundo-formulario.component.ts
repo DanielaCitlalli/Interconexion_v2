@@ -29,16 +29,16 @@ export class SegundoFormularioComponent implements OnInit {
     , private toastr: ToastrService
     , private servicioeditar: TarjetaServiceService) { 
     this.formCambioSexo = this.formBuilder.group({
-      p1Nombres: ['' , [Validators.required]],
-      p1Primerapellido: ['' , [Validators.required]],
-      p1Segundoapellido: ['' , [Validators.required]],
-      p1Sexo: ['' , [Validators.required]],
+      p1Nombres: [{value:'' , disabled:true} , [Validators.required]],
+      p1Primerapellido: [{value:'' , disabled:true} , [Validators.required]],
+      p1Segundoapellido: [{value:'' , disabled:true} , [Validators.required]],
+      p1Sexo: [{value:'' , disabled:false} , [Validators.required]],
       
-      p2Nombres: ['' , [Validators.required]],
-      p2Primerapellido: ['' , [Validators.required]],
-      p2Segundoapellido: ['' , [Validators.required]],
+      p2Nombres: [{value:'' , disabled:true} , [Validators.required]],
+      p2Primerapellido: [{value:'' , disabled:true} , [Validators.required]],
+      p2Segundoapellido: [{value:'' , disabled:true} , [Validators.required]],
       
-      p2Sexo: ['' , [Validators.required]],
+      p2Sexo: [{value:'' , disabled:false} , [Validators.required]],
      
     })
   }
@@ -77,10 +77,6 @@ export class SegundoFormularioComponent implements OnInit {
 
       if(data !== null && data !== undefined){
         this.toastr.success("Cambio de sexo actualizado");
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false
-        }
         this.enviarRegistro.emit(data);
         console.log(data);
         
@@ -102,6 +98,10 @@ export class SegundoFormularioComponent implements OnInit {
     this.formCambioSexo.patchValue(this.datosRetornados.registro)
     console.log('llegue actualizar' , this.formCambioSexo.value);
     
+  }
+  
+  cancelar(){
+    this.enviarRegistro.emit(null);
   }
 
 }
