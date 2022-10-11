@@ -32,7 +32,18 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
               
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
-    
+    if(changes['registroAgregadoCambioSexo']){
+      // setTimeout(() => {
+      //   console.log('probandoo');
+      //   if(this.registroAgregadoCambioSexo?.cadena !== undefined && this.registroAgregadoCambioSexo?.cadena !== null){
+      //     this.registroAgregadoCambioSexo.cadena = null;
+      //   }
+
+        
+      // }, 5000);
+      console.log('estoy en ngonchanges lista-tarjeta-component');
+    }
+
   }
 
   ngOnInit(): void {
@@ -75,6 +86,14 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
 
   editar(tarjeta: TarjetaCredito){
     this.tarjetaService.actualizar(tarjeta);
+  }
+
+  ocultar(){
+    this.registroAgregado = null;
+    this.registroAgregadoCambioSexo = null;
+
+    console.log(this.registroAgregado , this.registroAgregadoCambioSexo);
+    
   }
 
 }

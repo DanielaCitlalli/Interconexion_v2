@@ -32,10 +32,10 @@ namespace procedimientos_interconexion.Controllers
         public async Task<ActionResult<NrcMatrimonios>> GetNrcMatrimonios(string id)
         {
             var nrcMatrimonios = await _context.NrcMatrimonios.FindAsync(id);
-
+            Console.WriteLine(nrcMatrimonios);
             if (nrcMatrimonios == null)
             {
-                return NotFound();
+                return NotFound("No se encontró el registro indicado");
                
             }
 

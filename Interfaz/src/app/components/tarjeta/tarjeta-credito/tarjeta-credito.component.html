@@ -7,9 +7,11 @@
     <div class="form-group mb-3">
         <div class="input-group">
             <div class="input-group-text bg-white">
-                <i class="fas fa-duotone fa-magnifying-glass"></i>
+                <i class="fas fa-duotone fa-magnifying-glass"
+                    [class.green-icon]="this.globalForm.get('proceso')?.valid"
+                    [class.red-icon]="this.globalForm.get('proceso')?.invalid && this.globalForm.get('proceso')?.touched" ></i>
             </div>
-            <select class="form-select" aria-label="Default select example" formControlName="proceso"(change)="validar()">
+            <select class="form-select" aria-label="Default select example" formControlName="proceso"(change)="validar()" required>
                 
                 <option value="borrarDef">Borrar Defunciones </option>
                 <option value="borrarMat">Borrar Matrimonios </option>
