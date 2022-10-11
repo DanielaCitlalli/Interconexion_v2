@@ -15,9 +15,10 @@ input.ng-valid{
 }
 
 body {
-    background-image: url('https://seeklogo.com/images/G/gto-grandeza-de-mexico-logo-0476891181-seeklogo.com.png');
+    background-image: url("assets/imagen2.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 35% 65%;
     background-position: center;
+    
   }
