@@ -96,20 +96,43 @@
     <tr class="row" *ngIf="registroAgregadoCambioSexo?.cadena !== undefined && registroAgregadoCambioSexo?.cadena !== null">
       <div class="celda col-4">
         <th scope="col">Cadena</th>
-        <td scope="row">{{ registroAgregado?.cadena }}</td>
+        <td scope="row" >{{ registroAgregado?.cadena }}</td>
       </div>
       <div class="celda col-4">
         <th scope="col">Nombre Persona 1</th>
-        <td scope="row">{{ registroAgregado?.p1Nombres + " " + registroAgregado?.p1Primerapellido + " " + registroAgregado?.p1Segundoapellido }}</td>
+        <td scope="row">{{ registroAgregado?.p1Nombres}}</td>
       </div>
+
+      <div class="celda col-4">
+        <th scope="col">Primer apellido Persona 1</th>
+        <td scope="row">{{ registroAgregado?.p1Primerapellido}}</td>
+      </div>
+
+      <div class="celda col-4" >
+        <th scope="col">Segundo apellido Persona 1</th>
+        <td scope="row">{{ registroAgregado?.p1Segundoapellido}}</td>
+      </div>
+
       <div class="celda col-4">
         <th scope="col">Sexo Persona 1</th>
         <td scope="row">{{ registroAgregado?.p1sexo }}</td>
       </div>
+
       <div class="celda col-4">
         <th scope="col">Nombre Persona 2</th>
-        <td scope="row">{{ registroAgregado?.p2Nombres + " " + registroAgregado?.p2Primerapellido + " " + registroAgregado?.p2Segundoapellido }}</td>
+        <td scope="row">{{ registroAgregado?.p2Nombres}}</td>
       </div>
+
+      <div class="celda col-4">
+        <th scope="col">Primer apellido Persona 2</th>
+        <td scope="row">{{ registroAgregado?.p2Primerapellido}}</td>
+      </div>
+
+      <div class="celda col-4" >
+        <th scope="col" >Segundo apellido Persona 2</th>
+        <td scope="row">{{ registroAgregado?.p2Segundoapellido}}</td>
+      </div>
+
       <div class="celda col-4">
         <th scope="col">Sexo Persona 2</th>
         <td scope="row">{{ registroAgregado?.p2sexo }}</td>

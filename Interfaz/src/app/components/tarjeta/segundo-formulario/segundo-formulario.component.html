@@ -7,7 +7,7 @@
         <!-- <fieldset disabled> -->
        
             <!-- P1 Nombres -->
-        <div class="form-group col-mt-5 mb-3">
+        <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p1Nombres !== null">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-text bg-white">
@@ -29,7 +29,7 @@
         </div>
         <!-- <div class="row mt-5"> -->
             <!-- P1 Primer Apellido -->
-            <div class="form-group col-mt-5 mb-3">
+            <div class="form-group col-mt-5 mb-3" *ngIf="this.datosRetornados.registro.p1Primerapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-text bg-white">
@@ -47,7 +47,7 @@
         </div>
         <div class="row ms-3">
             <!-- P1 Segundo Apellido -->
-            <div class="form-group col-mt-5 mb-3">
+            <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p1Segundoapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-text bg-white">
@@ -61,7 +61,8 @@
                                 placeholder="Segundo Apellido persona 1"
                                 formControlName="p1Segundoapellido"
                                 maxlength="20"
-                                required>
+                                required
+                                >
                     </div>
     
                 </div>
@@ -98,7 +99,7 @@
         <!-- <fieldset disabled> -->
         
             <!-- P2 Nombres -->
-            <div class="form-group col-mt-7 mb-3">
+            <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Nombres !== null">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-text bg-white">
@@ -114,7 +115,7 @@
       
         <!-- <div class="row mt-5"> -->
             <!-- P2 Primer Apellido -->
-            <div class="form-group col-mt-7 mb-3">
+            <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Primerapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-text bg-white">
@@ -133,7 +134,7 @@
         </div>
         <div class="row ms-3">   
             <!-- P2 Segundo Apellido -->
-            <div class="form-group col-mt-5 mb-3">
+            <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p2Segundoapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-text bg-white">

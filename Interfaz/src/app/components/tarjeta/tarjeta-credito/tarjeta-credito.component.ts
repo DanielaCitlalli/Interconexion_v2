@@ -162,7 +162,7 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Dato ingresado con exito');
+          this.toastr.success('Defuncion borrada con exito');
           this.globalForm.reset();
           let infoEnviada = {
             registro: data,
@@ -197,7 +197,7 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Dato ingresado con exito');
+          this.toastr.success('Matrimonio borrado con exito');
           this.globalForm.reset();
           let infoEnviada = {
             registro: data,
@@ -232,7 +232,7 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Dato ingresado con exito');
+          this.toastr.success('Nacimiento borrado con exito');
           this.globalForm.reset();
           let infoEnviada = {
             registro: data,
@@ -267,7 +267,7 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Dato ingresado con exito');
+          this.toastr.success('Nacimiento subido con exito');
           this.globalForm.reset();
           let infoEnviada = {
             registro: data,
@@ -301,7 +301,7 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa09NapeticionF(form09f).subscribe(data => {
         
         if(data !== null && data !== undefined){
-          this.toastr.success('Dato ingresado con exito');
+          this.toastr.success('Matrimonio subido con exito');
           this.globalForm.reset();
           let infoEnviada = {
             registro: data,
@@ -336,7 +336,7 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Dato ingresado con exito');
+          this.toastr.success('Defuncion subido con exito');
           this.globalForm.reset();
           let infoEnviada = {
             registro: data,
