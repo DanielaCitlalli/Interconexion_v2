@@ -17,7 +17,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.cambioSexoDisponible);
+    // console.log(this.cambioSexoDisponible);
     
   }
 
@@ -37,19 +37,19 @@ export class TarjetaComponent implements OnInit, OnChanges {
     //   //Si es igual true, habilita el segundo formulario
     //   this.cambioSexoDisponible = event;
     // }
-    console.log('prueba ' , event);
+   // console.log('prueba ' , event);
     
     this.registroEnviar = event.registro;
 
     this.datos = event;
     this.cambioSexoDisponible = event.habilitarForm;
     this.registroEnviarCambioSexo = null;
-    console.log(this.registroEnviar , this.cambioSexoDisponible);
+    // console.log(this.registroEnviar , this.cambioSexoDisponible);
     
   }
 
   mostrarRegistroDevuletoCambioSexo(event: any){
-    console.log(event);
+   // console.log(event);
     
     this.registroEnviarCambioSexo = event;
     this.cambioSexoDisponible = false;

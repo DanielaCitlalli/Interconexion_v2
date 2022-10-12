@@ -46,10 +46,10 @@ export class SegundoFormularioComponent implements OnInit {
   ngOnInit(): void {
     if(this.datosRetornados.habilitarForm === true){
       this.actualizar()
-      console.log(this.datosRetornados.registro.cadena);
+      // console.log(this.datosRetornados.registro.cadena);
       
     }
-    console.log(this.datosRetornados);
+    // console.log(this.datosRetornados);
     this.formCambioSexo.get('p1_nombres')?.disable();
     
   }
@@ -78,7 +78,8 @@ export class SegundoFormularioComponent implements OnInit {
       if(data !== null && data !== undefined){
         this.toastr.success("Cambio de sexo actualizado");
         this.enviarRegistro.emit(data);
-        console.log(data);
+        
+        // console.log(data);
         
       }
       else{
@@ -96,7 +97,7 @@ export class SegundoFormularioComponent implements OnInit {
 
   actualizar(){
     this.formCambioSexo.patchValue(this.datosRetornados.registro)
-    console.log('llegue actualizar' , this.formCambioSexo.value);
+    // console.log('llegue actualizar' , this.formCambioSexo.value);
     
   }
   

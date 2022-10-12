@@ -31,19 +31,8 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
             
               
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-    if(changes['registroAgregadoCambioSexo']){
-      // setTimeout(() => {
-      //   console.log('probandoo');
-      //   if(this.registroAgregadoCambioSexo?.cadena !== undefined && this.registroAgregadoCambioSexo?.cadena !== null){
-      //     this.registroAgregadoCambioSexo.cadena = null;
-      //   }
-
-        
-      // }, 5000);
-      console.log('estoy en ngonchanges lista-tarjeta-component');
-    }
-
+    // console.log(changes);
+    
   }
 
   ngOnInit(): void {
@@ -51,24 +40,24 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
     //this.tarjetaService.getCirrTa01Napeticion();
       this.tarjetaService.getCirrTa01NapeticionId().subscribe(data => {
           this.registroTa01 = data;
-          console.log(data);
+          // console.log(data);
       
     });
 
     this.tarjetaService.getCirrTa03DepeticionId().subscribe(data => {
       this.registroTa03 = data;
-      console.log(data ,'03!!!1');
+      // console.log(data ,'03!!!1');
       
     });
 
     this.tarjetaService.getCirrTa09MapeticionId().subscribe(data => {
       this.registroTa09 = data;
-      console.log(data ,'09!!!!');
+      // console.log(data ,'09!!!!');
       
 
     });
 
-    console.log(this.registroAgregado);
+    // console.log(this.registroAgregado);
     
   }
 
