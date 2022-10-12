@@ -89,12 +89,12 @@ export class TarjetaServiceService {
   }
 
   postCirrTa01Napeticion(registro: CirrTa01Napeticion): Observable<any> {
-    console.log('llegue al servicio', registro);
+    // console.log('llegue al servicio', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_inter, registro);
   }
   postCirrTa01Napeticion1(registro: CirrTa01Napeticion): Observable<any> {
-    console.log('llegue al servicio Forzar subir acta nacimiento ', registro);
+    // console.log('llegue al servicio Forzar subir acta nacimiento ', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_interF, registro);
   }
@@ -112,13 +112,13 @@ export class TarjetaServiceService {
   }
   
   postCirrTa03Depeticion(registro: CirrTa03Depeticion): Observable<any> {
-    console.log('llegue al servicio 03', registro);
+    // console.log('llegue al servicio 03', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_De, registro);
   }//Borrar defuncion
   
   postCirrTa03Depeticion2(registro: CirrTa03Depeticion): Observable<any> {
-    console.log('llegue al servicio 03, forzar subir actas', registro);
+    // console.log('llegue al servicio 03, forzar subir actas', registro);
 
     return this.http.post<any>(this.myAppUrl_De + this.myApiUrl_DeF, registro);
   }//Forzar subir Acta Defunciones
@@ -136,13 +136,13 @@ export class TarjetaServiceService {
   }
 
   postCirrTa09Napeticion(registro: CirrTa09Mapeticion): Observable<any> {
-    console.log('llegue al servicio 09', registro);
+    // console.log('llegue al servicio 09', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_Ma, registro);
   }
 
   postCirrTa09NapeticionF(registro: CirrTa09Mapeticion): Observable<any> {
-    console.log('llegue al servicio 09 forzar subir', registro);
+    // console.log('llegue al servicio 09 forzar subir', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_MaF, registro);
   }
@@ -152,8 +152,10 @@ export class TarjetaServiceService {
     return this.http.get<Nrc_Matrimonios>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + cadena);
   }
   putNrcMatrimonios(id:string,registro:Nrc_Matrimonios):Observable<any>{
-    console.log('llegue al servicio 09 forzar subir', registro);
+    // console.log('llegue al servicio 09 forzar subir', registro);
 
     return this.http.put<any>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + id , registro);
+   
+
   }
 }

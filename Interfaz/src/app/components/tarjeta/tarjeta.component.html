@@ -10,11 +10,13 @@
             <h6 class="text-center" *ngIf="cambioSexoDisponible === false">
                 Tipo de Proceso
             </h6>
+            <div id="spinner">
             <div class="col-md-12">
                 <app-tarjeta-credito (registroDevuelto)="mostrarRegistroDevuleto($event)"
                 *ngIf="cambioSexoDisponible === false"
                 ></app-tarjeta-credito>
             </div>
+        </div>
             <br>
             <div class="col-md-12">
                 <!-- registroAgregado - Para cuando se realizan procesos de borrado o forzar subir actas
@@ -22,7 +24,10 @@
                 <app-lista-tarjeta-credito [registroAgregado]="registroEnviar"
                                            [registroAgregadoCambioSexo]="registroEnviarCambioSexo"
                 ></app-lista-tarjeta-credito>
-                                        
+                <div *ngIf="(registroEnviar ===null || undefined ) || (registroEnviarCambioSexo ===null||undefined) || (registroEnviarCambioSexo ===true)|| (registroEnviar === false || registroEnviarCambioSexo === 7 || x === 10 ||x === 20)
+                    "class="spinner-border text-success" role="status">
+                    <span class="visually-hidden" >Loading...</span>
+                  </div>                 
 
                 <app-segundo-formulario [datosRetornados]="datos"  
                                         *ngIf="cambioSexoDisponible === true"
