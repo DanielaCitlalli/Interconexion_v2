@@ -7,7 +7,9 @@
     <div class="form-group mb-3">
         <div class="input-group">
             <div class="input-group-text bg-white">
-                <i class="fas fa-duotone fa-magnifying-glass"></i>
+                <i class="fas fa-duotone fa-magnifying-glass"
+                    [class.green-icon]="this.globalForm.get('proceso')?.valid"
+                    [class.red-icon]="this.globalForm.get('proceso')?.invalid && this.globalForm.get('proceso')?.touched" ></i>
             </div>
              <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example" >
                 <option value="" selected disabled>Seleccione una opcion</option>

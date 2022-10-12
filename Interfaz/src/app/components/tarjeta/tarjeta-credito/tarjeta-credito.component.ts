@@ -364,6 +364,9 @@ ejecutarGlobal(){
         }
         this.registroDevuelto.emit(infoEnviada);
         
+      },
+      error => {
+        this.toastr.error(error.error , 'Ocurrio un error')
       });
       // console.log('llegue cambio de sexo');
       this.globalForm.reset();
