@@ -35,7 +35,7 @@ namespace procedimientos_interconexion.Controllers
             Console.WriteLine(nrcMatrimonios);
             if (nrcMatrimonios == null)
             {
-                return NotFound("No se encontró el registro indicado");
+                return NotFound("No se encontró el registro indicado.");
                
             }
 
