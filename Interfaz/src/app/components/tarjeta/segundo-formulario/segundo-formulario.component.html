@@ -2,16 +2,16 @@
 
     
     <div class="persona1">
-        <div class="row ms-3">
+        <div class="row ms-3 ">
         <h5>Contrayente 1:</h5>
         <!-- <fieldset disabled> -->
        
             <!-- P1 Nombres -->
-        <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p1Nombres !== null">
+        <div class="form-group col-mt-5 mb-3 t"  *ngIf="this.datosRetornados.registro.p1Nombres !== null">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
-                            <i class="fa-sharp fa-solid fa-id-card" 
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card "
                             [class.green-icon]="this.formCambioSexo.get('p1Nombres')?.valid"
                             [class.red-icon]="this.formCambioSexo.get('p1Nombres')?.invalid && this.formCambioSexo.get('p1Nombres')?.touched" 
                             ></i>
@@ -29,11 +29,11 @@
         </div>
         <!-- <div class="row mt-5"> -->
             <!-- P1 Primer Apellido -->
-            <div class="form-group col-mt-5 mb-3" *ngIf="this.datosRetornados.registro.p1Primerapellido !== null">
+            <div class="form-group col-mt-5 mb-3 " *ngIf="this.datosRetornados.registro.p1Primerapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
-                            <i class="fa-sharp fa-solid fa-id-card"
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card "
                                 [class.green-icon]="this.formCambioSexo.get('p1Primerapellido')?.valid"
                                 [class.red-icon]="this.formCambioSexo.get('p1Primerapellido')?.invalid && this.formCambioSexo.get('p1Primerapellido')?.touched"></i>
                         </div>
@@ -47,11 +47,11 @@
         </div>
         <div class="row ms-3">
             <!-- P1 Segundo Apellido -->
-            <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p1Segundoapellido !== null">
+            <div class="form-group col-mt-5 mb-3 "  *ngIf="this.datosRetornados.registro.p1Segundoapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
-                            <i class="fa-sharp fa-solid fa-id-card" 
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card " 
                             [class.green-icon]="this.formCambioSexo.get('p1Segundoapellido')?.valid"
                             [class.red-icon]="this.formCambioSexo.get('p1Segundoapellido')?.invalid && this.formCambioSexo.get('p1Segundoapellido')?.touched" 
                             ></i>
@@ -74,8 +74,8 @@
             <div class="form-group col-mt-5 mb-3">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
-                            <i class="fa-sharp fa-solid fa-venus-mars" 
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-venus-mars " 
                             [class.green-icon]="this.formCambioSexo.get('p1Sexo')?.valid"
                             [class.red-icon]="this.formCambioSexo.get('p1Sexo')?.invalid && this.formCambioSexo.get('p1Sexo')?.touched" 
                             ></i>
@@ -102,7 +102,7 @@
             <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Nombres !== null">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
+                        <div class="input-group-text bg-white fs-3">
                             <i class="fa-sharp fa-solid fa-id-card" [class.green-icon]="this.formCambioSexo.get('p2Nombres')?.valid"
                                 [class.red-icon]="this.formCambioSexo.get('p2Nombres')?.invalid && this.formCambioSexo.get('p2Nombres')?.touched"></i>
                         </div>
@@ -118,7 +118,7 @@
             <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Primerapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
+                        <div class="input-group-text bg-white fs-3">
                             <i class="fa-sharp fa-solid fa-id-card"
                                 [class.green-icon]="this.formCambioSexo.get('p2Primerapellido')?.valid"
                                 [class.red-icon]="this.formCambioSexo.get('p2Primerapellido')?.invalid && this.formCambioSexo.get('p2Primerapellido')?.touched"></i>
@@ -137,7 +137,7 @@
             <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p2Segundoapellido !== null">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
+                        <div class="input-group-text bg-white fs-3">
                             <i class="fa-sharp fa-solid fa-id-card"
                                 [class.green-icon]="this.formCambioSexo.get('p2Segundoapellido')?.valid"
                                 [class.red-icon]="this.formCambioSexo.get('p2Segundoapellido')?.invalid && this.formCambioSexo.get('p2Segundoapellido')?.touched"></i>
@@ -157,7 +157,7 @@
             <div class="form-group col-mt-5 mb-3">
                 <div class="form-group">
                     <div class="input-group">
-                        <div class="input-group-text bg-white">
+                        <div class="input-group-text bg-white fs-3">
                             <i class="fa-sharp fa-solid fa-venus-mars" [class.green-icon]="this.formCambioSexo.get('p2Sexo')?.valid"
                                 [class.red-icon]="this.formCambioSexo.get('p2Sexo')?.invalid && this.formCambioSexo.get('p2Sexo')?.touched"></i>
                         </div>
@@ -175,12 +175,12 @@
         <div style="text-align:center">
             <div class="form-group atext-align:cente contenedor-botones">
                 <button class="btn btn-success ">
-                    <i class="fas fa-sharp fa-solid fa-circle-check"></i>
+                    <i class="fas fa-sharp fa-solid fa-circle-check fs-3"></i>
                     Guardar Cambios
                     
                 </button>
                 <button class="btn btn-danger" type="button" (click)="cancelar()">
-                    <i class="fa-sharp fa-solid fa-xmark"></i>
+                    <i class="fa-sharp fa-solid fa-xmark fs-3"></i>
                     Cancelar
                    
                 </button>
@@ -188,7 +188,7 @@
         </div>
     </div>
                
-    <div class="form-group mb-3">
+    <div class="form-group mb-3 ">
         <div class="input-group">
             <p class="msjError" *ngIf="campoNoEsValido('p1Nombres')">Campo obligatorio. Solo admite caracteres numéricos</p>
         </div>

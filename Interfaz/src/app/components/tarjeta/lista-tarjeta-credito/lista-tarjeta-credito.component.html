@@ -2,7 +2,7 @@
 <!--Tabla 01-->
 <div class="container ">
 
-  <div class=" table-info" *ngIf="registroAgregado?.ta01EOid !== null && registroAgregado?.ta09EOid !== null && registroAgregado?.ta03EOid !== null" >
+  <div class=" table-info text-capitalize" *ngIf="registroAgregado?.ta01EOid !== null && registroAgregado?.ta09EOid !== null && registroAgregado?.ta03EOid !== null" >
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null ||
                                                                 registroAgregado?.ta03EOid !== undefined && registroAgregado?.ta03EOid !== null ||
@@ -20,7 +20,7 @@
 
   <br>
 
-  <table class="table table-hover table-sm">
+  <table class="table table-hover table-sm fs-5 alert alert-primary border border-2 border border-primary fw-light text-dark">
 
     <tr class="row" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null">
       
