@@ -9,8 +9,8 @@
             <div class="input-group-text bg-white">
                 <i class="fas fa-duotone fa-magnifying-glass"></i>
             </div>
-            <select class="form-select" aria-label="Default select example" formControlName="proceso"(change)="validar()">
-                
+             <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example" >
+                <option value="" selected disabled>Seleccione una opcion</option>
                 <option value="borrarDef">Borrar Defunciones </option>
                 <option value="borrarMat">Borrar Matrimonios </option>
                 <option value="borrarNac">Borrar Nacimientos </option>
@@ -19,7 +19,8 @@
                 <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
                 <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
 
-            </select>
+            </select> 
+            
         </div>
     </div>
 
