@@ -54,7 +54,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.suscription = this.tarjetaService.obtenerTarjetasUpdate().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       this.tarjeta = data;
       this.form.patchValue({
         titular: this.tarjeta.titular,
@@ -139,7 +139,7 @@ if( this.globalForm !== undefined){
 ejecutarGlobal(){
 
   const procesoValue = this.globalForm.get('proceso')?.value;
-  console.log(this.globalForm.get('proceso')?.value);
+  // console.log(this.globalForm.get('proceso')?.value);
 
   switch (procesoValue) {
     case "borrarDef":
@@ -356,7 +356,7 @@ ejecutarGlobal(){
     case "cambioSexo":
       
       this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
-        console.log(data);
+        // console.log(data);
         let infoEnviada = {
           registro: data,
           habilitarForm: true
@@ -365,7 +365,7 @@ ejecutarGlobal(){
         this.registroDevuelto.emit(infoEnviada);
         
       });
-      console.log('llegue cambio de sexo');
+      // console.log('llegue cambio de sexo');
       this.globalForm.reset();
       
       break;

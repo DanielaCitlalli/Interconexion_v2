@@ -1,7 +1,7 @@
 
 <!--Tabla 01-->
 <div class="container ">
-  
+
   <div class=" table-info" *ngIf="registroAgregado?.ta01EOid !== null && registroAgregado?.ta09EOid !== null && registroAgregado?.ta03EOid !== null" >
 
     <h2 class="text-center" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null ||
@@ -9,8 +9,10 @@
                             registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null ||
                             registroAgregadoCambioSexo !== undefined && registroAgregadoCambioSexo !== null">
       Resultado 
+
   </h2>
   <br>
+
   <table class="table table-hover table-sm">
 
     <tr class="row" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null">
@@ -113,6 +115,8 @@
       <div class="celda col-4">
         <th scope="col">Sexo Persona 2</th>
         <td scope="row">{{ registroAgregado?.p2sexo }}</td>
+       
+
       </div>
 
     </tr>
