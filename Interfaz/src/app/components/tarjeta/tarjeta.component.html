@@ -24,13 +24,18 @@
                 <app-lista-tarjeta-credito [registroAgregado]="registroEnviar"
                                            [registroAgregadoCambioSexo]="registroEnviarCambioSexo"
                 ></app-lista-tarjeta-credito>
-                                        
-                <div class="spinner-border" role="status" *ngIf="(registroEnviar === null || registroEnviar === undefined) && (registroEnviarCambioSexo === null || registroEnviarCambioSexo === undefined)">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
+
                 <app-segundo-formulario [datosRetornados]="datos"  
                                         *ngIf="cambioSexoDisponible === true"
-                                        (enviarRegistro)="mostrarRegistroDevuletoCambioSexo($event)"></app-segundo-formulario>
+                                        (enviarRegistro)="mostrarRegistroDevuletoCambioSexo($event)">
+                </app-segundo-formulario>
+
+                
+                <div class="d-flex justify-content-center miSpinner" *ngIf="verSpinner">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden" ></span>
+                    </div>
+                </div>
             </div>
         
         </div>

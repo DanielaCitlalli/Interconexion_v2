@@ -159,6 +159,9 @@ ejecutarGlobal(){
 
       }
 
+      this.registroDevuelto.emit(undefined);
+      
+
       this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
 
         if(data !== null && data !== undefined){
@@ -193,6 +196,8 @@ ejecutarGlobal(){
         ta09ECuantos: 0
 
       }
+
+      this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
 
@@ -229,6 +234,8 @@ ejecutarGlobal(){
 
       }
 
+      this.registroDevuelto.emit(undefined);
+
       this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
 
         if(data !== null && data !== undefined){
@@ -264,6 +271,8 @@ ejecutarGlobal(){
 
       }
 
+      this.registroDevuelto.emit(undefined);
+
       this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
 
         if(data !== null && data !== undefined){
@@ -298,6 +307,9 @@ ejecutarGlobal(){
         ta09ECuantos: 0
 
       }
+
+      this.registroDevuelto.emit(undefined);
+
       this.tarjetaService.postCirrTa09NapeticionF(form09f).subscribe(data => {
         
         if(data !== null && data !== undefined){
@@ -332,6 +344,7 @@ ejecutarGlobal(){
         
       }
       
+      this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data => {
 
@@ -355,6 +368,8 @@ ejecutarGlobal(){
       break;
     case "cambioSexo":
       
+      this.registroDevuelto.emit(undefined);
+
       this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
         // console.log(data);
         let infoEnviada = {
@@ -366,9 +381,11 @@ ejecutarGlobal(){
         
       },
       error => {
-        this.toastr.error(error.error , 'Ocurrio un error')
+        this.toastr.error(error.error , 'Ocurrio un error');
+        this.registroDevuelto.emit('error');
       });
       // console.log('llegue cambio de sexo');
+
       this.globalForm.reset();
       
       break;
