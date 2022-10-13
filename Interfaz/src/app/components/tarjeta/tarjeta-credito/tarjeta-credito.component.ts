@@ -225,7 +225,7 @@ ejecutarGlobal(){
 
       this.registroDevuelto.emit(undefined);
 
-      this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
+      this.tarjetaService.postCirrTa09Mapeticion(form09).subscribe(data => {
 
         if(data !== null && data !== undefined){
           this.toastr.success('Matrimonio borrado con exito');
@@ -338,7 +338,7 @@ ejecutarGlobal(){
 
       this.registroDevuelto.emit(undefined);
 
-      this.tarjetaService.postCirrTa09NapeticionF(form09f).subscribe(data => {
+      this.tarjetaService.postCirrTa09MapeticionF(form09f).subscribe(data => {
         
         if(data !== null && data !== undefined){
           this.toastr.success('Matrimonio subido con exito');

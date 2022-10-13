@@ -4,6 +4,7 @@ import { Genericos } from 'src/app/models/Genericos.model';
 import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { CirrTa09Mapeticion } from 'src/app/models/CirrTa09Mapeticion.model';
 
 @Component({
   selector: 'app-segundo-formulario',
@@ -82,12 +83,33 @@ export class SegundoFormularioComponent implements OnInit {
         this.toastr.success("Cambio de sexo actualizado");
         this.enviarRegistro.emit(data);
         
-        // console.log(data);
+        console.log(data);
+        const form09f: CirrTa09Mapeticion = {
+          ta09EOid: 0,
+          ta09ESecuencia: null,
+          ta09EPrioridad: 1,
+          ta09EOperacionacto: 1,
+          ta09CCadena: data.cadena ,
+          ta09FEntrada: null,
+          ta09EEstatus: 0,
+          ta07EEstadodest: null,
+          ta07EOiddestino: null,
+          ta07ESolicitarimagen: null,
+          ta09FAtencion: null,
+          ta09ECuantos: 0
+  
+        }
+        this.servicioeditar.postCirrTa09Mapeticion(form09f).subscribe(data=> {
+
+            this.enviarRegistro.emit(data);
+            console.log(data);
+          })
         
       }
       else{
         this.toastr.error("Ocurrio un error al actualizar")
       }
+
 
   })
     
