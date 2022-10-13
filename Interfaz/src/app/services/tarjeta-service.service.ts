@@ -135,13 +135,13 @@ export class TarjetaServiceService {
     return this.http.get<CirrTa09Mapeticion>(this.myAppUrl_Ma + this.myApiUrl_Ma + '1765813');
   }
 
-  postCirrTa09Napeticion(registro: CirrTa09Mapeticion): Observable<any> {
+  postCirrTa09Mapeticion(registro: CirrTa09Mapeticion): Observable<any> {
     // console.log('llegue al servicio 09', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_Ma, registro);
   }
 
-  postCirrTa09NapeticionF(registro: CirrTa09Mapeticion): Observable<any> {
+  postCirrTa09MapeticionF(registro: CirrTa09Mapeticion): Observable<any> {
     // console.log('llegue al servicio 09 forzar subir', registro);
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_MaF, registro);
