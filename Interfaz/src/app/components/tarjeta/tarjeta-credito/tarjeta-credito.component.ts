@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { resetFakeAsyncZone } from '@angular/core/testing';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, NgSelectOption } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
@@ -31,9 +31,16 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
   tarjeta?: TarjetaCredito;
   idTarjeta?: number = 0;
 
+  public opcion = '';
+
+
   constructor(private formBuilder: FormBuilder,
               private tarjetaService: TarjetaServiceService,
               private toastr: ToastrService) { 
+
+              
+
+
     this.form = this.formBuilder.group({
       id: 0,
       titular: ['' , [Validators.required]],
@@ -50,7 +57,9 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     
 
 
-  }                                                                                                                                           
+  }   
+    
+                                                                                                                                    
 
   ngOnInit(): void {
     this.suscription = this.tarjetaService.obtenerTarjetasUpdate().subscribe(data => {
@@ -70,6 +79,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     this.suscription?.unsubscribe();   
   }
 
+  
   guardar(){
 
     if(this.idTarjeta === 0){
@@ -80,6 +90,8 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     }
     
   }
+
+   
 
   
 
@@ -120,6 +132,8 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     return this.globalForm.controls[campo].errors &&
             this.globalForm.controls[campo].touched
   }
+
+ 
    
   validar()
 {
@@ -128,11 +142,23 @@ if( this.globalForm !== undefined){
   let infoEnviada = {
     habilitarForm: false
   }
+  
   this.registroDevuelto.emit(infoEnviada)
   
 }
+
+
  
  
+}
+
+refrescar(){
+  this.globalForm.patchValue({
+    proceso: '',
+    cadena : ''
+  })
+ 
+
 }
 
 
@@ -163,7 +189,7 @@ ejecutarGlobal(){
 
         if(data !== null && data !== undefined){
           this.toastr.success('Defuncion borrada con exito');
-          this.globalForm.reset();
+         this.refrescar();
           let infoEnviada = {
             registro: data,
             habilitarForm: false
@@ -194,14 +220,17 @@ ejecutarGlobal(){
 
       }
 
+     
+
       this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
 
         if(data !== null && data !== undefined){
           this.toastr.success('Matrimonio borrado con exito');
-          this.globalForm.reset();
+          this.refrescar();
           let infoEnviada = {
             registro: data,
             habilitarForm: false
+            
           }
           this.registroDevuelto.emit(infoEnviada);
         }
@@ -233,12 +262,13 @@ ejecutarGlobal(){
 
         if(data !== null && data !== undefined){
           this.toastr.success('Nacimiento borrado con exito');
-          this.globalForm.reset();
+          this.refrescar();
           let infoEnviada = {
             registro: data,
             habilitarForm: false
           }
           this.registroDevuelto.emit(infoEnviada);
+         
         }
         else{
           this.toastr.error('Error al ingresar dato');  
@@ -268,7 +298,7 @@ ejecutarGlobal(){
 
         if(data !== null && data !== undefined){
           this.toastr.success('Nacimiento subido con exito');
-          this.globalForm.reset();
+          this.refrescar();
           let infoEnviada = {
             registro: data,
             habilitarForm: false
@@ -302,7 +332,7 @@ ejecutarGlobal(){
         
         if(data !== null && data !== undefined){
           this.toastr.success('Matrimonio subido con exito');
-          this.globalForm.reset();
+          this.refrescar();
           let infoEnviada = {
             registro: data,
             habilitarForm: false
@@ -337,7 +367,7 @@ ejecutarGlobal(){
 
         if(data !== null && data !== undefined){
           this.toastr.success('Defuncion subido con exito');
-          this.globalForm.reset();
+          this.refrescar();
           let infoEnviada = {
             registro: data,
             habilitarForm: false

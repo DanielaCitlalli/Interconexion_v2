@@ -11,17 +11,24 @@
                     [class.green-icon]="this.globalForm.get('proceso')?.valid"
                     [class.red-icon]="this.globalForm.get('proceso')?.invalid && this.globalForm.get('proceso')?.touched" ></i>
             </div>
-             <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example" >
-                <option value="" selected disabled>Seleccione una opcion</option>
-                <option value="borrarDef">Borrar Defunciones </option>
-                <option value="borrarMat">Borrar Matrimonios </option>
-                <option value="borrarNac">Borrar Nacimientos </option>
-                <option value="cambioSexo">Cambio de Sexo</option>
-                <option value="forzarSubirNac">Forzar subir Acta Nacimientos </option>
-                <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
-                <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
 
-            </select> 
+           
+                <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example" >
+                    <option selected disabled hidden value="">Selecciona un proceso </option>
+                    <option value="borrarDef">Borrar Defunciones </option>
+                    <option value="borrarMat">Borrar Matrimonios </option>
+                    <option value="borrarNac">Borrar Nacimientos </option>
+                    <option value="cambioSexo">Cambio de Sexo</option>
+                    <option value="forzarSubirNac">Forzar subir Acta Nacimientos </option>
+                    <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
+                    <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
+    
+                </select> 
+    
+             
+
+             
+            
             
         </div>
     </div>
@@ -60,6 +67,7 @@
         </div>
 
     </div>
+   
     
     
 </form>
