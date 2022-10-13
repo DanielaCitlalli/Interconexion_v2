@@ -13,6 +13,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
   cambioSexoDisponible: boolean = false;
   datos: any;
 
+  verSpinner: boolean = false;
 
   constructor() { }
 
@@ -29,21 +30,28 @@ export class TarjetaComponent implements OnInit, OnChanges {
 
   //Recibe el valor que se emita por Output en tarjeta-credito
   mostrarRegistroDevuleto(event: any){
-    // if(event !== true){
-    //   this.registroEnviar = event;
-    //   console.log(this.registroEnviar , 'componente Padre');
-    // }
-    // else{
-    //   //Si es igual true, habilita el segundo formulario
-    //   this.cambioSexoDisponible = event;
-    // }
-   // console.log('prueba ' , event);
     
+    //para ver el spinner 
+    if(event === undefined){
+      this.verSpinner = true;
+      return;
+    }
+    //Para desaparecer spinner cuando ocurre un error en la peticion http
+    else if(event === 'error'){
+      this.verSpinner = false;
+      return;
+    }
+
+
+
     this.registroEnviar = event.registro;
 
     this.datos = event;
     this.cambioSexoDisponible = event.habilitarForm;
     this.registroEnviarCambioSexo = null;
+
+
+    this.verSpinner = false;
     // console.log(this.registroEnviar , this.cambioSexoDisponible);
     
   }
@@ -51,8 +59,20 @@ export class TarjetaComponent implements OnInit, OnChanges {
   mostrarRegistroDevuletoCambioSexo(event: any){
    // console.log(event);
     
+
+    if(event === undefined){
+      this.verSpinner = true;
+      return;
+    }
+    else if(event === 'error'){
+      this.verSpinner = false;
+      return
+    }
+
     this.registroEnviarCambioSexo = event;
     this.cambioSexoDisponible = false;
+
+    this.verSpinner = false;
   }
 
 }
