@@ -4,6 +4,13 @@
     flex-wrap: wrap;
     
 }
+.celdaR{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
 th{
 background-color:#106BE8;
 color:white;

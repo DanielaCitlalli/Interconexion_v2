@@ -80,7 +80,10 @@ export class SegundoFormularioComponent implements OnInit {
     this.servicioeditar.putNrcMatrimonios(this.datosRetornados.registro.cadena, formMatrimonio).subscribe(data => {
 
       if(data !== null && data !== undefined){
-        this.toastr.success("Cambio de sexo actualizado");
+        this.toastr.success("Cambio de sexo actualizado", " Cambio de sexo exitoso " , {
+          closeButton: true,
+          disableTimeOut: true,
+        });
         this.enviarRegistro.emit(data);
         
         console.log(data);
@@ -102,15 +105,34 @@ export class SegundoFormularioComponent implements OnInit {
         this.servicioeditar.postCirrTa09Mapeticion(form09f).subscribe(data=> {
 
             this.enviarRegistro.emit(data);
+            this.toastr.success("Actualizacion de tabla CIRR_TA09_MAPETICION " , " Éxito" , {
+              closeButton: true,
+              disableTimeOut: true,
+            })
             console.log(data);
+          },error => {
+            this.toastr.error("Error al actualizar tabla CIRR_TA09_MAPETICION", " Error" , {
+              disableTimeOut: true,
+              closeButton: true,
+            })
           })
         
       }
       else{
-        this.toastr.error("Ocurrio un error al actualizar")
+        this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
+          disableTimeOut: true,
+          closeButton: true,
+
+        });
       }
 
 
+  } , error => {
+    this.toastr.error("Error al actualizar sexo","Error de altualizar matrimonios ",{
+      disableTimeOut: true,
+      closeButton: true,
+
+    });
   })
     
   }
