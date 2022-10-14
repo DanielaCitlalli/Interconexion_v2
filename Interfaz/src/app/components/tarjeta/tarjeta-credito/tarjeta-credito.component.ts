@@ -193,7 +193,7 @@ ejecutarGlobal(){
         if(data !== null && data !== undefined){
           this.toastr.success('Defuncion borrada con exito', "Defuncion borrada" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           });
          this.refrescar();
           let infoEnviada = {
@@ -203,9 +203,9 @@ ejecutarGlobal(){
           this.registroDevuelto.emit(infoEnviada);
         }
         else{
-          this.toastr.error('Error al ingresar dato', " Error al ingresar dato " , {
+          this.toastr.error('Error al ingresar dato', " Error  " , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );
         }
@@ -237,7 +237,7 @@ ejecutarGlobal(){
         if(data !== null && data !== undefined){
           this.toastr.success('Matrimonio borrado con exito', " Borrar matrimonio con éxito" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           });
           this.refrescar();
           let infoEnviada = {
@@ -248,9 +248,9 @@ ejecutarGlobal(){
           this.registroDevuelto.emit(infoEnviada);
         }
         else{
-          this.toastr.error('Error al ingresar dato', " error al ingresar Matrimonio" , {
+          this.toastr.error('Error al ingresar dato', " Error al ingresar Matrimonio" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );  
         }
@@ -282,7 +282,7 @@ ejecutarGlobal(){
         if(data !== null && data !== undefined){
           this.toastr.success('Nacimiento borrado con exito', " Nacimiento borrado" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );
           this.refrescar();
@@ -294,9 +294,9 @@ ejecutarGlobal(){
          
         }
         else{
-          this.toastr.error('Error al ingresar dato', " error al ingresar Nacimiento" , {
+          this.toastr.error('Error al ingresar dato', " Error al ingresar Nacimiento" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );  
         }
@@ -328,7 +328,7 @@ ejecutarGlobal(){
         if(data !== null && data !== undefined){
           this.toastr.success('Nacimiento subido con exito', " Nacimiento Éxitoso" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );
           this.refrescar();
@@ -341,7 +341,7 @@ ejecutarGlobal(){
         else{
           this.toastr.error('Error al ingresar dato', " Error al ingresar Nacimiento" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );  
         }
@@ -373,7 +373,7 @@ ejecutarGlobal(){
         if(data !== null && data !== undefined){
           this.toastr.success('Matrimonio subido con exito', " Matrimonio subido con Éxito" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );
           this.refrescar();
@@ -386,7 +386,7 @@ ejecutarGlobal(){
         else{
           this.toastr.error('Error al ingresar dato', " Error al ingresar Matrimonio" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );  
         }
@@ -417,7 +417,7 @@ ejecutarGlobal(){
         if(data !== null && data !== undefined){
           this.toastr.success('Defuncion subido con exito', " Defunción subida con éxito" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );
           this.refrescar();
@@ -430,7 +430,7 @@ ejecutarGlobal(){
         else{
           this.toastr.error('Error al ingresar dato', " Error al ingrsar defunción" , {
             closeButton: true,
-            disableTimeOut: true,
+            disableTimeOut: false,
           }
           );  
         }
@@ -452,16 +452,16 @@ ejecutarGlobal(){
           
         }
         this.registroDevuelto.emit(infoEnviada);
-        this.toastr.success('Busqueda ', " Busqueda existosa" , {
+        this.toastr.success('Registro encontrado ', "Operación exitosa" , {
           closeButton: true,
-          disableTimeOut: true,
+          disableTimeOut: false,
         })
         
       },
       error => {
         this.toastr.error(error.error , 'Ocurrio un error',{
           closeButton: true,
-          disableTimeOut: true,
+          disableTimeOut: false,
 
         });
         this.registroDevuelto.emit('error');

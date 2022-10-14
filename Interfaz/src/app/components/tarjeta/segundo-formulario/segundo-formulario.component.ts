@@ -82,7 +82,7 @@ export class SegundoFormularioComponent implements OnInit {
       if(data !== null && data !== undefined){
         this.toastr.success("Cambio de sexo actualizado", " Cambio de sexo exitoso " , {
           closeButton: true,
-          disableTimeOut: true,
+          timeOut: 7000,
         });
         this.enviarRegistro.emit(data);
         
@@ -107,12 +107,12 @@ export class SegundoFormularioComponent implements OnInit {
             this.enviarRegistro.emit(data);
             this.toastr.success("Actualizacion de tabla CIRR_TA09_MAPETICION " , " Éxito" , {
               closeButton: true,
-              disableTimeOut: true,
+              timeOut: 7000,
             })
             console.log(data);
           },error => {
             this.toastr.error("Error al actualizar tabla CIRR_TA09_MAPETICION", " Error" , {
-              disableTimeOut: true,
+              timeOut: 7000,
               closeButton: true,
             })
           })
@@ -120,7 +120,7 @@ export class SegundoFormularioComponent implements OnInit {
       }
       else{
         this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
-          disableTimeOut: true,
+          timeOut: 7000,
           closeButton: true,
 
         });
@@ -129,7 +129,7 @@ export class SegundoFormularioComponent implements OnInit {
 
   } , error => {
     this.toastr.error("Error al actualizar sexo","Error de altualizar matrimonios ",{
-      disableTimeOut: true,
+      timeOut: 7000,
       closeButton: true,
 
     });
