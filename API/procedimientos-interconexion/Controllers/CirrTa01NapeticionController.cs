@@ -32,6 +32,7 @@ namespace procedimientos_interconexion.Controllers
         public async Task<ActionResult<CirrTa01Napeticion>> GetCirrTa01NapeticionId(decimal id)
         {
             var cirrTa01Napeticion = await _context.CirrTa01Napeticion.FindAsync(id);
+          
 
             if (cirrTa01Napeticion == null)
             {
@@ -132,12 +133,15 @@ namespace procedimientos_interconexion.Controllers
         {
             //_context.CirrTa01Napeticion.Add(cirrTa01Napeticion);
             //await _context.SaveChangesAsync();
+           
 
             try
             {
                 //_context.Add(new CirrTa01Napeticion { Ta01EPrioridad = 1, Ta01EOperacionacto = 1, Ta01CCadena = cirrTa01Napeticion.Ta01CCadena, Ta01EEstatus = 0, Ta01ECuantos = 0 });
                 _context.CirrTa01Napeticion.Add(cirrTa01Napeticion);
                 await _context.SaveChangesAsync();
+            
+
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
                 //return NoContent();
             }

@@ -33,9 +33,10 @@ namespace procedimientos_interconexion.Controllers
         {
             var nrcMatrimonios = await _context.NrcMatrimonios.FindAsync(id);
             Console.WriteLine(nrcMatrimonios);
+
             if (nrcMatrimonios == null)
             {
-                return NotFound("No se encontró el registro indicado...");
+                return NotFound("No se encontró el registro indicado...wewrl");
                
             }
 
@@ -86,6 +87,7 @@ namespace procedimientos_interconexion.Controllers
             _context.NrcMatrimonios.Add(nrcMatrimonios);
             try
             {
+                
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
