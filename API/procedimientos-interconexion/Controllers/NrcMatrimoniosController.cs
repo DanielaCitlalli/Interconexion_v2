@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -13,11 +14,14 @@ namespace procedimientos_interconexion.Controllers
     [ApiController]
     public class NrcMatrimoniosController : ControllerBase
     {
+        
+
         private readonly InterconexionContext _context;
 
         public NrcMatrimoniosController(InterconexionContext context)
         {
             _context = context;
+          
         }
 
         // GET: api/NrcMatrimonios
@@ -56,6 +60,11 @@ namespace procedimientos_interconexion.Controllers
            
 
             _context.Entry(nrcMatrimonios).State = EntityState.Modified;
+            string path = Directory.GetCurrentDirectory();
+
+            Log oLog = new Log(path);
+            string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            oLog.Add(remoteIpAddress + " - " + "Actualizo el Sexo " + " - " + nrcMatrimonios.Cadena);
 
             try
             {
@@ -123,5 +132,6 @@ namespace procedimientos_interconexion.Controllers
         {
             return _context.NrcMatrimonios.Any(e => e.Cadena == id);
         }
+
     }
 }
