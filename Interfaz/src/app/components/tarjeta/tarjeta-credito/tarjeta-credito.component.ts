@@ -321,6 +321,17 @@ ejecutarGlobal(){
 
       }
 
+      // for(let i = 0; i < form1.ta01CCadena.length; i++){
+      //   if(form1.ta01CCadena[i]){
+
+      //   }
+      // }
+
+      if(form1.ta01CCadena[0] !== '1'){
+        this.toastr.error('Debe comenzar con 1' , 'Error');
+        return;
+      }
+
       this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
@@ -365,7 +376,10 @@ ejecutarGlobal(){
         ta09ECuantos: 0
 
       }
-
+      if(form09f.ta09CCadena[0] !== '3'){
+        this.toastr.error('Debe comenzar con 3' , 'Error');
+        return;
+      }
       this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.postCirrTa09MapeticionF(form09f).subscribe(data => {
@@ -408,6 +422,10 @@ ejecutarGlobal(){
         ta03FAtencion: null,
         ta03ECuantos: 0
         
+      }
+      if(form03F.ta03CCadena[0] !== '2'){
+        this.toastr.error('Debe comenzar con 2' , 'Error');
+        return;
       }
       
       this.registroDevuelto.emit(undefined);
