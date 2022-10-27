@@ -156,6 +156,6 @@ export class TarjetaServiceService {
 
     return this.http.put<any>(this.myAppUrl_NRC_Matrimonios + this.myApiUrl_NRC_Matrimonios + id , registro);
    
-
   }
+  //GET de dublicados 
 }
