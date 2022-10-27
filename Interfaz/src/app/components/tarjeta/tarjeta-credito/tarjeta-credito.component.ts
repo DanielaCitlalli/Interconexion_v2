@@ -184,6 +184,10 @@ ejecutarGlobal(){
         ta03ECuantos: 0
 
       }
+      if(form03.ta03CCadena[0] !== '2'){
+        this.toastr.error('Debe comenzar con 2' , 'Error');
+        return;
+      }
 
       this.registroDevuelto.emit(undefined);
       
@@ -229,6 +233,10 @@ ejecutarGlobal(){
         ta09ECuantos: 0
 
       }
+      if(form09.ta09CCadena[0] !== '3'){
+        this.toastr.error('Debe comenzar con 3' , 'Error');
+        return;
+      }
 
       this.registroDevuelto.emit(undefined);
 
@@ -273,6 +281,10 @@ ejecutarGlobal(){
         ta01FAtencion: null,
         ta01ECuantos: 0
 
+      }
+      if(form.ta01CCadena[0] !== '1'){
+        this.toastr.error('Debe comenzar con 1' , 'Error');
+        return;
       }
 
       this.registroDevuelto.emit(undefined);
