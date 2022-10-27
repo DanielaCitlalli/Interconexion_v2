@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,7 @@ namespace procedimientos_interconexion.Controllers
         public CirrTa01NapeticionController(InterconexionContext context)
         {
             _context = context;
+            
         }
         // holaaaaa
         // GET: api/CirrTa01Napeticion
@@ -48,9 +50,11 @@ namespace procedimientos_interconexion.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCirrTa01Napeticion(decimal id, CirrTa01Napeticion cirrTa01Napeticion)
         {
+           
             if (id != cirrTa01Napeticion.Ta01EOid)
             {
                 return BadRequest();
+                
             }
 
             _context.Entry(cirrTa01Napeticion).State = EntityState.Modified;
@@ -104,12 +108,17 @@ namespace procedimientos_interconexion.Controllers
                 _context.Add(cirrTa01Napeticion);
                     
                 await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
 
+                Log oLog = new Log(path);
+                string remoteIpAddress=HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " - " + "Se borro Nacimiento" + " - " + cirrTa01Napeticion.Ta01CCadena);
+       
                 //return NoContent();
                 //return Content("El registro se agregó exitosamente", "application/json");
                 //Consulta para encontrar el ultimo id ingresado a alguna tabla
                 //var lastId = await _context.CirrTa01Napeticion.FromSqlRaw("SELECT IDENT_CURRENT('CIRR_TA01_NAPETICION') as TA01_E_OID").ToListAsync();
-                
+
 
 
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
@@ -140,7 +149,16 @@ namespace procedimientos_interconexion.Controllers
                 //_context.Add(new CirrTa01Napeticion { Ta01EPrioridad = 1, Ta01EOperacionacto = 1, Ta01CCadena = cirrTa01Napeticion.Ta01CCadena, Ta01EEstatus = 0, Ta01ECuantos = 0 });
                 _context.CirrTa01Napeticion.Add(cirrTa01Napeticion);
                 await _context.SaveChangesAsync();
+<<<<<<< HEAD
             
+=======
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " - " + "Se subio Acta de nacimiento " + " - " + cirrTa01Napeticion.Ta01CCadena);
+
+>>>>>>> main
 
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
                 //return NoContent();

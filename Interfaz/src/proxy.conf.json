@@ -1,7 +1,13 @@
 {
     "/api":{
+<<<<<<< HEAD
         "target" : "http://10.254.65.117:80/",
         "secure" : false,
         "logLevel" : "debug"
+=======
+       "target": "http://10.254.65.124:80/",
+        "secure": false,
+        "logLevel": "debug"
+>>>>>>> main
     }
 }

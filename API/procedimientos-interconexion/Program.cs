@@ -14,7 +14,12 @@ namespace procedimientos_interconexion
         public static void Main(string[] args)
         {
            CreateHostBuilder(args).Build().Run();
+<<<<<<< HEAD
            
+=======
+            
+
+>>>>>>> main
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -23,5 +28,7 @@ namespace procedimientos_interconexion
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+        
     }
+    
 }

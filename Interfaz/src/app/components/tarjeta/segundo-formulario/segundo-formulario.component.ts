@@ -102,7 +102,11 @@ export class SegundoFormularioComponent implements OnInit {
           ta09ECuantos: 0
   
         }
+<<<<<<< HEAD
         this.servicioeditar.postCirrTa09NapeticionF(form09f).subscribe(data=> {
+=======
+        this.servicioeditar.postCirrTa09Mapeticion(form09f).subscribe(data=> {
+>>>>>>> main
 
             this.enviarRegistro.emit(data);
             this.toastr.success("Actualizacion de tabla CIRR_TA09_MAPETICION " , " Éxito" , {

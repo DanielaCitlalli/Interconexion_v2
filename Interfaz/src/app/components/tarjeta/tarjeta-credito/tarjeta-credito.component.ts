@@ -191,7 +191,10 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Defuncion borrada con exito');
+          this.toastr.success('Defuncion borrada con exito', "Defuncion borrada" , {
+            closeButton: true,
+            disableTimeOut: false,
+          });
          this.refrescar();
           let infoEnviada = {
             registro: data,
@@ -200,7 +203,11 @@ ejecutarGlobal(){
           this.registroDevuelto.emit(infoEnviada);
         }
         else{
-          this.toastr.error('Error al ingresar dato');
+          this.toastr.error('Error al ingresar dato', " Error  " , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );
         }
         
       });
@@ -225,10 +232,13 @@ ejecutarGlobal(){
 
       this.registroDevuelto.emit(undefined);
 
-      this.tarjetaService.postCirrTa09Napeticion(form09).subscribe(data => {
+      this.tarjetaService.postCirrTa09Mapeticion(form09).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Matrimonio borrado con exito');
+          this.toastr.success('Matrimonio borrado con exito', " Borrar matrimonio con éxito" , {
+            closeButton: true,
+            disableTimeOut: false,
+          });
           this.refrescar();
           let infoEnviada = {
             registro: data,
@@ -238,7 +248,11 @@ ejecutarGlobal(){
           this.registroDevuelto.emit(infoEnviada);
         }
         else{
-          this.toastr.error('Error al ingresar dato');  
+          this.toastr.error('Error al ingresar dato', " Error al ingresar Matrimonio" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );  
         }
 
       });
@@ -266,7 +280,11 @@ ejecutarGlobal(){
       this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Nacimiento borrado con exito');
+          this.toastr.success('Nacimiento borrado con exito', " Nacimiento borrado" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );
           this.refrescar();
           let infoEnviada = {
             registro: data,
@@ -276,7 +294,11 @@ ejecutarGlobal(){
          
         }
         else{
-          this.toastr.error('Error al ingresar dato');  
+          this.toastr.error('Error al ingresar dato', " Error al ingresar Nacimiento" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );  
         }
 
       });
@@ -299,12 +321,27 @@ ejecutarGlobal(){
 
       }
 
+      // for(let i = 0; i < form1.ta01CCadena.length; i++){
+      //   if(form1.ta01CCadena[i]){
+
+      //   }
+      // }
+
+      if(form1.ta01CCadena[0] !== '1'){
+        this.toastr.error('Debe comenzar con 1' , 'Error');
+        return;
+      }
+
       this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Nacimiento subido con exito');
+          this.toastr.success('Nacimiento subido con exito', " Nacimiento Éxitoso" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );
           this.refrescar();
           let infoEnviada = {
             registro: data,
@@ -313,7 +350,11 @@ ejecutarGlobal(){
           this.registroDevuelto.emit(infoEnviada);
         }
         else{
-          this.toastr.error('Error al ingresar dato');  
+          this.toastr.error('Error al ingresar dato', " Error al ingresar Nacimiento" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );  
         }
 
       });
@@ -335,13 +376,20 @@ ejecutarGlobal(){
         ta09ECuantos: 0
 
       }
-
+      if(form09f.ta09CCadena[0] !== '3'){
+        this.toastr.error('Debe comenzar con 3' , 'Error');
+        return;
+      }
       this.registroDevuelto.emit(undefined);
 
-      this.tarjetaService.postCirrTa09NapeticionF(form09f).subscribe(data => {
+      this.tarjetaService.postCirrTa09MapeticionF(form09f).subscribe(data => {
         
         if(data !== null && data !== undefined){
-          this.toastr.success('Matrimonio subido con exito');
+          this.toastr.success('Matrimonio subido con exito', " Matrimonio subido con Éxito" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );
           this.refrescar();
           let infoEnviada = {
             registro: data,
@@ -350,7 +398,11 @@ ejecutarGlobal(){
           this.registroDevuelto.emit(infoEnviada);
         }
         else{
-          this.toastr.error('Error al ingresar dato');  
+          this.toastr.error('Error al ingresar dato', " Error al ingresar Matrimonio" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );  
         }
 
       });
@@ -371,13 +423,21 @@ ejecutarGlobal(){
         ta03ECuantos: 0
         
       }
+      if(form03F.ta03CCadena[0] !== '2'){
+        this.toastr.error('Debe comenzar con 2' , 'Error');
+        return;
+      }
       
       this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data => {
 
         if(data !== null && data !== undefined){
-          this.toastr.success('Defuncion subido con exito');
+          this.toastr.success('Defuncion subido con exito', " Defunción subida con éxito" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );
           this.refrescar();
           let infoEnviada = {
             registro: data,
@@ -386,7 +446,11 @@ ejecutarGlobal(){
           this.registroDevuelto.emit(infoEnviada);
         }
         else{
-          this.toastr.error('Error al ingresar dato');  
+          this.toastr.error('Error al ingresar dato', " Error al ingrsar defunción" , {
+            closeButton: true,
+            disableTimeOut: false,
+          }
+          );  
         }
 
 
@@ -406,10 +470,18 @@ ejecutarGlobal(){
           
         }
         this.registroDevuelto.emit(infoEnviada);
+        this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+          closeButton: true,
+          disableTimeOut: false,
+        })
         
       },
       error => {
-        this.toastr.error(error.error , 'Ocurrio un error');
+        this.toastr.error(error.error , 'Ocurrio un error',{
+          closeButton: true,
+          disableTimeOut: false,
+
+        });
         this.registroDevuelto.emit('error');
       });
       // console.log('llegue cambio de sexo');

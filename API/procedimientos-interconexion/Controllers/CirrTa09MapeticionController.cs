@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -85,6 +86,19 @@ namespace procedimientos_interconexion.Controllers
                 //_context.Add(new CirrTa09Mapeticion { Ta09EPrioridad = 1, Ta09EOperacionacto = 2, Ta09EEstatus = 0, Ta09ECuantos = 0, Ta09CCadena = cirrTa09Mapeticion.Ta09CCadena });
                 _context.Add(cirrTa09Mapeticion);
                 await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                if(cirrTa09Mapeticion.Ta09EPrioridad == 1 && cirrTa09Mapeticion.Ta09EOperacionacto == 1 && cirrTa09Mapeticion.Ta09EEstatus == 0 && cirrTa09Mapeticion.Ta09ECuantos == 0)
+                {
+                    oLog.Add(remoteIpAddress + " - " + "Se actualizo registro  " + " - " + cirrTa09Mapeticion.Ta09CCadena);
+                }
+                else
+                {
+                    oLog.Add(remoteIpAddress + " - " + "Se Borro Matrimonios  " + " - " + cirrTa09Mapeticion.Ta09CCadena);
+                }
+               
 
                 return CreatedAtAction(nameof(GetCirrTa09MapeticionId), new { id = cirrTa09Mapeticion.Ta09EOid }, cirrTa09Mapeticion);
 
@@ -110,6 +124,11 @@ namespace procedimientos_interconexion.Controllers
             {
                 _context.Add(cirrTa09Mapeticion);
                 await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " - " + "Se subio Acta de Matrimonio  " + " - " + cirrTa09Mapeticion.Ta09CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa09MapeticionId), new { id = cirrTa09Mapeticion.Ta09EOid }, cirrTa09Mapeticion);
                 //return Content("El registro se agregó exitosamente", "application/json");
