@@ -15,6 +15,7 @@ namespace procedimientos_interconexion.Controllers
     public class CirrTa03DepeticionController : ControllerBase
     {
         private readonly InterconexionContext _context;
+          
 
         public CirrTa03DepeticionController(InterconexionContext context)
         {
@@ -88,11 +89,18 @@ namespace procedimientos_interconexion.Controllers
                 _context.Add(cirrTa03Depeticion);
                 await _context.SaveChangesAsync();
                 string path = Directory.GetCurrentDirectory();
+<<<<<<< HEAD
+              
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress +" " + "Se Borro defunciones de la cadena"+ " " + cirrTa03Depeticion.Ta03CCadena);
+=======
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
                 oLog.Add(remoteIpAddress + " - " + "Se borro defunción " + " - " + cirrTa03Depeticion.Ta03CCadena);
 
+>>>>>>> main
                 return CreatedAtAction(nameof(GetCirrTa03DepeticionId), new { id = cirrTa03Depeticion.Ta03EOid }, cirrTa03Depeticion);
             }
             catch (Exception ex)

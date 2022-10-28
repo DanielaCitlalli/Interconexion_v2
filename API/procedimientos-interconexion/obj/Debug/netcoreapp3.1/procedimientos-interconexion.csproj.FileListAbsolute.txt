@@ -795,8 +795,6 @@ C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-inte
 C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.csproj.CoreCompileInputs.cache
 C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\staticwebassets\procedimientos-interconexion.StaticWebAssets.Manifest.cache
-C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\staticwebassets\procedimientos-interconexion.StaticWebAssets.xml
-C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\scopedcss\bundle\procedimientos-interconexion.styles.css
 C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.RazorTargetAssemblyInfo.cache
 C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.csproj.CopyComplete
 C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.dll
@@ -936,3 +934,5 @@ C:\Users\Administrador\Documents\Documentos-Oscar\Proyectos\Github\Interconexion
 C:\Users\Administrador\Documents\Documentos-Oscar\Proyectos\Github\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.dll
 C:\Users\Administrador\Documents\Documentos-Oscar\Proyectos\Github\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.pdb
 C:\Users\Administrador\Documents\Documentos-Oscar\Proyectos\Github\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\procedimientos-interconexion.genruntimeconfig.cache
+C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\staticwebassets\procedimientos-interconexion.StaticWebAssets.xml
+C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\obj\Debug\netcoreapp3.1\scopedcss\bundle\procedimientos-interconexion.styles.css
