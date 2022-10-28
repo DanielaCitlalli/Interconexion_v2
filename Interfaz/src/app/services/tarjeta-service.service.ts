@@ -163,6 +163,6 @@ export class TarjetaServiceService {
 
   getDuplicados(crip: number):Observable<any>{
 
-    return this.http.get<CirrTa09Mapeticion>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
+    return this.http.get<any>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
   }
 }

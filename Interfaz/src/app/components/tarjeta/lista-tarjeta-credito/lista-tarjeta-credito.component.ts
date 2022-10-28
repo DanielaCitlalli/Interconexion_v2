@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
@@ -11,80 +12,73 @@ import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
 @Component({
   selector: 'app-lista-tarjeta-credito',
   templateUrl: './lista-tarjeta-credito.component.html',
-  styleUrls: ['./lista-tarjeta-credito.component.css']
+  styleUrls: ['./lista-tarjeta-credito.component.css'],
 })
 export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
 
- @Input() registroAgregado: any;
- @Input() registroAgregadoCambioSexo: any;
+  @Input() registroAgregado: any;
+  @Input() registroAgregadoCambioSexo: any;
+  @Input() cadenasDisponibles?: any[];
 
+  registroTa01?: CirrTa01Napeticion;
+  registroTa03?: CirrTa03Depeticion;
+  registroTa09?: CirrTa09Mapeticion;
 
-  
-    registroTa01?: CirrTa01Napeticion;
-    registroTa03?: CirrTa03Depeticion; 
-    registroTa09?: CirrTa09Mapeticion;
-    
+  infoCadena: any;
 
-  constructor(public tarjetaService: TarjetaServiceService,
-              public toast: ToastrService) { }
+  constructor(
+    public tarjetaService: TarjetaServiceService,
+    public toast: ToastrService
+  ) {}
 
-            
-              
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
-    
   }
 
   ngOnInit(): void {
-    this.tarjetaService.obtenerTarjetas()
+    this.tarjetaService.obtenerTarjetas();
     //this.tarjetaService.getCirrTa01Napeticion();
-      this.tarjetaService.getCirrTa01NapeticionId().subscribe(data => {
-          this.registroTa01 = data;
-          // console.log(data);
-      
+    this.tarjetaService.getCirrTa01NapeticionId().subscribe((data) => {
+      this.registroTa01 = data;
+      // console.log(data);
     });
 
-    this.tarjetaService.getCirrTa03DepeticionId().subscribe(data => {
+    this.tarjetaService.getCirrTa03DepeticionId().subscribe((data) => {
       this.registroTa03 = data;
       // console.log(data ,'03!!!1');
-      
     });
 
-    this.tarjetaService.getCirrTa09MapeticionId().subscribe(data => {
+    this.tarjetaService.getCirrTa09MapeticionId().subscribe((data) => {
       this.registroTa09 = data;
       // console.log(data ,'09!!!!');
-      
-
     });
 
     // console.log(this.registroAgregado);
-    
   }
 
-  eliminarTarjeta(id: number | undefined){
-
-    if(confirm('Estas seguro de eliminar esta tarjeta?')){
-      this.tarjetaService.eliminarTarjeta(id).subscribe(data => {
+  eliminarTarjeta(id: number | undefined) {
+    if (confirm('Estas seguro de eliminar esta tarjeta?')) {
+      this.tarjetaService.eliminarTarjeta(id).subscribe((data) => {
         this.toast.warning('Registro Eliminado', 'La tarjeta fue eliminada');
         this.tarjetaService.obtenerTarjetas();
       });
     }
-
-    
   }
 
-  editar(tarjeta: TarjetaCredito){
+  editar(tarjeta: TarjetaCredito) {
     this.tarjetaService.actualizar(tarjeta);
   }
 
-  ocultar(){
+  ocultar() {
     this.registroAgregado = null;
     this.registroAgregadoCambioSexo = null;
 
-    console.log(this.registroAgregado , this.registroAgregadoCambioSexo);
-    
+    console.log(this.registroAgregado, this.registroAgregadoCambioSexo);
   }
 
+  mostrarInfoCadena(cadena: any){
+    this.infoCadena = cadena;
+  }
 }
 
 
