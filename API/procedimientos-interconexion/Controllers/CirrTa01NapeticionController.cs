@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using procedimientos_interconexion.Models;
 
@@ -42,6 +44,24 @@ namespace procedimientos_interconexion.Controllers
             }
 
             return cirrTa01Napeticion;
+        }
+
+        // GET: api/CirrTa01Napeticion/5
+        [HttpGet]
+        [Route("buscarcadena/{crip}")]
+        public async Task<ActionResult<List<NrcNacimientos>>> buscarCadena(string crip)
+        {
+            try
+            {
+                var res = _context.NrcNacimientos.FromSqlInterpolated($@"EXEC dbo.cripToCadenaNac @crip={crip}").AsAsyncEnumerable();
+
+                return Ok(res);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest();
+            }
+
         }
 
         // PUT: api/CirrTa01Napeticion/5
