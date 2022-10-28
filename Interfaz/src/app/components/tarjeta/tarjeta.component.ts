@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CirrTa03Depeticion } from 'src/app/models/CirrTa03Depeticion.model';
+import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 
 @Component({
   selector: 'app-tarjeta',
@@ -15,10 +16,14 @@ export class TarjetaComponent implements OnInit, OnChanges {
 
   verSpinner: boolean = false;
 
-  constructor() { }
+  constructor(private tarjetaService: TarjetaServiceService) { }
 
   ngOnInit(): void {
     // console.log(this.cambioSexoDisponible);
+    this.tarjetaService.getDuplicados(11002011300358).subscribe(data => {
+      console.log(data);
+      
+    });
     
   }
 
