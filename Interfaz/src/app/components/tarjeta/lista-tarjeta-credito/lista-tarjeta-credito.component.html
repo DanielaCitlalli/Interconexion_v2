@@ -173,17 +173,34 @@
   </div>
 
   <div class="contenedor-cadenas" *ngIf="cadenasDisponibles !== null && cadenasDisponibles !== undefined">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let item of cadenasDisponibles" (click)="mostrarInfoCadena(item)">
-        {{item.cadena}}
-      </li>
-    </ul>
 
-    <textarea name="" id="" cols="30" rows="5" *ngIf="infoCadena !== null && infoCadena !== undefined">
-      Cadena : {{infoCadena.cadena}}
-      Nombre : {{infoCadena.peNombres + " " + infoCadena.pePrimerapellido + " " + infoCadena.peSegundoapellido}}
-      CURP   : {{infoCadena.peCurp}}
-    </textarea>
+    <h6>Cadenas Encontradas:</h6>
+
+    <div class="botones-cadenas mb-3" *ngIf="cadenasDisponibles !== null && cadenasDisponibles !== undefined">
+      <button type="button" 
+              class="btn btn-outline-primary" 
+              *ngFor="let item of cadenasDisponibles"
+              (click)="mostrarInfoCadena(item)">
+        {{item.cadena}}
+      </button>
+    </div>
+
+    <table class="table table-light table-hover table-bordered border-primary" *ngIf="infoCadena !== null && infoCadena !== undefined">
+      <thead>
+        <th>Cadena</th>
+        <th>Nombre</th>
+        <th>CURP</th>
+        <th>Error de origen</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{infoCadena.cadena}}</td>
+          <td>{{infoCadena.peNombres + " " + infoCadena.pePrimerapellido + " " + infoCadena.peSegundoapellido}}</td>
+          <td>{{infoCadena.peCurp}}</td>
+          <td>{{infoCadena.otErrororigen}}</td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
 </div>

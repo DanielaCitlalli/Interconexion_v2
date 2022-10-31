@@ -1,4 +1,4 @@
-export interface Nrc_Matrimonios{
+export interface Nrc_Nacimientos{
     numeroacta:number;
     anioregistro:number;
     tipodocumento?:number | null;

@@ -26,8 +26,15 @@ td{
 
 .contenedor-cadenas{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    background-color: #E1F1FA;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 1rem;
 }
 
 textarea{
@@ -38,3 +45,11 @@ textarea{
 li{
     cursor: pointer;
 }
+
+.contenedor-cadenas table {
+    overflow-x: auto;
+    overflow-y: auto;
+    height: 10rem;
+    display: block;
+}
+
