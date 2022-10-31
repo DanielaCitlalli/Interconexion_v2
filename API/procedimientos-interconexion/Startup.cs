@@ -22,7 +22,11 @@ namespace procedimientos_interconexion
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+<<<<<<< HEAD
+           
+=======
             
+>>>>>>> main
         }
 
        
