@@ -1,5 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CirrTa03Depeticion } from 'src/app/models/CirrTa03Depeticion.model';
+import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
+import { Nrc_Matrimonios } from 'src/app/models/Nrc_Matrimonios';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 
 @Component({
@@ -11,6 +13,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
 
   registroEnviar: any;
   registroEnviarCambioSexo:  any;
+  cadenasDisponibles?: Nrc_Nacimientos[];
   cambioSexoDisponible: boolean = false;
   datos: any;
 
@@ -21,7 +24,9 @@ export class TarjetaComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     // console.log(this.cambioSexoDisponible);
     this.tarjetaService.getDuplicados(11002011300358).subscribe(data => {
-      console.log(data);
+      this.cadenasDisponibles = data;
+      console.log(this.cadenasDisponibles);
+      
       
     });
     

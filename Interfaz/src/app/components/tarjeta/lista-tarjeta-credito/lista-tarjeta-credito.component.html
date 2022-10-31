@@ -1,162 +1,206 @@
-
 <!--Tabla 01-->
 <div class="container ">
 
-  <div class=" table-info text-capitalize" *ngIf="registroAgregado?.ta01EOid !== null && registroAgregado?.ta09EOid !== null && registroAgregado?.ta03EOid !== null" >
+  <div class=" table-info text-capitalize" *ngIf="registroAgregado?.ta01EOid !== null && 
+                                                  registroAgregado?.ta09EOid !== null && 
+                                                  registroAgregado?.ta03EOid !== null ||
+                                                  cadenasDisponibles !== null">
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null ||
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end"
+      *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null ||
                                                                 registroAgregado?.ta03EOid !== undefined && registroAgregado?.ta03EOid !== null ||
                                                                 registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null ||
                                                                 registroAgregadoCambioSexo !== undefined && registroAgregadoCambioSexo !== null">
-      <button class="btn btn-danger" type="button" (click)="ocultar()"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+      <button class="btn btn-danger" type="button" (click)="ocultar()"><i
+          class="fa-sharp fa-solid fa-xmark"></i></button>
     </div>
     <h2 class="text-center" *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null ||
                             registroAgregado?.ta03EOid !== undefined && registroAgregado?.ta03EOid !== null ||
                             registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null ||
                             registroAgregadoCambioSexo !== undefined && registroAgregadoCambioSexo !== null">
-      Resultado 
+      Resultado
 
-  </h2>
+    </h2>
 
-  <br>
+    <br>
 
-  <table class="table table-hover table-sm fs-5 alert alert-primary border border-2 border border-primary fw-light text-dark text-center ">
+    <table
+      class="table table-hover table-sm fs-5 alert alert-primary border border-2 border border-primary fw-light text-dark text-center ">
 
-    <tr class="row " *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null">
-      
-      <div class="celda col-4">
-        <th class="col">taEOid</th>
-        <td scope="row">{{ registroAgregado?.ta01EOid }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taEPrioridad</th>
-        <td scope="row">{{ registroAgregado?.ta01EPrioridad }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taEOperacionacto</th>
-        <td scope="row">{{ registroAgregado?.ta01EOperacionacto }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taEEstatus</th>
-        <td scope="row">{{ registroAgregado?.ta01EEstatus }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taECuantos</th>
-        <td scope="row">{{ registroAgregado?.ta01ECuantos }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taCCadena</th>
-        <td scope="row">{{ registroAgregado?.ta01CCadena }}</td>
-      </div>
+      <tr class="row " *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null">
 
-    </tr>
-    <tr class="row" *ngIf="registroAgregado?.ta03EOid!== undefined && registroAgregado?.ta03EOid !== null">
-      <div class="celda col-4">
-        <th scope="col">taEOid</th>
-        <td scope="row">{{ registroAgregado?.ta03EOid }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taEPrioridad</th>
-        <td scope="row">{{ registroAgregado?.ta03EPrioridad }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taEOperacionacto</th>
-        <td scope="row">{{ registroAgregado?.ta03EOperacionacto }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taEEstatus</th>
-        <td scope="row">{{ registroAgregado?.ta03EEstatus }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taECuantos</th>
-        <td scope="row">{{ registroAgregado?.ta03ECuantos }}</td>
-      </div>
-      <div class="celda col-4">
-        <th scope="col">taCCadena</th>
-        <td scope="row">{{ registroAgregado?.ta03CCadena }}</td>
-      </div>
-    </tr>
-    <tr class="row celdaR " *ngIf="registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null">
-      <div class="celda col-6">
-        <th scope="col">taEOid</th>
-        <td scope="row">{{ registroAgregado?.ta09EOid }}</td>
-      </div>
-      <div class="celda col-6">
-        <th scope="col">taEPrioridad</th>
-        <td scope="row">{{ registroAgregado?.ta09EPrioridad }}</td>
-      </div>
-      <div class="celda col-6">
-        <th scope="col">taEOperacionacto</th>
-        <td scope="row">{{ registroAgregado?.ta09EOperacionacto }}</td>
-      </div>
-      <div class="celda col-6">
-        <th scope="col">taEEstatus</th>
-        <td scope="row">{{ registroAgregado?.ta09EEstatus }}</td>
-      </div>
-      <div class="celda col-6">
-        <th scope="col">taECuantos</th>
-        <td scope="row">{{ registroAgregado?.ta09ECuantos }}</td>
-      </div>
-      <div class="celda col-6">
-        <th scope="col">taCCadena</th>
-        <td scope="row">{{ registroAgregado?.ta09CCadena }}</td>
-      </div>
-    </tr>
-    <tr class="row" *ngIf="registroAgregadoCambioSexo?.cadena !== undefined && registroAgregadoCambioSexo?.cadena !== null">
-      <div class="celda col-6">
-        <th scope="col">Cadena</th>
-        <td scope="row" >{{ registroAgregado?.cadena }}</td>
-      </div>
-      <div class="celda col-6">
-        <th scope="col">Nombre Persona 1</th>
-        <td scope="row">{{ registroAgregado?.p1Nombres}}</td>
-      </div>
+        <div class="celda col-4">
+          <th class="col">taEOid</th>
+          <td scope="row">{{ registroAgregado?.ta01EOid }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taEPrioridad</th>
+          <td scope="row">{{ registroAgregado?.ta01EPrioridad }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taEOperacionacto</th>
+          <td scope="row">{{ registroAgregado?.ta01EOperacionacto }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taEEstatus</th>
+          <td scope="row">{{ registroAgregado?.ta01EEstatus }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taECuantos</th>
+          <td scope="row">{{ registroAgregado?.ta01ECuantos }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taCCadena</th>
+          <td scope="row">{{ registroAgregado?.ta01CCadena }}</td>
+        </div>
 
-      <div class="celda col-6">
-        <th scope="col">Primer apellido Persona 1</th>
-        <td scope="row">{{ registroAgregado?.p1Primerapellido}}</td>
-      </div>
+      </tr>
+      <tr class="row" *ngIf="registroAgregado?.ta03EOid!== undefined && registroAgregado?.ta03EOid !== null">
+        <div class="celda col-4">
+          <th scope="col">taEOid</th>
+          <td scope="row">{{ registroAgregado?.ta03EOid }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taEPrioridad</th>
+          <td scope="row">{{ registroAgregado?.ta03EPrioridad }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taEOperacionacto</th>
+          <td scope="row">{{ registroAgregado?.ta03EOperacionacto }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taEEstatus</th>
+          <td scope="row">{{ registroAgregado?.ta03EEstatus }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taECuantos</th>
+          <td scope="row">{{ registroAgregado?.ta03ECuantos }}</td>
+        </div>
+        <div class="celda col-4">
+          <th scope="col">taCCadena</th>
+          <td scope="row">{{ registroAgregado?.ta03CCadena }}</td>
+        </div>
+      </tr>
+      <tr class="row celdaR " *ngIf="registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null">
+        <div class="celda col-6">
+          <th scope="col">taEOid</th>
+          <td scope="row">{{ registroAgregado?.ta09EOid }}</td>
+        </div>
+        <div class="celda col-6">
+          <th scope="col">taEPrioridad</th>
+          <td scope="row">{{ registroAgregado?.ta09EPrioridad }}</td>
+        </div>
+        <div class="celda col-6">
+          <th scope="col">taEOperacionacto</th>
+          <td scope="row">{{ registroAgregado?.ta09EOperacionacto }}</td>
+        </div>
+        <div class="celda col-6">
+          <th scope="col">taEEstatus</th>
+          <td scope="row">{{ registroAgregado?.ta09EEstatus }}</td>
+        </div>
+        <div class="celda col-6">
+          <th scope="col">taECuantos</th>
+          <td scope="row">{{ registroAgregado?.ta09ECuantos }}</td>
+        </div>
+        <div class="celda col-6">
+          <th scope="col">taCCadena</th>
+          <td scope="row">{{ registroAgregado?.ta09CCadena }}</td>
+        </div>
+      </tr>
+      <tr class="row"
+        *ngIf="registroAgregadoCambioSexo?.cadena !== undefined && registroAgregadoCambioSexo?.cadena !== null">
+        <div class="celda col-6">
+          <th scope="col">Cadena</th>
+          <td scope="row">{{ registroAgregado?.cadena }}</td>
+        </div>
+        <div class="celda col-6">
+          <th scope="col">Nombre Persona 1</th>
+          <td scope="row">{{ registroAgregado?.p1Nombres}}</td>
+        </div>
 
-      <div class="celda col-6" >
-        <th scope="col">Segundo apellido Persona 1</th>
-        <td scope="row">{{ registroAgregado?.p1Segundoapellido}}</td>
-      </div>
+        <div class="celda col-6">
+          <th scope="col">Primer apellido Persona 1</th>
+          <td scope="row">{{ registroAgregado?.p1Primerapellido}}</td>
+        </div>
 
-      <div class="celda col-6">
-        <th scope="col">Sexo Persona 1</th>
-        <td scope="row">{{ registroAgregado?.p1sexo }}</td>
-      </div>
+        <div class="celda col-6">
+          <th scope="col">Segundo apellido Persona 1</th>
+          <td scope="row">{{ registroAgregado?.p1Segundoapellido}}</td>
+        </div>
 
-      <div class="celda col-6">
-        <th scope="col">Nombre Persona 2</th>
-        <td scope="row">{{ registroAgregado?.p2Nombres}}</td>
-      </div>
+        <div class="celda col-6">
+          <th scope="col">Sexo Persona 1</th>
+          <td scope="row">{{ registroAgregado?.p1sexo }}</td>
+        </div>
 
-      <div class="celda col-6">
-        <th scope="col">Primer apellido Persona 2</th>
-        <td scope="row">{{ registroAgregado?.p2Primerapellido}}</td>
-      </div>
+        <div class="celda col-6">
+          <th scope="col">Nombre Persona 2</th>
+          <td scope="row">{{ registroAgregado?.p2Nombres}}</td>
+        </div>
 
-      <div class="celda col-6" >
-        <th scope="col" >Segundo apellido Persona 2</th>
-        <td scope="row">{{ registroAgregado?.p2Segundoapellido}}</td>
-      </div>
+        <div class="celda col-6">
+          <th scope="col">Primer apellido Persona 2</th>
+          <td scope="row">{{ registroAgregado?.p2Primerapellido}}</td>
+        </div>
 
-      <div class="celda col-6">
-        <th scope="col">Sexo Persona 2</th>
-        <td scope="row">{{ registroAgregado?.p2sexo }}</td>
-       
+        <div class="celda col-6">
+          <th scope="col">Segundo apellido Persona 2</th>
+          <td scope="row">{{ registroAgregado?.p2Segundoapellido}}</td>
+        </div>
 
-      </div>
-
-    </tr>
-</table>
+        <div class="celda col-6">
+          <th scope="col">Sexo Persona 2</th>
+          <td scope="row">{{ registroAgregado?.p2sexo }}</td>
 
 
+        </div>
+
+      </tr>
+
+      <!-- <tr class="row" *ngIf="cadenasDisponibles !== undefined && cadenasDisponibles !== null">
+      <div class="col-12" *ngFor="let cadena of cadenasDisponibles">
+        <td scope="row" >{{ cadena.cadena }} - {{cadena.peNombres + " " + cadena.pePrimerapellido + " " + cadena.peSegundoapellido}}</td>
+      </div>
+
+    </tr> -->
+    </table>
 
 
 
 
+
+
+  </div>
+
+  <div class="contenedor-cadenas" *ngIf="cadenasDisponibles !== null && cadenasDisponibles !== undefined">
+
+    <h6>Cadenas Encontradas:</h6>
+
+    <div class="botones-cadenas mb-3" *ngIf="cadenasDisponibles !== null && cadenasDisponibles !== undefined">
+      <button type="button" 
+              class="btn btn-outline-primary" 
+              *ngFor="let item of cadenasDisponibles"
+              (click)="mostrarInfoCadena(item)">
+        {{item.cadena}}
+      </button>
+    </div>
+
+    <table class="table table-light table-hover table-bordered border-primary" *ngIf="infoCadena !== null && infoCadena !== undefined">
+      <thead>
+        <th>Cadena</th>
+        <th>Nombre</th>
+        <th>CURP</th>
+        <th>Error de origen</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{infoCadena.cadena}}</td>
+          <td>{{infoCadena.peNombres + " " + infoCadena.pePrimerapellido + " " + infoCadena.peSegundoapellido}}</td>
+          <td>{{infoCadena.peCurp}}</td>
+          <td>{{infoCadena.otErrororigen}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>
-</div>
-
