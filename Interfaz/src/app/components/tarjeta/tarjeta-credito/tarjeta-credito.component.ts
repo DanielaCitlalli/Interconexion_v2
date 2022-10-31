@@ -3,6 +3,7 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
 import { FormGroup, FormBuilder, Validators, FormControl, NgSelectOption } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
 import { Nrc_Defunciones } from 'src/app/models/Nrc_Defunciones';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
@@ -59,7 +60,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     });
 
     this.globalFormbuscar = this.formBuilder.group({
-      proceso: ['' , [Validators.required]],
+      // proceso: ['' , [Validators.required]],
       cadena: ['' , [Validators.required , Validators.maxLength(15) , Validators.minLength(20) , Validators.pattern(this.tarjetaService.rxCadena)]]
     });
     
@@ -520,66 +521,48 @@ ejecutarBusqueda(){
 
 
 
-      const formDe: Nrc_Defunciones = {
+      const formNa: Nrc_Nacimientos = {
         numeroacta: 0,
         anioregistro: 0,
         entidadregistro: 0,
         municipioregistro: 0,
         oficilia: 0,
         actabis: '',
-        cadena: '11002011300358',
-        cofecharegistroinc: null,
-        collaveregistrocivil: null,
+        cadena: '',
+        imnombreoriginalimagen: null,
         imarchivo: null,
-        naactabis: null,
         otnotasmarginales: null,
         otcrip: null,
-        otcausadefuncion: '',
-        otfechadefuncioninc: null,
-        ottipodefuncion: '',
-        peprimerapellido: '',
-        pesegundoapellido: '',
-        penombres: '',
-        pesexo: '',
+        Otvivoomuerto: null,
+        peprimerapellido: null,
+        pesegundoapellido: null,
+        penombres: null,
+        peedad: null,
+        pesexo: null,
+        pefechanacimiento: null,
         pefechanacimientoinc: null,
-        pelocalidadnacimiento: '',
+        pelocalidadnacimiento: null,
         pecurp: null,
-        paprimerapellido: '',
-        pasegundoapellido: '',
-        panombres: '',
-        pasexo: '',
+        paprimerapellido: null,
+        pasegundoapellido: null,
+        panombres: null,
+        paedad: null,
+        pasexo: null,
+        pafechanacimiento: null,
         pafechanacimientoinc: null,
         palocalidadnacimiento: null,
         pacurp: null,
-        paactabis: null,
-        maactabis: null,
-        maprimerapellido: '',
-        masegundoapellido: '',
-        manombres: '',
-        masexo: '',
+        maprimerapellido: null,
+        masegundoapellido: null,
+        manombres: null,
+        maedad: null,
+        masexo: null,
+        mafechanacimiento: null,
         mafechanacimientoinc: null,
         malocalidadnacimiento: null,
         macurp: null,
-        cyprimerapellido: '',
-        cysegundoapellido: '',
-        cynombres: '',
-        cysexo: '',
-        cyfechanacimientoinc: null,
-        cylocalidadnacimiento: null,
-        cycurp: null,
-        cyactabis: null,
         cnfechaactualizacioninc: null,
-        oterrororigen: null,
-        otfecharegistronacimientoinc: null,
-        otestadocivildifunto: '',
-        otfirma: null,
-        otllaverenadi: null,
-        otsello: null,
-        otlocalidaddefuncion: null,
-        otcertificadode: null,
-        cofechaoriginal: null,
-        cotranscripcion: '',
-        cosoporte: null
+        otcertificadona: null
       }
       console.log(this.globalFormbuscar.get('proceso')?.value);
       this.registroDevuelto.emit(undefined);
@@ -606,7 +589,7 @@ ejecutarBusqueda(){
         });
         this.registroDevuelto.emit('error');
       });
-      // console.log('llegue cambio de sexo');
+       console.log('llegue a dublicados ');
 
       this.globalFormbuscar.reset();
       

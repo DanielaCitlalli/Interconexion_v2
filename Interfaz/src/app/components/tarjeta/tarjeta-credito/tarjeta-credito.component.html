@@ -32,8 +32,7 @@
         <div class="input-group">
             <div class="input-group-text bg-white fs-3">
                 <i class="fas fa-duotone fa-magnifying-glass" 
-                [class.green-icon]="this.globalForm.get('cadena')?.valid"
-                [class.red-icon]="this.globalForm.get('cadena')?.invalid && this.globalFormbuscar.get('cadena')?.touched" 
+
                 
                 ></i>
             </div>
@@ -43,19 +42,12 @@
             <option value="Buscar Crip">Buscar por Crip </option>
         </select>  -->
         
-            <input type="text"  
-                   class="form-control" 
-                   placeholder="busca cadena"
-                   formControlName="cadena"
-                   maxlength="15"
-                   required>
-                   <button class="btn btn-primary btn-lg" 
-    
-    onclick="ejecutarBusqueda()" >
-            <i class="fas fa-sharp fa-solid fa-circle-check"></i>
-        Buscar Crip
-        
-    </button>
+            <input type="text" class="form-control" placeholder="busca cadena" maxlength="15" required>
+            <button class="btn btn-primary btn-lg" (click)="ejecutarBusqueda()" type="button">
+                <i class="fas fa-sharp fa-solid fa-circle-check"></i>
+                Buscar Crip
+            
+            </button>
         </div>
 
    
@@ -91,7 +83,8 @@
     <div class="form-group fs-3">
         <div class="d-grid gap-2">
             <button class="btn btn-primary btn-lg" 
-            [disabled]="globalForm.invalid" >
+            [disabled]="globalForm.invalid" type="submit">
+
                     <i class="fas fa-sharp fa-solid fa-circle-check"></i>
                 Ejecutar
                 
