@@ -3,6 +3,7 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
 import { FormGroup, FormBuilder, Validators, FormControl, NgSelectOption } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Nrc_Defunciones } from 'src/app/models/Nrc_Defunciones';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
@@ -25,6 +26,8 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   globalForm: FormGroup;
+
+  globalFormbuscar: FormGroup;
 
   suscription?: Subscription;
 
@@ -53,6 +56,11 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     this.globalForm = this.formBuilder.group({
       proceso: ['' , [Validators.required]],
       cadena: ['' , [Validators.required , Validators.maxLength(20) , Validators.minLength(20) , Validators.pattern(this.tarjetaService.rxCadena)]]
+    });
+
+    this.globalFormbuscar = this.formBuilder.group({
+      proceso: ['' , [Validators.required]],
+      cadena: ['' , [Validators.required , Validators.maxLength(15) , Validators.minLength(20) , Validators.pattern(this.tarjetaService.rxCadena)]]
     });
     
 
@@ -496,9 +504,9 @@ ejecutarGlobal(){
         });
         this.registroDevuelto.emit('error');
       });
-      // console.log('llegue cambio de sexo');
+      console.log('llegue a buscar dublicados ');
 
-      this.globalForm.reset();
+      this.globalFormbuscar.reset();
       
       break;
 
@@ -506,6 +514,105 @@ ejecutarGlobal(){
       break;
   }
   
+}
+ejecutarBusqueda(){
+  const buscarValue = this.globalFormbuscar.get('proceso')?.value;
+
+
+
+      const formDe: Nrc_Defunciones = {
+        numeroacta: 0,
+        anioregistro: 0,
+        entidadregistro: 0,
+        municipioregistro: 0,
+        oficilia: 0,
+        actabis: '',
+        cadena: '11002011300358',
+        cofecharegistroinc: null,
+        collaveregistrocivil: null,
+        imarchivo: null,
+        naactabis: null,
+        otnotasmarginales: null,
+        otcrip: null,
+        otcausadefuncion: '',
+        otfechadefuncioninc: null,
+        ottipodefuncion: '',
+        peprimerapellido: '',
+        pesegundoapellido: '',
+        penombres: '',
+        pesexo: '',
+        pefechanacimientoinc: null,
+        pelocalidadnacimiento: '',
+        pecurp: null,
+        paprimerapellido: '',
+        pasegundoapellido: '',
+        panombres: '',
+        pasexo: '',
+        pafechanacimientoinc: null,
+        palocalidadnacimiento: null,
+        pacurp: null,
+        paactabis: null,
+        maactabis: null,
+        maprimerapellido: '',
+        masegundoapellido: '',
+        manombres: '',
+        masexo: '',
+        mafechanacimientoinc: null,
+        malocalidadnacimiento: null,
+        macurp: null,
+        cyprimerapellido: '',
+        cysegundoapellido: '',
+        cynombres: '',
+        cysexo: '',
+        cyfechanacimientoinc: null,
+        cylocalidadnacimiento: null,
+        cycurp: null,
+        cyactabis: null,
+        cnfechaactualizacioninc: null,
+        oterrororigen: null,
+        otfecharegistronacimientoinc: null,
+        otestadocivildifunto: '',
+        otfirma: null,
+        otllaverenadi: null,
+        otsello: null,
+        otlocalidaddefuncion: null,
+        otcertificadode: null,
+        cofechaoriginal: null,
+        cotranscripcion: '',
+        cosoporte: null
+      }
+      console.log(this.globalFormbuscar.get('proceso')?.value);
+      this.registroDevuelto.emit(undefined);
+
+      this.tarjetaService.getDuplicados(this.globalFormbuscar.get('11002011300358')?.value).subscribe(data => {
+         console.log(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: true
+          
+        }
+        this.registroDevuelto.emit(data);
+        this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+          closeButton: true,
+          disableTimeOut: false,
+        })
+        
+      },
+      error => {
+        this.toastr.error(error.error , 'Ocurrio un error',{
+          closeButton: true,
+          disableTimeOut: false,
+
+        });
+        this.registroDevuelto.emit('error');
+      });
+      // console.log('llegue cambio de sexo');
+
+      this.globalFormbuscar.reset();
+      
+    
+      
+
 }
 
 }
