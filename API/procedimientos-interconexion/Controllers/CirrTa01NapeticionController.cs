@@ -169,16 +169,12 @@ namespace procedimientos_interconexion.Controllers
                 //_context.Add(new CirrTa01Napeticion { Ta01EPrioridad = 1, Ta01EOperacionacto = 1, Ta01CCadena = cirrTa01Napeticion.Ta01CCadena, Ta01EEstatus = 0, Ta01ECuantos = 0 });
                 _context.CirrTa01Napeticion.Add(cirrTa01Napeticion);
                 await _context.SaveChangesAsync();
-<<<<<<< HEAD
-            
-=======
                 string path = Directory.GetCurrentDirectory();
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
                 oLog.Add(remoteIpAddress + " - " + "Se subio Acta de nacimiento " + " - " + cirrTa01Napeticion.Ta01CCadena);
 
->>>>>>> main
 
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
                 //return NoContent();

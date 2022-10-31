@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
-=======
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -13,20 +6,14 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
->>>>>>> main
 
 namespace procedimientos_interconexion
 {
     public class Log
     {
         private string Path = "";
-<<<<<<< HEAD
-        private string Brinco = "/n";
-
-=======
 
         public object Request { get; private set; }
->>>>>>> main
 
         public Log(string Path)
         {
@@ -38,14 +25,6 @@ namespace procedimientos_interconexion
             CreateDirectory();
             string nombre = GetNameFile();
             string cadena = "";
-<<<<<<< HEAD
-
-            cadena += DateTime.Now + " - " + sLog + Environment.NewLine;
-
-            StreamWriter sw = new StreamWriter(Path + "/" + nombre, true);
-            sw.Write(cadena);
-            sw.Close();
-=======
             
             cadena += DateTime.Now + " - " + sLog + Environment.NewLine;
 
@@ -54,7 +33,6 @@ namespace procedimientos_interconexion
             sw.Write(cadena);
             sw.Close();
 
->>>>>>> main
         }
 
         #region HELPER
@@ -62,18 +40,6 @@ namespace procedimientos_interconexion
         {
             string nombre = "";
 
-<<<<<<< HEAD
-           
-            nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".txt";
-
-            return nombre;
-
-        }
-            
-            
-        
-        private bool CreateDirectory()
-=======
 
             nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".txt";
 
@@ -86,25 +52,11 @@ namespace procedimientos_interconexion
 
 
         private void CreateDirectory()
->>>>>>> main
         {
             try
             {
                 if (!Directory.Exists(Path))
                     Directory.CreateDirectory(Path);
-<<<<<<< HEAD
-                return true;
-            }
-            catch(DirectoryNotFoundException ex)
-            {
-                throw new Exception(ex.Message);
-                return false;
-            }
-           
-        }
-
-        #endregion
-=======
 
 
             }
@@ -117,6 +69,5 @@ namespace procedimientos_interconexion
         #endregion
 
 
->>>>>>> main
     }
 }
