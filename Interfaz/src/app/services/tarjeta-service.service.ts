@@ -17,6 +17,7 @@ export class TarjetaServiceService {
 
 
   rxCadena = /^[0-9]{20,20}$/;
+  rxCrip = /^[0-9A-Za-z]{14,14}$/;
 
   myAppUrl = environment.apiUrl;
   myApiUrl = 'api/Tarjeta/';
