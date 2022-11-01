@@ -179,6 +179,12 @@ refrescar(){
   })
 }
 
+limpiar(){
+  this.globalFormbuscar.patchValue({
+   crip: ''
+  })
+}
+
 
 ejecutarGlobal(){
 
@@ -526,54 +532,7 @@ ejecutarGlobal(){
   
 }
 ejecutarBusqueda(){
-  // const buscarValue = this.globalFormbuscar.get('proceso')?.value;
 
-
-
-  //     const formNa: Nrc_Nacimientos = {
-  //       numeroacta: 0,
-  //       anioregistro: 0,
-  //       entidadregistro: 0,
-  //       municipioregistro: 0,
-  //       oficilia: 0,
-  //       actabis: '',
-  //       cadena: '',
-  //       imnombreoriginalimagen: null,
-  //       imarchivo: null,
-  //       otnotasmarginales: null,
-  //       otcrip: null,
-  //       Otvivoomuerto: null,
-  //       peprimerapellido: null,
-  //       pesegundoapellido: null,
-  //       penombres: null,
-  //       peedad: null,
-  //       pesexo: null,
-  //       pefechanacimiento: null,
-  //       pefechanacimientoinc: null,
-  //       pelocalidadnacimiento: null,
-  //       pecurp: null,
-  //       paprimerapellido: null,
-  //       pasegundoapellido: null,
-  //       panombres: null,
-  //       paedad: null,
-  //       pasexo: null,
-  //       pafechanacimiento: null,
-  //       pafechanacimientoinc: null,
-  //       palocalidadnacimiento: null,
-  //       pacurp: null,
-  //       maprimerapellido: null,
-  //       masegundoapellido: null,
-  //       manombres: null,
-  //       maedad: null,
-  //       masexo: null,
-  //       mafechanacimiento: null,
-  //       mafechanacimientoinc: null,
-  //       malocalidadnacimiento: null,
-  //       macurp: null,
-  //       cnfechaactualizacioninc: null,
-  //       otcertificadona: null
-  //     }
-  //     console.log(this.globalFormbuscar.get('proceso')?.value);
       this.registroDevuelto.emit(undefined);
       
       this.tarjetaService.getDuplicados(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
@@ -585,6 +544,7 @@ ejecutarBusqueda(){
           
         }
         this.registroDevuelto.emit(infoEnviada);
+        this.limpiar();
         // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
         //   closeButton: true,
         //   disableTimeOut: false,

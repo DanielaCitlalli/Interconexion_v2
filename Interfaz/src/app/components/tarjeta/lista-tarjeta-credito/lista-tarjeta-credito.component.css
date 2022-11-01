@@ -51,5 +51,6 @@ li{
     overflow-y: auto;
     height: 10rem;
     display: block;
+    text-align: center;
 }
 
