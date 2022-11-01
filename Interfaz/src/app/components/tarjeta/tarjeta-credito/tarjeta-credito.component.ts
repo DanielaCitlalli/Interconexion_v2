@@ -70,6 +70,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
                                                                                                                                     
 
   ngOnInit(): void {
+    console.log(this.globalForm.get('proceso')?.value);
     this.suscription = this.tarjetaService.obtenerTarjetasUpdate().subscribe(data => {
       // console.log(data);
       this.tarjeta = data;
@@ -81,6 +82,8 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
       });
       this.idTarjeta = this.tarjeta.id;
 
+
+      
 
       // this.globalForm.get('crip')?.valid
     });
@@ -140,6 +143,10 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
   }
 
   campoNoEsValido(campo: string){
+    if(campo === 'crip'){
+      return this.globalFormbuscar.controls[campo].errors &&
+      this.globalFormbuscar.controls[campo].touched
+    }
     return this.globalForm.controls[campo].errors &&
             this.globalForm.controls[campo].touched
   }
@@ -155,6 +162,8 @@ if( this.globalForm !== undefined){
   }
   
   this.registroDevuelto.emit(infoEnviada)
+  console.log(this.globalForm.get('proceso')?.value);
+  
   
 }
 
@@ -168,8 +177,6 @@ refrescar(){
     proceso: '',
     cadena : ''
   })
- 
-
 }
 
 
@@ -568,12 +575,13 @@ ejecutarBusqueda(){
   //     }
   //     console.log(this.globalFormbuscar.get('proceso')?.value);
       this.registroDevuelto.emit(undefined);
-
+      
       this.tarjetaService.getDuplicados(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
          console.log(data);
         let infoEnviada = {
           registro: data,
-          habilitarForm: false
+          habilitarForm: false,
+          tarea: 'busquedaCrip'
           
         }
         this.registroDevuelto.emit(infoEnviada);

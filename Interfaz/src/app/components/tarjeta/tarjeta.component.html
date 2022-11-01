@@ -12,6 +12,7 @@
             </h6>
             <div id="spinner">
             <div class="col-md-12">
+                <!-- registroDevuelto - Output que manda el o los registros hacia en este componente (padre) -->
                 <app-tarjeta-credito (registroDevuelto)="mostrarRegistroDevuleto($event)"
                 *ngIf="cambioSexoDisponible === false"
                 ></app-tarjeta-credito>
@@ -20,7 +21,8 @@
             <br>
             <div class="col-md-12">
                 <!-- registroAgregado - Para cuando se realizan procesos de borrado o forzar subir actas
-                     registroAgregadoCambioSexo - Para cuando se realiza proceso de cambio de sexo en Matrimonios -->
+                     registroAgregadoCambioSexo - Para cuando se realiza proceso de cambio de sexo en Matrimonios
+                     cadenasDisponibles - Para mostrar las cadenas encontradas en base a un Crip dada -->
                 <app-lista-tarjeta-credito [registroAgregado]="registroEnviar"
                                            [registroAgregadoCambioSexo]="registroEnviarCambioSexo"
                                            [cadenasDisponibles]="cadenasDisponibles"

@@ -8,9 +8,9 @@
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end"
       *ngIf="registroAgregado?.ta01EOid !== undefined && registroAgregado?.ta01EOid !== null ||
-                                                                registroAgregado?.ta03EOid !== undefined && registroAgregado?.ta03EOid !== null ||
-                                                                registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null ||
-                                                                registroAgregadoCambioSexo !== undefined && registroAgregadoCambioSexo !== null">
+              registroAgregado?.ta03EOid !== undefined && registroAgregado?.ta03EOid !== null ||
+              registroAgregado?.ta09EOid !== undefined && registroAgregado?.ta09EOid !== null ||
+              registroAgregadoCambioSexo !== undefined && registroAgregadoCambioSexo !== null">
       <button class="btn btn-danger" type="button" (click)="ocultar()"><i
           class="fa-sharp fa-solid fa-xmark"></i></button>
     </div>
@@ -172,7 +172,7 @@
 
   </div>
 
-  <div class="contenedor-cadenas" *ngIf="cadenasDisponibles !== null && cadenasDisponibles !== undefined">
+  <div class="contenedor-cadenas" *ngIf="(cadenasDisponibles !== null && cadenasDisponibles !== undefined)">
 
     <h6>Cadenas Encontradas:</h6>
 

@@ -22,13 +22,6 @@ export class TarjetaComponent implements OnInit, OnChanges {
   constructor(private tarjetaService: TarjetaServiceService) { }
 
   ngOnInit(): void {
-    // console.log(this.cambioSexoDisponible);
-    // this.tarjetaService.getDuplicados(11002011300358).subscribe(data => {
-    //   this.cadenasDisponibles = data;
-    //   console.log(this.cadenasDisponibles);
-      
-      
-    // });
     
   }
 
@@ -51,27 +44,36 @@ export class TarjetaComponent implements OnInit, OnChanges {
       this.verSpinner = false;
       return;
     }
+    //Para cuando se ejecuta la busqueda por Crip
+    else if(event.tarea === 'busquedaCrip'){
+      this.cadenasDisponibles = event.registro;
+      this.verSpinner = false;
+      return;
+    }
 
 
-
+    //Para mandar registro afectado en procesos de borrar y subir actas
     this.registroEnviar = event.registro;
 
+    //Para llenar segundo formulario(cambio de sexo) con el registro encontrado
     this.datos = event;
+
     //habilitarForm - Para mostrar formulario de cambio de sexo
     this.cambioSexoDisponible = event.habilitarForm;
+
+    // Para enviar registro afectado despues de cambio de sexo en segundo formulario, 
+    // se envia null porque no debe mostrar nada en tabla de resultados de matrimonio
     this.registroEnviarCambioSexo = null;
 
-    this.cadenasDisponibles = event.registro;
+    
+    this.cadenasDisponibles = undefined;
 
-
+    //Desaparecer spinner
     this.verSpinner = false;
-    // console.log(this.registroEnviar , this.cambioSexoDisponible);
     
   }
 
   mostrarRegistroDevuletoCambioSexo(event: any){
-   // console.log(event);
-    
 
     if(event === undefined){
       this.verSpinner = true;
@@ -82,6 +84,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
       return
     }
 
+    //Para enviar registro afectado despues de cambio de sexo en segundo formulario
     this.registroEnviarCambioSexo = event;
     this.cambioSexoDisponible = false;
 

@@ -73,7 +73,7 @@ export class SegundoFormularioComponent implements OnInit {
 
     this.enviarRegistro.emit(undefined);
 
-    const formMatrimonio: Nrc_Matrimonios =this.datosRetornados.registro;
+    const formMatrimonio: Nrc_Matrimonios = this.datosRetornados.registro;
     formMatrimonio.p1sexo = this.formCambioSexo.get('p1Sexo')?.value;
     formMatrimonio.p2sexo = this.formCambioSexo.get('p2Sexo')?.value;
 
