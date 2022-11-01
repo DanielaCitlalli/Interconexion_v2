@@ -23,12 +23,12 @@ export class TarjetaComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     // console.log(this.cambioSexoDisponible);
-    this.tarjetaService.getDuplicados(11002011300358).subscribe(data => {
-      this.cadenasDisponibles = data;
-      console.log(this.cadenasDisponibles);
+    // this.tarjetaService.getDuplicados(11002011300358).subscribe(data => {
+    //   this.cadenasDisponibles = data;
+    //   console.log(this.cadenasDisponibles);
       
       
-    });
+    // });
     
   }
 
@@ -57,8 +57,11 @@ export class TarjetaComponent implements OnInit, OnChanges {
     this.registroEnviar = event.registro;
 
     this.datos = event;
+    //habilitarForm - Para mostrar formulario de cambio de sexo
     this.cambioSexoDisponible = event.habilitarForm;
     this.registroEnviarCambioSexo = null;
+
+    this.cadenasDisponibles = event.registro;
 
 
     this.verSpinner = false;

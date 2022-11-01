@@ -26,7 +26,7 @@ export interface Nrc_Defunciones{
      otnotasmarginales:string | null;
      otcrip:string | null;
      otcausadefuncion:string;
-     otfechadefuncion:Date;
+     otfechadefuncion?:Date;
      otfechadefuncioninc:string | null;
      ottipodefuncion:string;
      peprimerapellido:string;
