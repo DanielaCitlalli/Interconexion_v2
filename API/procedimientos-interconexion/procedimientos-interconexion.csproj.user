@@ -11,11 +11,7 @@
     <WebStackScaffolding_DbContextTypeFullName>procedimientos_interconexion.Models.InterconexionContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
 
-    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\Properties\PublishProfiles\FolderProfile3.pubxml</NameOfLastUsedPublishProfile>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
+    <NameOfLastUsedPublishProfile>C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
 
   </PropertyGroup>
 </Project>

@@ -7,6 +7,7 @@ import { CirrTa03Depeticion } from '../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../models/CirrTa09Mapeticion.model';
 import { environment } from 'src/environments/environment.prod';
 import { Nrc_Matrimonios } from '../models/Nrc_Matrimonios';
+import { Nrc_Nacimientos } from '../models/NrcNacimientos';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ export class TarjetaServiceService {
 
 
   rxCadena = /^[0-9]{20,20}$/;
+  rxCrip = /^[0-9A-Za-z]{14,14}$/;
 
   myAppUrl = environment.apiUrl;
   myApiUrl = 'api/Tarjeta/';
@@ -161,8 +163,8 @@ export class TarjetaServiceService {
 
   //GET de dublicados 
 
-  getDuplicados(crip: number):Observable<any>{
+  getDuplicados(crip: number):Observable<Nrc_Nacimientos[]>{
 
-    return this.http.get<CirrTa09Mapeticion>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
+    return this.http.get<Nrc_Nacimientos[]>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
   }
 }

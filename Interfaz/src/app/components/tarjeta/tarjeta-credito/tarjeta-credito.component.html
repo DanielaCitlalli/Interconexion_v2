@@ -1,7 +1,7 @@
 <!--<form [formGroup]="formInter" (ngSubmit)="ejecutar()">>-->
 
 
-<div></div>
+
 <form [formGroup]="globalForm"(ngSubmit)="ejecutarGlobal()" >
     
     <div class="form-group mb-3 fs-3">
@@ -25,13 +25,45 @@
     
                 </select> 
     
-             
-
-             
-            
-            
+                       
         </div>
+        
+        <br>
+        <form [formGroup]="globalFormbuscar"(ngSubmit)="ejecutarBusqueda()" >
+            <div class="input-group">
+                <div class="input-group-text bg-white fs-3">
+                    <i class="fas fa-duotone fa-magnifying-glass" 
+        
+                    
+                    ></i>
+                </div>
+                
+            <!-- <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example" >
+                <option selected disabled hidden value="">Selecciona un proceso </option>
+                <option value="Buscar Crip">Buscar por Crip </option>
+            </select>  -->
+            
+                <input type="text" class="form-control" formControlName ="crip" placeholder="Ingresar Crip" maxlength="14">
+                <button class="btn btn-primary btn-lg" [disabled]="globalFormbuscar.invalid">
+                    <i class="fas fa-sharp fa-solid fa-circle-check"></i>
+                    Buscar Crip
+                
+                </button>
+              
+            </div>
+            <!-- <div class="form-group mb-3 fs-3">
+                <div class="input-group">
+                    <p class="msjError" *ngIf="campoNoEsValido('crip')">Crip incorrecta.</p>
+                </div>
+            </div> -->
+        
+        </form>   
+   
     </div>
+    
+
+  
+        
 
     <div class="form-group">
         <div class="input-group">
@@ -59,7 +91,8 @@
     <div class="form-group fs-3">
         <div class="d-grid gap-2">
             <button class="btn btn-primary btn-lg" 
-            [disabled]="globalForm.invalid" >
+            [disabled]="globalForm.invalid" type="submit">
+
                     <i class="fas fa-sharp fa-solid fa-circle-check"></i>
                 Ejecutar
                 
@@ -69,6 +102,36 @@
     </div>
    
     
-    
+ 
 </form>
+<br>
+<!-- <form [formGroup]="globalFormbuscar"(ngSubmit)="ejecutarBusqueda()" >
+    <div class="input-group">
+        <div class="input-group-text bg-white fs-3">
+            <i class="fas fa-duotone fa-magnifying-glass" 
+
+            
+            ></i>
+        </div>
+        
+     <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example" >
+        <option selected disabled hidden value="">Selecciona un proceso </option>
+        <option value="Buscar Crip">Buscar por Crip </option>
+    </select>  
+    
+        <input type="text" class="form-control" formControlName ="crip" placeholder="Ingresar Crip" maxlength="15">
+        <button class="btn btn-primary btn-lg" >
+            <i class="fas fa-sharp fa-solid fa-circle-check"></i>
+            Buscar Crip
+        
+        </button>
+      
+    </div>
+    <div class="form-group mb-3 fs-3">
+        <div class="input-group">
+            <p class="msjError" *ngIf="campoNoEsValido('crip')">Crip incorrecta.</p>
+        </div>
+    </div>
+
+</form> -->
 
