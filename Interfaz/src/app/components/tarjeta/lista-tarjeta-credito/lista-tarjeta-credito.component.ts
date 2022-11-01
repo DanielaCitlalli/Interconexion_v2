@@ -54,6 +54,9 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
     });
 
     // console.log(this.registroAgregado);
+
+    console.log(this.registroAgregado);
+    
   }
 
   eliminarTarjeta(id: number | undefined) {
