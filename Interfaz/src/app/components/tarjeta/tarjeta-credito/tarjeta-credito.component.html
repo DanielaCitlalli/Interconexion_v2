@@ -28,33 +28,7 @@
                        
         </div>
         
-        <form [formGroup]="globalFormbuscar"(ngSubmit)="ejecutarBusqueda()" *ngIf="globalForm.get('proceso')?.value !== ''">
-            <div class="form-group mt-3">
-                <div class="input-group">
-                    <div class="input-group-text bg-white fs-3">
-                        <i class="fas fa-duotone fa-magnifying-glass" 
-                        [class.green-icon]="this.globalFormbuscar.get('crip')?.valid"
-                        [class.red-icon]="this.globalFormbuscar.get('crip')?.invalid && this.globalFormbuscar.get('crip')?.touched"
-                        ></i>
-                    </div>
-                
-                    <input type="text" class="form-control" formControlName ="crip" placeholder="Ingresar Crip" maxlength="14">
-                    <button class="btn btn-primary btn-lg" [disabled]="globalFormbuscar.invalid">
-                        <i class="fas fa-sharp fa-solid fa-circle-check"></i>
-                        Buscar Crip
-                    
-                    </button>
-                  
-                </div>
-            </div>
-
-            <div class="form-group mb-3 fs-3">
-                <div class="input-group">
-                    <p class="msjError" *ngIf="campoNoEsValido('crip')">Crip incorrecta</p>
-                </div>
-            </div>
-        
-        </form>   
+         
    
     </div>
     
@@ -84,6 +58,36 @@
             <p class="msjError" *ngIf="campoNoEsValido('cadena')">Campo obligatorio. Solo admite caracteres numéricos</p>
         </div>
     </div>
+
+    <form [formGroup]="globalFormbuscar"(ngSubmit)="ejecutarBusqueda()" *ngIf="globalForm.get('proceso')?.value === 'borrarDef' || 
+                                                                               globalForm.get('proceso')?.value === 'borrarMat' || 
+                                                                               globalForm.get('proceso')?.value === 'borrarNac'" >
+        <div class="form-group mt-3">
+            <div class="input-group">
+                <div class="input-group-text bg-white fs-3">
+                    <i class="fas fa-thin  fa-id-card-clip"
+                    [class.green-icon]="this.globalFormbuscar.get('crip')?.valid"
+                    [class.red-icon]="this.globalFormbuscar.get('crip')?.invalid && this.globalFormbuscar.get('crip')?.touched"
+                    ></i>
+                </div>
+            
+                <input type="text" class="form-control" formControlName ="crip" placeholder="Ingresar Crip" maxlength="14">
+                <button class="btn btn-primary btn-lg" [disabled]="globalFormbuscar.invalid">
+                    <!-- <i class="fas fa-sharp fa-solid fa-circle-check"></i> -->
+                    Buscar Crip
+                
+                </button>
+              
+            </div>
+        </div>
+
+        <div class="form-group mb-3 fs-3">
+            <div class="input-group">
+                <p class="msjError" *ngIf="campoNoEsValido('crip')">Crip incorrecta</p>
+            </div>
+        </div>
+    
+    </form> 
 
     <div class="form-group fs-3">
         <div class="d-grid gap-2">
