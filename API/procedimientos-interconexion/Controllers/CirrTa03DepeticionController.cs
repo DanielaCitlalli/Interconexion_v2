@@ -42,6 +42,22 @@ namespace procedimientos_interconexion.Controllers
 
             return cirrTa03Depeticion;
         }
+        [HttpGet]
+        [Route("buscarcadena/{crip}")]
+        public async Task<ActionResult<List<NrcDefunciones>>> buscarCadena(string crip)
+        {
+            try
+            {
+                var res = _context.NrcDefunciones.FromSqlInterpolated($@"EXEC dbo.cripToCadenaDef @crip={crip}").AsAsyncEnumerable();
+
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+
+        }
 
         // PUT: api/CirrTa03Depeticion/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
