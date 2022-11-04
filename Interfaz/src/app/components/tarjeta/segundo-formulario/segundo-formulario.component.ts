@@ -109,6 +109,7 @@ export class SegundoFormularioComponent implements OnInit {
               closeButton: true,
               timeOut: 7000,
             })
+            
             console.log(data);
           },error => {
             this.toastr.error("Error al actualizar tabla CIRR_TA09_MAPETICION", " Error" , {
