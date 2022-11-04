@@ -42,6 +42,23 @@ namespace procedimientos_interconexion.Controllers
             return cirrTa09Mapeticion;
         }
 
+        [HttpGet]
+        [Route("buscarcadena/{crip}")]
+        public async Task<ActionResult<List<NrcMatrimonios>>> buscarCadena(string crip)
+        {
+            try
+            {
+                var res = _context.NrcMatrimonios.FromSqlInterpolated($@"EXEC dbo.cripToCadenaMat @cripM={crip}").AsAsyncEnumerable();
+
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+
+        }
+
         // PUT: api/CirrTa09Mapeticion/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
