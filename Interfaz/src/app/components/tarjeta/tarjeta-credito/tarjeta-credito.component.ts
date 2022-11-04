@@ -534,41 +534,36 @@ ejecutarGlobal(){
 ejecutarBusqueda(){
 
       this.registroDevuelto.emit(undefined);
-
-      let busquedaCrip = this.globalForm.controls['proceso'].value;
-
-      if(busquedaCrip === 'borrarDef'){
-        console.log('Buscar cadenas en defunciones');
+      
+      this.tarjetaService.getDuplicados(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
+         console.log(data);
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false,
+          tarea: 'busquedaCrip'
+          
+        }
+        this.registroDevuelto.emit(infoEnviada);
+        this.limpiar();
+        // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+        //   closeButton: true,
+        //   disableTimeOut: false,
+        // })
         
-      }
-      else if(busquedaCrip === 'borrarMat'){
-        console.log('Buscar cadenas en matrimonios');
-        
-      }
-      else if(busquedaCrip === 'borrarNac'){
+      },
+      error => {
+        this.toastr.error(error.error , 'Ocurrio un error',{
+          closeButton: true,
+          disableTimeOut: false,
 
-        this.tarjetaService
-          .getDuplicados(this.globalFormbuscar.get('crip')?.value)
-          .subscribe(
-            (data) => {
-              console.log(data);
-              let infoEnviada = {
-                registro: data,
-                habilitarForm: false,
-                tarea: 'busquedaCrip',
-              };
-              this.registroDevuelto.emit(infoEnviada);
-              this.limpiar();
-            },
-            (error) => {
-              this.toastr.error(error.error, 'Ocurrio un error', {
-                closeButton: true,
-                disableTimeOut: false,
-              });
-              this.registroDevuelto.emit('error');
-            }
-          );
-      }
+        });
+        this.registroDevuelto.emit('error');
+      });
+       console.log('llegue a dublicados ');
+
+      // this.globalFormbuscar.reset();
+      
+    
       
 
 }
