@@ -8,6 +8,7 @@ import { CirrTa09Mapeticion } from '../models/CirrTa09Mapeticion.model';
 import { environment } from 'src/environments/environment.prod';
 import { Nrc_Matrimonios } from '../models/Nrc_Matrimonios';
 import { Nrc_Nacimientos } from '../models/NrcNacimientos';
+import { Nrc_Defunciones } from '../models/Nrc_Defunciones';
 
 
 @Injectable({
@@ -163,8 +164,18 @@ export class TarjetaServiceService {
 
   //GET de dublicados 
 
-  getDuplicados(crip: number):Observable<Nrc_Nacimientos[]>{
+  getDuplicadosNac(crip: number):Observable<Nrc_Nacimientos[]>{
 
     return this.http.get<Nrc_Nacimientos[]>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
+  }
+
+  getDuplicadosDef(crip: number):Observable<Nrc_Defunciones[]>{
+
+    return this.http.get<Nrc_Defunciones[]>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
+  }
+
+  getDuplicadosMat(crip: number):Observable<Nrc_Matrimonios[]>{
+
+    return this.http.get<Nrc_Matrimonios[]>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
   }
 }
