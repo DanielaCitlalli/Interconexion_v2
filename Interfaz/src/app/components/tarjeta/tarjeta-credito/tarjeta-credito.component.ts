@@ -548,7 +548,7 @@ ejecutarBusqueda(){
       else if(busquedaCrip === 'borrarNac'){
 
         this.tarjetaService
-          .getDuplicadosNac(this.globalFormbuscar.get('crip')?.value)
+          .getDuplicados(this.globalFormbuscar.get('crip')?.value)
           .subscribe(
             (data) => {
               console.log(data);
