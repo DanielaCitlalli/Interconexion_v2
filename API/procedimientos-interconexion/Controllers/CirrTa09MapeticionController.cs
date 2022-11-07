@@ -48,7 +48,7 @@ namespace procedimientos_interconexion.Controllers
         {
             try
             {
-                var res = _context.NrcMatrimonios.FromSqlInterpolated($@"EXEC dbo.cripToCadenaMat @cripM={crip}").AsAsyncEnumerable();
+                var res = _context.NrcMatrimonios.FromSqlInterpolated($@"EXEC dbo.cripToCadenaMat @crip={crip}").AsAsyncEnumerable();
 
                 return Ok(res);
             }
