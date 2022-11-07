@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,8 +56,16 @@ namespace procedimientos_interconexion.Controllers
             catch (Exception ex)
             {
                 return BadRequest();
+  
             }
 
+    }
+        public class ApplicationDbContext : DbContext
+        {
+            public ApplicationDbContext()
+            {
+                Database.SetCommandTimeout(150000);
+            }
         }
 
         // PUT: api/CirrTa03Depeticion/5
