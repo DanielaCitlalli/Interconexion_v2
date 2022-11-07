@@ -171,12 +171,12 @@ export class TarjetaServiceService {
 
   getDuplicadosMat(crip: number):Observable<Nrc_Matrimonios[]>{
 
-    return this.http.get<Nrc_Matrimonios[]>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
+    return this.http.get<Nrc_Matrimonios[]>(this.myAppUrl_inter + this.myApiUrl_Ma + 'buscarcadena/' + crip);    
   }
 
   getDuplicadosDef(crip: number):Observable<Nrc_Defunciones[]>{
 
-    return this.http.get<Nrc_Defunciones[]>(this.myAppUrl_inter + this.myApiUrl_inter + 'buscarcadena/' + crip);    
+    return this.http.get<Nrc_Defunciones[]>(this.myAppUrl_inter + this.myApiUrl_De + 'buscarcadena/' + crip);    
   }
   
 }
