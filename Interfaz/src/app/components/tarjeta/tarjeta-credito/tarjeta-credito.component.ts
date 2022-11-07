@@ -533,38 +533,106 @@ ejecutarGlobal(){
 }
 ejecutarBusqueda(){
 
-      this.registroDevuelto.emit(undefined);
-      
-      this.tarjetaService.getDuplicadosNac(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
-         console.log(data);
-        let infoEnviada = {
-          registro: data,
-          habilitarForm: false,
-          tarea: 'busquedaCrip'
-          
-        }
-        this.registroDevuelto.emit(infoEnviada);
-        this.limpiar();
-        // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
-        //   closeButton: true,
-        //   disableTimeOut: false,
-        // })
-        
-      },
-      error => {
-        this.toastr.error(error.error , 'Ocurrio un error',{
-          closeButton: true,
-          disableTimeOut: false,
+  this.registroDevuelto.emit(undefined);
 
-        });
-        this.registroDevuelto.emit('error');
-      });
-       console.log('llegue a dublicados ');
-
-      // this.globalFormbuscar.reset();
+  const procesodebusqueda = this.globalForm.get('proceso')?.value;
+  switch(procesodebusqueda){
+  // Busqueda de dublicaados de Nacimentos
+    case "borrarNac":
+  
+  this.tarjetaService.getDuplicadosNac(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
+     console.log(data);
+    let infoEnviada = {
+      registro: data,
+      habilitarForm: false,
+      tarea: 'busquedaCrip'
       
+    }
+    this.registroDevuelto.emit(infoEnviada);
+    this.limpiar();
+    // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+    //   closeButton: true,
+    //   disableTimeOut: false,
+    // })
     
+  },
+  error => {
+    this.toastr.error(error.error , 'Ocurrio un error',{
+      closeButton: true,
+      disableTimeOut: false,
+
+    });
+    this.registroDevuelto.emit('error');
+  });
+   console.log('llegue a dublicados Nacimiento');
+
+  // this.globalFormbuscar.reset();
+  break;
+ // Busqueda de dublicaados de Matrimoios 
+  case "borrarMat":
+  
+    this.tarjetaService.getDuplicadosMat(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
+       console.log(data);
+      let infoEnviada = {
+        registro: data,
+        habilitarForm: false,
+        tarea: 'busquedaCrip'
+        
+      }
+      this.registroDevuelto.emit(infoEnviada);
+      this.limpiar();
+      // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+      //   closeButton: true,
+      //   disableTimeOut: false,
+      // })
       
+    },
+    error => {
+      this.toastr.error(error.error , 'Ocurrio un error',{
+        closeButton: true,
+        disableTimeOut: false,
+
+      });
+      this.registroDevuelto.emit('error');
+    });
+     console.log('llegue a dublicados Matrimonio ');
+
+    // this.globalFormbuscar.reset();
+    break;
+  // Busqueda de dublicaados de Defunciones 
+  
+    this.tarjetaService.getDuplicadosDef(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
+       console.log(data);
+      let infoEnviada = {
+        registro: data,
+        habilitarForm: false,
+        tarea: 'busquedaCrip'
+        
+      }
+      this.registroDevuelto.emit(infoEnviada);
+      this.limpiar();
+      // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+      //   closeButton: true,
+      //   disableTimeOut: false,
+      // })
+      
+    },
+    error => {
+      this.toastr.error(error.error , 'Ocurrio un error',{
+        closeButton: true,
+        disableTimeOut: false,
+
+      });
+      this.registroDevuelto.emit('error');
+    });
+     console.log('llegue a dublicados defunciones ');
+
+    // this.globalFormbuscar.reset();
+    break;
+  }
+  
+
+  
 
 }
 
