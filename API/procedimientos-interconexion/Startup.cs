@@ -33,14 +33,20 @@ namespace procedimientos_interconexion
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<InterconexionContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("DbConnection")));
+                        options.UseSqlServer(Configuration.GetConnectionString("DbConnection"),
+                                         sqlServerOptions => sqlServerOptions.CommandTimeout(150000)));
+            
 
             services.AddCors(options => options.AddPolicy("AllowWebApp",
                                   builder => builder.AllowAnyOrigin()
                                              .AllowAnyHeader()
                                              .AllowAnyMethod()));
+         
+
 
             services.AddControllers();
+            
+   
         }
        
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
