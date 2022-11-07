@@ -535,7 +535,7 @@ ejecutarBusqueda(){
 
       this.registroDevuelto.emit(undefined);
       
-      this.tarjetaService.getDuplicados(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
+      this.tarjetaService.getDuplicadosNac(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
          console.log(data);
         let infoEnviada = {
           registro: data,
