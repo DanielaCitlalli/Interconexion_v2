@@ -190,6 +190,7 @@ ejecutarGlobal(){
 
   const procesoValue = this.globalForm.get('proceso')?.value;
   // console.log(this.globalForm.get('proceso')?.value);
+  // console.log(this.globalForm.get('proceso')?.value);
 
   switch (procesoValue) {
     case "borrarDef":
@@ -599,7 +600,9 @@ ejecutarBusqueda(){
 
     // this.globalFormbuscar.reset();
     break;
+    
   // Busqueda de dublicaados de Defunciones 
+  case "borrarDef":
   
     this.tarjetaService.getDuplicadosDef(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
        console.log(data);
@@ -625,14 +628,11 @@ ejecutarBusqueda(){
       });
       this.registroDevuelto.emit('error');
     });
-     console.log('llegue a dublicados defunciones ');
+     console.log('llegue a dublicados Defunciones ');
 
     // this.globalFormbuscar.reset();
     break;
   }
-  
-
-  
 
 }
 
