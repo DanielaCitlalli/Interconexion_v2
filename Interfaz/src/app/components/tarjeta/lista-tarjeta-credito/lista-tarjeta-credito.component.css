@@ -49,8 +49,22 @@ li{
 .contenedor-cadenas table {
     overflow-x: auto;
     overflow-y: auto;
-    height: 10rem;
+    height: auto;
+    width: auto;
     display: block;
     text-align: center;
+    border: 1px solid #000;
+}
+
+tr{
+    font-weight: 100;
+}
+.contenedor-cadenas td:last-child, .contenedor-cadenas th:last-child{
+    width: auto;
+}
+
+.contenedor-cadenas th, .contenedor-cadenas tr, .contenedor-cadenas  td{
+    border: 1px solid #000;
+    border-collapse: collapse;
 }
 

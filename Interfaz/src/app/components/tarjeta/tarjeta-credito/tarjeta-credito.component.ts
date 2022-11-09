@@ -626,6 +626,8 @@ ejecutarBusqueda(){
         disableTimeOut: false,
 
       });
+      console.log(error);
+      
       this.registroDevuelto.emit('error');
     });
      console.log('llegue a dublicados Defunciones ');

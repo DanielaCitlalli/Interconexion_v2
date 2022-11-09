@@ -185,20 +185,34 @@
       </button>
     </div>
 
-    <table class="table table-light table-hover table-bordered border-primary " *ngIf="infoCadena !== null && infoCadena !== undefined">
-      <thead>
+    <table class="table table-light table-hover " *ngIf="infoCadena !== null && infoCadena !== undefined">
+      <thead *ngIf="infoCadena.cadena[0] != '3'">
         <th>Cadena</th>
         <th>Nombre</th>
         <th>CURP</th>
         <th>Error de origen</th>
       </thead>
+      <thead *ngIf="infoCadena.cadena[0] == '3'">
+        <th>Cadena</th>
+        <th>Contrayente 1</th>
+        <th>Contrayente 2</th>
+        <th>Error de origen</th>
+      </thead>
       <tbody>
-        <tr>
+        <tr *ngIf="infoCadena.cadena[0] != '3'">
           <td>{{infoCadena.cadena}}</td>
-          <td>{{infoCadena.peNombres + " " + infoCadena.pePrimerapellido + " " + infoCadena.peSegundoapellido}}</td>
+          <td>{{infoCadena.peNombres + " " + infoCadena.pePrimerapellido + " " + infoCadena.peSegundoapellido | titlecase}}</td>
           <td>{{infoCadena.peCurp}}</td>
           <td>{{infoCadena.otErrororigen}}</td>
         </tr>
+        <tr *ngIf="infoCadena.cadena[0] == '3'">
+          <td>{{infoCadena.cadena}}</td>
+          <td>{{infoCadena.p1Nombres + " " + infoCadena.p1Primerapellido + " " + infoCadena.p1Segundoapellido | titlecase}}</td>
+          <td>{{infoCadena.p2Nombres + " " + infoCadena.p2Primerapellido + " " + infoCadena.p2Segundoapellido | titlecase}}</td>
+          <td>{{infoCadena.otErrororigen}}</td>
+        </tr>
+
+
       </tbody>
     </table>
 
