@@ -37,6 +37,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
     //para ver el spinner 
     if(event === undefined){
       this.verSpinner = true;
+      this.cadenasDisponibles = undefined;
       return;
     }
     //Para desaparecer spinner cuando ocurre un error en la peticion http
