@@ -1,16 +1,15 @@
 import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
-import { resetFakeAsyncZone } from '@angular/core/testing';
 import { FormGroup, FormBuilder, Validators, FormControl, NgSelectOption } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
-import { Nrc_Defunciones } from 'src/app/models/Nrc_Defunciones';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
-import { ListaTarjetaCreditoComponent } from '../lista-tarjeta-credito/lista-tarjeta-credito.component';
+
+import Swal  from "sweetalert2";
+
 
 
 @Component({
@@ -81,8 +80,6 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
         cvv: this.tarjeta.cvv
       });
       this.idTarjeta = this.tarjeta.id;
-
-
       
 
       // this.globalForm.get('crip')?.valid
@@ -214,32 +211,47 @@ ejecutarGlobal(){
         return;
       }
 
-      this.registroDevuelto.emit(undefined);
+      Swal.fire({
+        title: '¿Estas seguro de continuar?',
+        text: "No podrás revertirlo",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.registroDevuelto.emit(undefined);
       
 
-      this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
-
-        if(data !== null && data !== undefined){
-          this.toastr.success('Defuncion borrada con exito', "Defuncion borrada" , {
-            closeButton: true,
-            disableTimeOut: false,
+          this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
+    
+            if(data !== null && data !== undefined){
+              this.toastr.success('Defuncion borrada con exito', "Defuncion borrada" , {
+                closeButton: true,
+                disableTimeOut: false,
+              });
+             this.refrescar();
+              let infoEnviada = {
+                registro: data,
+                habilitarForm: false
+              }
+              this.registroDevuelto.emit(infoEnviada);
+            }
+            else{
+              this.toastr.error('Error al ingresar dato', " Error  " , {
+                closeButton: true,
+                disableTimeOut: false,
+              }
+              );
+            }
+            
           });
-         this.refrescar();
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false
-          }
-          this.registroDevuelto.emit(infoEnviada);
         }
-        else{
-          this.toastr.error('Error al ingresar dato', " Error  " , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );
-        }
-        
-      });
+      })
+
+
 
       break;
     case "borrarMat":
