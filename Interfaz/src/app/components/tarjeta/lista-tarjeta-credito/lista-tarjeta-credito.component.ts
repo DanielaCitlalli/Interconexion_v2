@@ -82,7 +82,7 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
   }
 
   mostrarInfoCadena(cadena: any){
-    this.infoCadena = cadena;
+    this.cadenasDisponibles = cadena;
   }
 }
 
