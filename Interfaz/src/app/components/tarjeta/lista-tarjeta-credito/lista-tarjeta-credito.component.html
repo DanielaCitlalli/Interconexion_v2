@@ -171,19 +171,27 @@
       <thead *ngIf="cadenasDisponibles[0].cadena[0] !== '3'">
         <th>Cadena</th>
         <th>Nombre</th>
+        <th>Apellido Parterno</th>
+        <th>Apellido Materno</th>
         <th>CURP</th>
         <th>Error de origen</th>
       </thead>
       <thead *ngIf="cadenasDisponibles[0].cadena[0] === '3'">
         <th>Cadena</th>
-        <th>Contrayente 1</th>
-        <th>Contrayente 2</th>
+        <th>Contrayente1 Nombres</th>
+        <th>C1 Apellido Parterno</th>
+        <th>C1 Apellido Materno</th>
+        <th>Contrayente2 Nombres</th>
+        <th>C2 Apellido Parterno</th>
+        <th>C2 Apellido Materno</th>
         <th>Error de origen</th>
       </thead>
       <tbody *ngIf="cadenasDisponibles[0].cadena[0] !== '3'">
             <tr *ngFor="let item of cadenasDisponibles"  > 
           <td>{{item.cadena}}</td>
-          <td>{{item.peNombres + " " + item.pePrimerapellido + " " + item.peSegundoapellido | titlecase}}</td>
+          <td>{{item.peNombres  }}</td>
+          <td >{{item.pePrimerapellido  }}</td>
+          <td >{{item.peSegundoapellido}}</td>
           <td>{{item.peCurp}}</td>
           <td>{{item.otErrororigen}}</td>
         </tr>
@@ -191,8 +199,12 @@
     <tbody *ngIf="cadenasDisponibles[0].cadena[0] === '3'">  
         <tr *ngFor="let item of cadenasDisponibles " > 
           <td>{{item.cadena}}</td>
-          <td>{{item.p1Nombres + " " + item.p1Primerapellido + " " + item.p1Segundoapellido | titlecase}}</td>
-          <td>{{item.p2Nombres + " " + item.p2Primerapellido + " " + item.p2Segundoapellido | titlecase}}</td>
+          <td>{{item.p1Nombres }}</td>
+          <td>{{item.p1Primerapellido}}</td>
+          <td>{{item.p1Segundoapellido}}</td>
+          <td>{{item.p2Nombres }}</td>
+          <td>{{item.p2Primerapellido}}</td>
+          <td>{{item.p2Segundoapellido}}</td>
           <td>{{item.otErrororigen}}</td>
         </tr>
     </tbody>    
