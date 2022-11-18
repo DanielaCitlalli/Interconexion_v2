@@ -22,7 +22,8 @@ import { SegundoFormularioComponent } from './components/tarjeta/segundo-formula
     TarjetaCreditoComponent,
     ListaTarjetaCreditoComponent,
     FooterComponent,
-    SegundoFormularioComponent
+    SegundoFormularioComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { SegundoFormularioComponent } from './components/tarjeta/segundo-formula
     HttpClientModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
