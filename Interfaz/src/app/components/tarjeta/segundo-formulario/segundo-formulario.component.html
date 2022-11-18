@@ -4,7 +4,7 @@
     <div class="persona1">
         <div class="row ms-3 ">
         <h5>Contrayente 1:</h5>
-       
+        <!-- <fieldset disabled> -->
        
             <!-- P1 Nombres -->
         <div class="form-group col-mt-5 mb-3 t"  *ngIf="this.datosRetornados.registro.p1Nombres !== null">
@@ -27,7 +27,7 @@
                 </div>
            
         </div>
-       
+        <!-- <div class="row mt-5"> -->
             <!-- P1 Primer Apellido -->
             <div class="form-group col-mt-5 mb-3 " *ngIf="this.datosRetornados.registro.p1Primerapellido !== null">
                 <div class="form-group">
@@ -41,7 +41,7 @@
                             formControlName="p1Primerapellido" maxlength="20" required>
                     </div>
             
-               
+                <!-- </div> -->
             </div>
         </div>
         </div>
@@ -68,7 +68,8 @@
                 </div>
             </div>      
         
-       
+        <!-- </fieldset> -->
+        <!-- <div class="row ms-3"> -->
             <!-- P1 Sexo -->
             <div class="form-group col-mt-5 mb-3">
                 <div class="form-group">
@@ -86,16 +87,16 @@
     
                 </div>
             </div>
-        
+        <!-- </div> -->
         </div>
- 
+    <!-- </div> -->
 
     
 
-    
+    <!-- <div class="persona2"> -->
         <div class="row ms-3">
         <h5>Contrayente 2:</h5>
-       
+        <!-- <fieldset disabled> -->
         
             <!-- P2 Nombres -->
             <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Nombres !== null">
@@ -112,7 +113,7 @@
                 </div>
             </div>
       
-  
+        <!-- <div class="row mt-5"> -->
             <!-- P2 Primer Apellido -->
             <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Primerapellido !== null">
                 <div class="form-group">
@@ -129,7 +130,7 @@
                 </div>
            
             </div>
-       
+        <!-- </div> -->
         </div>
         <div class="row ms-3">   
             <!-- P2 Segundo Apellido -->
@@ -150,7 +151,7 @@
             </div>
             
         </div>
-   
+    <!-- </fieldset> -->
         <div class="row ms-3">
             <!-- P2 Sexo -->
             <div class="form-group col-mt-5 mb-3">

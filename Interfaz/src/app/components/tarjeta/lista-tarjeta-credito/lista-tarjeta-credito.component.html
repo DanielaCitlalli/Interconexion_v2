@@ -156,15 +156,7 @@
         </div>
 
       </tr>
-
-     
     </table>
-
-
-
-
-
-
   </div>
 
   <div class="contenedor-cadenas" *ngIf="(cadenasDisponibles !== null && cadenasDisponibles !== undefined)">
@@ -172,44 +164,38 @@
     <h6>Cadenas Encontradas:</h6>
 
     <div class="botones-cadenas mb-3" *ngIf="cadenasDisponibles !== null && cadenasDisponibles !== undefined">
-      <button type="button" 
-              class="btn btn-outline-primary" 
-              *ngFor="let item of cadenasDisponibles"
-              (click)="mostrarInfoCadena(item)">
-        {{item.cadena}}
-      </button>
+
     </div>
 
-    <table class="table table-light table-hover " *ngIf="infoCadena !== null && infoCadena !== undefined">
-      <thead *ngIf="infoCadena.cadena[0] !== '3'">
+    <table class="table table-light table-hover ">
+      <thead *ngIf="cadenasDisponibles[0].cadena[0] !== '3'">
         <th>Cadena</th>
         <th>Nombre</th>
         <th>CURP</th>
         <th>Error de origen</th>
       </thead>
-      <thead *ngIf="infoCadena.cadena[0] === '3'">
+      <thead *ngIf="cadenasDisponibles[0].cadena[0] === '3'">
         <th>Cadena</th>
         <th>Contrayente 1</th>
         <th>Contrayente 2</th>
         <th>Error de origen</th>
       </thead>
-      <tbody>
-        <tr *ngIf="infoCadena.cadena[0] !== '3'">
-          <td>{{infoCadena.cadena}}</td>
-          <td>{{infoCadena.peNombres + " " + infoCadena.pePrimerapellido + " " + infoCadena.peSegundoapellido | titlecase}}</td>
-          <td>{{infoCadena.peCurp}}</td>
-          <td>{{infoCadena.otErrororigen}}</td>
+      <tbody *ngIf="cadenasDisponibles[0].cadena[0] !== '3'">
+            <tr *ngFor="let item of cadenasDisponibles"  > 
+          <td>{{item.cadena}}</td>
+          <td>{{item.peNombres + " " + item.pePrimerapellido + " " + item.peSegundoapellido | titlecase}}</td>
+          <td>{{item.peCurp}}</td>
+          <td>{{item.otErrororigen}}</td>
         </tr>
-        <tr *ngIf="infoCadena.cadena[0] === '3'">
-          <td>{{infoCadena.cadena}}</td>
-          <td>{{infoCadena.p1Nombres + " " + infoCadena.p1Primerapellido + " " + infoCadena.p1Segundoapellido | titlecase}}</td>
-          <td>{{infoCadena.p2Nombres + " " + infoCadena.p2Primerapellido + " " + infoCadena.p2Segundoapellido | titlecase}}</td>
-          <td>{{infoCadena.otErrororigen}}</td>
+    </tbody>
+    <tbody *ngIf="cadenasDisponibles[0].cadena[0] === '3'">  
+        <tr *ngFor="let item of cadenasDisponibles " > 
+          <td>{{item.cadena}}</td>
+          <td>{{item.p1Nombres + " " + item.p1Primerapellido + " " + item.p1Segundoapellido | titlecase}}</td>
+          <td>{{item.p2Nombres + " " + item.p2Primerapellido + " " + item.p2Segundoapellido | titlecase}}</td>
+          <td>{{item.otErrororigen}}</td>
         </tr>
-
-
-      </tbody>
+    </tbody>    
     </table>
-
   </div>
 </div>

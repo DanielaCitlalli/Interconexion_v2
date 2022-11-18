@@ -1,12 +1,16 @@
 import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
+import { resetFakeAsyncZone } from '@angular/core/testing';
 import { FormGroup, FormBuilder, Validators, FormControl, NgSelectOption } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
+import { Nrc_Defunciones } from 'src/app/models/Nrc_Defunciones';
+import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
-
+import { ListaTarjetaCreditoComponent } from '../lista-tarjeta-credito/lista-tarjeta-credito.component';
 
 
 @Component({
@@ -20,7 +24,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
   @Output() registroDevuelto: EventEmitter<any> = new EventEmitter();
   
 
- 
+  form: FormGroup;
 
   globalForm: FormGroup;
 
@@ -28,12 +32,26 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
 
   suscription?: Subscription;
 
+  tarjeta?: TarjetaCredito;
+  idTarjeta?: number = 0;
+
   public opcion = '';
 
 
   constructor(private formBuilder: FormBuilder,
               private tarjetaService: TarjetaServiceService,
               private toastr: ToastrService) { 
+
+              
+
+
+    this.form = this.formBuilder.group({
+      id: 0,
+      titular: ['' , [Validators.required]],
+      tarjetaCredito: ['' , [Validators.required , Validators.maxLength(16) , Validators.minLength(16)]],
+      fechaExperiacion: ['' , [Validators.required , Validators.maxLength(5) , Validators.minLength(5)]],
+      cvv: ['' , [Validators.required , Validators.maxLength(3) , Validators.minLength(3)]]
+    });
 
     //form  global
     this.globalForm = this.formBuilder.group({
@@ -52,11 +70,76 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
                                                                                                                                     
 
   ngOnInit(): void {
-   
+    console.log(this.globalForm.get('proceso')?.value);
+    this.suscription = this.tarjetaService.obtenerTarjetasUpdate().subscribe(data => {
+      // console.log(data);
+      this.tarjeta = data;
+      this.form.patchValue({
+        titular: this.tarjeta.titular,
+        tarjetaCredito: this.tarjeta.numeroTarjeta,
+        fechaExperiacion: this.tarjeta.fechaExpiracion,
+        cvv: this.tarjeta.cvv
+      });
+      this.idTarjeta = this.tarjeta.id;
+
+
+      
+
+      // this.globalForm.get('crip')?.valid
+    });
   }
 
   ngOnDestroy(){
-    // this.suscription?.unsubscribe();   
+    this.suscription?.unsubscribe();   
+  }
+
+  
+  guardar(){
+
+    if(this.idTarjeta === 0){
+      this.agregar();
+    }
+    else{
+      this.editar();
+    }
+    
+  }
+
+   
+
+  
+
+  agregar(){
+    const tarjeta: TarjetaCredito = {
+      titular: this.form.get('titular')?.value,
+      numeroTarjeta: this.form.get('tarjetaCredito')?.value,
+      fechaExpiracion: this.form.get('fechaExperiacion')?.value,
+      cvv: this.form.get('cvv')?.value
+    }
+
+    this.tarjetaService.guardarTarjeta(tarjeta).subscribe(data => {
+      this.toastr.success('Registro Agregado' , 'La tarjeta fue agregada');
+      this.tarjetaService.obtenerTarjetas();
+      this.form.reset();
+      
+    });
+  }
+
+  editar(){
+    const tarjeta: TarjetaCredito = {
+      id: this.tarjeta?.id,
+      titular: this.form.get('titular')?.value,
+      numeroTarjeta: this.form.get('tarjetaCredito')?.value,
+      fechaExpiracion: this.form.get('fechaExperiacion')?.value,
+      cvv: this.form.get('cvv')?.value
+    }
+
+    this.tarjetaService.actualizarTarjeta(this.idTarjeta , tarjeta).subscribe(data => {
+      this.toastr.info('Registro Actualizado' , 'La tarjeta fue actualizada');
+      this.tarjetaService.obtenerTarjetas();
+      this.form.reset();
+      this.idTarjeta = 0;
+    });
   }
 
   campoNoEsValido(campo: string){
@@ -79,7 +162,7 @@ if( this.globalForm !== undefined){
   }
   
   this.registroDevuelto.emit(infoEnviada)
-  
+  console.log(this.globalForm.get('proceso')?.value);
   
   
 }
@@ -106,7 +189,8 @@ limpiar(){
 ejecutarGlobal(){
 
   const procesoValue = this.globalForm.get('proceso')?.value;
- 
+  // console.log(this.globalForm.get('proceso')?.value);
+  // console.log(this.globalForm.get('proceso')?.value);
 
   switch (procesoValue) {
     case "borrarDef":
@@ -274,7 +358,12 @@ ejecutarGlobal(){
 
       }
 
-      
+      // for(let i = 0; i < form1.ta01CCadena.length; i++){
+      //   if(form1.ta01CCadena[i]){
+
+      //   }
+      // }
+
       if(form1.ta01CCadena[0] !== '1'){
         this.toastr.error('Debe comenzar con 1' , 'Error');
         return;
@@ -411,6 +500,7 @@ ejecutarGlobal(){
       this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
+        // console.log(data);
         let infoEnviada = {
           registro: data,
           habilitarForm: true
@@ -431,7 +521,8 @@ ejecutarGlobal(){
         });
         this.registroDevuelto.emit('error');
       });
-      
+      console.log('llegue a buscar dublicados ');
+
      
       
       break;
@@ -447,11 +538,11 @@ ejecutarBusqueda(){
 
   const procesodebusqueda = this.globalForm.get('proceso')?.value;
   switch(procesodebusqueda){
-  // Busqueda de duplicaados de Nacimentos
+  // Busqueda de dublicaados de Nacimentos
     case "borrarNac":
   
   this.tarjetaService.getDuplicadosNac(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
-     
+     console.log(data);
     let infoEnviada = {
       registro: data,
       habilitarForm: false,
@@ -460,7 +551,10 @@ ejecutarBusqueda(){
     }
     this.registroDevuelto.emit(infoEnviada);
     this.limpiar();
-   
+    // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+    //   closeButton: true,
+    //   disableTimeOut: false,
+    // })
     
   },
   error => {
@@ -471,15 +565,15 @@ ejecutarBusqueda(){
     });
     this.registroDevuelto.emit('error');
   });
-  
+   console.log('llegue a dublicados Nacimiento');
 
- 
+  // this.globalFormbuscar.reset();
   break;
- // Busqueda de duplicaados de Matrimoios 
+ // Busqueda de dublicaados de Matrimoios 
   case "borrarMat":
   
     this.tarjetaService.getDuplicadosMat(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
-       
+       console.log(data);
       let infoEnviada = {
         registro: data,
         habilitarForm: false,
@@ -488,7 +582,10 @@ ejecutarBusqueda(){
       }
       this.registroDevuelto.emit(infoEnviada);
       this.limpiar();
-    
+      // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+      //   closeButton: true,
+      //   disableTimeOut: false,
+      // })
       
     },
     error => {
@@ -499,14 +596,16 @@ ejecutarBusqueda(){
       });
       this.registroDevuelto.emit('error');
     });
-    
+     console.log('llegue a dublicados Matrimonio ');
+
+    // this.globalFormbuscar.reset();
     break;
     
-  // Busqueda de duplicaados de Defunciones 
+  // Busqueda de dublicaados de Defunciones 
   case "borrarDef":
   
     this.tarjetaService.getDuplicadosDef(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
-  
+       console.log(data);
       let infoEnviada = {
         registro: data,
         habilitarForm: false,
@@ -515,7 +614,10 @@ ejecutarBusqueda(){
       }
       this.registroDevuelto.emit(infoEnviada);
       this.limpiar();
-    
+      // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+      //   closeButton: true,
+      //   disableTimeOut: false,
+      // })
       
     },
     error => {
@@ -528,9 +630,9 @@ ejecutarBusqueda(){
       
       this.registroDevuelto.emit('error');
     });
-  
+     console.log('llegue a dublicados Defunciones ');
 
-   
+    // this.globalFormbuscar.reset();
     break;
   }
 
