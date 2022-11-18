@@ -72,6 +72,8 @@ namespace procedimientos_interconexion.Controllers
                                      _Nacimientos.OtErrororigen
                                  }).ToListAsync();
 
+                //var res = _context.NrcNacimientos.FromSqlInterpolated($@"EXEC dbo.cripToCadenaNac @crip={crip}").AsAsyncEnumerable();
+
 
                 return Ok(res);
 
