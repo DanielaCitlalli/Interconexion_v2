@@ -106,25 +106,23 @@ namespace procedimientos_interconexion.Controllers
         [HttpPost]
         public async Task<ActionResult<CirrTa03Depeticion>> PostCirrTa03Depeticion(CirrTa03Depeticion cirrTa03Depeticion)
         {
-            //Borrar DEfunciones
+            //Borrar Defunciones
 
             try
             {
-                //_context.Add(new CirrTa03Depeticion { Ta03EPrioridad = 1, Ta03EOperacionacto = 2, Ta03EEstatus = 0, Ta03ECuantos = 0, Ta03CCadena = cirrTa03Depeticion.Ta03CCadena });
                 _context.Add(cirrTa03Depeticion);
                 await _context.SaveChangesAsync();
                 string path = Directory.GetCurrentDirectory();
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " - " + "Se borro defunción " + " - " + cirrTa03Depeticion.Ta03CCadena);
+                oLog.Add(remoteIpAddress + " , " + "Se borro defunción " + " , " + cirrTa03Depeticion.Ta03CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa03DepeticionId), new { id = cirrTa03Depeticion.Ta03EOid }, cirrTa03Depeticion);
             }
             catch (Exception ex)
             {
                 return BadRequest();
-                //return Content("Ocurrio un error al hacer el registro: " + ex, "application/json");
             }
 
 
@@ -143,14 +141,13 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " - " + "Se subio Acta de Defunción " + " - " + cirrTa03Depeticion.Ta03CCadena);
+                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de Defunción " + " , " + cirrTa03Depeticion.Ta03CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa03DepeticionId), new { id = cirrTa03Depeticion.Ta03EOid }, cirrTa03Depeticion);
             }
             catch(Exception ex)
             {
                 return BadRequest();
-                //return Content("Ocurrio un error al hacer el registro: " + ex, "application/json");
             }
 
 
