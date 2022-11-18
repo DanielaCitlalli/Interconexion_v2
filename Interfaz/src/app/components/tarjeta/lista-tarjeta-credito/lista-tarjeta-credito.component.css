@@ -47,10 +47,10 @@ li{
 }
 
 .contenedor-cadenas table {
-    overflow-x: auto;
+    overflow-x: scroll;
     overflow-y: auto;
-    height: auto;
-    width: auto;
+    height: auto ;
+    width:visible ;
     display: block;
     text-align: center;
     border: 1px solid #000;

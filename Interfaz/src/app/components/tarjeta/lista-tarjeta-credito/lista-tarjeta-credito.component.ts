@@ -20,6 +20,7 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
   @Input() registroAgregadoCambioSexo: any;
   @Input() cadenasDisponibles?: any[];
 
+
   registroTa01?: CirrTa01Napeticion;
   registroTa03?: CirrTa03Depeticion;
   registroTa09?: CirrTa09Mapeticion;
