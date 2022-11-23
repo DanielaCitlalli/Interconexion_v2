@@ -26,7 +26,7 @@ namespace procedimientos_interconexion
             string nombre = GetNameFile();
             string cadena = "";
             
-            cadena += DateTime.Now + " - " + sLog + Environment.NewLine;
+            cadena += DateTime.Now + " , " + sLog + Environment.NewLine;
 
            
             StreamWriter sw = new StreamWriter(Path + "/" + nombre, true);
@@ -41,7 +41,7 @@ namespace procedimientos_interconexion
             string nombre = "";
 
 
-            nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".txt";
+            nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".csv";
 
 
 

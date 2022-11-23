@@ -56,7 +56,6 @@ namespace procedimientos_interconexion.Controllers
             if (id != nrcMatrimonios.Cadena)
             {
                 return BadRequest();
-                //return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
             }
            
 
@@ -65,7 +64,7 @@ namespace procedimientos_interconexion.Controllers
 
             Log oLog = new Log(path);
             string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            oLog.Add(remoteIpAddress + " - " + "Actualizo el Sexo " + " - " + nrcMatrimonios.Cadena);
+            oLog.Add(remoteIpAddress + " , " + "Actualizo el Sexo " + " , " + nrcMatrimonios.Cadena);
 
             try
             {

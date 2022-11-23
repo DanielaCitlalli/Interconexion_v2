@@ -1,16 +1,16 @@
 import { Component, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
-import { resetFakeAsyncZone } from '@angular/core/testing';
 import { FormGroup, FormBuilder, Validators, FormControl, NgSelectOption } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
-import { Nrc_Defunciones } from 'src/app/models/Nrc_Defunciones';
 import { TarjetaCredito } from 'src/app/models/tarjetaCredito.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
-import { ListaTarjetaCreditoComponent } from '../lista-tarjeta-credito/lista-tarjeta-credito.component';
+
+import Swal  from "sweetalert2";
+
+
 
 
 @Component({
@@ -81,8 +81,6 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
         cvv: this.tarjeta.cvv
       });
       this.idTarjeta = this.tarjeta.id;
-
-
       
 
       // this.globalForm.get('crip')?.valid
@@ -163,8 +161,13 @@ if( this.globalForm !== undefined){
   
   this.registroDevuelto.emit(infoEnviada)
   console.log(this.globalForm.get('proceso')?.value);
+  this.globalForm.patchValue({
+    cadena : ''
+  })
   
-  
+  this.globalFormbuscar.patchValue({
+    crip : ''
+  })
 }
 
 
@@ -214,32 +217,47 @@ ejecutarGlobal(){
         return;
       }
 
-      this.registroDevuelto.emit(undefined);
+      Swal.fire({
+        title: '¿Estas seguro de continuar?',
+        text: "No podrás revertirlo",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.registroDevuelto.emit(undefined);
       
 
-      this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
-
-        if(data !== null && data !== undefined){
-          this.toastr.success('Defuncion borrada con exito', "Defuncion borrada" , {
-            closeButton: true,
-            disableTimeOut: false,
+          this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
+    
+            if(data !== null && data !== undefined){
+              this.toastr.success('Defuncion borrada con exito', "Defuncion borrada" , {
+                closeButton: true,
+                disableTimeOut: false,
+              });
+             this.refrescar();
+              let infoEnviada = {
+                registro: data,
+                habilitarForm: false
+              }
+              this.registroDevuelto.emit(infoEnviada);
+            }
+            else{
+              this.toastr.error('Error al ingresar dato', " Error  " , {
+                closeButton: true,
+                disableTimeOut: false,
+              }
+              );
+            }
+            
           });
-         this.refrescar();
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false
-          }
-          this.registroDevuelto.emit(infoEnviada);
         }
-        else{
-          this.toastr.error('Error al ingresar dato', " Error  " , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );
-        }
-        
-      });
+      })
+
+
 
       break;
     case "borrarMat":
@@ -263,32 +281,45 @@ ejecutarGlobal(){
         return;
       }
 
-      this.registroDevuelto.emit(undefined);
+      Swal.fire({
+        title: '¿Estas seguro de continuar?',
+        text: "No podrás revertirlo",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.registroDevuelto.emit(undefined);
+      
 
-      this.tarjetaService.postCirrTa09Mapeticion(form09).subscribe(data => {
-
-        if(data !== null && data !== undefined){
-          this.toastr.success('Matrimonio borrado con exito', " Borrar matrimonio con éxito" , {
-            closeButton: true,
-            disableTimeOut: false,
-          });
-          this.refrescar();
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false
+          this.tarjetaService.postCirrTa09Mapeticion(form09).subscribe(data => {
+    
+            if(data !== null && data !== undefined){
+              this.toastr.success('Matrimonio borrado con exito', "Defuncion borrada" , {
+                closeButton: true,
+                disableTimeOut: false,
+              });
+             this.refrescar();
+              let infoEnviada = {
+                registro: data,
+                habilitarForm: false
+              }
+              this.registroDevuelto.emit(infoEnviada);
+            }
+            else{
+              this.toastr.error('Error al ingresar dato', " Error  " , {
+                closeButton: true,
+                disableTimeOut: false,
+              }
+              );
+            }
             
-          }
-          this.registroDevuelto.emit(infoEnviada);
+          });
         }
-        else{
-          this.toastr.error('Error al ingresar dato', " Error al ingresar Matrimonio" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );  
-        }
-
-      });
+      })
 
       break;
     case "borrarNac":
@@ -312,34 +343,45 @@ ejecutarGlobal(){
         return;
       }
 
-      this.registroDevuelto.emit(undefined);
+      Swal.fire({
+        title: '¿Estas seguro de continuar?',
+        text: "No podrás revertirlo",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.registroDevuelto.emit(undefined);
+      
 
-      this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
-
-        if(data !== null && data !== undefined){
-          this.toastr.success('Nacimiento borrado con exito', " Nacimiento borrado" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );
-          this.refrescar();
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false
-          }
-          this.registroDevuelto.emit(infoEnviada);
-         
+          this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
+    
+            if(data !== null && data !== undefined){
+              this.toastr.success('Nacimiento borrado con exito', "Defuncion borrada" , {
+                closeButton: true,
+                disableTimeOut: false,
+              });
+             this.refrescar();
+              let infoEnviada = {
+                registro: data,
+                habilitarForm: false
+              }
+              this.registroDevuelto.emit(infoEnviada);
+            }
+            else{
+              this.toastr.error('Error al ingresar dato', " Error  " , {
+                closeButton: true,
+                disableTimeOut: false,
+              }
+              );
+            }
+            
+          });
         }
-        else{
-          this.toastr.error('Error al ingresar dato', " Error al ingresar Nacimiento" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );  
-        }
-
-      });
-
+      })
       break;
     case "forzarSubirNac":
       const form1: CirrTa01Napeticion = {
@@ -369,33 +411,46 @@ ejecutarGlobal(){
         return;
       }
 
-      this.registroDevuelto.emit(undefined);
+      Swal.fire({
+        title: '¿Estas seguro de continuar?',
+        text: "No podrás revertirlo",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.registroDevuelto.emit(undefined);
+      
 
-      this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data => {
-
-        if(data !== null && data !== undefined){
-          this.toastr.success('Nacimiento subido con exito', " Nacimiento Éxitoso" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );
-          this.refrescar();
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false
-          }
-          this.registroDevuelto.emit(infoEnviada);
+          this.tarjetaService.postCirrTa01Napeticion1(form1).subscribe(data =>
+            {
+    
+            if(data !== null && data !== undefined){
+              this.toastr.success('Nacimiento ingresado con exito', "Defuncion borrada" , {
+                closeButton: true,
+                disableTimeOut: false,
+              });
+             this.refrescar();
+              let infoEnviada = {
+                registro: data,
+                habilitarForm: false
+              }
+              this.registroDevuelto.emit(infoEnviada);
+            }
+            else{
+              this.toastr.error('Error al ingresar dato', " Error  " , {
+                closeButton: true,
+                disableTimeOut: false,
+              }
+              );
+            }
+            
+          });
         }
-        else{
-          this.toastr.error('Error al ingresar dato', " Error al ingresar Nacimiento" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );  
-        }
-
-      });
-
+      })
       break;
     case "forzarSubirMat":
       const form09f: CirrTa09Mapeticion = {
@@ -417,32 +472,47 @@ ejecutarGlobal(){
         this.toastr.error('Debe comenzar con 3' , 'Error');
         return;
       }
-      this.registroDevuelto.emit(undefined);
+      Swal.fire({
+        title: '¿Estas seguro de continuar?',
+        text: "No podrás revertirlo",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.registroDevuelto.emit(undefined);
+      
 
-      this.tarjetaService.postCirrTa09MapeticionF(form09f).subscribe(data => {
-        
-        if(data !== null && data !== undefined){
-          this.toastr.success('Matrimonio subido con exito', " Matrimonio subido con Éxito" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );
-          this.refrescar();
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false
-          }
-          this.registroDevuelto.emit(infoEnviada);
-        }
-        else{
-          this.toastr.error('Error al ingresar dato', " Error al ingresar Matrimonio" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );  
-        }
+          this.tarjetaService.postCirrTa09MapeticionF(form09f).subscribe(data =>
 
-      });
+            {
+    
+            if(data !== null && data !== undefined){
+              this.toastr.success('Matrimonio ingresado con exito', "Defuncion borrada" , {
+                closeButton: true,
+                disableTimeOut: false,
+              });
+             this.refrescar();
+              let infoEnviada = {
+                registro: data,
+                habilitarForm: false
+              }
+              this.registroDevuelto.emit(infoEnviada);
+            }
+            else{
+              this.toastr.error('Error al ingresar dato', " Error  " , {
+                closeButton: true,
+                disableTimeOut: false,
+              }
+              );
+            }
+            
+          });
+        }
+      })
       break;
     case "forzarSubirDef":
       const form03F: CirrTa03Depeticion = {
@@ -465,35 +535,46 @@ ejecutarGlobal(){
         return;
       }
       
-      this.registroDevuelto.emit(undefined);
+      Swal.fire({
+        title: '¿Estas seguro de continuar?',
+        text: "No podrás revertirlo",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Continuar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.registroDevuelto.emit(undefined);
+      
 
-      this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data => {
-
-        if(data !== null && data !== undefined){
-          this.toastr.success('Defuncion subido con exito', " Defunción subida con éxito" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );
-          this.refrescar();
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false
-          }
-          this.registroDevuelto.emit(infoEnviada);
+          this.tarjetaService.postCirrTa03Depeticion2(form03F).subscribe(data =>
+            {
+    
+            if(data !== null && data !== undefined){
+              this.toastr.success('Defuncion ingresado con exito', "Defuncion borrada" , {
+                closeButton: true,
+                disableTimeOut: false,
+              });
+             this.refrescar();
+              let infoEnviada = {
+                registro: data,
+                habilitarForm: false
+              }
+              this.registroDevuelto.emit(infoEnviada);
+            }
+            else{
+              this.toastr.error('Error al ingresar dato', " Error  " , {
+                closeButton: true,
+                disableTimeOut: false,
+              }
+              );
+            }
+            
+          });
         }
-        else{
-          this.toastr.error('Error al ingresar dato', " Error al ingrsar defunción" , {
-            closeButton: true,
-            disableTimeOut: false,
-          }
-          );  
-        }
-
-
-      });
-
-
+      })
       break;
     case "cambioSexo":
       
