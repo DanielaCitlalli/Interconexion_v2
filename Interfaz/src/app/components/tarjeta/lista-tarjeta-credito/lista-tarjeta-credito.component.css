@@ -16,13 +16,19 @@ background-color:#106BE8;
 color:white;
 text-decoration: none;
 border: none;
-width: 80px;
+
 
 }
+.tabla{
+    width: 80px;
+    width: 130px;
+    
+}
+
 td{
     border: none; 
     font-weight: bolder; 
-    width: 130px;
+   
     
 }
 

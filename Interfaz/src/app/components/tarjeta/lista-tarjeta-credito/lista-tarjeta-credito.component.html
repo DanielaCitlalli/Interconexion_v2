@@ -169,43 +169,43 @@
 
     <table class="table table-light table-hover ">
       <thead *ngIf="cadenasDisponibles[0].cadena[0] !== '3'">
-        <th>Cadena</th>
-        <th>Nombre</th>
-        <th>Apellido Parterno</th>
-        <th>Apellido Materno</th>
-        <th>CURP</th>
-        <th>Error de origen</th>
+        <th class="tabla">Cadena</th>
+        <th class="tabla">Nombre</th>
+        <th class="tabla">Apellido Parterno</th>
+        <th class="tabla">Apellido Materno</th>
+        <th class="tabla">CURP</th>
+        <th class="tabla">Error de origen</th>
       </thead>
       <thead *ngIf="cadenasDisponibles[0].cadena[0] === '3'">
-        <th>Cadena</th>
-        <th>Contrayente1 Nombres</th>
-        <th>C1 Apellido Parterno</th>
-        <th>C1 Apellido Materno</th>
-        <th>Contrayente2 Nombres</th>
-        <th>C2 Apellido Parterno</th>
-        <th>C2 Apellido Materno</th>
-        <th>Error de origen</th>
+        <th class="tabla">Cadena</th>
+        <th class="tabla">Contrayente1 Nombres</th>
+        <th class="tabla">C1 Apellido Parterno</th>
+        <th class="tabla">C1 Apellido Materno</th>
+        <th class="tabla">Contrayente2 Nombres</th>
+        <th class="tabla">C2 Apellido Parterno</th>
+        <th class="tabla">C2 Apellido Materno</th>
+        <th class="tabla">Error de origen</th>
       </thead>
       <tbody *ngIf="cadenasDisponibles[0].cadena[0] !== '3'">
             <tr *ngFor="let item of cadenasDisponibles"  > 
-          <td>{{item.cadena}}</td>
-          <td>{{item.peNombres  }}</td>
-          <td >{{item.pePrimerapellido  }}</td>
-          <td >{{item.peSegundoapellido}}</td>
-          <td>{{item.peCurp}}</td>
-          <td>{{item.otErrororigen}}</td>
+          <td class="tabla">{{item.cadena}}</td>
+          <td class="tabla">{{item.peNombres  }}</td>
+          <td class="tabla" >{{item.pePrimerapellido  }}</td>
+          <td class="tabla" >{{item.peSegundoapellido}}</td>
+          <td class="tabla">{{item.peCurp}}</td>
+          <td class="tabla">{{item.otErrororigen}}</td>
         </tr>
     </tbody>
     <tbody *ngIf="cadenasDisponibles[0].cadena[0] === '3'">  
         <tr *ngFor="let item of cadenasDisponibles " > 
-          <td>{{item.cadena}}</td>
-          <td>{{item.p1Nombres }}</td>
-          <td>{{item.p1Primerapellido}}</td>
-          <td>{{item.p1Segundoapellido}}</td>
-          <td>{{item.p2Nombres }}</td>
-          <td>{{item.p2Primerapellido}}</td>
-          <td>{{item.p2Segundoapellido}}</td>
-          <td>{{item.otErrororigen}}</td>
+          <td class="tabla">{{item.cadena}}</td>
+          <td class="tabla">{{item.p1Nombres }}</td>
+          <td class="tabla">{{item.p1Primerapellido}}</td>
+          <td class="tabla">{{item.p1Segundoapellido}}</td>
+          <td class="tabla">{{item.p2Nombres }}</td>
+          <td class="tabla">{{item.p2Primerapellido}}</td>
+          <td class="tabla">{{item.p2Segundoapellido}}</td>
+          <td class="tabla">{{item.otErrororigen}}</td>
         </tr>
     </tbody>    
     </table>
