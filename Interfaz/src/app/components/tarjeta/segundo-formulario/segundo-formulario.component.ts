@@ -21,7 +21,6 @@ export class SegundoFormularioComponent implements OnInit {
     { valor: 'M', nombre: 'Masculino'}
   ]
 
-  // @Input()verSegundoFormulario: boolean = false;
   @Input()datosRetornados: any;
 
   @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
@@ -47,30 +46,14 @@ export class SegundoFormularioComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.datosRetornados.habilitarForm === true){
-      this.actualizar()
-      // console.log(this.datosRetornados.registro.cadena);
+      this.actualizar();
       
     }
-    // console.log(this.datosRetornados);
     this.formCambioSexo.get('p1_nombres')?.disable();
     
   }
 
   guardarCambios(){
-
-    // const formMatrimonio: Nrc_Matrimonios = {
-    //   numeroacta: this.datosRetornados.registro.numeroacta,
-    //   anioregistro:this.datosRetornados.registro.anioregistro,
-    //   tipodocumento:this.datosRetornados.registro.tipodocumento,
-    //   entidadregistro:this.datosRetornados.registro.entidadregistro,
-    //   municipioregistro:this.datosRetornados.registro.municipioregistro,
-    //   oficilia:this.datosRetornados.registro.oficilia,
-    //   actabis:this.datosRetornados.registro.actabis,
-    //   cadena:this.datosRetornados.registro.cadena,
-    //   p1sexo: this.formCambioSexo.get('p1Sexo')?.value,
-    //   p2sexo: this.formCambioSexo.get('p2Sexo')?.value
-
-    // }
     Swal.fire({
       title: '¿Estas seguro de continuar?',
       text: "No podrás revertirlo",
@@ -97,7 +80,7 @@ export class SegundoFormularioComponent implements OnInit {
             });
             this.enviarRegistro.emit(data);
             
-            console.log(data);
+            
             const form09f: CirrTa09Mapeticion = {
               ta09EOid: 0,
               ta09ESecuencia: null,
@@ -121,7 +104,6 @@ export class SegundoFormularioComponent implements OnInit {
                   timeOut: 7000,
                 })
                 
-                console.log(data);
               },error => {
                 this.toastr.error("Error al actualizar tabla CIRR_TA09_MAPETICION", " Error" , {
                   timeOut: 7000,
@@ -158,8 +140,7 @@ export class SegundoFormularioComponent implements OnInit {
   }
 
   actualizar(){
-    this.formCambioSexo.patchValue(this.datosRetornados.registro)
-    // console.log('llegue actualizar' , this.formCambioSexo.value);
+    this.formCambioSexo.patchValue(this.datosRetornados.registro);
     
   }
   
