@@ -8,7 +8,7 @@ import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
 
-import Swal  from "sweetalert2";
+import Swal from "sweetalert2";
 
 
 
@@ -70,9 +70,8 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
                                                                                                                                     
 
   ngOnInit(): void {
-    console.log(this.globalForm.get('proceso')?.value);
     this.suscription = this.tarjetaService.obtenerTarjetasUpdate().subscribe(data => {
-      // console.log(data);
+      
       this.tarjeta = data;
       this.form.patchValue({
         titular: this.tarjeta.titular,
@@ -160,7 +159,6 @@ if( this.globalForm !== undefined){
   }
   
   this.registroDevuelto.emit(infoEnviada)
-  console.log(this.globalForm.get('proceso')?.value);
   this.globalForm.patchValue({
     cadena : ''
   })
@@ -192,8 +190,6 @@ limpiar(){
 ejecutarGlobal(){
 
   const procesoValue = this.globalForm.get('proceso')?.value;
-  // console.log(this.globalForm.get('proceso')?.value);
-  // console.log(this.globalForm.get('proceso')?.value);
 
   switch (procesoValue) {
     case "borrarDef":
@@ -581,7 +577,7 @@ ejecutarGlobal(){
       this.registroDevuelto.emit(undefined);
 
       this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
-        // console.log(data);
+        
         let infoEnviada = {
           registro: data,
           habilitarForm: true
@@ -602,7 +598,7 @@ ejecutarGlobal(){
         });
         this.registroDevuelto.emit('error');
       });
-      console.log('llegue a buscar dublicados ');
+      
 
      
       
@@ -623,7 +619,7 @@ ejecutarBusqueda(){
     case "borrarNac":
   
   this.tarjetaService.getDuplicadosNac(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
-     console.log(data);
+     
     let infoEnviada = {
       registro: data,
       habilitarForm: false,
@@ -646,7 +642,7 @@ ejecutarBusqueda(){
     });
     this.registroDevuelto.emit('error');
   });
-   console.log('llegue a dublicados Nacimiento');
+   
 
   // this.globalFormbuscar.reset();
   break;
@@ -654,7 +650,7 @@ ejecutarBusqueda(){
   case "borrarMat":
   
     this.tarjetaService.getDuplicadosMat(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
-       console.log(data);
+       
       let infoEnviada = {
         registro: data,
         habilitarForm: false,
@@ -677,7 +673,7 @@ ejecutarBusqueda(){
       });
       this.registroDevuelto.emit('error');
     });
-     console.log('llegue a dublicados Matrimonio ');
+     
 
     // this.globalFormbuscar.reset();
     break;
@@ -686,7 +682,7 @@ ejecutarBusqueda(){
   case "borrarDef":
   
     this.tarjetaService.getDuplicadosDef(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
-       console.log(data);
+       
       let infoEnviada = {
         registro: data,
         habilitarForm: false,
@@ -707,11 +703,11 @@ ejecutarBusqueda(){
         disableTimeOut: false,
 
       });
-      console.log(error);
+      
       
       this.registroDevuelto.emit('error');
     });
-     console.log('llegue a dublicados Defunciones ');
+     
 
     // this.globalFormbuscar.reset();
     break;

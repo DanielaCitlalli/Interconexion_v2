@@ -33,32 +33,27 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
   ) {}
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
-    console.log('hola');
     this.infoCadena = undefined;
   }
 
   ngOnInit(): void {
     this.tarjetaService.obtenerTarjetas();
-    //this.tarjetaService.getCirrTa01Napeticion();
+    
     this.tarjetaService.getCirrTa01NapeticionId().subscribe((data) => {
       this.registroTa01 = data;
-      // console.log(data);
+      
     });
 
     this.tarjetaService.getCirrTa03DepeticionId().subscribe((data) => {
       this.registroTa03 = data;
-      // console.log(data ,'03!!!1');
+      
     });
 
     this.tarjetaService.getCirrTa09MapeticionId().subscribe((data) => {
       this.registroTa09 = data;
-      // console.log(data ,'09!!!!');
+      
     });
 
-    // console.log(this.registroAgregado);
-
-    console.log(this.registroAgregado);
     
   }
 
@@ -79,7 +74,6 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
     this.registroAgregado = null;
     this.registroAgregadoCambioSexo = null;
 
-    console.log(this.registroAgregado, this.registroAgregadoCambioSexo);
   }
 
   mostrarInfoCadena(cadena: any){
