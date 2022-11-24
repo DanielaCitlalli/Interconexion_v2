@@ -60,7 +60,8 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     });
 
     this.globalFormbuscar = this.formBuilder.group({
-      crip : ['',[Validators.required , Validators.maxLength(14),Validators.minLength(14), Validators.pattern(this.tarjetaService.rxCrip)]]
+      crip : ['',[Validators.required , Validators.maxLength(14),Validators.minLength(14), Validators.pattern(this.tarjetaService.rxCrip)]],
+      checkbox : [false]
     });
     
 
@@ -164,8 +165,10 @@ if( this.globalForm !== undefined){
   })
   
   this.globalFormbuscar.patchValue({
-    crip : ''
+    crip : '',
+    checkbox: false
   })
+
 }
 
 
@@ -182,7 +185,8 @@ refrescar(){
 
 limpiar(){
   this.globalFormbuscar.patchValue({
-   crip: ''
+   crip: '',
+   checkbox: false
   })
 }
 
@@ -230,7 +234,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Defuncion borrada con exito', "Defuncion borrada" , {
+              this.toastr.success('Defunción borrada con exito', "Defunción borrada" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -294,7 +298,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa09Mapeticion(form09).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Matrimonio borrado con exito', "Defuncion borrada" , {
+              this.toastr.success('Matrimonio borrado con exito', "Matrimonio borrado" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -356,7 +360,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Nacimiento borrado con exito', "Defuncion borrada" , {
+              this.toastr.success('Nacimiento borrado con exito', "Nacimiento borrado" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -425,7 +429,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Nacimiento ingresado con exito', "Defuncion borrada" , {
+              this.toastr.success('Nacimiento ingresado con exito', "Nacimiento ingresado" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -487,7 +491,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Matrimonio ingresado con exito', "Defuncion borrada" , {
+              this.toastr.success('Matrimonio ingresado con exito', "Matrimonio ingresado" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -549,7 +553,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Defuncion ingresado con exito', "Defuncion borrada" , {
+              this.toastr.success('Defunción ingresada con exito', "Defunción ingresada" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -714,5 +718,6 @@ ejecutarBusqueda(){
   }
 
 }
+
 
 }
