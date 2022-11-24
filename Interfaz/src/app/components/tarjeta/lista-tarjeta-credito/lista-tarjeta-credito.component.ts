@@ -6,7 +6,7 @@ import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service'
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
-// creo que nos hablan 
+ 
 
 
 @Component({
@@ -37,7 +37,6 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.tarjetaService.obtenerTarjetas();
     
     this.tarjetaService.getCirrTa01NapeticionId().subscribe((data) => {
       this.registroTa01 = data;
@@ -55,19 +54,6 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
     });
 
     
-  }
-
-  eliminarTarjeta(id: number | undefined) {
-    if (confirm('Estas seguro de eliminar esta tarjeta?')) {
-      this.tarjetaService.eliminarTarjeta(id).subscribe((data) => {
-        this.toast.warning('Registro Eliminado', 'La tarjeta fue eliminada');
-        this.tarjetaService.obtenerTarjetas();
-      });
-    }
-  }
-
-  editar(tarjeta: TarjetaCredito) {
-    this.tarjetaService.actualizar(tarjeta);
   }
 
   ocultar() {
