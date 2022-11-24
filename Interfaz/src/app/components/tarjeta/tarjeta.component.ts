@@ -26,8 +26,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    console.log('estoy en ngonchanges tarjeta-component');
+    
     
   }
 
