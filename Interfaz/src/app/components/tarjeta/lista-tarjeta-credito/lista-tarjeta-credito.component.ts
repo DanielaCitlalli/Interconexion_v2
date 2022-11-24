@@ -74,7 +74,6 @@ export class ListaTarjetaCreditoComponent implements OnInit, OnChanges {
     this.registroAgregado = null;
     this.registroAgregadoCambioSexo = null;
 
-    console.log(this.registroAgregado, this.registroAgregadoCambioSexo);
   }
 
   mostrarInfoCadena(cadena: any){
