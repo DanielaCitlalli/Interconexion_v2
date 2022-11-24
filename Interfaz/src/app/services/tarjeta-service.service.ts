@@ -50,32 +50,11 @@ export class TarjetaServiceService {
 
   constructor(private http: HttpClient) { }
 
-  guardarTarjeta(tarjeta: TarjetaCredito): Observable<TarjetaCredito> {
-    return this.http.post<TarjetaCredito>(this.myAppUrl + this.myApiUrl, tarjeta);
-  }
+ 
 
-  obtenerTarjetas() {
-    return this.http.get(this.myAppUrl + this.myApiUrl).toPromise()
-      .then(data => {
-        this.list = data as TarjetaCredito[];
-      });
-  }
+  
 
-  eliminarTarjeta(id: number | undefined): Observable<TarjetaCredito> {
-    return this.http.delete<TarjetaCredito>(this.myAppUrl + this.myApiUrl + id);
-  }
-
-  actualizar(tarjeta: TarjetaCredito) {
-    this.actualizarFormulario.next(tarjeta);
-  }
-
-  obtenerTarjetasUpdate(): Observable<TarjetaCredito> {
-    return this.actualizarFormulario.asObservable();
-  }
-
-  actualizarTarjeta(id: number | undefined, tarjeta: TarjetaCredito): Observable<TarjetaCredito> {
-    return this.http.put<TarjetaCredito>(this.myAppUrl + this.myApiUrl + id, tarjeta);
-  }
+  
 
   // Endpoint para API Interconexion 
 
@@ -92,12 +71,12 @@ export class TarjetaServiceService {
   }
 
   postCirrTa01Napeticion(registro: CirrTa01Napeticion): Observable<any> {
-    // console.log('llegue al servicio', registro);
+    
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_inter, registro);
   }
   postCirrTa01Napeticion1(registro: CirrTa01Napeticion): Observable<any> {
-    // console.log('llegue al servicio Forzar subir acta nacimiento ', registro);
+    
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_interF, registro);
   }
@@ -115,7 +94,7 @@ export class TarjetaServiceService {
   }
   
   postCirrTa03Depeticion(registro: CirrTa03Depeticion): Observable<any> {
-    // console.log('llegue al servicio 03', registro);
+  
 
     return this.http.post<any>(this.myAppUrl_inter + this.myApiUrl_De, registro);
   }//Borrar defuncion
