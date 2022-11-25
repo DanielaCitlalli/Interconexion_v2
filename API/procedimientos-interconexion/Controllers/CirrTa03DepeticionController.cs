@@ -116,7 +116,7 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " , " + "Se borro defuncion " + " , " + "'" + cirrTa03Depeticion.Ta03CCadena);
+                oLog.Add(remoteIpAddress + " , " + "Se borro defuncion " + " , "  + cirrTa03Depeticion.Ta03CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa03DepeticionId), new { id = cirrTa03Depeticion.Ta03EOid }, cirrTa03Depeticion);
             }
@@ -141,7 +141,7 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de Defuncion " + " , " + "'" + "'" + cirrTa03Depeticion.Ta03CCadena);
+                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de Defuncion " + " , "  + cirrTa03Depeticion.Ta03CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa03DepeticionId), new { id = cirrTa03Depeticion.Ta03EOid }, cirrTa03Depeticion);
             }
