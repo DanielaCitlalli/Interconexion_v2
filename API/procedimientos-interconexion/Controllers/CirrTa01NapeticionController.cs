@@ -192,7 +192,7 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress=HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " , " + "Se borro Nacimiento" + " , " + "'" + cirrTa01Napeticion.Ta01CCadena);
+                oLog.Add(remoteIpAddress + " , " + "Se borro Nacimiento" + " , " + cirrTa01Napeticion.Ta01CCadena);
 
 
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
@@ -216,7 +216,7 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de nacimiento " + " , " + "'" + cirrTa01Napeticion.Ta01CCadena);
+                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de nacimiento " + " , " + cirrTa01Napeticion.Ta01CCadena);
 
 
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
