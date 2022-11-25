@@ -111,11 +111,11 @@ namespace procedimientos_interconexion.Controllers
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
                 if(cirrTa09Mapeticion.Ta09EPrioridad == 1 && cirrTa09Mapeticion.Ta09EOperacionacto == 1 && cirrTa09Mapeticion.Ta09EEstatus == 0 && cirrTa09Mapeticion.Ta09ECuantos == 0)
                 {
-                    oLog.Add(remoteIpAddress + " , " + "Se actualizo registro  " + " , " + cirrTa09Mapeticion.Ta09CCadena);
+                    oLog.Add(remoteIpAddress + " , " + "Se actualizo registro  " + " , " + "'" + cirrTa09Mapeticion.Ta09CCadena);
                 }
                 else
                 {
-                    oLog.Add(remoteIpAddress + " , " + "Se Borro Matrimonios  " + " , " + cirrTa09Mapeticion.Ta09CCadena);
+                    oLog.Add(remoteIpAddress + " , " + "Se Borro Matrimonios  " + " , " + "'" + cirrTa09Mapeticion.Ta09CCadena);
                 }
                
 
@@ -144,7 +144,7 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de Matrimonio  " + " , " + cirrTa09Mapeticion.Ta09CCadena);
+                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de Matrimonio  " + " , " + "'" + cirrTa09Mapeticion.Ta09CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa09MapeticionId), new { id = cirrTa09Mapeticion.Ta09EOid }, cirrTa09Mapeticion);
             }
