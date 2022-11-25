@@ -41,7 +41,7 @@ namespace procedimientos_interconexion
             string nombre = "";
 
 
-            nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".csv";
+            nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".txt";
 
 
 
