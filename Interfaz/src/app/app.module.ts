@@ -10,6 +10,7 @@ import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { TarjetaCreditoComponent } from './components/tarjeta/tarjeta-credito/tarjeta-credito.component';
 import { ListaTarjetaCreditoComponent } from './components/tarjeta/lista-tarjeta-credito/lista-tarjeta-credito.component';
 import { FooterComponent } from './components/footer/footer.component';
+//import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -24,6 +25,7 @@ import { SegundoFormularioComponent } from './components/tarjeta/segundo-formula
     FooterComponent,
     SegundoFormularioComponent,
     
+    
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { SegundoFormularioComponent } from './components/tarjeta/segundo-formula
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
+
     
   ],
   providers: [],
