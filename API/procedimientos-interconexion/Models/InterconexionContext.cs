@@ -87,8 +87,8 @@ namespace procedimientos_interconexion.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning 
-                optionsBuilder.UseSqlServer("Name=DbConnection");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=10.254.65.232; Database=Interconexion; User=usuario; Password=123;");
             }
         }
 
@@ -5111,7 +5111,7 @@ namespace procedimientos_interconexion.Models
 
             modelBuilder.Entity<NrcPais>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.PaiCodigo);
 
                 entity.ToTable("NRC_PAIS");
 
