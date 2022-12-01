@@ -82,6 +82,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
     else if(event === 'error'){
       this.verSpinner = false;
       return
+      
     }
 
     //Para enviar registro afectado despues de cambio de sexo en segundo formulario
