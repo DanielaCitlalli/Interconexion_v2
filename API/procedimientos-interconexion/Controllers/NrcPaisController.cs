@@ -26,24 +26,65 @@ namespace procedimientos_interconexion.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<NrcPais>>> GetNrcPais()
         {
-            return await _context.NrcPais.ToListAsync();
+            try
+            {
+                return await _context.NrcPais.ToListAsync();
+            }
+            catch
+            {
+                return BadRequest("Error al obtener lista de paises");
+            }
         }
 
         // GET: api/NrcPais/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<NrcPais>> GetNrcPaisId(decimal id)
+        [HttpGet("{codigo}")]
+        public async Task<ActionResult<NrcPais>> GetNrcPaisId(decimal codigo)
         {
             //Si se desea hacer una busqueda, se debe definir primero una primary key para usar FindAsync. La tabla no tiene. 
-            var nrcPais = await _context.NrcPais.FindAsync(id);
-            Console.WriteLine(nrcPais);
 
-            if (nrcPais == null)
+            try
+            {
+                var nrcPais = await _context.NrcPais.FindAsync(codigo);
+
+                return nrcPais;
+            }
+            catch
             {
                 return NotFound("No se encontró el registro indicado...");
-
             }
 
-            return nrcPais;
+        }
+
+        // GET: api/NrcPais/5
+        [HttpGet("busquedaPais/{desc}")]
+        public async Task<ActionResult<NrcPais>> GetNrcPaisDesc(string desc)
+        {
+            //BUSQUEDA POR COINCIDENCIA
+
+            try
+            {
+
+                var res = await (from _NrcPais in _context.NrcPais where EF.Functions.Like(_NrcPais.PaiDescripcion, $"{desc}%") 
+                                 select new { 
+                                     _NrcPais.PaiCodigo,
+                                     _NrcPais.PaiNacionalidad,
+                                     _NrcPais.PaiDescripcion,
+                                     _NrcPais.PaiUsuarioCreacion,
+                                     _NrcPais.PaiFechaCreacion,
+                                     _NrcPais.PaiUsuarioModificacion,
+                                     _NrcPais.PaiFechaModificacion,
+                                     _NrcPais.PaiCveNacionalidad
+                                 }).ToListAsync();
+
+                return Ok(res);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("No se encontró el registro indicado..." + ex.Message);
+            }
+
+
         }
 
         // POST: api/NrcPais
@@ -52,53 +93,55 @@ namespace procedimientos_interconexion.Controllers
         [HttpPost]
         public async Task<ActionResult<NrcPais>> PostNrcPais(NrcPais nrcPais)
         {
-            _context.NrcPais.Add(nrcPais);
             try
             {
 
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (NrcPaisExists(nrcPais.PaiCodigo))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+                _context.Add(nrcPais);
 
-            return CreatedAtAction("GetNrcPaisId", new { id = nrcPais.PaiCodigo}, nrcPais);
+                await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se agregó nuevo país" + " , " + nrcPais.PaiCodigo);
+
+
+                return CreatedAtAction(nameof(GetNrcPaisId), new { codigo = nrcPais.PaiCodigo}, nrcPais);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
         // PUT: api/NrcPais/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutNrcPais(decimal id, NrcPais nrcPais)
+        [HttpPut("{codigo}")]
+        public async Task<IActionResult> PutNrcPais(decimal codigo, NrcPais nrcPais)
         {
-            if (id != nrcPais.PaiCodigo)
+            if (codigo != nrcPais.PaiCodigo)
             {
                 return BadRequest();
             }
 
 
-            _context.Entry(nrcPais).State = EntityState.Modified;
-            string path = Directory.GetCurrentDirectory();
 
-            Log oLog = new Log(path);
-            string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            oLog.Add(remoteIpAddress + " , " + "Actualizo Pais " + " , " + nrcPais.PaiCodigo);
 
             try
             {
+                _context.Entry(nrcPais).State = EntityState.Modified;
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se actualizó Pais" + " , " + nrcPais.PaiCodigo);
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!NrcPaisExists(id))
+                if (!NrcPaisExists(codigo))
                 {
                     return NotFound();
                 }
@@ -109,7 +152,7 @@ namespace procedimientos_interconexion.Controllers
             }
 
             // return NoContent();
-            return CreatedAtAction(nameof(GetNrcPaisId), new { id = nrcPais.PaiCodigo}, nrcPais);
+            return CreatedAtAction(nameof(GetNrcPaisId), new { codigo = nrcPais.PaiCodigo}, nrcPais);
         }
 
         private bool NrcPaisExists(decimal id)
