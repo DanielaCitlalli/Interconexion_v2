@@ -67,17 +67,7 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     this.suscription?.unsubscribe();   
   }
 
-  
- 
 
-   
-
-  
-
- 
-
-   
-  
 
   campoNoEsValido(campo: string){
     if(campo === 'crip'){
