@@ -1,0 +1,6 @@
+01/12/2022 01:56:31 p. m. , ::1 , Se agregó nuevo país , 161
+01/12/2022 02:02:39 p. m. , ::1 , Se agregó nuevo país , 161
+01/12/2022 02:15:00 p. m. , ::1 , Se agregó nuevo país , 161
+01/12/2022 02:38:15 p. m. , ::1 , Se actualizó Pais  , 161
+01/12/2022 03:27:06 p. m. , ::1 , Se actualizó nacionalidad , 11100100011894003490
+01/12/2022 03:27:26 p. m. , ::1 , Se actualizó nacionalidad , 11100100011894003490
