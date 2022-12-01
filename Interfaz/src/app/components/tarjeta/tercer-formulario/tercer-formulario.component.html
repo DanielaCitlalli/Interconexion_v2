@@ -1,21 +1,30 @@
-<form [formGroup]="formCambioNacionalidad"(ngSubmit)="guardarCambios()" class="contenedor">
+<form [formGroup]="formCambioNacionalidad"(ngSubmit)="guardarCambios()" >
+<br>
+<br>
+<br>
+<br>
+<br>
 
-
- 
+    <table
+    class="table  table-sm alert alert-light border border-2 border border-primary  text text-center  ">
+    <h4 class="centro">Datos de la persona Registrada</h4>
     <!-- Pe Nombres del hijo -->
-<mat-form-field>
-        <div class=" col-mt-5 mb-3 t"  >
-            
-            <div class="">
-
+<mat-form-field >
+        <div  class=" col-mt-5 mb-3 t"    >
                 <input type="text"  
                         matInput
                         placeholder="Nombre(s)"
                         formControlName="PeNombres"
-                        maxlength="20"
-                        >
-            </div>
+                        maxlength="20">
+                        <div >
+                             <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>  -->
+                             <mat-icon>face</mat-icon>
+                            
+                        
+                            
+                        </div> 
     </div>
+
 </mat-form-field>
 <mat-form-field>
     <!-- Pe primer apellido del hijo  -->
@@ -25,6 +34,9 @@
                     placeholder="Primer Apellido "
                     formControlName="PePrimerapellido" 
                     maxlength="20">
+                    <div >
+                        <mat-icon>face</mat-icon>
+                    </div> 
                 </div>
 </mat-form-field>
 
@@ -36,10 +48,13 @@
                         matInput
                         placeholder="Segundo Apellido"
                         formControlName="PeSegundoapellido"
-                        maxlength="20"
-                        >
+                        maxlength="20">
+                        <div >
+                            <mat-icon>face</mat-icon> 
+                        </div> 
             </div>
         </mat-form-field>
+        
     <!-- Pe Sexoo de hijo -->
     <mat-form-field>
     <div class=" col-mt-5 mb-3 "  >
@@ -47,33 +62,194 @@
                         matInput
                         placeholder="Sexo"
                         formControlName="PeSexo"
-                        maxlength="20"
-                        >
-            </div>
+                        maxlength="20">
+                        <div >
+                            <mat-icon>face</mat-icon>
+                        </div> 
+            </div>   
 </mat-form-field>
     <!-- Pe Fecha Nacimiento del hijo-->
-
     <mat-form-field>
     <div class=" col-mt-5 mb-3 "  >
-      
                 <input type="text"  
                         matInput
-                        placeholder="Fecha de Nacimiento"
+                        placeholder="Fecha Nacimiento"
                         formControlName="PeFechanacimiento"
-                        maxlength="20"
-                        >
+                        maxlength="20" >
+                        <div >
+                            <mat-icon>face</mat-icon>
+                        </div> 
             </div>
 </mat-form-field>
     <!-- Pe Lugar de Nacimiento del hijo  -->
-<mat-form-field> 
+<mat-form-field > 
+    
     <div class="col-mt-5 mb-3 "  >
                 <input type="text"  
                         matInput
                         placeholder="Lugar de Nacimiento"
                         formControlName="PeEntidadnacimiento"
-                        maxlength="20"
+                        maxlength="20" 
                         >
+                        <div >
+                            <mat-icon>face</mat-icon>
+                        </div>    
             </div>
 </mat-form-field>
+
+
+
+<h4 class="centro">Datos de afiliacion de la persona Registrada</h4>
+<br>
+<h5 class="centro">Datos del padre</h5>
+ <!--Datos del Pabre Nombre(s) -->
+ <mat-form-field>
+    <div class=" col-mt-5 mb-3 t"  >
+        <div class="">
+            <input type="text"  
+                    matInput
+                    placeholder="Nombre(s)"
+                    formControlName="PaNombres"
+                    maxlength="20">
+                    <div >
+                        <mat-icon>person</mat-icon>
+                    </div> 
+        </div>
+</div>
+</mat-form-field>
+<mat-form-field>
+<!--Datos del Pabre Primer apellido --> 
+      <div class=" col-mt-5 mb-3 " >
+                <input type="text" 
+                matInput
+                placeholder="Primer Apellido "
+                formControlName="PaPrimerapellido" 
+                maxlength="20">
+                <div >
+                    <mat-icon>person</mat-icon>
+                </div> 
+            </div>
+</mat-form-field>
+
+<!--Datos del Pabre segundo apellido --> 
+<mat-form-field>
+<div class=" col-mt-5 mb-3 "  >
+ 
+            <input type="text"  
+                    matInput
+                    placeholder="Segundo Apellido"
+                    formControlName="PaSegundoapellido"
+                    maxlength="20">
+                    <div >
+                        <mat-icon>person</mat-icon> 
+                    </div> 
+        </div>
+    </mat-form-field>
+<!--Datos del Pabre Nacionalidad --> 
+
+<mat-form-field>
+<div class=" col-mt-5 mb-3 "  >
+            <input type="text"  
+                    matInput
+                    placeholder="Nacionalidad"
+                    formControlName="PaNacionalidad"
+                    maxlength="20">
+                    <div >
+                        <mat-icon>public</mat-icon>
+                    </div> 
+        </div>
+       
+</mat-form-field>
+<!--Datos del Pabre Curp --> 
+
+<mat-form-field>
+<div class=" col-mt-5 mb-3 "  >
+  
+            <input type="text"  
+                    matInput
+                    placeholder="Curp"
+                    formControlName="PaCurp"
+                    maxlength="20" >
+                    <div >
+                        <mat-icon>person</mat-icon>
+                    </div> 
+        </div>
+</mat-form-field>
+<br>
+<h5 class="centro">Datos de la Madre</h5>
+ <!--Datos de la Madre Nombre(s) -->
+ <mat-form-field>
+    <div class=" col-mt-5 mb-3 t"  >
+        <div class="">
+            <input type="text"  
+                    matInput
+                    placeholder="Nombre(s)"
+                    formControlName="PaNombres"
+                    maxlength="20">
+                    <div >
+                        <mat-icon>person</mat-icon>
+                    </div> 
+        </div>
+</div>
+</mat-form-field>
+<mat-form-field>
+<!--Datos de la Madre Primer apellido --> 
+      <div class=" col-mt-5 mb-3 " >
+                <input type="text" 
+                matInput
+                placeholder="Primer Apellido "
+                formControlName="MaPrimerapellido" 
+                maxlength="20">
+                <div >
+                    <mat-icon>person</mat-icon>
+                </div> 
+            </div>
+</mat-form-field>
+
+<!--Datos de la Madre segundo apellido --> 
+<mat-form-field>
+<div class=" col-mt-5 mb-3 "  >
+ 
+            <input type="text"  
+                    matInput
+                    placeholder="Segundo Apellido"
+                    formControlName="MaSegundoapellido"
+                    maxlength="20">
+                    <div >
+                        <mat-icon>person</mat-icon>
+                    </div> 
+        </div>
+    </mat-form-field>
+<!--Datos de la Madre Nacionalidad --> 
+<mat-form-field>
+<div class=" col-mt-5 mb-3 "  >
+            <input type="text"  
+                    matInput
+                    placeholder="Nacionalidad"
+                    formControlName="MaNacionalidad"
+                    maxlength="20">
+                    <div >
+                        <mat-icon>public</mat-icon>
+                    </div> 
+        </div>
+       
+</mat-form-field>
+<!--Datos del Madre Curp --> 
+<mat-form-field >
+<div  class=" col-mt-5 mb-3 "  >
+  
+            <input type="text"  
+                    matInput
+                    placeholder="Curp"
+                    formControlName="MaCurp"
+                    maxlength="20" >
+                    <div >
+                        <mat-icon>person</mat-icon>
+                    </div> 
+        </div>
+</mat-form-field>
+
+
+    </table>
     </form>
     
