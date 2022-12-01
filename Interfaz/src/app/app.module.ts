@@ -10,11 +10,16 @@ import { TarjetaComponent } from './components/tarjeta/tarjeta.component';
 import { TarjetaCreditoComponent } from './components/tarjeta/tarjeta-credito/tarjeta-credito.component';
 import { ListaTarjetaCreditoComponent } from './components/tarjeta/lista-tarjeta-credito/lista-tarjeta-credito.component';
 import { FooterComponent } from './components/footer/footer.component';
-//import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatInputModule} from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { SegundoFormularioComponent } from './components/tarjeta/segundo-formulario/segundo-formulario.component';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { TercerFormularioComponent } from './components/tarjeta/tercer-formulario/tercer-formulario.component';
+import { MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,7 @@ import { SegundoFormularioComponent } from './components/tarjeta/segundo-formula
     ListaTarjetaCreditoComponent,
     FooterComponent,
     SegundoFormularioComponent,
+    TercerFormularioComponent,
     
     
   ],
@@ -35,6 +41,12 @@ import { SegundoFormularioComponent } from './components/tarjeta/segundo-formula
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
+    MatAutocompleteModule,
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule
+
 
     
   ],
