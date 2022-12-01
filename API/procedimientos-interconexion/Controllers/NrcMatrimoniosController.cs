@@ -40,7 +40,7 @@ namespace procedimientos_interconexion.Controllers
 
             if (nrcMatrimonios == null)
             {
-                return NotFound("No se encontró el registro indicado...wewrl");
+                return NotFound("No se encontró el registro indicado...");
                
             }
 
