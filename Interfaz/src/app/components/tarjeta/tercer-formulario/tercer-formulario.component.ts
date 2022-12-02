@@ -57,6 +57,11 @@ ngOnInit(): void {
     
   // }
   this.formCambioNacionalidad.get('p1_nombres')?.disable();
+
+  this.servicioeditar.getPaisDesc('ar').subscribe(res => {
+    console.log(res);
+    
+  });
   
 }
 campoNoEsValido(campo: string){
@@ -71,6 +76,8 @@ actualizar(){
 cancelar(){
   this.enviarRegistro.emit(null);
 } 
+
+
   
 
 }
