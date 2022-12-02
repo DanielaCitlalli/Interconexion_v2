@@ -39,14 +39,14 @@ constructor(private formBuilder: FormBuilder
     PaPrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
     PaSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
     PaNacionalidad : [{value:'' , disabled:false} , [Validators.required]],
-    PaCurp : [{value:'' , disabled:false} , [Validators.required]],
+    PaCurp : [{value:'' , disabled:true} , [Validators.required]],
 
 
     MaNombres: [{value:'' , disabled:true} , [Validators.required]],
     MaPrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
     MaSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
     MaNacionalidad : [{value:'' , disabled:false} , [Validators.required]],
-    MaCurp : [{value:'' , disabled:false} , [Validators.required]],
+    MaCurp : [{value:'' , disabled:true} , [Validators.required]],
 
   })
 }

@@ -21,6 +21,7 @@ import { TercerFormularioComponent } from './components/tarjeta/tercer-formulari
 import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,10 +46,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatProgressBarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
 
-
-    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
