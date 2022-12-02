@@ -39,6 +39,10 @@ export class TarjetaServiceService {
   myAppUrl_NRC_Matrimonios = environment.apiUrl_inter;
   myApiUrl_NRC_Matrimonios = 'api/NrcMatrimonios/';
 
+  myAppUrl_NRC_Nacimientos = environment.apiUrl_inter;
+  myApiUrl_NRC_Nacimientos = 'api/NrcNacimientos/';
+
+
   registroTa01: CirrTa01Napeticion[] = [];
   list01: CirrTa01Napeticion[] = [];
   list03: CirrTa03Depeticion[] = [];
@@ -158,4 +162,12 @@ export class TarjetaServiceService {
     return this.http.get<Nrc_Defunciones[]>(this.myAppUrl_inter + this.myApiUrl_De + 'buscarcadena/' + crip);    
   }
   
+  //NrcNacimientos 
+  getNrcNacimientos(cadena: number): Observable<Nrc_Nacimientos> {
+    return this.http.get<Nrc_Nacimientos>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos + cadena);
+  }
+  putNrcNacimiento(id:string,registro:Nrc_Nacimientos):Observable<any>{
+    return this.http.put<any>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos + id , registro);
+   
+  }
 }

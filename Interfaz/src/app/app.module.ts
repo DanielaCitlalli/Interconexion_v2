@@ -20,6 +20,7 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
 import { TercerFormularioComponent } from './components/tarjeta/tercer-formulario/tercer-formulario.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatButtonModule
 
   
   ],

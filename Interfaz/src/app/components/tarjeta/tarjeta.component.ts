@@ -16,6 +16,8 @@ export class TarjetaComponent implements OnInit, OnChanges {
   cadenasDisponibles?: Nrc_Nacimientos[];
   cambioSexoDisponible: boolean = false;
   datos: any;
+  nacionalidadDisponible:boolean=false;
+  registronacimientos:any;
 
   verSpinner: boolean = false;
 
@@ -49,6 +51,16 @@ export class TarjetaComponent implements OnInit, OnChanges {
       this.cadenasDisponibles = event.registro;
       this.verSpinner = false;
       return;
+    } 
+    else if(event.habilitarFormNacionalidad === true){
+      this.nacionalidadDisponible = true;
+      this.registronacimientos = event.registro;
+      this.verSpinner = false;
+      console.log(this.cambioSexoDisponible);
+      console.log(event);
+      
+      return;
+
     }
 
 
