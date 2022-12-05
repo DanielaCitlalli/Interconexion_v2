@@ -7,8 +7,10 @@ import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service'
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import { CirrTa03Depeticion } from '../../../models/CirrTa03Depeticion.model';
 import { CirrTa09Mapeticion } from '../../../models/CirrTa09Mapeticion.model';
+import { Nrc_Nacimientos} from'../../../models/NrcNacimientos';
 
 import Swal from "sweetalert2";
+
 
 
 
@@ -536,11 +538,42 @@ ejecutarGlobal(){
      
       
       break;
+      case "cambiarnacionalidad":
+
+        this.registroDevuelto.emit(undefined);
+
+        this.tarjetaService.getNrcNacimientos(this.globalForm.get('cadena')?.value).subscribe((data:Nrc_Nacimientos) => {
+        
+          let infoEnviada = {
+            registro: data,
+            habilitarForm: false,
+            habilitarFormNacionalidad:true
+            
+          }
+          this.registroDevuelto.emit(infoEnviada);
+        this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+          closeButton: true,
+          disableTimeOut: false,
+        })
+        
+      },
+      error => {
+        this.toastr.error(error.error , 'Ocurrio un error',{
+          closeButton: true,
+          disableTimeOut: false,
+
+        });
+        this.registroDevuelto.emit('error');
+      });
+     
+      break;
 
     default:
       break;
+
+       
+
   }
-  
 }
 ejecutarBusqueda(){
 

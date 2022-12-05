@@ -40,6 +40,9 @@ export class TarjetaServiceService {
   myAppUrl_NRC_Matrimonios = environment.apiUrl_inter;
   myApiUrl_NRC_Matrimonios = 'api/NrcMatrimonios/';
 
+  myAppUrl_NRC_Nacimientos = environment.apiUrl_inter;
+  myApiUrl_NRC_Nacimientos = 'api/NrcNacimientos/';
+
   myAppUrl_Pais = environment.apiUrl_inter;
   myApiUrl_Pais = 'api/NrcPais/busquedaPais/';
 
@@ -167,4 +170,12 @@ export class TarjetaServiceService {
     return this.http.get<NrcPais[]>(this.myAppUrl_Pais + this.myApiUrl_Pais + desc);
   }
   
+  //NrcNacimientos 
+  getNrcNacimientos(cadena: number): Observable<Nrc_Nacimientos> {
+    return this.http.get<Nrc_Nacimientos>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos + cadena);
+  }
+  putNrcNacimiento(id:string,registro:Nrc_Nacimientos):Observable<any>{
+    return this.http.put<any>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos + id , registro);
+   
+  }
 }
