@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { map, Observable, startWith } from 'rxjs';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 
 @Component({
@@ -11,6 +12,9 @@ import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service'
 export class TercerFormularioComponent implements OnInit {
   
   formCambioNacionalidad: FormGroup;
+  
+   
+  
 
 guardarCambios() {
 throw new Error('Method not implemented.');
@@ -27,26 +31,26 @@ constructor(private formBuilder: FormBuilder
   , private toastr: ToastrService
   , private servicioeditar: TarjetaServiceService) { 
   this.formCambioNacionalidad = this.formBuilder.group({
-    PeNombres: [{value:'' , disabled:true} , [Validators.required]],
-    PePrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
-    PeSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
-    PeSexo: [{value:'' , disabled:true} , [Validators.required]],
-    PeFechanacimiento: [{value:'' , disabled:true} , [Validators.required]],
-    PeEntidadnacimiento: [{value:'' , disabled:true} , [Validators.required]],
+    peNombres: [{value:'' , disabled:true} , [Validators.required]],
+    pePrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
+    peSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
+    peSexo: [{value:'' , disabled:true} , [Validators.required]],
+    peFechanacimiento: [{value:'' , disabled:true} , [Validators.required]],
+    peEntidadnacimiento: [{value:'' , disabled:true} , [Validators.required]],
 
 
-    PaNombres: [{value:'' , disabled:true} , [Validators.required]],
-    PaPrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
-    PaSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
-    PaNacionalidad : [{value:'' , disabled:false} , [Validators.required]],
-    PaCurp : [{value:'' , disabled:true} , [Validators.required]],
+    paNombres: [{value:'' , disabled:true} , [Validators.required]],
+    paPrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
+    paSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
+    paNacionalidad : [{value:'' , disabled:false} , [Validators.required]],
+    paCurp : [{value:'' , disabled:true} , [Validators.required]],
 
 
-    MaNombres: [{value:'' , disabled:true} , [Validators.required]],
-    MaPrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
-    MaSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
-    MaNacionalidad : [{value:'' , disabled:false} , [Validators.required]],
-    MaCurp : [{value:'' , disabled:true} , [Validators.required]],
+    maNombres: [{value:'' , disabled:true} , [Validators.required]],
+    maPrimerapellido: [{value:'' , disabled:true} , [Validators.required]],
+    maSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
+    maNacionalidad : [{value:'' , disabled:false} , [Validators.required]],
+    maCurp : [{value:'' , disabled:true} , [Validators.required]],
 
   })
 }
@@ -57,21 +61,19 @@ ngOnInit(): void {
     
   // }
   this.formCambioNacionalidad.get('p1_nombres')?.disable();
+  console.log(this.datosRetornados);
+  this.formCambioNacionalidad.patchValue(this.datosRetornados);
 
-  this.servicioeditar.getPaisDesc('ar').subscribe(res => {
-    console.log(res);
-    
-  });
-  
 }
+  
 campoNoEsValido(campo: string){
   return this.formCambioNacionalidad.controls[campo].errors &&
           this.formCambioNacionalidad.controls[campo].touched
 }
-actualizar(){
-  this.formCambioNacionalidad.patchValue(this.datosRetornados.registro);
+// actualizar(){
   
-}
+  
+// }
 
 cancelar(){
   this.enviarRegistro.emit(null);

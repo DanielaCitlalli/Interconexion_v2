@@ -1,9 +1,5 @@
 <form [formGroup]="formCambioNacionalidad"(ngSubmit)="guardarCambios()" >
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
     <table
     class="table  table-sm alert alert-light border border-2 border border-primary  text text-center  ">
@@ -14,7 +10,7 @@
                 <input type="text"  
                         matInput
                         placeholder="Nombre(s)"
-                        formControlName="PeNombres"
+                        formControlName="peNombres"
                         maxlength="20">
                         <div >
                              <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>  -->
@@ -32,7 +28,7 @@
                     <input type="text" 
                     matInput
                     placeholder="Primer Apellido "
-                    formControlName="PePrimerapellido" 
+                    formControlName="pePrimerapellido" 
                     maxlength="20">
                     <div >
                         <mat-icon>face</mat-icon>
@@ -47,7 +43,7 @@
                 <input type="text"  
                         matInput
                         placeholder="Segundo Apellido"
-                        formControlName="PeSegundoapellido"
+                        formControlName="peSegundoapellido"
                         maxlength="20">
                         <div >
                             <mat-icon>face</mat-icon> 
@@ -61,7 +57,7 @@
                 <input type="text"  
                         matInput
                         placeholder="Sexo"
-                        formControlName="PeSexo"
+                        formControlName="peSexo"
                         maxlength="20">
                         <div >
                             <mat-icon>face</mat-icon>
@@ -74,7 +70,7 @@
                 <input type="text"  
                         matInput
                         placeholder="Fecha Nacimiento"
-                        formControlName="PeFechanacimiento"
+                        formControlName="peFechanacimiento"
                         maxlength="20" >
                         <div >
                             <mat-icon>face</mat-icon>
@@ -82,20 +78,20 @@
             </div>
 </mat-form-field>
     <!-- Pe Lugar de Nacimiento del hijo  -->
-<mat-form-field > 
+<!-- <mat-form-field > 
     
     <div class="col-mt-5 mb-3 "  >
                 <input type="text"  
                         matInput
                         placeholder="Lugar de Nacimiento"
-                        formControlName="PeEntidadnacimiento"
+                        formControlName="peEntidadnacimiento"
                         maxlength="20" 
                         >
                         <div >
                             <mat-icon>face</mat-icon>
                         </div>    
             </div>
-</mat-form-field>
+</mat-form-field> -->
 
 
 
@@ -109,7 +105,7 @@
             <input type="text"  
                     matInput
                     placeholder="Nombre(s)"
-                    formControlName="PaNombres"
+                    formControlName="paNombres"
                     maxlength="20">
                     <div >
                         <mat-icon>person</mat-icon>
@@ -123,7 +119,7 @@
                 <input type="text" 
                 matInput
                 placeholder="Primer Apellido "
-                formControlName="PaPrimerapellido" 
+                formControlName="paPrimerapellido" 
                 maxlength="20">
                 <div >
                     <mat-icon>person</mat-icon>
@@ -138,7 +134,7 @@
             <input type="text"  
                     matInput
                     placeholder="Segundo Apellido"
-                    formControlName="PaSegundoapellido"
+                    formControlName="paSegundoapellido"
                     maxlength="20">
                     <div >
                         <mat-icon>person</mat-icon> 
@@ -149,12 +145,13 @@
 
 <mat-form-field>
 <div class=" col-mt-5 mb-3 "  >
+    
             <input type="text"  
                     matInput
-                    placeholder="Nacionalidad"
-                    formControlName="PaNacionalidad"
+                    formControlName="paNacionalidad"
                     maxlength="20">
                     <div >
+                        <mat-label>Nacionalidad</mat-label>
                         <mat-icon>public</mat-icon>
                     </div> 
         </div>
@@ -168,7 +165,7 @@
             <input type="text"  
                     matInput
                     placeholder="Curp"
-                    formControlName="PaCurp"
+                    formControlName="paCurp"
                     maxlength="20" >
                     <div >
                         <mat-icon>person</mat-icon>
@@ -184,7 +181,7 @@
             <input type="text"  
                     matInput
                     placeholder="Nombre(s)"
-                    formControlName="PaNombres"
+                    formControlName="paNombres"
                     maxlength="20">
                     <div >
                         <mat-icon>person</mat-icon>
@@ -198,7 +195,7 @@
                 <input type="text" 
                 matInput
                 placeholder="Primer Apellido "
-                formControlName="MaPrimerapellido" 
+                formControlName="maPrimerapellido" 
                 maxlength="20">
                 <div >
                     <mat-icon>person</mat-icon>
@@ -213,7 +210,7 @@
             <input type="text"  
                     matInput
                     placeholder="Segundo Apellido"
-                    formControlName="MaSegundoapellido"
+                    formControlName="maSegundoapellido"
                     maxlength="20">
                     <div >
                         <mat-icon>person</mat-icon>
@@ -225,10 +222,14 @@
 <div class=" col-mt-5 mb-3 "  >
             <input type="text"  
                     matInput
-                    placeholder="Nacionalidad"
-                    formControlName="MaNacionalidad"
-                    maxlength="20">
+                    formControlName="maNacionalidad"
+                    maxlength="20" 
+                    > 
+                 
+                    
                     <div >
+                        <mat-label>Nacionalidad</mat-label>
+                        
                         <mat-icon>public</mat-icon>
                     </div> 
         </div>
@@ -241,15 +242,24 @@
             <input type="text"  
                     matInput
                     placeholder="Curp"
-                    formControlName="MaCurp"
+                    formControlName="maCurp"
                     maxlength="20" >
                     <div >
                         <mat-icon>person</mat-icon>
                     </div> 
         </div>
+        
 </mat-form-field>
-
-
+<div>
+    <p>&nbsp; </p>
+    
+    <button mat-raised-button class="color"><mat-icon>how_to_reg</mat-icon>Actualizar</button>
+     &nbsp;  &nbsp; &nbsp;<!--Dar espacios entre cada botón -->
+    <button mat-raised-button color="warn"><mat-icon>highlight_off</mat-icon>Cancelar </button>
+   
+</div>
+&nbsp;
     </table>
+    &nbsp;
     </form>
     
