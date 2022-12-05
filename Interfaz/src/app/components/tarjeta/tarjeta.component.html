@@ -34,7 +34,8 @@
                 </app-segundo-formulario>
 
                 <app-tercer-formulario [datosRetornados]="registronacimientos"
-                                        *ngIf="nacionalidadDisponible=== true">
+                                        *ngIf="nacionalidadDisponible=== true"
+                                        (enviarRegistro)=" mostrarRegistroDevuletoNacionalidad($event)">
 
                 </app-tercer-formulario>
 

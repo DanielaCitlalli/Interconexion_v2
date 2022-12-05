@@ -51,6 +51,7 @@ export class TarjetaServiceService {
   list03: CirrTa03Depeticion[] = [];
   list09: CirrTa09Mapeticion[] = [];
   lista04: Nrc_Matrimonios [] = [];
+  lista05: NrcPais [] = [];
 
 
   private actualizarFormulario = new BehaviorSubject<TarjetaCredito>({} as any);
@@ -169,6 +170,9 @@ export class TarjetaServiceService {
   getPaisDesc(desc: string): Observable<NrcPais[]>{
     return this.http.get<NrcPais[]>(this.myAppUrl_Pais + this.myApiUrl_Pais + desc);
   }
+
+ 
+  
   
   //NrcNacimientos 
   getNrcNacimientos(cadena: number): Observable<Nrc_Nacimientos> {
