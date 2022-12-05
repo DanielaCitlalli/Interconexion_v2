@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment.prod';
 import { Nrc_Matrimonios } from '../models/Nrc_Matrimonios';
 import { Nrc_Nacimientos } from '../models/NrcNacimientos';
 import { Nrc_Defunciones } from '../models/Nrc_Defunciones';
+import { NrcPais } from '../models/NrcPais.model';
 
 
 @Injectable({
@@ -42,6 +43,8 @@ export class TarjetaServiceService {
   myAppUrl_NRC_Nacimientos = environment.apiUrl_inter;
   myApiUrl_NRC_Nacimientos = 'api/NrcNacimientos/';
 
+  myAppUrl_Pais = environment.apiUrl_inter;
+  myApiUrl_Pais = 'api/NrcPais/busquedaPais/';
 
   registroTa01: CirrTa01Napeticion[] = [];
   list01: CirrTa01Napeticion[] = [];
@@ -160,6 +163,11 @@ export class TarjetaServiceService {
   getDuplicadosDef(crip: number):Observable<Nrc_Defunciones[]>{
 
     return this.http.get<Nrc_Defunciones[]>(this.myAppUrl_inter + this.myApiUrl_De + 'buscarcadena/' + crip);    
+  }
+
+  //Servicios para NrcPais
+  getPaisDesc(desc: string): Observable<NrcPais[]>{
+    return this.http.get<NrcPais[]>(this.myAppUrl_Pais + this.myApiUrl_Pais + desc);
   }
   
   //NrcNacimientos 

@@ -78,6 +78,8 @@ campoNoEsValido(campo: string){
 cancelar(){
   this.enviarRegistro.emit(null);
 } 
+
+
   
 
 }
