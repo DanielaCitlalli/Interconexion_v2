@@ -1,10 +1,10 @@
 export interface NrcPais{
     paiCodigo :number;
-    paiNacionalidad :number;
-    paiDescripcion :number;
-    paiUsuarioCreacion :number;
+    paiNacionalidad :string;
+    paiDescripcion :string;
+    paiUsuarioCreacion :string;
     paiFechaCreacion :Date;
-    paiUsuarioModificacion :number;
+    paiUsuarioModificacion :string;
     paiFechaModificacion? :Date;
-    paiCveNacionalidad :number;
+    paiCveNacionalidad :string;
 }
