@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, timeout } from 'rxjs';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
+import { NrcPais } from 'src/app/models/NrcPais.model';
+import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
 
 @Component({
   selector: 'app-tercer-formulario',
@@ -16,9 +18,7 @@ export class TercerFormularioComponent implements OnInit {
    
   
 
-guardarCambios() {
-throw new Error('Method not implemented.');
-}
+
 
 @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
 
@@ -65,6 +65,34 @@ ngOnInit(): void {
   this.formCambioNacionalidad.patchValue(this.datosRetornados);
 
 }
+guardarCambios() {
+
+
+  const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
+  formNacionalidad.panacionalidad = this.formCambioNacionalidad.controls["paNacionalidad"].value;
+  formNacionalidad.manacionalidad = this.formCambioNacionalidad.get('maNacionalidad')?.value;
+  console.log(formNacionalidad);
+  // this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
+  //   if(datos !== null && datos !== undefined){
+  //     this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
+  //       closeButton: true,
+  //       timeOut: 7000,
+  //     });
+  //     this.enviarRegistro.emit(datos);
+  
+   
+  
+  //   }
+  
+  //   else{
+  //     this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
+  //       timeOut: 7000,
+  //       closeButton: true,
+  
+  //     });
+  //   }
+  // })
+  }
   
 campoNoEsValido(campo: string){
   return this.formCambioNacionalidad.controls[campo].errors &&
@@ -77,6 +105,7 @@ campoNoEsValido(campo: string){
 
 cancelar(){
   this.enviarRegistro.emit(null);
+  
 } 
 
 

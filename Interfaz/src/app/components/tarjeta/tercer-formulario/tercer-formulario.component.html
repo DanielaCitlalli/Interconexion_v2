@@ -225,13 +225,14 @@
                     formControlName="maNacionalidad"
                     maxlength="20" 
                     > 
-                 
+                     
                     
                     <div >
                         <mat-label>Nacionalidad</mat-label>
                         
                         <mat-icon>public</mat-icon>
                     </div> 
+                    
         </div>
        
 </mat-form-field>
@@ -255,7 +256,7 @@
     
     <button mat-raised-button class="color"><mat-icon>how_to_reg</mat-icon>Actualizar</button>
      &nbsp;  &nbsp; &nbsp;<!--Dar espacios entre cada botón -->
-    <button mat-raised-button color="warn"><mat-icon>highlight_off</mat-icon>Cancelar </button>
+    <button mat-raised-button color="warn" (click)="cancelar()"><mat-icon>highlight_off</mat-icon>Cancelar </button>
    
 </div>
 &nbsp;
