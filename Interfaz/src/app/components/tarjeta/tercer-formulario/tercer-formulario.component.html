@@ -144,19 +144,26 @@
 <!--Datos del Pabre Nacionalidad --> 
 
 <mat-form-field>
-<div class=" col-mt-5 mb-3 "  >
-    
-            <input type="text"  
-                    matInput
-                    formControlName="paNacionalidad"
-                    maxlength="20">
-                    <div >
-                        <mat-label>Nacionalidad</mat-label>
-                        <mat-icon>public</mat-icon>
-                    </div> 
+    <div class="col-mt-5 mb-3">
+        <!-- Value de Autocomplete guarda la descripcion del pais para no mostrar id en la interfaz -->
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of optionsPa" [value]="option.paiDescripcion" (onSelectionChange)="cambiarPaisPa(option)">
+                {{option.paiDescripcion}}
+            </mat-option>
+        </mat-autocomplete>
+        <input type="text"
+        placeholder="Nacionalidad"
+        matInput
+        formControlName="paNacionalidad"
+        [matAutocomplete]="auto">
+        <div>
+            <!-- <mat-label>Nacionalidad</mat-label> -->
+            <mat-icon>public</mat-icon>
         </div>
-       
+    </div>
+    <!-- <mat-label>Number</mat-label> -->
 </mat-form-field>
+
 <!--Datos del Pabre Curp --> 
 
 <mat-form-field>
@@ -218,23 +225,29 @@
         </div>
     </mat-form-field>
 <!--Datos de la Madre Nacionalidad --> 
+
 <mat-form-field>
-<div class=" col-mt-5 mb-3 "  >
-            <input type="text"  
-                    matInput
-                    formControlName="maNacionalidad"
-                    maxlength="20" 
-                    > 
-                 
-                    
-                    <div >
-                        <mat-label>Nacionalidad</mat-label>
-                        
-                        <mat-icon>public</mat-icon>
-                    </div> 
+    <div class="col-mt-5 mb-3">
+        <!-- Value de Autocomplete guarda la descripcion del pais para no mostrar id en la interfaz -->
+        <mat-autocomplete #auto2="matAutocomplete">
+            <mat-option *ngFor="let option of optionsMa" [value]="option.paiDescripcion" (onSelectionChange)="cambiarPaisMa(option)">
+                {{option.paiDescripcion}}
+            </mat-option>
+        </mat-autocomplete>
+        <input type="text"
+        placeholder="Nacionalidad"
+        matInput
+        formControlName="maNacionalidad"
+        [matAutocomplete]="auto2">
+        <div>
+            <!-- <mat-label>Nacionalidad</mat-label> -->
+            <mat-icon>public</mat-icon>
         </div>
-       
+    </div>
+    <!-- <mat-label>Number</mat-label> -->
 </mat-form-field>
+
+
 <!--Datos del Madre Curp --> 
 <mat-form-field >
 <div  class=" col-mt-5 mb-3 "  >
