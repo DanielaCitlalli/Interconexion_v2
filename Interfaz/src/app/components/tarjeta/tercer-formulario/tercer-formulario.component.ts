@@ -5,6 +5,7 @@ import { map, Observable, startWith, timeout } from 'rxjs';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { NrcPais } from 'src/app/models/NrcPais.model';
 import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
+import Swal  from "sweetalert2";
 
 @Component({
   selector: 'app-tercer-formulario',
@@ -66,10 +67,15 @@ ngOnInit(): void {
   //   this.actualizar();
     
   // }
+
+      
   this.formCambioNacionalidad.get('p1_nombres')?.disable();
   console.log(this.datosRetornados);
-  this.formCambioNacionalidad.patchValue(this.datosRetornados);
-
+ this.formCambioNacionalidad.patchValue(this.datosRetornados);
+ 
+ 
+ 
+ 
 
   //Para llenar las opciones del autocomplete de Nacionalidad (Padre)
   this.formCambioNacionalidad.controls["paNacionalidad"].valueChanges.subscribe(value => {
@@ -99,6 +105,7 @@ ngOnInit(): void {
     }
 
   });
+  
 
 }
 
@@ -119,36 +126,50 @@ cambiarPaisMa(option: NrcPais){
 
 
 guardarCambios() {
-
-
-  console.log("Form:" , this.formCambioNacionalidad.value);
+  Swal.fire({
+    title: '¿Estas seguro de continuar?',
+    text: "No podrás revertirlo",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Continuar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.enviarRegistro.emit(undefined);
+      console.log("Form:" , this.formCambioNacionalidad.value);
   
-  const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
-
-  formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
-  formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
-  // formNacionalidad.maNacionalidad = parseInt(this.formCambioNacionalidad.controls["maNacionalidad"].value);
-  // formNacionalidad.paNacionalidad = parseInt(this.formCambioNacionalidad.controls["paNacionalidad"].value);
-
-  console.log("Variable para guardar form:" , formNacionalidad);
-  
-  this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
-    if(datos !== null && datos !== undefined){
-      this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
-        closeButton: true,
-        timeOut: 7000,
-      });
-      this.enviarRegistro.emit(datos);
+      const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
+    
+      formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
+      formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
+      // formNacionalidad.maNacionalidad = parseInt(this.formCambioNacionalidad.controls["maNacionalidad"].value);
+      // formNacionalidad.paNacionalidad = parseInt(this.formCambioNacionalidad.controls["paNacionalidad"].value);
+    
+      console.log("Variable para guardar form:" , formNacionalidad);
+      
+      this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
+        if(datos !== null && datos !== undefined){
+          this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
+            closeButton: true,
+            timeOut: 7000,
+          });
+          this.enviarRegistro.emit(datos);
+        }
+      
+        else{
+          this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
+            timeOut: 7000,
+            closeButton: true,
+      
+          });
+        }
+      })
     }
-  
-    else{
-      this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
-        timeOut: 7000,
-        closeButton: true,
-  
-      });
-    }
-  })
+  } )
+
+ 
   }
   
 campoNoEsValido(campo: string){
