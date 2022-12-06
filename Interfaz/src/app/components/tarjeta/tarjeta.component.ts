@@ -70,6 +70,8 @@ export class TarjetaComponent implements OnInit, OnChanges {
     //Para llenar segundo formulario(cambio de sexo) con el registro encontrado
     this.datos = event;
 
+    this.registronacimientos = event;
+
     //habilitarForm - Para mostrar formulario de cambio de sexo
     this.cambioSexoDisponible = event.habilitarForm;
 
@@ -100,6 +102,25 @@ export class TarjetaComponent implements OnInit, OnChanges {
     //Para enviar registro afectado despues de cambio de sexo en segundo formulario
     this.registroEnviarCambioSexo = event;
     this.cambioSexoDisponible = false;
+
+    this.verSpinner = false;
+  }
+
+  mostrarRegistroDevuletoNacionalidad(event: any){
+
+    if(event === undefined){
+      this.verSpinner = true;
+      return;
+    }
+    else if(event === 'error'){
+      this.verSpinner = false;
+      return
+      
+    }
+
+    //Para enviar registro afectado despues de cambio de sexo en segundo formulario
+    this.registronacimientos = event;
+    this.nacionalidadDisponible = false;
 
     this.verSpinner = false;
   }

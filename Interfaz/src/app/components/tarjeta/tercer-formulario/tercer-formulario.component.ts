@@ -1,11 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { map, Observable, startWith } from 'rxjs';
-import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
-import { NrcPais } from 'src/app/models/NrcPais.model';
+import { map, Observable, startWith, timeout } from 'rxjs';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
-import Swal from 'sweetalert2';
+import { NrcPais } from 'src/app/models/NrcPais.model';
+import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
 
 @Component({
   selector: 'app-tercer-formulario',
@@ -16,12 +15,16 @@ export class TercerFormularioComponent implements OnInit {
   
   formCambioNacionalidad: FormGroup;
   
-   
+  //Guardan los paises que coincidan con lo buscado en autocomplete
+  optionsPa!: NrcPais[];
+  optionsMa!: NrcPais[];
+
+  //Guarda id de pais seleccionado
+  paNuevaNacionalidad!: number;
+  maNuevaNacionalidad!: number;
   
 
-// guardarCambios() {
-// throw new Error('Method not implemented.');
-// }
+
 
 @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
 
@@ -59,184 +62,108 @@ constructor(private formBuilder: FormBuilder
 }
 
 ngOnInit(): void {
-  if(this.datosRetornados.habilitarForm === true){
-   this.actualizar();
+  // if(this.datosRetornados.habilitarForm === true){
+  //   this.actualizar();
     
-   
-  this.formCambioNacionalidad.get('paNacionalidad')?.disable();
-  this.formCambioNacionalidad.get('maNacionalidad')?.disable();
-  }
+  // }
+  this.formCambioNacionalidad.get('p1_nombres')?.disable();
   console.log(this.datosRetornados);
   this.formCambioNacionalidad.patchValue(this.datosRetornados);
 
-}
-guardarCambios(){
-  Swal.fire({
-    title: '¿Estas seguro de continuar?',
-    text: "No podrás revertirlo",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Continuar',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.enviarRegistro.emit(undefined);
 
-      const formNacionalidad: Nrc_Nacimientos = this.datosRetornados.registro;
-      formNacionalidad.panacionalidad = this.formCambioNacionalidad.get('paNacionalidad')?.value;
-      formNacionalidad.manacionalidad = this.formCambioNacionalidad.get('maNacionalidad')?.value;
+  //Para llenar las opciones del autocomplete de Nacionalidad (Padre)
+  this.formCambioNacionalidad.controls["paNacionalidad"].valueChanges.subscribe(value => {
+    // console.log(value);
+    if(value.length > 2){
+      this.servicioeditar.getPaisDesc(value).subscribe(pais => {
+        this.optionsPa = pais;
+        // console.log(this.optionsPa);
+      });
+    }
+    else{
+      this.optionsPa = []
+    }
+
+  });
+  //Para llenar las opciones del autocomplete de Nacionalidad (Madre)
+  this.formCambioNacionalidad.controls["maNacionalidad"].valueChanges.subscribe(value => {
+    // console.log(value);
+    if(value.length > 2){
+      this.servicioeditar.getPaisDesc(value).subscribe(pais => {
+        this.optionsMa = pais;
+        // console.log(this.optionsMa);
+      });
+    }
+    else{
+      this.optionsMa = []
+    }
+
+  });
+
+}
+
+//Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del padre
+cambiarPaisPa(option: NrcPais){
+
+  this.paNuevaNacionalidad = option.paiCodigo;
+  console.log("NACIONALIDAD - PADRE" , option , this.paNuevaNacionalidad);
+}
+
+//Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del madre
+cambiarPaisMa(option: NrcPais){
+
+  this.maNuevaNacionalidad = option.paiCodigo;
+  console.log("NACIONALIDAD - MADRE" , option , this.maNuevaNacionalidad);
+}
+
+
+
+guardarCambios() {
+
+
+  console.log("Form:" , this.formCambioNacionalidad.value);
   
-      this.servicioeditar.postNrcpais(this.datosRetornados.registro.cadena).subscribe(data => {
+  const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
+
+  formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
+  formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
+  // formNacionalidad.maNacionalidad = parseInt(this.formCambioNacionalidad.controls["maNacionalidad"].value);
+  // formNacionalidad.paNacionalidad = parseInt(this.formCambioNacionalidad.controls["paNacionalidad"].value);
+
+  console.log("Variable para guardar form:" , formNacionalidad);
   
-        if(data ){
-          this.toastr.success("Cambio la Nacionalida", " Cambio de Nacionalidad exitosa " , {
-            closeButton: true,
-            timeOut: 7000,
-          });
-          this.enviarRegistro.emit(data);
-          
-          
-          const formpais: Nrc_Nacimientos = {
-            numeroacta:0,
-            anioregistro:0,
-            tipodocumento:0,
-            entidadregistro:0,
-            municipioregistro:0,
-            oficilia:0,     
-            actabis:"",
-            cadena:"",
-            cofecharegistro:null,
-            collaveregistrocivil:'',
-            cofoja: 0,
-            cotomo:0,
-            colibro:0,
-            imnombreoriginalimagen:null,
-            imarchivo:'',
-            otnotasmarginales:'',
-            otcrip:'',
-            Otvivoomuerto:'',
-            peprimerapellido:'',
-            pesegundoapellido:'',
-            penombres:'',
-            peedad:0,
-            pesexo:'',
-            pefechanacimiento:null, 
-            pefechanacimientoinc:'',
-            peentidadnacimiento:0,
-            pemunicipionacimiento:0,
-            pelocalidadnacimiento:'',
-            penacionalidad:0,
-            pepaisnacimiento:0,
-            pecurp :'',
-            paprimerapellido  :'',
-            pasegundoapellido:'',
-            panombres:'',
-            paedad:0,
-            pasexo:'',
-            pafechanacimiento:null,
-            pafechanacimientoinc:'',
-            paentidadnacimiento:0,
-            pamunicipionacimiento:0,
-            palocalidadnacimiento:'',
-            panacionalidad:0,
-            papaisnacimiento:0,
-            pacurp :'',
-            panumeroacta:0,
-            paanioregistro:0,
-            patipodocumento:0,
-            paentidadregistro:0,
-            pamunicipioregistro:0,
-            paoficilia:0,
-            paactabis:'',
-            manumeroacta:0,
-            maanioregistro:0,
-            matipodocumento:0,
-            maentidadregistro:0,
-            mamunicipioregistro:0,
-            maoficilia:0,
-            maactabis:'',
-            maprimerapellido  :'',
-            masegundoapellido:'',
-            manombres:'',
-            maedad:0,
-            masexo:'',
-            mafechanacimiento:null,
-            mafechanacimientoinc:'',
-            maentidadnacimiento:0,
-            mamunicipionacimiento:0,
-            malocalidadnacimiento:'',
-            manacionalidad:0,
-            mapaisnacimiento:0,
-            macurp :'',
-            cnfechaactualizacion:null,
-            cnfechaactualizacioninc: null,
-            cnfechacaptura:null,
-            oterrororigen: null,
-            otfecharegistronacimientoinc:'',
-            otfirma:'',
-            otsello:'',
-            tmpfecha:null,
-            otcertificadona: null,
-            nactoid:0,
-            tipocadena:0,
-            cotipo:null,
-            cofechaoriginal:null,
-            cotranscripcion:'',
-            cosoporte:''
-          }
-          this.servicioeditar.postNrcNacimiento(formpais).subscribe(data=> {
+  this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
+    if(datos !== null && datos !== undefined){
+      this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
+        closeButton: true,
+        timeOut: 7000,
+      });
+      this.enviarRegistro.emit(datos);
+    }
   
-              this.enviarRegistro.emit(data);
-              this.toastr.success("Actualizacion de tabla NrcPais " , " Éxito" , {
-                closeButton: true,
-                timeOut: 7000,
-              })
-              
-            },error => {
-              this.toastr.error("Error al actualizar tabla tabla NrcPais", " Error" , {
-                timeOut: 7000,
-                closeButton: true,
-              })
-            })
-          
-        }
-        else{
-          this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
-            timeOut: 7000,
-            closeButton: true,
-  
-          });
-        }
-  
-  
-    } , error => {
-      this.toastr.error("Error al actualizar sexo","Error de altualizar Nacionalidad ",{
+    else{
+      this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
         timeOut: 7000,
         closeButton: true,
   
       });
-    })
     }
   })
-
+  }
   
-}
-
- 
 campoNoEsValido(campo: string){
   return this.formCambioNacionalidad.controls[campo].errors &&
           this.formCambioNacionalidad.controls[campo].touched
 }
- actualizar(){
-  this.formCambioNacionalidad.patchValue(this.datosRetornados.registro);
+// actualizar(){
   
- }
+  
+// }
 
-// cancelar(){
-//   this.enviarRegistro.emit(null);
-// } 
+cancelar(){
+  this.enviarRegistro.emit(null);
+  
+} 
 
 
   

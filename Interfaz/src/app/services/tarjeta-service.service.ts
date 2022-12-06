@@ -175,6 +175,9 @@ export class TarjetaServiceService {
   getPaisDesc(desc: string): Observable<NrcPais[]>{
     return this.http.get<NrcPais[]>(this.myAppUrl_Pais + this.myApiUrl_Pais + desc);
   }
+
+ 
+  
   
   //NrcNacimientos 
   getNrcNacimientos(cadena: number): Observable<Nrc_Nacimientos> {
