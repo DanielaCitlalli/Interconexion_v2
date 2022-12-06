@@ -46,11 +46,17 @@ export class TarjetaServiceService {
   myAppUrl_Pais = environment.apiUrl_inter;
   myApiUrl_Pais = 'api/NrcPais/busquedaPais/';
 
+  myAppUrl_cambio_Nacionalidad = environment.apiUrl_inter;
+  myApiUrl_cambio_Nacionalidad = 'api/NrcPais';
+
+
+
   registroTa01: CirrTa01Napeticion[] = [];
   list01: CirrTa01Napeticion[] = [];
   list03: CirrTa03Depeticion[] = [];
   list09: CirrTa09Mapeticion[] = [];
   lista04: Nrc_Matrimonios [] = [];
+  lista05: NrcPais [] = [];
 
 
   private actualizarFormulario = new BehaviorSubject<TarjetaCredito>({} as any);
@@ -176,6 +182,21 @@ export class TarjetaServiceService {
   }
   putNrcNacimiento(id:string,registro:Nrc_Nacimientos):Observable<any>{
     return this.http.put<any>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos + id , registro);
-   
   }
+
+  postNrcNacimiento(registro: Nrc_Nacimientos): Observable<any> {
+    // console.log('llegue al servicio 09', registro);
+
+    return this.http.post<any>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos, registro);
+  }
+ 
+
+ 
+  //servicio de cambio de Nacionalidad
+  postNrcpais(registro: NrcPais): Observable<any> {
+    return this.http.post<any>(this.myAppUrl_cambio_Nacionalidad + this.myApiUrl_cambio_Nacionalidad , registro);
+  }
+
+  
+  
 }
