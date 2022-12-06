@@ -46,6 +46,11 @@ export class TarjetaServiceService {
   myAppUrl_Pais = environment.apiUrl_inter;
   myApiUrl_Pais = 'api/NrcPais/busquedaPais/';
 
+  myAppUrl_paiscodigo = environment.apiUrl_inter;
+  myApiUrl_paiscodigo = 'api/NrcPais/';
+
+
+
   registroTa01: CirrTa01Napeticion[] = [];
   list01: CirrTa01Napeticion[] = [];
   list03: CirrTa03Depeticion[] = [];
@@ -180,6 +185,15 @@ export class TarjetaServiceService {
   }
   putNrcNacimiento(id:string,registro:Nrc_Nacimientos):Observable<any>{
     return this.http.put<any>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos + id , registro);
-   
   }
+
+
+ 
+  //servicio de cambio de Nacionalidad
+  getNrcpaiscodigo(registro: NrcPais): Observable<any> {
+    return this.http.get<any>(this.myAppUrl_paiscodigo + this.myApiUrl_paiscodigo + registro);
+  }
+
+  
+  
 }
