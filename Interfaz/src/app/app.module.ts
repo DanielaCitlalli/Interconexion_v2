@@ -12,6 +12,7 @@ import { ListaTarjetaCreditoComponent } from './components/tarjeta/lista-tarjeta
 import { FooterComponent } from './components/footer/footer.component';
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule} from '@angular/material/input';
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -48,7 +49,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatStepperModule
 
   
   ],

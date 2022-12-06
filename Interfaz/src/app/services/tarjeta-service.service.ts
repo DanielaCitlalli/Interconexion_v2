@@ -46,8 +46,8 @@ export class TarjetaServiceService {
   myAppUrl_Pais = environment.apiUrl_inter;
   myApiUrl_Pais = 'api/NrcPais/busquedaPais/';
 
-  myAppUrl_cambio_Nacionalidad = environment.apiUrl_inter;
-  myApiUrl_cambio_Nacionalidad = 'api/NrcPais';
+  myAppUrl_paiscodigo = environment.apiUrl_inter;
+  myApiUrl_paiscodigo = 'api/NrcPais/';
 
 
 
@@ -187,17 +187,11 @@ export class TarjetaServiceService {
     return this.http.put<any>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos + id , registro);
   }
 
-  postNrcNacimiento(registro: Nrc_Nacimientos): Observable<any> {
-    // console.log('llegue al servicio 09', registro);
-
-    return this.http.post<any>(this.myAppUrl_NRC_Nacimientos + this.myApiUrl_NRC_Nacimientos, registro);
-  }
- 
 
  
   //servicio de cambio de Nacionalidad
-  postNrcpais(registro: NrcPais): Observable<any> {
-    return this.http.post<any>(this.myAppUrl_cambio_Nacionalidad + this.myApiUrl_cambio_Nacionalidad , registro);
+  getNrcpaiscodigo(registro: NrcPais): Observable<any> {
+    return this.http.get<any>(this.myAppUrl_paiscodigo + this.myApiUrl_paiscodigo + registro);
   }
 
   

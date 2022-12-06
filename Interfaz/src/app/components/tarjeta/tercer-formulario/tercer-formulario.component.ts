@@ -24,6 +24,8 @@ export class TercerFormularioComponent implements OnInit {
   paNuevaNacionalidad!: number;
   maNuevaNacionalidad!: number;
   
+ pacodigo!: number;
+ macodigo!:number;
 
 
 
@@ -32,7 +34,8 @@ export class TercerFormularioComponent implements OnInit {
 @Input()datosRetornados: any;
 
 
-  
+firstFormGroup: FormGroup = this.formBuilder.group({firstCtrl: ['']});
+secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['']});
 
 constructor(private formBuilder: FormBuilder
   , private toastr: ToastrService
@@ -65,17 +68,24 @@ constructor(private formBuilder: FormBuilder
 ngOnInit(): void {
   // if(this.datosRetornados.habilitarForm === true){
   //   this.actualizar();
-    
-  // }
+  // } 
 
-      
-  this.formCambioNacionalidad.get('p1_nombres')?.disable();
-  console.log(this.datosRetornados);
+  //Inicializar variables de nacionalidad con valores del registro encontrado
+  this.paNuevaNacionalidad = this.datosRetornados.paNacionalidad;
+  this.maNuevaNacionalidad = this.datosRetornados.maNacionalidad;
+  
  this.formCambioNacionalidad.patchValue(this.datosRetornados);
  
  
- 
- 
+ this.servicioeditar.getNrcpaiscodigo(this.datosRetornados.paNacionalidad).subscribe( datos =>  {
+   this.paNuevaNacionalidad = datos.paiCodigo;
+   this.formCambioNacionalidad.patchValue({paNacionalidad:datos.paiDescripcion});
+ })
+
+  this.servicioeditar.getNrcpaiscodigo(this.datosRetornados.maNacionalidad).subscribe( datos =>  {
+    this.maNuevaNacionalidad = datos.paiCodigo;
+   this.formCambioNacionalidad.patchValue({maNacionalidad:datos.paiDescripcion});
+ })
 
   //Para llenar las opciones del autocomplete de Nacionalidad (Padre)
   this.formCambioNacionalidad.controls["paNacionalidad"].valueChanges.subscribe(value => {
