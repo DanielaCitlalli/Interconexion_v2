@@ -15,7 +15,13 @@ export class TercerFormularioComponent implements OnInit {
   
   formCambioNacionalidad: FormGroup;
   
-   
+  //Guardan los paises que coincidan con lo buscado en autocomplete
+  optionsPa!: NrcPais[];
+  optionsMa!: NrcPais[];
+
+  //Guarda id de pais seleccionado
+  paNuevaNacionalidad!: number;
+  maNuevaNacionalidad!: number;
   
 
 
@@ -64,34 +70,85 @@ ngOnInit(): void {
   console.log(this.datosRetornados);
   this.formCambioNacionalidad.patchValue(this.datosRetornados);
 
+
+  //Para llenar las opciones del autocomplete de Nacionalidad (Padre)
+  this.formCambioNacionalidad.controls["paNacionalidad"].valueChanges.subscribe(value => {
+    // console.log(value);
+    if(value.length > 2){
+      this.servicioeditar.getPaisDesc(value).subscribe(pais => {
+        this.optionsPa = pais;
+        // console.log(this.optionsPa);
+      });
+    }
+    else{
+      this.optionsPa = []
+    }
+
+  });
+  //Para llenar las opciones del autocomplete de Nacionalidad (Madre)
+  this.formCambioNacionalidad.controls["maNacionalidad"].valueChanges.subscribe(value => {
+    // console.log(value);
+    if(value.length > 2){
+      this.servicioeditar.getPaisDesc(value).subscribe(pais => {
+        this.optionsMa = pais;
+        // console.log(this.optionsMa);
+      });
+    }
+    else{
+      this.optionsMa = []
+    }
+
+  });
+
 }
+
+//Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del padre
+cambiarPaisPa(option: NrcPais){
+
+  this.paNuevaNacionalidad = option.paiCodigo;
+  console.log("NACIONALIDAD - PADRE" , option , this.paNuevaNacionalidad);
+}
+
+//Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del madre
+cambiarPaisMa(option: NrcPais){
+
+  this.maNuevaNacionalidad = option.paiCodigo;
+  console.log("NACIONALIDAD - MADRE" , option , this.maNuevaNacionalidad);
+}
+
+
+
 guardarCambios() {
 
 
+  console.log("Form:" , this.formCambioNacionalidad.value);
+  
   const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
-  formNacionalidad.panacionalidad = this.formCambioNacionalidad.controls["paNacionalidad"].value;
-  formNacionalidad.manacionalidad = this.formCambioNacionalidad.get('maNacionalidad')?.value;
-  console.log(formNacionalidad);
-  // this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
-  //   if(datos !== null && datos !== undefined){
-  //     this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
-  //       closeButton: true,
-  //       timeOut: 7000,
-  //     });
-  //     this.enviarRegistro.emit(datos);
+
+  formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
+  formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
+  // formNacionalidad.maNacionalidad = parseInt(this.formCambioNacionalidad.controls["maNacionalidad"].value);
+  // formNacionalidad.paNacionalidad = parseInt(this.formCambioNacionalidad.controls["paNacionalidad"].value);
+
+  console.log("Variable para guardar form:" , formNacionalidad);
   
-   
+  this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
+    if(datos !== null && datos !== undefined){
+      this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
+        closeButton: true,
+        timeOut: 7000,
+      });
+      this.enviarRegistro.emit(datos);
+    }
   
-  //   }
+    else{
+      this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
+        timeOut: 7000,
+        closeButton: true,
   
-  //   else{
-  //     this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
-  //       timeOut: 7000,
-  //       closeButton: true,
-  
-  //     });
-  //   }
-  // })
+      });
+    }
+  })
   }
   
 campoNoEsValido(campo: string){
