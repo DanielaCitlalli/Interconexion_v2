@@ -155,6 +155,7 @@ namespace procedimientos_interconexion.Controllers
             return CreatedAtAction(nameof(GetNrcPaisId), new { codigo = nrcPais.PaiCodigo}, nrcPais);
         }
 
+
         private bool NrcPaisExists(decimal id)
         {
             return _context.NrcPais.Any(e => e.PaiCodigo == id);
