@@ -165,7 +165,7 @@ guardarCambios() {
             closeButton: true,
             timeOut: 7000,
           });
-          this.enviarRegistro.emit(datos);
+         
         }
       
         else{

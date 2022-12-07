@@ -109,7 +109,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
   mostrarRegistroDevuletoNacionalidad(event: any){
 
     if(event === undefined){
-      this.verSpinner = true;
+      this.verSpinner = false;
       return;
     }
     else if(event === 'error'){
