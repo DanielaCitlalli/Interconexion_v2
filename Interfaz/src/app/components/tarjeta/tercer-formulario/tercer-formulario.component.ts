@@ -27,6 +27,13 @@ export class TercerFormularioComponent implements OnInit {
  pacodigo!: number;
  macodigo!:number;
 
+ //validacion para deshabilitar boton de actualizar
+ longPaisPa: string = '';
+ longPaisMa: string = '';
+
+ //validacion2
+ hizoClick: boolean = true;
+
 
 
 @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
@@ -66,34 +73,53 @@ constructor(private formBuilder: FormBuilder
 }
 
 ngOnInit(): void {
-  // if(this.datosRetornados.habilitarForm === true){
-  //   this.actualizar();
-  // } 
 
   //Inicializar variables de nacionalidad con valores del registro encontrado
+
+  console.log(this.datosRetornados);
+  
+
   this.paNuevaNacionalidad = this.datosRetornados.paNacionalidad;
   this.maNuevaNacionalidad = this.datosRetornados.maNacionalidad;
   
  this.formCambioNacionalidad.patchValue(this.datosRetornados);
+
+
  
- 
+ //Mostrar nombre de la nacionalidad correspondiente(Padre)
  this.servicioeditar.getNrcpaiscodigo(this.datosRetornados.paNacionalidad).subscribe( datos =>  {
+  
+   //validacion para deshabilitar boton de actualizar
+   this.longPaisPa = datos.paiDescripcion;
+
    this.paNuevaNacionalidad = datos.paiCodigo;
    this.formCambioNacionalidad.patchValue({paNacionalidad:datos.paiDescripcion});
  })
 
+
+ //Mostrar nombre de la nacionalidad correspondiente(Madre)
   this.servicioeditar.getNrcpaiscodigo(this.datosRetornados.maNacionalidad).subscribe( datos =>  {
+
+    //validacion para deshabilitar boton de actualizar
+    this.longPaisMa = datos.paiDescripcion;
+   
     this.maNuevaNacionalidad = datos.paiCodigo;
-   this.formCambioNacionalidad.patchValue({maNacionalidad:datos.paiDescripcion});
+    this.formCambioNacionalidad.patchValue({maNacionalidad:datos.paiDescripcion});
  })
 
-  //Para llenar las opciones del autocomplete de Nacionalidad (Padre)
+  //Para llenar las opciones del autocomplete de Nacionalidad (Padre). Tambien se llama este metodo cuando se cambia el valor del input
   this.formCambioNacionalidad.controls["paNacionalidad"].valueChanges.subscribe(value => {
-    // console.log(value);
+
+    //Este if solo es para evaluar la primera vez que carga o se selecciona una nueva nacionalidad, por eso cuando entra al if, longPais se vuelve ''. 
+    //Para no permitir que igualando el tamaño con cualquier caracter se habilite el boton de actualizar
+    if(value.length != this.longPaisPa.length){
+      this.longPaisPa = '';
+      this.formCambioNacionalidad.controls["paNacionalidad"].setErrors({'incorrect': true});
+    }
+
     if(value.length > 2){
       this.servicioeditar.getPaisDesc(value).subscribe(pais => {
         this.optionsPa = pais;
-        // console.log(this.optionsPa);
       });
     }
     else{
@@ -101,13 +127,21 @@ ngOnInit(): void {
     }
 
   });
-  //Para llenar las opciones del autocomplete de Nacionalidad (Madre)
+
+
+  //Para llenar las opciones del autocomplete de Nacionalidad (Madre). Tambien se llama este metodo cuando se cambia el valor del input
   this.formCambioNacionalidad.controls["maNacionalidad"].valueChanges.subscribe(value => {
-    // console.log(value);
+
+    //Este if solo es para evaluar la primera vez que carga o se selecciona una nueva nacionalidad, por eso cuando entra al if, longPais se vuelve ''. 
+    //Para no permitir que igualando el tamaño con cualquier caracter se habilite el boton de actualizar
+    if(value.length != this.longPaisMa.length){
+      this.longPaisMa = '';
+      this.formCambioNacionalidad.controls["maNacionalidad"].setErrors({'incorrect': true});
+    }
+
     if(value.length > 2){
       this.servicioeditar.getPaisDesc(value).subscribe(pais => {
         this.optionsMa = pais;
-        // console.log(this.optionsMa);
       });
     }
     else{
@@ -115,12 +149,13 @@ ngOnInit(): void {
     }
 
   });
-  
-
 }
 
 //Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del padre
 cambiarPaisPa(option: NrcPais){
+
+  //validacion para deshabilitar boton de actualizar
+  this.longPaisPa = option.paiDescripcion;
 
   this.paNuevaNacionalidad = option.paiCodigo;
   console.log("NACIONALIDAD - PADRE" , option , this.paNuevaNacionalidad);
@@ -128,6 +163,9 @@ cambiarPaisPa(option: NrcPais){
 
 //Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del madre
 cambiarPaisMa(option: NrcPais){
+
+  //validacion para deshabilitar boton de actualizar
+  this.longPaisMa = option.paiDescripcion;
 
   this.maNuevaNacionalidad = option.paiCodigo;
   console.log("NACIONALIDAD - MADRE" , option , this.maNuevaNacionalidad);
@@ -154,8 +192,6 @@ guardarCambios() {
     
       formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
       formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
-      // formNacionalidad.maNacionalidad = parseInt(this.formCambioNacionalidad.controls["maNacionalidad"].value);
-      // formNacionalidad.paNacionalidad = parseInt(this.formCambioNacionalidad.controls["paNacionalidad"].value);
     
       console.log("Variable para guardar form:" , formNacionalidad);
       
