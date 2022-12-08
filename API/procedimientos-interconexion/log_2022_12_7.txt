@@ -6,3 +6,6 @@
 07/12/2022 09:28:51 a. m. , ::1 , Se actualizó nacionalidad , 11104300012008002830
 07/12/2022 10:18:47 a. m. , ::1 , Se actualizó nacionalidad , 11104300012008002830
 07/12/2022 12:13:40 p. m. , ::1 , Se actualizó nacionalidad , 11104300012008002830
+07/12/2022 03:31:53 p. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+07/12/2022 03:32:34 p. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+07/12/2022 03:37:39 p. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
