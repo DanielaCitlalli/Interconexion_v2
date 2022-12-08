@@ -246,9 +246,30 @@
         <mat-step [stepControl]="secondFormGroup" [editable]="false">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="Address" formControlName="secondCtrl">
-            </mat-form-field>
+            <div class="contenedor-cadenas">
+
+                <h6>Subir Acta de nacimiento:</h6>
+            
+                <table class="table table-light table-hover ">
+                  <thead>
+                    <th class="tabla">Cadena</th>
+                    <th class="tabla">Padre</th>
+                    <th class="tabla">Nacionalidad de Padre</th>
+                    <th class="tabla">Madre</th>
+                    <th class="tabla">Nacionalidad Madre</th>
+                  </thead>
+                <tbody>  
+                    <tr > 
+                      <td class="tabla">{{datosRetornados.cadena}}</td>
+                      <td class="tabla">{{datosRetornados.paNombres + ' ' + datosRetornados.paPrimerapellido + ' ' + datosRetornados.paSegundoapellido}}</td>
+                      <td class="tabla">{{this.formCambioNacionalidad.get('paNacionalidad')?.value}}</td>
+                     <td class="tabla">{{datosRetornados.maNombres + ' ' + datosRetornados.maPrimerapellido + ' ' + datosRetornados.maSegundoapellido}}</td>
+                      <td class="tabla">{{this.formCambioNacionalidad.get('maNacionalidad')?.value}}</td>
+                     
+                    </tr>
+                </tbody>    
+                </table>
+              </div>
             <div>
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
