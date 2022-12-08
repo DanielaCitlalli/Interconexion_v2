@@ -27,16 +27,28 @@ namespace procedimientos_interconexion.Controllers
         {
             //Si se desea hacer una busqueda, se debe definir primero una primary key para usar FindAsync. La tabla no tiene. 
 
-            try
-            {
-                var nrcNacimientos = await _context.NrcNacimientos.FindAsync(cadena);
+            //try
+            //{
+            //    var nrcNacimientos = await _context.NrcNacimientos.FindAsync(cadena);
 
-                return nrcNacimientos;
-            }
-            catch
+            //    return nrcNacimientos;
+            //}
+            //catch
+            //{
+            //    return NotFound("No se encontró el registro indicado...");
+            //}
+
+            var nrcNacimientos = await _context.NrcNacimientos.FindAsync(cadena);
+            Console.WriteLine(nrcNacimientos);
+
+            if (nrcNacimientos == null)
             {
                 return NotFound("No se encontró el registro indicado...");
+
             }
+
+            return nrcNacimientos;
+
 
         }
 
