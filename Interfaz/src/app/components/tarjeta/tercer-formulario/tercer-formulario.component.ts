@@ -5,6 +5,7 @@ import { map, Observable, startWith, timeout } from 'rxjs';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import { NrcPais } from 'src/app/models/NrcPais.model';
 import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
+import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import Swal  from "sweetalert2";
 
 @Component({
@@ -15,6 +16,27 @@ import Swal  from "sweetalert2";
 export class TercerFormularioComponent implements OnInit {
   
   formCambioNacionalidad: FormGroup;
+
+  const :CirrTa01Napeticion = {
+    ta01EOid: 0,
+    ta01ESecuencia: null,
+    ta01EPrioridad: 1,
+    ta01EOperacionacto: 1,
+    ta01CCadena: '',
+    ta01FEntrada: null,
+    ta01EEstatus: 0,
+    ta07EEstadodest: null,
+    ta07EOiddestino: null,
+    ta07ESolicitarimagen: null,
+    ta01FAtencion: null,
+    ta01ECuantos: 0
+
+  }
+
+  
+
+ 
+  
   
   //Guardan los paises que coincidan con lo buscado en autocomplete
   optionsPa!: NrcPais[];
@@ -172,7 +194,6 @@ cambiarPaisMa(option: NrcPais){
 }
 
 
-
 guardarCambios() {
   Swal.fire({
     title: '¿Estas seguro de continuar?',
@@ -201,6 +222,22 @@ guardarCambios() {
             closeButton: true,
             timeOut: 7000,
           });
+
+          const form01:CirrTa01Napeticion = {
+            ta01EOid: 0,
+            ta01ESecuencia: null,
+            ta01EPrioridad: 1,
+            ta01EOperacionacto: 1,
+            ta01CCadena: datos.cadena,
+            ta01FEntrada: null,
+            ta01EEstatus: 0,
+            ta07EEstadodest: null,
+            ta07EOiddestino: null,
+            ta07ESolicitarimagen: null,
+            ta01FAtencion: null,
+            ta01ECuantos: 0
+        
+          }
          
         }
       
@@ -218,6 +255,7 @@ guardarCambios() {
  
   }
   
+  
 campoNoEsValido(campo: string){
   return this.formCambioNacionalidad.controls[campo].errors &&
           this.formCambioNacionalidad.controls[campo].touched
@@ -233,6 +271,5 @@ cancelar(){
 } 
 
 
-  
 
 }
