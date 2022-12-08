@@ -550,6 +550,7 @@ ejecutarGlobal(){
             habilitarFormNacionalidad:true
             
           }
+          console.log(infoEnviada)
           this.registroDevuelto.emit(infoEnviada);
         this.toastr.success('Registro encontrado ', "Operación exitosa" , {
           closeButton: true,
