@@ -86,5 +86,14 @@ tr{
     border-collapse: collapse;
 }
 
+.card{
+  margin: 0 auto;
+}
 
- 
+.card-title{
+  text-align: right;
+}
+
+.card-body{
+  width: 33.33%;
+}

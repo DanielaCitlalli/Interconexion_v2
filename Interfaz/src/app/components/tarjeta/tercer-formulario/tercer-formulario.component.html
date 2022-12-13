@@ -242,8 +242,8 @@
 
 
         </mat-step>
-
-        <mat-step [stepControl]="secondFormGroup" [editable]="false">
+       
+        <mat-step [stepControl]="secondFormGroup" [editable]="false" [completed]="false">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Fill out your address</ng-template>
             <div class="contenedor-cadenas">
@@ -270,9 +270,18 @@
                 </tbody>    
                 </table>
               </div>
-            <div>
-                    <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button matStepperNext>Next</button>
+              <div>
+                <p>&nbsp; </p>
+    
+                <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" (click)="guardarCambios()">
+                    <mat-icon>how_to_reg</mat-icon>Actualizar
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <!-- Dar espacios entre cada botón -->
+                <button mat-raised-button color="warn" (click)="cancelar()">
+                    <mat-icon>highlight_off</mat-icon>Cancelar
+                </button>
+    
             </div>
           </form>
         </mat-step>
@@ -285,3 +294,8 @@
           </div>
         </mat-step>
       </mat-horizontal-stepper>
+
+    
+        
+    
+      
