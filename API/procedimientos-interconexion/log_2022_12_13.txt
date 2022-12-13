@@ -1,0 +1,5 @@
+13/12/2022 09:02:57 a. m. , ::1 , Se borro defuncion  , 21111111111111111114
+13/12/2022 09:12:52 a. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+13/12/2022 09:12:53 a. m. , ::1 , Se subio Acta de nacimiento  , 11100100011924001830
+13/12/2022 09:14:10 a. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+13/12/2022 09:14:10 a. m. , ::1 , Se subio Acta de nacimiento  , 11100100011924001830

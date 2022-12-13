@@ -17,21 +17,7 @@ export class TercerFormularioComponent implements OnInit {
   
   formCambioNacionalidad: FormGroup;
 
-  const :CirrTa01Napeticion = {
-    ta01EOid: 0,
-    ta01ESecuencia: null,
-    ta01EPrioridad: 1,
-    ta01EOperacionacto: 1,
-    ta01CCadena: '',
-    ta01FEntrada: null,
-    ta01EEstatus: 0,
-    ta07EEstadodest: null,
-    ta07EOiddestino: null,
-    ta07ESolicitarimagen: null,
-    ta01FAtencion: null,
-    ta01ECuantos: 0
-
-  }
+ 
 
   
 
@@ -215,7 +201,7 @@ guardarCambios() {
       formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
     
       console.log("Variable para guardar form:" , formNacionalidad);
-      
+
       this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
         if(datos !== null && datos !== undefined){
           this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
@@ -238,17 +224,40 @@ guardarCambios() {
             ta01ECuantos: 0
         
           }
-         
+          this.servicioeditar.postCirrTa01Napeticion1(form01).subscribe(datos=> {
+  
+             
+              this.toastr.success("Actualizacion de tabla CIRR_TA01_NAPETICION " , " Éxito" , {
+                closeButton: true,
+                timeOut: 7000,
+              })
+              
+            },error => {
+              this.toastr.error("Error al actualizar tabla CIRR_TA01_NAPETICION", " Error" , {
+                timeOut: 7000,
+                closeButton: true,
+              })
+            })
+          
         }
-      
         else{
-          this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
+          this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
             timeOut: 7000,
             closeButton: true,
-      
+  
           });
         }
-      })
+  
+  
+    } , error => {
+      this.toastr.error("Error al actualizar sexo","Error de altualizar matrimonios ",{
+        timeOut: 7000,
+        closeButton: true,
+  
+      });
+    })
+      
+   
     }
   } )
 
