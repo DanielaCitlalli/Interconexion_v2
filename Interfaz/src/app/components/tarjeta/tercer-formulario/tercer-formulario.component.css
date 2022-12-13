@@ -30,8 +30,8 @@ border: none;
 
 }
 .tabla{
-    width: 80px;
-    width: 130px;
+    
+    min-width: 130px;
     
 }
 
