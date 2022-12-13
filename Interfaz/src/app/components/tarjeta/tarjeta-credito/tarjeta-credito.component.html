@@ -3,7 +3,6 @@
 
 
 <form [formGroup]="globalForm"(ngSubmit)="ejecutarGlobal()" >
-    
     <div class="form-group mb-3 fs-3">
         <div class="input-group">
             <div class="input-group-text bg-white  fs-3">
@@ -12,17 +11,22 @@
                     [class.red-icon]="this.globalForm.get('proceso')?.invalid && this.globalForm.get('proceso')?.touched" ></i>
             </div>
 
-           
-                <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example" >
+                <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example">
                     <option selected disabled hidden value="">Selecciona un proceso </option>
-                    <option value="borrarDef">Borrar Defunciones </option>
-                    <option value="borrarMat">Borrar Matrimonios </option>
-                    <option value="borrarNac">Borrar Nacimientos </option>
-                    <option value="cambioSexo">Cambio de Sexo</option>
-                    <option value="forzarSubirNac">Forzar subir Acta Nacimientos </option>
-                    <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
-                    <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
-                    <option value="cambiarnacionalidad">Cambiar Nacionalidad </option>
+                    <optgroup label="Defunciones">
+                        <option value="borrarDef">Borrar Defunciones </option>
+                        <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
+                    </optgroup>
+                    <optgroup label="Nacimientos">
+                        <option value="borrarNac">Borrar Nacimientos </option>
+                        <option value="cambiarnacionalidad">Cambiar Nacionalidad </option>
+                        <option value="forzarSubirNac">Forzar subir Acta Nacimientos </option>
+                    </optgroup>
+                    <optgroup label="Matrimonios">
+                        <option value="borrarMat">Borrar Matrimonios </option>
+                        <option value="cambioSexo">Cambio de Sexo</option>
+                        <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
+                    </optgroup>
     
                 </select> 
     
