@@ -6,6 +6,7 @@ import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service'
 import { NrcPais } from 'src/app/models/NrcPais.model';
 import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
 import Swal  from "sweetalert2";
+import { __values } from 'tslib';
 
 @Component({
   selector: 'app-tercer-formulario',
@@ -41,9 +42,12 @@ export class TercerFormularioComponent implements OnInit {
 @Input()datosRetornados: any;
 
 
-firstFormGroup: FormGroup = this.formBuilder.group({firstCtrl: ['']});
-secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['']});
+firstFormGroup: FormGroup = this.formBuilder.group({ firstCtrl: ['', Validators.required],});
+secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['', Validators.required],});
+thirdFormGroup: FormGroup = this.formBuilder.group({thirdCtrl: ['', Validators.required],});
 
+
+  
 constructor(private formBuilder: FormBuilder
   , private toastr: ToastrService
   , private servicioeditar: TarjetaServiceService) { 
@@ -68,9 +72,12 @@ constructor(private formBuilder: FormBuilder
     maSegundoapellido: [{value:'' , disabled:true} , [Validators.required]],
     maNacionalidad : [{value:'' , disabled:false} , [Validators.required]],
     maCurp : [{value:'' , disabled:true} , [Validators.required]],
+    
 
   })
+ 
 }
+
 
 ngOnInit(): void {
 
@@ -83,7 +90,7 @@ ngOnInit(): void {
   this.maNuevaNacionalidad = this.datosRetornados.maNacionalidad;
   
  this.formCambioNacionalidad.patchValue(this.datosRetornados);
-
+ this.secondFormGroup.patchValue(this.datosRetornados);
 
  
  //Mostrar nombre de la nacionalidad correspondiente(Padre)
@@ -173,50 +180,50 @@ cambiarPaisMa(option: NrcPais){
 
 
 
-guardarCambios() {
-  Swal.fire({
-    title: '¿Estas seguro de continuar?',
-    text: "No podrás revertirlo",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Continuar',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.enviarRegistro.emit(undefined);
-      console.log("Form:" , this.formCambioNacionalidad.value);
+// guardarCambios() {
+//   Swal.fire({
+//     title: '¿Estas seguro de continuar?',
+//     text: "No podrás revertirlo",
+//     icon: 'warning',
+//     showCancelButton: true,
+//     confirmButtonColor: '#3085d6',
+//     cancelButtonColor: '#d33',
+//     confirmButtonText: 'Continuar',
+//     cancelButtonText: 'Cancelar'
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       this.enviarRegistro.emit(undefined);
+//       console.log("Form:" , this.formCambioNacionalidad.value);
   
-      const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
+//       const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
     
-      formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
-      formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
+//       formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
+//       formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
     
-      console.log("Variable para guardar form:" , formNacionalidad);
+//       console.log("Variable para guardar form:" , formNacionalidad);
       
-      this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
-        if(datos !== null && datos !== undefined){
-          this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
-            closeButton: true,
-            timeOut: 7000,
-          });
+//       this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
+//         if(datos !== null && datos !== undefined){
+//           this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
+//             closeButton: true,
+//             timeOut: 7000,
+//           });
          
-        }
+//         }
       
-        else{
-          this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
-            timeOut: 7000,
-            closeButton: true,
+//         else{
+//           this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
+//             timeOut: 7000,
+//             closeButton: true,
       
-          });
-        }
-      })
-    }
-  } )
+//           });
+//         }
+//       })
+//     }
+//   } )
 
  
-  }
+//   }
   
 campoNoEsValido(campo: string){
   return this.formCambioNacionalidad.controls[campo].errors &&

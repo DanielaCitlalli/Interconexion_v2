@@ -7,4 +7,92 @@
     color: white;/* color de la letra */
     background-color: #006100; /* Green color del botón*/
   }
- 
+  .celda{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+.celdaR{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+th{
+background-color:#106BE8;
+color:white;
+text-decoration: none;
+border: none;
+
+
+}
+.tabla{
+    width: 80px;
+    width: 130px;
+    
+}
+
+td{
+    border: none; 
+    font-weight: bolder; 
+   
+    
+}
+
+.contenedor-cadenas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #E1F1FA;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 1rem;
+}
+
+textarea{
+    resize: none;
+    min-height: auto;
+}
+
+li{
+    cursor: pointer;
+}
+
+.contenedor-cadenas table {
+    overflow-x: scroll;
+    overflow-y: auto;
+    height: auto ;
+    width:visible ;
+    display: block;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+tr{
+    font-weight: 100;
+}
+.contenedor-cadenas td:last-child, .contenedor-cadenas th:last-child{
+    width: auto;
+}
+
+.contenedor-cadenas th, .contenedor-cadenas tr, .contenedor-cadenas  td{
+    border: 1px solid #000;
+    border-collapse: collapse;
+}
+
+.card{
+  margin: 0 auto;
+}
+
+.card-title{
+  text-align: right;
+}
+
+.card-body{
+  width: 33.33%;
+}

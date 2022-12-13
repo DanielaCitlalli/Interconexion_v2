@@ -156,7 +156,7 @@ namespace procedimientos_interconexion.Controllers
         }
 
 
-        private bool NrcPaisExists(decimal id)
+00000000000000000000000000        private bool NrcPaisExists(decimal id)
         {
             return _context.NrcPais.Any(e => e.PaiCodigo == id);
         }
