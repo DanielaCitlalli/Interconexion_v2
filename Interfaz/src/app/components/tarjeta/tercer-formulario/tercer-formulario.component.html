@@ -162,7 +162,7 @@
                     <mat-form-field>
                         <div class=" col-mt-5 mb-3 t">
                             <div class="">
-                                <input type="text" matInput placeholder="Nombre(s)" formControlName="paNombres" maxlength="20">
+                                <input type="text" matInput placeholder="Nombre(s)" formControlName="maNombres" maxlength="20">
                                 <div>
                                     <mat-icon>person</mat-icon>
                                 </div>
@@ -242,7 +242,7 @@
 
 
         </mat-step>
-       
+
         <mat-step [stepControl]="secondFormGroup" [editable]="false">
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Fill out your address</ng-template>
@@ -271,8 +271,8 @@
                 </table>
               </div>
             <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
             </div>
           </form>
         </mat-step>
@@ -285,4 +285,3 @@
           </div>
         </mat-step>
       </mat-horizontal-stepper>
-      
