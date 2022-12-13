@@ -6,7 +6,7 @@
 
       
       <mat-horizontal-stepper linear  #stepper >
-        <mat-step [stepControl]="formCambioNacionalidad" [editable]="false" [completed]="false">
+        <mat-step [stepControl]="formCambioNacionalidad" [editable]="false">
 
             <form [formGroup]="formCambioNacionalidad" (ngSubmit)="guardarCambios()">
             
@@ -222,7 +222,19 @@
                         </div>
             
                     </mat-form-field>
-                   
+                    <div>
+                        <p>&nbsp; </p>
+            
+                        <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" >
+                            <mat-icon>how_to_reg</mat-icon>Actualizar
+                        </button>
+                        &nbsp; &nbsp; &nbsp;
+                        <!--Dar espacios entre cada botón -->
+                        <button mat-raised-button color="warn" (click)="cancelar()">
+                            <mat-icon>highlight_off</mat-icon>Cancelar
+                        </button>
+            
+                    </div>
                     &nbsp;
                 </table>
                 &nbsp;
@@ -275,14 +287,10 @@
         </mat-step>
         <mat-step [editable]="false">
           <ng-template matStepLabel>Done</ng-template>
-          <div class="card border-primary" style="width: 25rem;">
-            <img class="card-img-top" src="https://i.scdn.co/image/ab6765630000ba8adc604b6f8a5295d349139b1f">
-            <div class="card-header text-white bg-primary "><h4 class="card-title" style="width: 17rem;"><i class="fas fa-duotone fa-thumbs-up"></i> Exito al guardar</h4></div>
-            <div class="card-body" >
-              <button type="button" class="btn btn btn-outline-primary btn-lg btn-block" (click)="cancelar()" style="width: 23rem;">
-                <i class="fas fa-duotone fa-house-user"></i>
-                Menu principal</button>
-            </div>
+          You are now done.
+          <div>
+            <button mat-button matStepperPrevious>Regresar</button>
+            <button mat-button (click)="cancelar()">Menu principal</button>
           </div>
         </mat-step>
       </mat-horizontal-stepper>
