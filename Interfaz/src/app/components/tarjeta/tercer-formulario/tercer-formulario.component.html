@@ -225,14 +225,7 @@
                     <div>
                         <p>&nbsp; </p>
             
-                        <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" >
-                            <mat-icon>how_to_reg</mat-icon>Actualizar
-                        </button>
-                        &nbsp; &nbsp; &nbsp;
-                        <!--Dar espacios entre cada botón -->
-                        <button mat-raised-button color="warn" (click)="cancelar()">
-                            <mat-icon>highlight_off</mat-icon>Cancelar
-                        </button>
+                      
             
                     </div>
                     &nbsp;
@@ -251,23 +244,31 @@
                 <h6>Subir Acta de nacimiento:</h6>
             
                 <table class="table table-light table-hover ">
-                  <thead>
-                    <th class="tabla">Cadena</th>
-                    <th class="tabla">Padre</th>
-                    <th class="tabla">Nacionalidad de Padre</th>
-                    <th class="tabla">Madre</th>
-                    <th class="tabla">Nacionalidad Madre</th>
-                  </thead>
-                <tbody>  
-                    <tr > 
-                      <td class="tabla">{{datosRetornados.cadena}}</td>
-                      <td class="tabla">{{datosRetornados.paNombres + ' ' + datosRetornados.paPrimerapellido + ' ' + datosRetornados.paSegundoapellido}}</td>
-                      <td class="tabla">{{this.formCambioNacionalidad.get('paNacionalidad')?.value}}</td>
-                     <td class="tabla">{{datosRetornados.maNombres + ' ' + datosRetornados.maPrimerapellido + ' ' + datosRetornados.maSegundoapellido}}</td>
-                      <td class="tabla">{{this.formCambioNacionalidad.get('maNacionalidad')?.value}}</td>
-                     
-                    </tr>
-                </tbody>    
+                    <thead>
+                      <th class="tabla">Cadena</th>
+                      <th class="tabla">Nombre de Padre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.paPrimerapellido !== null">Apellido paterno de Padre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.paSegundoapellido !== null">Apellido materno de Padre</th>
+                      <th class="tabla">Nacionalidad de Padre</th>
+                      <th class="tabla">Nombre de Madre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.maPrimerapellido !== null">Apellido paterno de Madre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.maSegundoapellido !== null">Apellido materno de Madre</th>
+                      <th class="tabla">Nacionalidad Madre</th>
+                    </thead>
+                  <tbody>  
+                      <tr > 
+                        <td class="tabla">{{datosRetornados.cadena}}</td>
+                        <td class="tabla">{{datosRetornados.paNombres}}</td>
+                        <td class="tabla" *ngIf="this.datosRetornados.paPrimerapellido !== null">{{datosRetornados.paPrimerapellido}}</td>
+                        <td class="tabla" *ngIf="this.datosRetornados.paSegundoapellido !== null">{{datosRetornados.paSegundoapellido}}</td>
+                        <td class="tabla">{{this.formCambioNacionalidad.get('paNacionalidad')?.value}}</td>
+                       <td class="tabla">{{datosRetornados.maNombres}}</td>
+                       <td class="tabla" *ngIf="this.datosRetornados.maPrimerapellido !== null">{{datosRetornados.maPrimerapellido}}</td>
+                       <td class="tabla" *ngIf="this.datosRetornados.maSegundoapellido !== null">{{datosRetornados.maSegundoapellido}}</td>
+                        <td class="tabla">{{this.formCambioNacionalidad.get('maNacionalidad')?.value}}</td>
+                       
+                      </tr>
+                  </tbody>   
                 </table>
               </div>
               <div>
