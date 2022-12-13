@@ -151,9 +151,6 @@
         <div class="celda col-6">
           <th scope="col">Sexo Persona 2</th>
           <td scope="row">{{ registroAgregado?.p2sexo }}</td>
-          <th><mat-progress-bar mode="determinate" ></mat-progress-bar></th>
-
-
         </div>
 
       </tr>
@@ -163,10 +160,6 @@
   <div class="contenedor-cadenas" *ngIf="(cadenasDisponibles !== null && cadenasDisponibles !== undefined)">
 
     <h6>Cadenas Encontradas:</h6>
-
-    <div class="botones-cadenas mb-3" *ngIf="cadenasDisponibles !== null && cadenasDisponibles !== undefined">
-
-    </div>
 
     <table class="table table-light table-hover ">
       <thead *ngIf="cadenasDisponibles[0].cadena[0] !== '3'">
