@@ -7,6 +7,10 @@
     color: white;/* color de la letra */
     background-color: #006100; /* Green color del botón*/
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
   .celda{
     display: flex;
     flex-direction: column;
@@ -29,8 +33,13 @@ border: none;
 
 }
 .tabla{
+<<<<<<< HEAD
     width: 80px;
     width: 130px;
+=======
+    
+    min-width: 130px;
+>>>>>>> main
     
 }
 

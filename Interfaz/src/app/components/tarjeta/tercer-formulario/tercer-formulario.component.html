@@ -166,7 +166,7 @@
                     <mat-form-field>
                         <div class=" col-mt-5 mb-3 t">
                             <div class="">
-                                <input type="text" matInput placeholder="Nombre(s)" formControlName="paNombres" maxlength="20">
+                                <input type="text" matInput placeholder="Nombre(s)" formControlName="maNombres" maxlength="20">
                                 <div>
                                     <mat-icon>person</mat-icon>
                                 </div>
@@ -229,6 +229,7 @@
                     <div>
                         <p>&nbsp; </p>
             
+<<<<<<< HEAD
                         <!-- <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" >
                             <mat-icon>how_to_reg</mat-icon>Actualizar
                         </button> -->
@@ -239,6 +240,9 @@
                         <button mat-raised-button color="warn" (click)="cancelar()">
                             <mat-icon>highlight_off</mat-icon>Cancelar
                         </button>
+=======
+                      
+>>>>>>> main
             
                     </div>
                     &nbsp;
@@ -249,6 +253,7 @@
          
         </mat-step>
        
+<<<<<<< HEAD
         <mat-step [stepControl]="secondFormGroup" [completed]="false"   >
               <ng-template matStepLabel="Forzar">Forzar subir Acto</ng-template>
 
@@ -317,12 +322,75 @@
           <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="cancelar()">Menu principal</button>
+=======
+        <mat-step [stepControl]="secondFormGroup" [editable]="false" [completed]="false">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <div class="contenedor-cadenas">
+
+                <h6>Subir Acta de nacimiento:</h6>
+            
+                <table class="table table-light table-hover ">
+                    <thead>
+                      <th class="tabla">Cadena</th>
+                      <th class="tabla">Nombre de Padre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.paPrimerapellido !== null">Apellido paterno de Padre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.paSegundoapellido !== null">Apellido materno de Padre</th>
+                      <th class="tabla">Nacionalidad de Padre</th>
+                      <th class="tabla">Nombre de Madre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.maPrimerapellido !== null">Apellido paterno de Madre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.maSegundoapellido !== null">Apellido materno de Madre</th>
+                      <th class="tabla">Nacionalidad Madre</th>
+                    </thead>
+                  <tbody>  
+                      <tr > 
+                        <td class="tabla">{{datosRetornados.cadena}}</td>
+                        <td class="tabla">{{datosRetornados.paNombres}}</td>
+                        <td class="tabla" *ngIf="this.datosRetornados.paPrimerapellido !== null">{{datosRetornados.paPrimerapellido}}</td>
+                        <td class="tabla" *ngIf="this.datosRetornados.paSegundoapellido !== null">{{datosRetornados.paSegundoapellido}}</td>
+                        <td class="tabla">{{this.formCambioNacionalidad.get('paNacionalidad')?.value}}</td>
+                       <td class="tabla">{{datosRetornados.maNombres}}</td>
+                       <td class="tabla" *ngIf="this.datosRetornados.maPrimerapellido !== null">{{datosRetornados.maPrimerapellido}}</td>
+                       <td class="tabla" *ngIf="this.datosRetornados.maSegundoapellido !== null">{{datosRetornados.maSegundoapellido}}</td>
+                        <td class="tabla">{{this.formCambioNacionalidad.get('maNacionalidad')?.value}}</td>
+                       
+                      </tr>
+                  </tbody>   
+                </table>
+              </div>
+              <div>
+                <p>&nbsp; </p>
+    
+                <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" (click)="guardarCambios()">
+                    <mat-icon>how_to_reg</mat-icon>Actualizar
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <!-- Dar espacios entre cada botón -->
+                <button mat-raised-button color="warn" (click)="cancelar()">
+                    <mat-icon>highlight_off</mat-icon>Cancelar
+                </button>
+    
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [editable]="false">
+          <ng-template matStepLabel>Done</ng-template>
+          <div class="card border-primary" style="width: 25rem;">
+            <img class="card-img-top" src="https://i.scdn.co/image/ab6765630000ba8adc604b6f8a5295d349139b1f">
+            <div class="card-header text-white bg-primary "><h4 class="card-title" style="width: 17rem;"><i class="fas fa-duotone fa-thumbs-up"></i> Exito al guardar</h4></div>
+            <div class="card-body" >
+              <button type="button" class="btn btn btn-outline-primary btn-lg btn-block" (click)="cancelar()" style="width: 23rem;">
+                <i class="fas fa-duotone fa-house-user"></i>
+                Menu principal</button>
+            </div>
+>>>>>>> main
           </div>
        
         </mat-step>
     
       </mat-horizontal-stepper>
 
+<<<<<<< HEAD
      
       
 
@@ -333,3 +401,9 @@
      
 
      
+=======
+    
+        
+    
+      
+>>>>>>> main
