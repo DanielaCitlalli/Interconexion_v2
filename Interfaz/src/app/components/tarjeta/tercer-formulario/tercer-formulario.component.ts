@@ -7,6 +7,7 @@ import { NrcPais } from 'src/app/models/NrcPais.model';
 import { Nrc_Nacimientos } from 'src/app/models/NrcNacimientos';
 import { CirrTa01Napeticion } from '../../../models/CirrTa01Napeticion.model';
 import Swal  from "sweetalert2";
+import { MatStepper } from '@angular/material';
 
 @Component({
   selector: 'app-tercer-formulario',
@@ -49,8 +50,8 @@ export class TercerFormularioComponent implements OnInit {
 @Input()datosRetornados: any;
 
 
-firstFormGroup: FormGroup = this.formBuilder.group({firstCtrl: ['']});
-secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['']});
+firstFormGroup: FormGroup = this.formBuilder.group({firstCtrl: ['',[Validators.required]]});
+secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['',[Validators.required]]});
 
 constructor(private formBuilder: FormBuilder
   , private toastr: ToastrService
@@ -159,6 +160,10 @@ ngOnInit(): void {
   });
 }
 
+validarSecond(){
+  // this.secondFormGroup.patchValue({secondCtrl: });
+}
+
 //Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del padre
 cambiarPaisPa(option: NrcPais){
 
@@ -178,93 +183,80 @@ cambiarPaisMa(option: NrcPais){
   this.maNuevaNacionalidad = option.paiCodigo;
   console.log("NACIONALIDAD - MADRE" , option , this.maNuevaNacionalidad);
 }
-
+private myStepper!: MatStepper;
 
 guardarCambios() {
-  Swal.fire({
-    title: '¿Estas seguro de continuar?',
-    text: "No podrás revertirlo",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Continuar',
-    cancelButtonText: 'Cancelar'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      this.enviarRegistro.emit(undefined);
-      console.log("Form:" , this.formCambioNacionalidad.value);
   
-      const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
-    
-      formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
-      formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
-    
-      console.log("Variable para guardar form:" , formNacionalidad);
+  
+  
 
-      this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
-        if(datos !== null && datos !== undefined){
-          this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
-            closeButton: true,
-            timeOut: 7000,
-          });
+  const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
+    
+  formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
+  formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
 
-          const form01:CirrTa01Napeticion = {
-            ta01EOid: 0,
-            ta01ESecuencia: null,
-            ta01EPrioridad: 1,
-            ta01EOperacionacto: 1,
-            ta01CCadena: datos.cadena,
-            ta01FEntrada: null,
-            ta01EEstatus: 0,
-            ta07EEstadodest: null,
-            ta07EOiddestino: null,
-            ta07ESolicitarimagen: null,
-            ta01FAtencion: null,
-            ta01ECuantos: 0
-        
-          }
-          this.servicioeditar.postCirrTa01Napeticion1(form01).subscribe(datos=> {
-  
-             
-              this.toastr.success("Actualizacion de tabla CIRR_TA01_NAPETICION " , " Éxito" , {
-                closeButton: true,
-                timeOut: 7000,
-              })
-              
-            },error => {
-              this.toastr.error("Error al actualizar tabla CIRR_TA01_NAPETICION", " Error" , {
-                timeOut: 7000,
-                closeButton: true,
-              })
-            })
-          
-        }
-        else{
-          this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
-            timeOut: 7000,
-            closeButton: true,
-  
-          });
-        }
-  
-  
-    } , error => {
-      this.toastr.error("Error al actualizar sexo","Error de altualizar matrimonios ",{
+  console.log("Variable para guardar form:" , formNacionalidad);
+
+  this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
+    if(datos !== null && datos !== undefined){
+      this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
+        closeButton: true,
+        timeOut: 7000,
+      });
+
+  const form01:CirrTa01Napeticion = {
+    ta01EOid: 0,
+    ta01ESecuencia: null,
+    ta01EPrioridad: 1,
+    ta01EOperacionacto: 1,
+    ta01CCadena: datos.cadena,
+    ta01FEntrada: null,
+    ta01EEstatus: 0,
+    ta07EEstadodest: null,
+    ta07EOiddestino: null,
+    ta07ESolicitarimagen: null,
+    ta01FAtencion: null,
+    ta01ECuantos: 0
+
+  }
+  this.servicioeditar.postCirrTa01Napeticion1(form01).subscribe(datos=> {
+
+     
+      this.toastr.success("Actualizacion de tabla CIRR_TA01_NAPETICION " , " Éxito" , {
+        closeButton: true,
+        timeOut: 7000,
+      })
+      
+    },error => {
+      this.toastr.error("Error al actualizar tabla CIRR_TA01_NAPETICION", " Error" , {
         timeOut: 7000,
         closeButton: true,
-  
-      });
+      })
     })
-      
-   
-    }
-  } )
+  
+}
 
- 
-  }
-  
-  
+else{
+  this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
+    timeOut: 7000,
+    closeButton: true,
+
+  });
+}
+
+
+} , error => {
+this.toastr.error("Error al actualizar sexo","Error de altualizar matrimonios ",{
+timeOut: 7000,
+closeButton: true,
+
+});
+})
+
+
+
+
+}
 campoNoEsValido(campo: string){
   return this.formCambioNacionalidad.controls[campo].errors &&
           this.formCambioNacionalidad.controls[campo].touched

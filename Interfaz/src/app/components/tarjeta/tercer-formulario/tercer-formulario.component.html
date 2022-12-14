@@ -6,7 +6,7 @@
 
       
       <mat-horizontal-stepper linear  #stepper >
-        <mat-step [stepControl]="formCambioNacionalidad" [editable]="false">
+        <mat-step [stepControl]="formCambioNacionalidad" [editable]="false" [completed]="formCambioNacionalidad.valid">
 
             <form [formGroup]="formCambioNacionalidad" (ngSubmit)="guardarCambios()">
             
@@ -224,19 +224,19 @@
                     </mat-form-field>
                     <div>
                         <p>&nbsp; </p>
-            
-                      
-            
+                        <div>
+                          </div>
                     </div>
-                    &nbsp;
                 </table>
-                &nbsp;
+              
             </form>
-
+            <button mat-button matStepperPrevious>Atras</button>
+            <button mat-button matStepperNext>Siguiente</button>
+           
 
         </mat-step>
        
-        <mat-step [stepControl]="secondFormGroup" [editable]="false" [completed]="false">
+        <mat-step [stepControl]="secondFormGroup" [editable]="false" [completed]="true" >
           <form [formGroup]="secondFormGroup">
             <ng-template matStepLabel>Fill out your address</ng-template>
             <div class="contenedor-cadenas">
@@ -274,19 +274,30 @@
               <div>
                 <p>&nbsp; </p>
     
-                <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" (click)="guardarCambios()">
-                    <mat-icon>how_to_reg</mat-icon>Actualizar
-                </button>
-                &nbsp; &nbsp; &nbsp;
-                <!-- Dar espacios entre cada botón -->
-                <button mat-raised-button color="warn" (click)="cancelar()">
-                    <mat-icon>highlight_off</mat-icon>Cancelar
-                </button>
+                <div>
+                    <input class="form-check mt-0" type="checkbox" formControlName="secondCtrl" aria-label="Checkbox for following text input" (change)="validarSecond()"
+                    >
+                    <div>
+                        <h6 class="mt-2" style="margin-left: 10px;">¿Desea buscar algún registro?</h6>
+                    </div>
+                </div>
+
+                <div>
+                    
+                    <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" (click)="guardarCambios()">
+                        <mat-icon>how_to_reg</mat-icon>Actualizar
+                    </button>
+    
+                    <button mat-button matStepperNext>Siguiente</button>
+                    <button mat-raised-button color="warn" (click)="cancelar()">
+                        <mat-icon>highlight_off</mat-icon>Cancelar
+                    </button>
+              </div>  
     
             </div>
           </form>
         </mat-step>
-        <mat-step [editable]="false">
+        <mat-step [editable]="true">
           <ng-template matStepLabel>Done</ng-template>
           <div class="card border-primary" style="width: 25rem;">
             <img class="card-img-top" src="https://i.scdn.co/image/ab6765630000ba8adc604b6f8a5295d349139b1f">
