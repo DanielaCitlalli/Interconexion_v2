@@ -187,23 +187,6 @@ cambiarPaisMa(option: NrcPais){
 }
 
 
-<<<<<<< HEAD
-
-// guardarCambios() {
-//   Swal.fire({
-//     title: '¿Estas seguro de continuar?',
-//     text: "No podrás revertirlo",
-//     icon: 'warning',
-//     showCancelButton: true,
-//     confirmButtonColor: '#3085d6',
-//     cancelButtonColor: '#d33',
-//     confirmButtonText: 'Continuar',
-//     cancelButtonText: 'Cancelar'
-//   }).then((result) => {
-//     if (result.isConfirmed) {
-//       this.enviarRegistro.emit(undefined);
-//       console.log("Form:" , this.formCambioNacionalidad.value);
-=======
 guardarCambios() {
   Swal.fire({
     title: '¿Estas seguro de continuar?',
@@ -218,36 +201,14 @@ guardarCambios() {
     if (result.isConfirmed) {
       this.enviarRegistro.emit(undefined);
       console.log("Form:" , this.formCambioNacionalidad.value);
->>>>>>> main
+
   
-//       const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
+      const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
     
-//       formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
-//       formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
+      formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
+      formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
     
-<<<<<<< HEAD
-//       console.log("Variable para guardar form:" , formNacionalidad);
-      
-//       this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
-//         if(datos !== null && datos !== undefined){
-//           this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
-//             closeButton: true,
-//             timeOut: 7000,
-//           });
-         
-//         }
-      
-//         else{
-//           this.toastr.error("Ocurrio un error al actualizar ","Error al actualizar",{
-//             timeOut: 7000,
-//             closeButton: true,
-      
-//           });
-//         }
-//       })
-//     }
-//   } )
-=======
+
       console.log("Variable para guardar form:" , formNacionalidad);
 
       this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
@@ -308,10 +269,9 @@ guardarCambios() {
    
     }
   } )
->>>>>>> main
 
- 
-//   }
+    }
+  
   
   
 campoNoEsValido(campo: string){
