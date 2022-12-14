@@ -51,7 +51,7 @@ export class TercerFormularioComponent implements OnInit {
 
 
 firstFormGroup: FormGroup = this.formBuilder.group({firstCtrl: ['',[Validators.required]]});
-secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['',[Validators.required]]});
+secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['',[Validators.required]]}) || 1;
 
 constructor(private formBuilder: FormBuilder
   , private toastr: ToastrService
