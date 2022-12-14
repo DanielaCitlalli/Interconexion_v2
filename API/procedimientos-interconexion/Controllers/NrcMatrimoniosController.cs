@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -13,11 +14,14 @@ namespace procedimientos_interconexion.Controllers
     [ApiController]
     public class NrcMatrimoniosController : ControllerBase
     {
+        
+
         private readonly InterconexionContext _context;
 
         public NrcMatrimoniosController(InterconexionContext context)
         {
             _context = context;
+          
         }
 
         // GET: api/NrcMatrimonios
@@ -32,11 +36,12 @@ namespace procedimientos_interconexion.Controllers
         public async Task<ActionResult<NrcMatrimonios>> GetNrcMatrimonios(string id)
         {
             var nrcMatrimonios = await _context.NrcMatrimonios.FindAsync(id);
+            Console.WriteLine(nrcMatrimonios);
 
             if (nrcMatrimonios == null)
             {
-                //return NotFound();
-                return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
+                return NotFound("No se encontró el registro indicado...");
+               
             }
 
             return nrcMatrimonios;
@@ -51,11 +56,15 @@ namespace procedimientos_interconexion.Controllers
             if (id != nrcMatrimonios.Cadena)
             {
                 return BadRequest();
-                //return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
             }
            
 
             _context.Entry(nrcMatrimonios).State = EntityState.Modified;
+            string path = Directory.GetCurrentDirectory();
+
+            Log oLog = new Log(path);
+            string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+            oLog.Add(remoteIpAddress + " , " + "Actualizo el Sexo " + " , " + nrcMatrimonios.Cadena);
 
             try
             {
@@ -73,7 +82,8 @@ namespace procedimientos_interconexion.Controllers
                 }
             }
 
-            return NoContent();
+           // return NoContent();
+            return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
         }
 
         // POST: api/NrcMatrimonios
@@ -85,6 +95,7 @@ namespace procedimientos_interconexion.Controllers
             _context.NrcMatrimonios.Add(nrcMatrimonios);
             try
             {
+                
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateException)
@@ -122,5 +133,6 @@ namespace procedimientos_interconexion.Controllers
         {
             return _context.NrcMatrimonios.Any(e => e.Cadena == id);
         }
+
     }
 }

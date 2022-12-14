@@ -1,328 +1,199 @@
-<form [formGroup]="formCambioSexo"(ngSubmit)="guardarCambios()">
+<form [formGroup]="formCambioSexo"(ngSubmit)="guardarCambios()" class="contenedor">
+
     
+    <div class="persona1">
+        <div class="row ms-3 ">
+        <h5>Contrayente 1:</h5>
+        <!-- <fieldset disabled> -->
+       
+            <!-- P1 Nombres -->
+        <div class="form-group col-mt-5 mb-3 t"  *ngIf="this.datosRetornados.registro.p1Nombres !== null">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card "
+                            [class.green-icon]="this.formCambioSexo.get('p1Nombres')?.valid"
+                            [class.red-icon]="this.formCambioSexo.get('p1Nombres')?.invalid && this.formCambioSexo.get('p1Nombres')?.touched" 
+                            ></i>
+                        </div>
+                        <input type="text"  
+                                class="form-control" 
+                                placeholder="Nombres persona 1"
+                                formControlName="p1Nombres"
+                                maxlength="20"
+                                required>
+                    </div>
     
-    <h5>Contrayente 1:</h5>
-
-    <div class="row mb-3">
-        <!-- P1 Nombres -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-id-card" 
-                        [class.green-icon]="this.formCambioSexo.get('p1_nombres')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p1_nombres')?.invalid && this.formCambioSexo.get('p1_nombres')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Nombres persona 1"
-                            formControlName="p1_nombres"
-                            maxlength="20"
-                            required>
                 </div>
-
+           
+        </div>
+        <!-- <div class="row mt-5"> -->
+            <!-- P1 Primer Apellido -->
+            <div class="form-group col-mt-5 mb-3 " *ngIf="this.datosRetornados.registro.p1Primerapellido !== null">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card "
+                                [class.green-icon]="this.formCambioSexo.get('p1Primerapellido')?.valid"
+                                [class.red-icon]="this.formCambioSexo.get('p1Primerapellido')?.invalid && this.formCambioSexo.get('p1Primerapellido')?.touched"></i>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Primer Apellido persona 1"
+                            formControlName="p1Primerapellido" maxlength="20" required>
+                    </div>
+            
+                <!-- </div> -->
             </div>
         </div>
-
-        <!-- P1 Primer Apellido -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-id-card" 
-                        [class.green-icon]="this.formCambioSexo.get('p1_primerApellido')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p1_primerApellido')?.invalid && this.formCambioSexo.get('p1_primerApellido')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Primer Apellido persona 1"
-                            formControlName="p1_primerApellido"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
         </div>
-
-        <!-- P1 Segundo Apellido -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-id-card" 
-                        [class.green-icon]="this.formCambioSexo.get('p1_segundoApellido')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p1_segundoApellido')?.invalid && this.formCambioSexo.get('p1_segundoApellido')?.touched" 
-                        ></i>
+        <div class="row ms-3">
+            <!-- P1 Segundo Apellido -->
+            <div class="form-group col-mt-5 mb-3 "  *ngIf="this.datosRetornados.registro.p1Segundoapellido !== null">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card " 
+                            [class.green-icon]="this.formCambioSexo.get('p1Segundoapellido')?.valid"
+                            [class.red-icon]="this.formCambioSexo.get('p1Segundoapellido')?.invalid && this.formCambioSexo.get('p1Segundoapellido')?.touched" 
+                            ></i>
+                        </div>
+                        <input type="text"  
+                                class="form-control" 
+                                placeholder="Segundo Apellido persona 1"
+                                formControlName="p1Segundoapellido"
+                                maxlength="20"
+                                required
+                                >
                     </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Segundo Apellido persona 1"
-                            formControlName="p1_segundoApellido"
-                            maxlength="20"
-                            required>
+    
                 </div>
-
-            </div>
-        </div>
-
-        <!-- P1 Sexo -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-venus-mars" 
-                        [class.green-icon]="this.formCambioSexo.get('p1_sexo')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p1_sexo')?.invalid && this.formCambioSexo.get('p1_sexo')?.touched" 
-                        ></i>
+            </div>      
+        
+        <!-- </fieldset> -->
+        <!-- <div class="row ms-3"> -->
+            <!-- P1 Sexo -->
+            <div class="form-group col-mt-5 mb-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-venus-mars " 
+                            [class.green-icon]="this.formCambioSexo.get('p1Sexo')?.valid"
+                            [class.red-icon]="this.formCambioSexo.get('p1Sexo')?.invalid && this.formCambioSexo.get('p1Sexo')?.touched" 
+                            ></i>
+                        </div>
+                        <select formControlName="p1Sexo">
+                            <option *ngFor="let sexo of listSexo" [value]="sexo.valor">{{sexo.nombre}}</option>
+                        </select>
                     </div>
-                    <select formControlName="p1_sexo">
-                        <option *ngFor="let sexo of listSexo" [value]="sexo.valor">{{sexo.nombre}}</option>
-                    </select>
+    
                 </div>
-
             </div>
+        <!-- </div> -->
         </div>
-    </div>
-
-    <div class="row mb-3">
-
-        <!-- P1 Pais Nacimiento -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-earth-americas" 
-                        [class.green-icon]="this.formCambioSexo.get('p1_paisNacimiento')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p1_paisNacimiento')?.invalid && this.formCambioSexo.get('p1_paisNacimiento')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Pais Nacimiento persona 1"
-                            formControlName="p1_paisNacimiento"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- P1 Nacionalidad -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-solid fa-flag" 
-                        [class.green-icon]="this.formCambioSexo.get('p1_nacionalidad')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p1_nacionalidad')?.invalid && this.formCambioSexo.get('p1_nacionalidad')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Nacionalidad persona 1"
-                            formControlName="p1_nacionalidad"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- P1 Edad -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-solid fa-cake-candles" 
-                        [class.green-icon]="this.formCambioSexo.get('p1_edad')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p1_edad')?.invalid && this.formCambioSexo.get('p1_edad')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Edad persona 1"
-                            formControlName="p1_edad"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-
-    <h5>Contrayente 2:</h5>
-
-    <div class="row mb-3">
-        <!-- P2 Nombres -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-id-card" 
-                        [class.green-icon]="this.formCambioSexo.get('p2_nombres')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p2_nombres')?.invalid && this.formCambioSexo.get('p2_nombres')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Nombres persona 2"
-                            formControlName="p2_nombres"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- P2 Primer Apellido -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-id-card" 
-                        [class.green-icon]="this.formCambioSexo.get('p2_primerApellido')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p2_primerApellido')?.invalid && this.formCambioSexo.get('p2_primerApellido')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Primer Apellido persona 2"
-                            formControlName="p2_primerApellido"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- P2 Segundo Apellido -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-id-card" 
-                        [class.green-icon]="this.formCambioSexo.get('p2_segundoApellido')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p2_segundoApellido')?.invalid && this.formCambioSexo.get('p2_segundoApellido')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Segundo Apellido persona 2"
-                            formControlName="p2_segundoApellido"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- P2 Sexo -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-venus-mars" 
-                        [class.green-icon]="this.formCambioSexo.get('p2_sexo')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p2_sexo')?.invalid && this.formCambioSexo.get('p2_sexo')?.touched" 
-                        ></i>
-                    </div>
-                    <select formControlName="p2_sexo">
-                        <option *ngFor="let sexo of listSexo" [value]="sexo.valor">{{sexo.nombre}}</option>
-                    </select>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row mb-3">
-
-        <!-- P2 Pais Nacimiento -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-sharp fa-solid fa-earth-americas" 
-                        [class.green-icon]="this.formCambioSexo.get('p2_paisNacimiento')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p2_paisNacimiento')?.invalid && this.formCambioSexo.get('p2_paisNacimiento')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Pais Nacimiento persona 2"
-                            formControlName="p2_paisNacimiento"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- P2 Nacionalidad -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-solid fa-flag" 
-                        [class.green-icon]="this.formCambioSexo.get('p2_nacionalidad')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p2_nacionalidad')?.invalid && this.formCambioSexo.get('p2_nacionalidad')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Nacionalidad persona 2"
-                            formControlName="p2_nacionalidad"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- P2 Edad -->
-        <div class="form-group col-md-3 mb-3">
-            <div class="form-group">
-                <div class="input-group">
-                    <div class="input-group-text bg-white">
-                        <i class="fa-solid fa-cake-candles" 
-                        [class.green-icon]="this.formCambioSexo.get('p2_edad')?.valid"
-                        [class.red-icon]="this.formCambioSexo.get('p2_edad')?.invalid && this.formCambioSexo.get('p2_edad')?.touched" 
-                        ></i>
-                    </div>
-                    <input type="text"  
-                            class="form-control" 
-                            placeholder="Edad persona 2"
-                            formControlName="p2_edad"
-                            maxlength="20"
-                            required>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
+    <!-- </div> -->
 
     
 
-    <div class="form-group mb-3">
+    <!-- <div class="persona2"> -->
+        <div class="row ms-3">
+        <h5>Contrayente 2:</h5>
+        <!-- <fieldset disabled> -->
+        
+            <!-- P2 Nombres -->
+            <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Nombres !== null">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card" [class.green-icon]="this.formCambioSexo.get('p2Nombres')?.valid"
+                                [class.red-icon]="this.formCambioSexo.get('p2Nombres')?.invalid && this.formCambioSexo.get('p2Nombres')?.touched"></i>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Nombres persona 2" formControlName="p2Nombres"
+                            maxlength="20" required>
+                    </div>
+            
+                </div>
+            </div>
+      
+        <!-- <div class="row mt-5"> -->
+            <!-- P2 Primer Apellido -->
+            <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Primerapellido !== null">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card"
+                                [class.green-icon]="this.formCambioSexo.get('p2Primerapellido')?.valid"
+                                [class.red-icon]="this.formCambioSexo.get('p2Primerapellido')?.invalid && this.formCambioSexo.get('p2Primerapellido')?.touched"></i>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Primer Apellido persona 2"
+                            formControlName="p2Primerapellido" maxlength="20" required>
+                    </div>
+            
+                </div>
+           
+            </div>
+        <!-- </div> -->
+        </div>
+        <div class="row ms-3">   
+            <!-- P2 Segundo Apellido -->
+            <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p2Segundoapellido !== null">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-id-card"
+                                [class.green-icon]="this.formCambioSexo.get('p2Segundoapellido')?.valid"
+                                [class.red-icon]="this.formCambioSexo.get('p2Segundoapellido')?.invalid && this.formCambioSexo.get('p2Segundoapellido')?.touched"></i>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Segundo Apellido persona 2"
+                            formControlName="p2Segundoapellido" maxlength="20" required>
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    <!-- </fieldset> -->
+        <div class="row ms-3">
+            <!-- P2 Sexo -->
+            <div class="form-group col-mt-5 mb-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-text bg-white fs-3">
+                            <i class="fa-sharp fa-solid fa-venus-mars" [class.green-icon]="this.formCambioSexo.get('p2Sexo')?.valid"
+                                [class.red-icon]="this.formCambioSexo.get('p2Sexo')?.invalid && this.formCambioSexo.get('p2Sexo')?.touched"></i>
+                        </div>
+                        <select formControlName="p2Sexo">
+                            <option *ngFor="let sexo of listSexo" [value]="sexo.valor">{{sexo.nombre}}</option>
+                        </select>
+                    </div>
+            
+                </div>
+
+            </div>
+
+                
+        </div>       
+        <div style="text-align:center">
+            <div class="form-group atext-align:cente contenedor-botones">
+                <button class="btn btn-success ">
+                    <i class="fas fa-sharp fa-solid fa-circle-check fs-3"></i>
+                    Guardar Cambios
+                    
+                </button>
+                <button class="btn btn-danger" type="button" (click)="cancelar()">
+                    <i class="fa-sharp fa-solid fa-xmark fs-3"></i>
+                    Cancelar
+                   
+                </button>
+            </div>
+        </div>
+    </div>
+               
+    <div class="form-group mb-3 ">
         <div class="input-group">
-            <p class="msjError" *ngIf="campoNoEsValido('p1_nombres')">Campo obligatorio. Solo admite caracteres numéricos</p>
+            <p class="msjError" *ngIf="campoNoEsValido('p1Nombres')">Campo obligatorio. Solo admite caracteres numéricos</p>
         </div>
     </div>
 
-    <div class="form-group">
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary btn-lg" 
-            [disabled]="formCambioSexo.invalid">
-                    <i class="fas fa-sharp fa-solid fa-circle-check"></i>
-                Ejecutar
-            </button>
-        </div>
-
-    </div>
-    
+     
     
 </form>

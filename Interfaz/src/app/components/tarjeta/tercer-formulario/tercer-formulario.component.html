@@ -1,0 +1,306 @@
+
+    
+
+
+
+
+      
+      <mat-horizontal-stepper linear  #stepper >
+        <mat-step [stepControl]="formCambioNacionalidad" [editable]="false">
+
+            <form [formGroup]="formCambioNacionalidad" (ngSubmit)="guardarCambios()">
+            
+            
+                <table class="table  table-sm alert alert-light border border-2 border border-primary  text text-center  ">
+                    <h4 class="centro">Datos de la persona Registrada</h4>
+                    <!-- Pe Nombres del hijo -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 t">
+                            <input type="text" matInput placeholder="Nombre(s)" formControlName="peNombres" maxlength="20">
+                            <div>
+                                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>  -->
+                                <mat-icon>face</mat-icon>
+            
+            
+            
+                            </div>
+                        </div>
+            
+                    </mat-form-field>
+                    <mat-form-field>
+                        <!-- Pe primer apellido del hijo  -->
+                        <div class=" col-mt-5 mb-3 ">
+                            <input type="text" matInput placeholder="Primer Apellido " formControlName="pePrimerapellido"
+                                maxlength="20">
+                            <div>
+                                <mat-icon>face</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+            
+                    <!-- Pe Segundo Apellido del hijo -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 ">
+            
+                            <input type="text" matInput placeholder="Segundo Apellido" formControlName="peSegundoapellido"
+                                maxlength="20">
+                            <div>
+                                <mat-icon>face</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+            
+                    <!-- Pe Sexoo de hijo -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 ">
+                            <input type="text" matInput placeholder="Sexo" formControlName="peSexo" maxlength="20">
+                            <div>
+                                <mat-icon>face</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                    <!-- Pe Fecha Nacimiento del hijo-->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 ">
+                            <input type="text" matInput placeholder="Fecha Nacimiento" formControlName="peFechanacimiento"
+                                maxlength="20">
+                            <div>
+                                <mat-icon>face</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                    <!-- Pe Lugar de Nacimiento del hijo  -->
+                    <!-- <mat-form-field > 
+                            
+                            <div class="col-mt-5 mb-3 "  >
+                                        <input type="text"  
+                                                matInput
+                                                placeholder="Lugar de Nacimiento"
+                                                formControlName="peEntidadnacimiento"
+                                                maxlength="20" 
+                                                >
+                                                <div >
+                                                    <mat-icon>face</mat-icon>
+                                                </div>    
+                                    </div>
+                        </mat-form-field> -->
+            
+            
+            
+                    <h4 class="centro">Datos de afiliacion de la persona Registrada</h4>
+                    <br>
+                    <h5 class="centro">Datos del padre</h5>
+                    <!--Datos del Pabre Nombre(s) -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 t">
+                            <div class="">
+                                <input type="text" matInput placeholder="Nombre(s)" formControlName="paNombres" maxlength="20">
+                                <div>
+                                    <mat-icon>person</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <!--Datos del Pabre Primer apellido -->
+                        <div class=" col-mt-5 mb-3 ">
+                            <input type="text" matInput placeholder="Primer Apellido " formControlName="paPrimerapellido"
+                                maxlength="20">
+                            <div>
+                                <mat-icon>person</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+            
+                    <!--Datos del Pabre segundo apellido -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 ">
+            
+                            <input type="text" matInput placeholder="Segundo Apellido" formControlName="paSegundoapellido"
+                                maxlength="20">
+                            <div>
+                                <mat-icon>person</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                    <!--Datos del Pabre Nacionalidad -->
+            
+                    <mat-form-field class="example-full-width">
+                        <div class="col-mt-5 mb-3">
+                            <!-- Value de Autocomplete guarda la descripcion del pais para no mostrar id en la interfaz -->
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of optionsPa" [value]="option.paiDescripcion"
+                                    (onSelectionChange)="cambiarPaisPa(option)">
+                                    {{option.paiDescripcion}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <input type="text" placeholder="Nacionalidad" matInput formControlName="paNacionalidad"
+                                [matAutocomplete]="auto">
+                            <div>
+                                <!-- <mat-label>Nacionalidad</mat-label> -->
+                                <mat-icon>public</mat-icon>
+                            </div>
+            
+                        </div>
+                    </mat-form-field>
+            
+            
+                    <!--Datos del Pabre Curp -->
+            
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 ">
+            
+                            <input type="text" matInput placeholder="Curp" formControlName="paCurp" maxlength="20">
+                            <div>
+                                <mat-icon>person</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                    <br>
+                    <h5 class="centro">Datos de la Madre</h5>
+                    <!--Datos de la Madre Nombre(s) -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 t">
+                            <div class="">
+                                <input type="text" matInput placeholder="Nombre(s)" formControlName="maNombres" maxlength="20">
+                                <div>
+                                    <mat-icon>person</mat-icon>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <!--Datos de la Madre Primer apellido -->
+                        <div class=" col-mt-5 mb-3 ">
+                            <input type="text" matInput placeholder="Primer Apellido " formControlName="maPrimerapellido"
+                                maxlength="20">
+                            <div>
+                                <mat-icon>person</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+            
+                    <!--Datos de la Madre segundo apellido -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 ">
+            
+                            <input type="text" matInput placeholder="Segundo Apellido" formControlName="maSegundoapellido"
+                                maxlength="20">
+                            <div>
+                                <mat-icon>person</mat-icon>
+                            </div>
+                        </div>
+                    </mat-form-field>
+                    <!--Datos de la Madre Nacionalidad -->
+            
+                    <mat-form-field class="example-full-width">
+                        <div class="col-mt-5 mb-3">
+                            <!-- Value de Autocomplete guarda la descripcion del pais para no mostrar id en la interfaz -->
+                            <mat-autocomplete #auto2="matAutocomplete">
+                                <mat-option *ngFor="let option of optionsMa" [value]="option.paiDescripcion"
+                                    (onSelectionChange)="cambiarPaisMa(option)">
+                                    {{option.paiDescripcion}}
+                                </mat-option>
+                            </mat-autocomplete>
+                            <input type="text" placeholder="Nacionalidad" matInput formControlName="maNacionalidad"
+                                [matAutocomplete]="auto2" >
+                            <div>
+                                <!-- <mat-label>Nacionalidad</mat-label> -->
+                                <mat-icon>public</mat-icon>
+                            </div>
+            
+                        </div>
+                    </mat-form-field>
+                    <!--Datos del Madre Curp -->
+                    <mat-form-field>
+                        <div class=" col-mt-5 mb-3 ">
+            
+                            <input type="text" matInput placeholder="Curp" formControlName="maCurp" maxlength="20">
+                            <div>
+                                <mat-icon>person</mat-icon>
+                            </div>
+                        </div>
+            
+                    </mat-form-field>
+                    <div>
+                        <p>&nbsp; </p>
+            
+                      
+            
+                    </div>
+                    &nbsp;
+                </table>
+                &nbsp;
+            </form>
+
+
+        </mat-step>
+       
+        <mat-step [stepControl]="secondFormGroup" [editable]="false" [completed]="false">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fill out your address</ng-template>
+            <div class="contenedor-cadenas">
+
+                <h6>Subir Acta de nacimiento:</h6>
+            
+                <table class="table table-light table-hover ">
+                    <thead>
+                      <th class="tabla">Cadena</th>
+                      <th class="tabla">Nombre de Padre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.paPrimerapellido !== null">Apellido paterno de Padre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.paSegundoapellido !== null">Apellido materno de Padre</th>
+                      <th class="tabla">Nacionalidad de Padre</th>
+                      <th class="tabla">Nombre de Madre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.maPrimerapellido !== null">Apellido paterno de Madre</th>
+                      <th class="tabla" *ngIf="this.datosRetornados.maSegundoapellido !== null">Apellido materno de Madre</th>
+                      <th class="tabla">Nacionalidad Madre</th>
+                    </thead>
+                  <tbody>  
+                      <tr > 
+                        <td class="tabla">{{datosRetornados.cadena}}</td>
+                        <td class="tabla">{{datosRetornados.paNombres}}</td>
+                        <td class="tabla" *ngIf="this.datosRetornados.paPrimerapellido !== null">{{datosRetornados.paPrimerapellido}}</td>
+                        <td class="tabla" *ngIf="this.datosRetornados.paSegundoapellido !== null">{{datosRetornados.paSegundoapellido}}</td>
+                        <td class="tabla">{{this.formCambioNacionalidad.get('paNacionalidad')?.value}}</td>
+                       <td class="tabla">{{datosRetornados.maNombres}}</td>
+                       <td class="tabla" *ngIf="this.datosRetornados.maPrimerapellido !== null">{{datosRetornados.maPrimerapellido}}</td>
+                       <td class="tabla" *ngIf="this.datosRetornados.maSegundoapellido !== null">{{datosRetornados.maSegundoapellido}}</td>
+                        <td class="tabla">{{this.formCambioNacionalidad.get('maNacionalidad')?.value}}</td>
+                       
+                      </tr>
+                  </tbody>   
+                </table>
+              </div>
+              <div>
+                <p>&nbsp; </p>
+    
+                <button mat-raised-button class="color"[disabled]="formCambioNacionalidad.invalid" (click)="guardarCambios()">
+                    <mat-icon>how_to_reg</mat-icon>Actualizar
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <!-- Dar espacios entre cada botón -->
+                <button mat-raised-button color="warn" (click)="cancelar()">
+                    <mat-icon>highlight_off</mat-icon>Cancelar
+                </button>
+    
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [editable]="false">
+          <ng-template matStepLabel>Done</ng-template>
+          <div class="card border-primary" style="width: 25rem;">
+            <img class="card-img-top" src="https://i.scdn.co/image/ab6765630000ba8adc604b6f8a5295d349139b1f">
+            <div class="card-header text-white bg-primary "><h4 class="card-title" style="width: 17rem;"><i class="fas fa-duotone fa-thumbs-up"></i> Exito al guardar</h4></div>
+            <div class="card-body" >
+              <button type="button" class="btn btn btn-outline-primary btn-lg btn-block" (click)="cancelar()" style="width: 23rem;">
+                <i class="fas fa-duotone fa-house-user"></i>
+                Menu principal</button>
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+
+    
+        
+    
+      

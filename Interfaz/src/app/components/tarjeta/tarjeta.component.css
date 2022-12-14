@@ -1,3 +1,16 @@
 .centrado{
     margin: auto;
 }
+
+.miSpinner{
+    margin-top: 3rem;
+}
+
+.miSpinner div {
+    width: 10rem;
+    height: 10rem;
+}
+
+.spinner-border{
+    --bs-spinner-border-width: 1rem !important;
+}

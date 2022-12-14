@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,7 @@ namespace procedimientos_interconexion.Controllers
     public class CirrTa03DepeticionController : ControllerBase
     {
         private readonly InterconexionContext _context;
+          
 
         public CirrTa03DepeticionController(InterconexionContext context)
         {
@@ -39,6 +42,30 @@ namespace procedimientos_interconexion.Controllers
             }
 
             return cirrTa03Depeticion;
+        }
+        [HttpGet]
+        [Route("buscarcadena/{crip}")]
+        public async Task<ActionResult<List<NrcDefunciones>>> buscarCadena(string crip)
+        {
+            try
+            {
+                var res = _context.NrcDefunciones.FromSqlInterpolated($@"EXEC dbo.cripToCadenaDef @crip={crip}").AsAsyncEnumerable();
+
+                return Ok(res);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+  
+            }
+
+    }
+        public class ApplicationDbContext : DbContext
+        {
+            public ApplicationDbContext()
+            {
+                Database.SetCommandTimeout(150000);
+            }
         }
 
         // PUT: api/CirrTa03Depeticion/5
@@ -79,20 +106,23 @@ namespace procedimientos_interconexion.Controllers
         [HttpPost]
         public async Task<ActionResult<CirrTa03Depeticion>> PostCirrTa03Depeticion(CirrTa03Depeticion cirrTa03Depeticion)
         {
-            //Borrar DEfunciones
+            //Borrar Defunciones
 
             try
             {
-                //_context.Add(new CirrTa03Depeticion { Ta03EPrioridad = 1, Ta03EOperacionacto = 2, Ta03EEstatus = 0, Ta03ECuantos = 0, Ta03CCadena = cirrTa03Depeticion.Ta03CCadena });
                 _context.Add(cirrTa03Depeticion);
                 await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se borro defuncion " + " , "  + cirrTa03Depeticion.Ta03CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa03DepeticionId), new { id = cirrTa03Depeticion.Ta03EOid }, cirrTa03Depeticion);
             }
             catch (Exception ex)
             {
                 return BadRequest();
-                //return Content("Ocurrio un error al hacer el registro: " + ex, "application/json");
             }
 
 
@@ -107,13 +137,17 @@ namespace procedimientos_interconexion.Controllers
             {
                 _context.Add(cirrTa03Depeticion);
                 await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de Defuncion " + " , "  + cirrTa03Depeticion.Ta03CCadena);
 
                 return CreatedAtAction(nameof(GetCirrTa03DepeticionId), new { id = cirrTa03Depeticion.Ta03EOid }, cirrTa03Depeticion);
             }
             catch(Exception ex)
             {
                 return BadRequest();
-                //return Content("Ocurrio un error al hacer el registro: " + ex, "application/json");
             }
 
 

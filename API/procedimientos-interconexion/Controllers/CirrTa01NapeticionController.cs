@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using procedimientos_interconexion.Models;
 
 namespace procedimientos_interconexion.Controllers
@@ -15,11 +19,15 @@ namespace procedimientos_interconexion.Controllers
     {
         private readonly InterconexionContext _context;
 
-        public CirrTa01NapeticionController(InterconexionContext context)
+        public CirrTa01NapeticionController(InterconexionContext context, IConfiguration configuration)
         {
             _context = context;
+            Configuration = configuration;
+            
         }
-        // holaaaaa
+
+        public IConfiguration Configuration { get; }
+
         // GET: api/CirrTa01Napeticion
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CirrTa01Napeticion>>> GetCirrTa01Napeticion()
@@ -32,6 +40,7 @@ namespace procedimientos_interconexion.Controllers
         public async Task<ActionResult<CirrTa01Napeticion>> GetCirrTa01NapeticionId(decimal id)
         {
             var cirrTa01Napeticion = await _context.CirrTa01Napeticion.FindAsync(id);
+          
 
             if (cirrTa01Napeticion == null)
             {
@@ -41,15 +50,106 @@ namespace procedimientos_interconexion.Controllers
             return cirrTa01Napeticion;
         }
 
+        // GET: api/CirrTa01Napeticion/5
+        [HttpGet]
+        [Route("buscarcadena/{crip}")]
+        public async Task<ActionResult<List<NrcNacimientos>>> buscarCadena(string crip)
+        {
+            try
+            {
+                //Los indices comienzan en 0 a diferencia de script en SQL
+                var res = await (from _Nacimientos in _context.NrcNacimientos
+                                 where crip == _Nacimientos.Cadena.Substring(1, 2) + _Nacimientos.Cadena.Substring(3, 3) +
+                                 _Nacimientos.Cadena.Substring(8, 2) + _Nacimientos.Cadena.Substring(12, 2) +
+                                 _Nacimientos.Cadena.Substring(14, 5)
+                                 select new
+                                 {
+                                     _Nacimientos.Cadena,
+                                     _Nacimientos.PeNombres,
+                                     _Nacimientos.PePrimerapellido,
+                                     _Nacimientos.PeSegundoapellido,
+                                     _Nacimientos.PeCurp,
+                                     _Nacimientos.OtErrororigen
+                                 }).ToListAsync();
+
+                //var res = _context.NrcNacimientos.FromSqlInterpolated($@"EXEC dbo.cripToCadenaNac @crip={crip}").AsAsyncEnumerable();
+
+
+                return Ok(res);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+
+
+            //--Solucion alternativa
+            #region
+            //var conectionString = Configuration.GetConnectionString("DbConnection");
+            //SqlConnection cnn;
+
+            //cnn = new SqlConnection(conectionString);
+
+            //SqlCommand Comm;
+            //SqlDataReader reader;
+
+            //List<NacimientosCadenas> milista;
+            //milista = new List<NacimientosCadenas>();
+
+            //NacimientosCadenas registro;
+
+
+            //try
+            //{
+            //    cnn.Open();
+            //    Comm = cnn.CreateCommand();
+            //    Comm.CommandText = "dbo.cripToCadenaNac2";
+            //    Comm.CommandType = CommandType.StoredProcedure;
+            //    Comm.Parameters.Add("@crip", SqlDbType.VarChar, 14).Value = crip;
+            //    Comm.CommandTimeout = 3600;
+            //    reader = await Comm.ExecuteReaderAsync();
+            //    while (reader.Read())
+            //    {
+            //        registro = new NacimientosCadenas();
+            //        registro.Cadena = reader["CADENA"].ToString();
+            //        registro.PeNombres = reader["PE_NOMBRES"].ToString();
+            //        registro.PePrimerapellido = reader["PE_PRIMERAPELLIDO"].ToString();
+            //        registro.PeSegundoapellido = reader["PE_SEGUNDOAPELLIDO"].ToString();
+            //        registro.PeCurp = reader["PE_CURP"].ToString();
+            //        registro.OtErrororigen = reader["OT_ERRORORIGEN"].ToString();
+            //        milista.Add(registro);
+            //    }
+
+            //    reader.Close();
+            //    Comm.Dispose();
+            //    cnn.Close();
+            //    cnn.Dispose();
+            //    return Ok(milista);
+            //    //return Ok("conexion abierta");
+            //}
+            //catch (SqlException ex)
+            //{
+            //    cnn.Close();
+            //    cnn.Dispose();
+            //    return BadRequest();
+            //}
+            #endregion
+
+
+        }
+
         // PUT: api/CirrTa01Napeticion/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCirrTa01Napeticion(decimal id, CirrTa01Napeticion cirrTa01Napeticion)
         {
+           
             if (id != cirrTa01Napeticion.Ta01EOid)
             {
                 return BadRequest();
+                
             }
 
             _context.Entry(cirrTa01Napeticion).State = EntityState.Modified;
@@ -79,36 +179,20 @@ namespace procedimientos_interconexion.Controllers
         [HttpPost]
         public async Task<ActionResult<CirrTa01Napeticion>> PostCirrTa01Napeticion(CirrTa01Napeticion cirrTa01Napeticion)
         {
-            //_context.CirrTa01Napeticion.Add(cirrTa01Napeticion);
-            //await _context.SaveChangesAsync();
 
             // BORRAR NACIMIENTOS
 
             try
             {
-                //_context.Add(new CirrTa01Napeticion { 
-                //    Ta01ESecuencia = cirrTa01Napeticion.Ta01ESecuencia,
-                //    Ta01EPrioridad = cirrTa01Napeticion.Ta01EPrioridad, 
-                //    Ta01EOperacionacto = cirrTa01Napeticion.Ta01EOperacionacto,
-                //    Ta01CCadena = cirrTa01Napeticion.Ta01CCadena,
-                //    Ta01FEntrada = cirrTa01Napeticion.Ta01FEntrada,
-                //    Ta01EEstatus = cirrTa01Napeticion.Ta01EEstatus,
-                //    Ta07EEstadodest = cirrTa01Napeticion.Ta07EEstadodest,
-                //    Ta07EOiddestino = cirrTa01Napeticion.Ta07EOiddestino,
-                //    Ta07ESolicitarimagen = cirrTa01Napeticion.Ta07ESolicitarimagen,
-                //    Ta01FAtencion = cirrTa01Napeticion.Ta01FAtencion,
-                //    Ta01ECuantos = cirrTa01Napeticion.Ta01ECuantos
-                //});
 
                 _context.Add(cirrTa01Napeticion);
                     
                 await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
 
-                //return NoContent();
-                //return Content("El registro se agregó exitosamente", "application/json");
-                //Consulta para encontrar el ultimo id ingresado a alguna tabla
-                //var lastId = await _context.CirrTa01Napeticion.FromSqlRaw("SELECT IDENT_CURRENT('CIRR_TA01_NAPETICION') as TA01_E_OID").ToListAsync();
-                
+                Log oLog = new Log(path);
+                string remoteIpAddress=HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se borro Nacimiento" + " , " + cirrTa01Napeticion.Ta01CCadena);
 
 
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
@@ -116,40 +200,30 @@ namespace procedimientos_interconexion.Controllers
             catch (Exception ex)
             {
                 return BadRequest();
-                //return Content("Ocurrio un error al hacer el registro: " +  ex, "application/json");
             }
 
-
-
-            //await _context.SaveChangesAsync();
-            //return CreatedAtAction("GetCirrTa01Napeticion", new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
-
-            }
+         }
 
         [HttpPost]
         [Route("ForzarSubirActaNacimientos")]
         public async Task<ActionResult<CirrTa01Napeticion>> PostCirrTa01Napeticion02(CirrTa01Napeticion cirrTa01Napeticion)
         {
-            //_context.CirrTa01Napeticion.Add(cirrTa01Napeticion);
-            //await _context.SaveChangesAsync();
-
             try
             {
-                //_context.Add(new CirrTa01Napeticion { Ta01EPrioridad = 1, Ta01EOperacionacto = 1, Ta01CCadena = cirrTa01Napeticion.Ta01CCadena, Ta01EEstatus = 0, Ta01ECuantos = 0 });
                 _context.CirrTa01Napeticion.Add(cirrTa01Napeticion);
                 await _context.SaveChangesAsync();
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se subio Acta de nacimiento " + " , " + cirrTa01Napeticion.Ta01CCadena);
+
+
                 return CreatedAtAction(nameof(GetCirrTa01NapeticionId), new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
-                //return NoContent();
             }
             catch(Exception ex){
                 return BadRequest();
-                //return Content("Ocurrio un error al hacer el registro: " + ex, "application/json");
             }
-
-
-
-            //await _context.SaveChangesAsync();
-            //return CreatedAtAction("GetCirrTa01Napeticion", new { id = cirrTa01Napeticion.Ta01EOid }, cirrTa01Napeticion);
 
         }
 

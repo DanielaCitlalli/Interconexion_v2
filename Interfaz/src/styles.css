@@ -1,8 +1,8 @@
-input.ng-touched.ng-invalid{
+input.ng-touched.ng-invalid , select.ng-touched.ng-invalid{
     border-color: #dc3545;
 }
 
-input.ng-valid{
+input.ng-valid , select.ng-valid{
     border-color: #28a745;
 }
 
@@ -13,3 +13,12 @@ input.ng-valid{
 .red-icon{
     color: #dc3545;
 }
+
+body {
+    background-image: url("assets/imagen2.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 35% 65%;
+    background-position: center;
+    
+  }

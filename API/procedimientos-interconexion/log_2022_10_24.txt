@@ -1,0 +1,22 @@
+<<<<<<< HEAD
+24/10/2022 02:28:07 p. m. - Borrar defunciones10280188
+24/10/2022 02:29:45 p. m. - Borrar defunciones10280190
+24/10/2022 02:31:00 p. m. - Borrar defunciones10280191
+24/10/2022 02:32:08 p. m. - Borrar defunciones10280192
+24/10/2022 02:36:19 p. m. - ::1Se Borro defunciones de la cadena11111111111111111117
+24/10/2022 02:38:23 p. m. - 0.0.0.1Se Borro defunciones de la cadena11111111111111111112
+24/10/2022 02:41:20 p. m. - 0.0.0.1Se Borro defunciones de la cadena12222222222222222222
+24/10/2022 02:46:04 p. m. - ::1 Se Borro defunciones de la cadena 11111111112222222222
+24/10/2022 02:50:59 p. m. - 0.0.0.1 Se Borro defunciones de la cadena 33654655555555555566
+24/10/2022 02:52:55 p. m. - False Se Borro defunciones de la cadena 11123333333333333333
+24/10/2022 02:54:27 p. m. - 0.0.0.1 Se Borro defunciones de la cadena 11111133333333333333
+24/10/2022 03:02:00 p. m. - ::1 Se Borro defunciones de la cadena 11111111111122222222
+=======
+24/10/2022 02:09:43 p. m. - Hola Mundo 
+24/10/2022 03:27:37 p. m. - Hola Mundo 
+24/10/2022 03:38:08 p. m. - Hola Mundo 
+24/10/2022 03:42:46 p. m. - Hola Mundo 
+24/10/2022 03:47:19 p. m. - ::1Se borro defunción  33333333333333333339
+24/10/2022 03:50:57 p. m. - ::1Se Borro Matrimonios   31100100011930000480
+24/10/2022 03:52:51 p. m. - ::1Se borri Nacimiento 44444444444444444444
+>>>>>>> main

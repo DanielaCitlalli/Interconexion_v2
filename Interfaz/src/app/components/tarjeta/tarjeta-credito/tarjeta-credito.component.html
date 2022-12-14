@@ -1,31 +1,46 @@
 <!--<form [formGroup]="formInter" (ngSubmit)="ejecutar()">>-->
 
 
-<div></div>
-<form [formGroup]="globalForm"(ngSubmit)="ejecutarGlobal()">
-    
-    <div class="form-group mb-3">
-        <div class="input-group">
-            <div class="input-group-text bg-white">
-                <i class="fas fa-duotone fa-magnifying-glass"></i>
-            </div>
-            <select class="form-select" aria-label="Default select example" formControlName="proceso"(change)="validar()">
-                
-                <option value="borrarDef">Borrar Defunciones </option>
-                <option value="borrarMat">Borrar Matrimonios </option>
-                <option value="borrarNac">Borrar Nacimientos </option>
-                <option value="cambioSexo">Cambio de Sexo</option>
-                <option value="forzarSubirNac">Forzar subir Acta Nacimientos </option>
-                <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
-                <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
 
-            </select>
+<form [formGroup]="globalForm"(ngSubmit)="ejecutarGlobal()" >
+    <div class="form-group mb-3 fs-3">
+        <div class="input-group">
+            <div class="input-group-text bg-white  fs-3">
+                <i class="fas fa-duotone fa-magnifying-glass"
+                    [class.green-icon]="this.globalForm.get('proceso')?.valid"
+                    [class.red-icon]="this.globalForm.get('proceso')?.invalid && this.globalForm.get('proceso')?.touched" ></i>
+            </div>
+
+                <select formControlName="proceso"(change)="validar()" class="form-select" aria-label="Default select example">
+                    <option selected disabled hidden value="">Selecciona un proceso </option>
+                    <optgroup label="Defunciones">
+                        <option value="borrarDef">Borrar Defunciones </option>
+                        <option value="forzarSubirDef">Forzar subir Acta Defunciones </option>
+                    </optgroup>
+                    <optgroup label="Nacimientos">
+                        <option value="borrarNac">Borrar Nacimientos </option>
+                        <option value="cambiarnacionalidad">Cambiar Nacionalidad </option>
+                        <option value="forzarSubirNac">Forzar subir Acta Nacimientos </option>
+                    </optgroup>
+                    <optgroup label="Matrimonios">
+                        <option value="borrarMat">Borrar Matrimonios </option>
+                        <option value="cambioSexo">Cambio de Sexo</option>
+                        <option value="forzarSubirMat">Forzar subir Acta Matrimonios </option>
+                    </optgroup>
+    
+                </select> 
+    
+                       
         </div>
+        
+         
+   
     </div>
+       
 
     <div class="form-group">
         <div class="input-group">
-            <div class="input-group-text bg-white">
+            <div class="input-group-text bg-white fs-3">
                 <i class="fa-sharp fa-solid fa-id-card" 
                 [class.green-icon]="this.globalForm.get('cadena')?.valid"
                 [class.red-icon]="this.globalForm.get('cadena')?.invalid && this.globalForm.get('cadena')?.touched" 
@@ -40,23 +55,76 @@
         </div>
     </div>
 
-    <div class="form-group mb-3">
+    <div class="form-group mb-3 fs-3">
         <div class="input-group">
             <p class="msjError" *ngIf="campoNoEsValido('cadena')">Campo obligatorio. Solo admite caracteres numéricos</p>
         </div>
     </div>
+    
+    
+    <form [formGroup]="globalFormbuscar" (ngSubmit)="ejecutarBusqueda()" *ngIf="globalForm.get('proceso')?.value === 'borrarDef' || 
+        globalForm.get('proceso')?.value === 'borrarMat' || 
+        globalForm.get('proceso')?.value === 'borrarNac'">
+    
+    <div>
+        <div class="input-group mb-3">
+            <div class="input-group-text">
+                <input class="form-check mt-0" type="checkbox" formControlName="checkbox" aria-label="Checkbox for following text input"
+                >
+                <div>
+                    <h6 class="mt-2" style="margin-left: 10px;">¿Desea buscar algún registro?</h6>
+                </div>
+            </div>
+            <!-- <input type="text" class="form-control" aria-label="Text input with checkbox"
+                placeholder="Si desea encontrar la(s) cadena(s), ingrese la CRIP sin el dígito verificador" disabled> -->
+        </div>
+    </div>
+    
+        <div class="form-group mt-3" *ngIf="globalFormbuscar.controls['checkbox'].value">
+            <div class="input-group">
+                <div class="input-group-text bg-white fs-3">
+                    <i class="fas fa-thin  fa-id-card-clip"
+                    [class.green-icon]="this.globalFormbuscar.get('crip')?.valid"
+                    [class.red-icon]="this.globalFormbuscar.get('crip')?.invalid && this.globalFormbuscar.get('crip')?.touched"
+                    ></i>
+                </div>
+            
+                <input type="text" class="form-control" formControlName ="crip" placeholder="Ingrese la CRIP sin el dígito verificador" maxlength="14">
+                <button class="btn btn-primary btn-lg" [disabled]="globalFormbuscar.invalid">
+                    <!-- <i class="fas fa-sharp fa-solid fa-circle-check"></i> -->
+                    Buscar Crip
+                
+                </button>
+              
+            </div>
+        </div>
 
-    <div class="form-group">
+        <div class="form-group mb-3 fs-3" *ngIf="globalFormbuscar.controls['checkbox'].value">
+            <div class="input-group">
+                <p class="msjError" *ngIf="campoNoEsValido('crip')">Crip incorrecta</p>
+            </div>
+        </div>
+    
+    </form> 
+
+
+
+
+    <div class="form-group fs-3">
         <div class="d-grid gap-2">
             <button class="btn btn-primary btn-lg" 
-            [disabled]="globalForm.invalid" >
+            [disabled]="globalForm.invalid" type="submit">
+
                     <i class="fas fa-sharp fa-solid fa-circle-check"></i>
                 Ejecutar
+                
             </button>
         </div>
 
     </div>
+   
     
-    
+ 
 </form>
+<br>
 
