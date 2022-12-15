@@ -16,7 +16,12 @@ export class TarjetaComponent implements OnInit, OnChanges {
   cadenasDisponibles?: Nrc_Nacimientos[];
   cambioSexoDisponible: boolean = false;
   datos: any;
+  //cambio nacionalidad
   nacionalidadDisponible:boolean=false;
+  //agregar/editar nacionalidad
+  paisesDisponibles: boolean = false;
+  editarPais: boolean = false;
+
   registronacimientos:any;
 
   verSpinner: boolean = false;
@@ -52,15 +57,22 @@ export class TarjetaComponent implements OnInit, OnChanges {
       this.verSpinner = false;
       return;
     } 
+    //Para habilitar formulario de cambio de nacionalidad
     else if(event.habilitarFormNacionalidad === true){
       this.nacionalidadDisponible = true;
       this.registronacimientos = event.registro;
       this.verSpinner = false;
-      console.log(this.cambioSexoDisponible);
-      console.log(event);
       
       return;
 
+    }
+    //Para habilitar formulario de editar/agregar país
+    else if(event.habilitarFormPais === true){
+      this.paisesDisponibles = true;
+      this.editarPais = event.editarPais;
+      this.verSpinner = false;
+
+      return;
     }
 
 
@@ -121,6 +133,25 @@ export class TarjetaComponent implements OnInit, OnChanges {
     //Para enviar registro afectado despues de cambio de sexo en segundo formulario
     this.registronacimientos = event;
     this.nacionalidadDisponible = false;
+
+    this.verSpinner = false;
+  }
+
+  mostrarRegistroDevuletoPais(event: any){
+
+    if(event === undefined){
+      this.verSpinner = false;
+      return;
+    }
+    else if(event === 'error'){
+      this.verSpinner = false;
+      return
+      
+    }
+
+    //Para enviar registro afectado despues de cambio de sexo en segundo formulario
+    //this.registronacimientos = event;
+    this.paisesDisponibles = false;
 
     this.verSpinner = false;
   }

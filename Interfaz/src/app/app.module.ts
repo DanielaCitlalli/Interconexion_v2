@@ -23,6 +23,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import { CuartoFormularioComponent } from './components/cuarto-formulario/cuarto-formulario.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {MatCardModule} from '@angular/material/card';
     FooterComponent,
     SegundoFormularioComponent,
     TercerFormularioComponent,
+    CuartoFormularioComponent,
     
     
   ],

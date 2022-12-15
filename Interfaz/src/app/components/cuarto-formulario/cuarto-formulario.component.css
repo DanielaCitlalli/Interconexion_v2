@@ -1,0 +1,15 @@
+.centrarTitulo{
+    text-align: center;
+}
+
+.campos{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contenedor-botones{
+    display: flex;
+    justify-content: space-around;
+  }
