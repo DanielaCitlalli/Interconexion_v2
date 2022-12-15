@@ -1,0 +1,56 @@
+
+<form [formGroup]="formPais">
+
+    <h3 class="centrarTitulo">{{Editable ? "Editar Nacionalidad" : "Agregar Nacionalidad"}}</h3>
+
+    <div class="row mt-4" *ngIf="Editable">
+        
+        <h6>Seleccione la nacionalidad a editar</h6>
+        <mat-form-field class="example-full-width">
+            <div class="col-mt-5 mb-3">
+                <!-- Value de Autocomplete guarda la descripcion del pais para no mostrar id en la interfaz -->
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option>
+                        
+                    </mat-option>
+                </mat-autocomplete>
+                <input type="text" placeholder="Nacionalidad" matInput formControlName="autocompleteDescripcion"
+                    [matAutocomplete]="auto" class="col-8">
+
+            </div>
+        </mat-form-field>
+    </div>
+
+    <div class="campos row mt-5">
+        <mat-form-field appearance="fill" class="col-3">
+            <mat-label>Código de Nacionalidad</mat-label>
+            <input matInput type="text" formControlName="paiCodigo">
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" class="col-6">
+            <mat-label>Descripción de Nacionalidad</mat-label>
+            <input matInput type="text" formControlName="paiDescripcion">
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" class="col-3">
+            <mat-label>Clave Nacionalidad</mat-label>
+            <input matInput type="text" formControlName="paiCveNacionalidad">
+        </mat-form-field>
+    </div>
+
+    <div style="text-align:center">
+        <div class="form-group atext-align:cente contenedor-botones mt-4" >
+            <button class="btn btn-success ">
+                <i class="fas fa-sharp fa-solid fa-circle-check fs-3"></i>
+                Guardar Cambios
+                
+            </button>
+            <button class="btn btn-danger" type="button" (click)="cancelar()">
+                <i class="fa-sharp fa-solid fa-xmark fs-3"></i>
+                Cancelar
+               
+            </button>
+        </div>
+    </div>
+
+</form>

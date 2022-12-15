@@ -7,14 +7,19 @@
         <div class="col-md-8 centrado ">
         
         
-            <h6 class="text-center" *ngIf="cambioSexoDisponible === false && nacionalidadDisponible === false" >
+            <h6 class="text-center" *ngIf="cambioSexoDisponible === false && 
+                                           nacionalidadDisponible === false &&
+                                           paisesDisponibles === false" >
                 Tipo de Proceso
             </h6>
             <div id="spinner">
             <div class="col-md-12">
                 <!-- registroDevuelto - Output que manda el o los registros hacia en este componente (padre) -->
                 <app-tarjeta-credito (registroDevuelto)="mostrarRegistroDevuleto($event)"
-                *ngIf="cambioSexoDisponible === false && nacionalidadDisponible === false"
+                *ngIf="cambioSexoDisponible === false && 
+                       nacionalidadDisponible === false &&
+                       paisesDisponibles === false"
+                       
                 ></app-tarjeta-credito>
             </div>
         </div>
@@ -38,6 +43,12 @@
                                         (enviarRegistro)=" mostrarRegistroDevuletoNacionalidad($event)">
 
                 </app-tercer-formulario>
+
+                <app-cuarto-formulario *ngIf="paisesDisponibles === true"
+                                        [Editable]="editarPais"
+                                        (enviarDatos)="mostrarRegistroDevuletoPais($event)">
+
+                </app-cuarto-formulario>
 
                 
                 <div class="d-flex justify-content-center miSpinner" *ngIf="verSpinner">

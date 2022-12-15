@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { map, Observable, startWith, timeout } from 'rxjs';
@@ -43,7 +43,9 @@ export class TercerFormularioComponent implements OnInit {
  //validacion2
  hizoClick: boolean = true;
 
+ @ViewChild('stepper') private myStepper!: MatStepper;
 
+ //myStepper!: MatStepper;
 
 @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
 
@@ -51,7 +53,7 @@ export class TercerFormularioComponent implements OnInit {
 
 
 firstFormGroup: FormGroup = this.formBuilder.group({firstCtrl: ['',[Validators.required]]});
-secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['',[Validators.required]]}) || 1;
+secondFormGroup: FormGroup = this.formBuilder.group({secondCtrl: ['',[]], secondCtrl2: ['',[Validators.requiredTrue]]});
 
 constructor(private formBuilder: FormBuilder
   , private toastr: ToastrService
@@ -183,12 +185,12 @@ cambiarPaisMa(option: NrcPais){
   this.maNuevaNacionalidad = option.paiCodigo;
   console.log("NACIONALIDAD - MADRE" , option , this.maNuevaNacionalidad);
 }
-private myStepper!: MatStepper;
+
 
 guardarCambios() {
   
   
-  
+  this.secondFormGroup.patchValue({secondCtrl2: true});
 
   const formNacionalidad: Nrc_Nacimientos = this.datosRetornados;
     
@@ -225,7 +227,9 @@ guardarCambios() {
       this.toastr.success("Actualizacion de tabla CIRR_TA01_NAPETICION " , " Éxito" , {
         closeButton: true,
         timeOut: 7000,
-      })
+      });
+
+      this.myStepper.next();
       
     },error => {
       this.toastr.error("Error al actualizar tabla CIRR_TA01_NAPETICION", " Error" , {

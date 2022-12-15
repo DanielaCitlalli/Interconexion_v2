@@ -82,30 +82,31 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
 
  
    
-  validar()
-{
+  validar(){
 
-if( this.globalForm !== undefined){
-  let infoEnviada = {
-    habilitarForm: false
+    if(this.globalForm.controls['proceso'].value === 'agregarPais'){
+      this.irFormPais(false);
+    }
+    else if(this.globalForm.controls['proceso'].value === 'editarPais'){
+      this.irFormPais(true);
+    }
+
+    if( this.globalForm !== undefined){
+      let infoEnviada = {
+        habilitarForm: false
+      }
+      
+      this.registroDevuelto.emit(infoEnviada)
+      this.globalForm.patchValue({
+        cadena : ''
+      })
+      
+      this.globalFormbuscar.patchValue({
+        crip : '',
+        checkbox: false
+      })
+    }
   }
-  
-  this.registroDevuelto.emit(infoEnviada)
-  this.globalForm.patchValue({
-    cadena : ''
-  })
-  
-  this.globalFormbuscar.patchValue({
-    crip : '',
-    checkbox: false
-  })
-
-}
-
-
- 
- 
-}
 
 refrescar(){
   this.globalForm.patchValue({
@@ -119,6 +120,22 @@ limpiar(){
    crip: '',
    checkbox: false
   })
+}
+
+irFormPais(editar: boolean){
+  console.log(editar);
+  
+  this.registroDevuelto.emit(undefined);
+
+  let infoEnviada = {
+    registro: 'data',
+    habilitarForm: false,
+    habilitarFormPais:true,
+    editarPais: editar
+    
+  }
+  console.log(infoEnviada)
+  this.registroDevuelto.emit(infoEnviada);
 }
 
 
@@ -538,36 +555,75 @@ ejecutarGlobal(){
      
       
       break;
-      case "cambiarnacionalidad":
+    case "cambiarnacionalidad":
 
-        this.registroDevuelto.emit(undefined);
+      this.registroDevuelto.emit(undefined);
 
-        this.tarjetaService.getNrcNacimientos(this.globalForm.get('cadena')?.value).subscribe((data:Nrc_Nacimientos) => {
-        
-          let infoEnviada = {
-            registro: data,
-            habilitarForm: false,
-            habilitarFormNacionalidad:true
-            
-          }
-          console.log(infoEnviada)
-          this.registroDevuelto.emit(infoEnviada);
-        this.toastr.success('Registro encontrado ', "Operación exitosa" , {
-          closeButton: true,
-          disableTimeOut: false,
-        })
-        
-      },
-      error => {
-        this.toastr.error(error.error , 'Ocurrio un error',{
-          closeButton: true,
-          disableTimeOut: false,
+      this.tarjetaService.getNrcNacimientos(this.globalForm.get('cadena')?.value).subscribe((data:Nrc_Nacimientos) => {
+      
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false,
+          habilitarFormNacionalidad:true
+          
+        }
+        console.log(infoEnviada)
+        this.registroDevuelto.emit(infoEnviada);
+      this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+        closeButton: true,
+        disableTimeOut: false,
+      })
+      
+    },
+    error => {
+      this.toastr.error(error.error , 'Ocurrio un error',{
+        closeButton: true,
+        disableTimeOut: false,
 
-        });
-        this.registroDevuelto.emit('error');
       });
-     
-      break;
+      this.registroDevuelto.emit('error');
+    });
+    
+    break;
+    case "agregarPais":
+
+      this.registroDevuelto.emit(undefined);
+
+      let infoEnviada = {
+        registro: 'data',
+        habilitarForm: false,
+        habilitarFormPais:true
+        
+      }
+      console.log(infoEnviada)
+      this.registroDevuelto.emit(infoEnviada);
+
+    //   this.tarjetaService.getNrcNacimientos(this.globalForm.get('cadena')?.value).subscribe((data:Nrc_Nacimientos) => {
+      
+    //     let infoEnviada = {
+    //       registro: data,
+    //       habilitarForm: false,
+    //       habilitarFormNacionalidad:true
+          
+    //     }
+    //     console.log(infoEnviada)
+    //     this.registroDevuelto.emit(infoEnviada);
+    //   this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+    //     closeButton: true,
+    //     disableTimeOut: false,
+    //   })
+      
+    // },
+    // error => {
+    //   this.toastr.error(error.error , 'Ocurrio un error',{
+    //     closeButton: true,
+    //     disableTimeOut: false,
+
+    //   });
+    //   this.registroDevuelto.emit('error');
+    // });
+    
+    break;
 
     default:
       break;
