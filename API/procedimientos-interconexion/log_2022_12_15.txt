@@ -20,3 +20,11 @@
 15/12/2022 10:44:51 a. m. , ::1 , Se subio Acta de nacimiento  , 11104300012008002830
 15/12/2022 10:47:41 a. m. , ::1 , Se actualizó nacionalidad , 11104300012008002830
 15/12/2022 10:47:41 a. m. , ::1 , Se subio Acta de nacimiento  , 11104300012008002830
+15/12/2022 01:43:21 p. m. , ::1 , Se agregó nuevo país , 171
+15/12/2022 02:15:37 p. m. , ::1 , Se agregó nuevo país , 171
+15/12/2022 02:19:01 p. m. , ::1 , Se agregó nuevo país , 162
+15/12/2022 02:20:24 p. m. , ::1 , Se agregó nuevo país , 161
+15/12/2022 02:30:59 p. m. , ::1 , Se agregó nuevo país , 162
+15/12/2022 02:36:05 p. m. , ::1 , Se agregó nuevo país , 161
+15/12/2022 02:42:12 p. m. , ::1 , Se agregó nuevo país , 162
+15/12/2022 03:11:18 p. m. , ::1 , Se agregó nuevo país , 163

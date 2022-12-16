@@ -1,5 +1,5 @@
 
-<form [formGroup]="formPais">
+<form [formGroup]="formPais" (ngSubmit)="guardarCambios()">
 
     <h3 class="centrarTitulo">{{Editable ? "Editar Nacionalidad" : "Agregar Nacionalidad"}}</h3>
 

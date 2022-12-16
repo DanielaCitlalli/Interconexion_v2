@@ -194,6 +194,11 @@ export class TarjetaServiceService {
     return this.http.get<any>(this.myAppUrl_paiscodigo + this.myApiUrl_paiscodigo + registro);
   }
 
+  //Agregar Nacionalidad
+  postNacionalidad(nacionalidad: NrcPais): Observable<NrcPais>{
+    return this.http.post<NrcPais>(this.myAppUrl_paiscodigo + this.myApiUrl_paiscodigo , nacionalidad);
+  }
+
   
   
 }
