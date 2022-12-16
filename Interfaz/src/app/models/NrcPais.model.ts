@@ -4,7 +4,7 @@ export interface NrcPais{
     paiDescripcion :string;
     paiUsuarioCreacion :string;
     paiFechaCreacion :Date;
-    paiUsuarioModificacion :string;
-    paiFechaModificacion? :Date;
-    paiCveNacionalidad :string;
+    paiUsuarioModificacion :string | null;
+    paiFechaModificacion? :Date | null;
+    paiCveNacionalidad :string | null;
 }
