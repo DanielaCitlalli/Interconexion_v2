@@ -176,6 +176,10 @@ export class TarjetaServiceService {
     return this.http.get<NrcPais[]>(this.myAppUrl_Pais + this.myApiUrl_Pais + desc);
   }
 
+  // getPaisDes(paiCodigo: number): Observable<NrcPais[]>{
+  //   return this.http.get<NrcPais>(this.myAppUrl_Pais + this.myApiUrl_Pais + paiCodigo);
+  // }
+
  
   
   
@@ -199,6 +203,9 @@ export class TarjetaServiceService {
     return this.http.post<NrcPais>(this.myAppUrl_paiscodigo + this.myApiUrl_paiscodigo , nacionalidad);
   }
 
-  
+   //Agregar Nacionalidad
+   putNacionalidad(id:number, nacionalidad: NrcPais): Observable<NrcPais>{
+    return this.http.put<NrcPais>(this.myAppUrl_paiscodigo + this.myApiUrl_paiscodigo + id , nacionalidad );
+  }
   
 }

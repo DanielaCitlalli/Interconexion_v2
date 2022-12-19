@@ -230,9 +230,11 @@
                 </table>
               
             </form>
-            <button mat-raised-button matStepperNext color="warn" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="warn" (click)="cancelar()">
+                <mat-icon>highlight_off</mat-icon>Cancelar
+            </button> 
             &nbsp;
-            <button mat-raised-button matStepperNext class="color" matStepperNext>Siguiente</button>
+            <button mat-raised-button  class="color" matStepperNext>Siguiente</button>
            
 
         </mat-step>
