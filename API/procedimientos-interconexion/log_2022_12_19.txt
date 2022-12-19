@@ -1,0 +1,21 @@
+19/12/2022 10:52:50 a. m. , ::1 , Se actualizó nacionalidad , 11100100011890000160
+19/12/2022 10:52:51 a. m. , ::1 , Se actualizó nacionalidad , 11100100011890000160
+19/12/2022 10:52:51 a. m. , ::1 , Se subio Acta de nacimiento  , 11100100011890000160
+19/12/2022 10:52:51 a. m. , ::1 , Se subio Acta de nacimiento  , 11100100011890000160
+19/12/2022 10:58:33 a. m. , ::1 , Se actualizó nacionalidad , 11100100011890000160
+19/12/2022 10:58:33 a. m. , ::1 , Se subio Acta de nacimiento  , 11100100011890000160
+19/12/2022 11:01:51 a. m. , ::1 , Se agregó nuevo país , 400
+19/12/2022 02:12:13 p. m. , ::1 , Se actualizó Pais , 500
+19/12/2022 02:12:33 p. m. , ::1 , Se actualizó Pais , 30
+19/12/2022 02:12:39 p. m. , ::1 , Se actualizó Pais , 300
+19/12/2022 02:12:52 p. m. , ::1 , Se actualizó Pais , 17
+19/12/2022 02:14:06 p. m. , ::1 , Se actualizó Pais , 207
+19/12/2022 02:15:54 p. m. , ::1 , Se actualizó Pais , 2222
+19/12/2022 02:20:54 p. m. , ::1 , Se actualizó Pais , 207
+19/12/2022 02:27:39 p. m. , ::1 , Se actualizó Pais , 406
+19/12/2022 02:27:51 p. m. , ::1 , Se actualizó Pais , 406
+19/12/2022 02:28:23 p. m. , ::1 , Se actualizó Pais , 204
+19/12/2022 02:33:31 p. m. , ::1 , Se actualizó Pais , 204
+19/12/2022 03:11:14 p. m. , ::1 , Se actualizó Pais , 207
+19/12/2022 03:27:13 p. m. , ::1 , Se actualizó Pais , 107
+19/12/2022 03:28:05 p. m. , ::1 , Se actualizó Pais , 107

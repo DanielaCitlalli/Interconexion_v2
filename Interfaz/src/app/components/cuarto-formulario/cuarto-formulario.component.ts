@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CuartoFormularioComponent implements OnInit {
   
   formPais: FormGroup;
+  options!:NrcPais[];
 
 
   @Input() Editable: any;
@@ -33,6 +34,50 @@ export class CuartoFormularioComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.formPais.controls["autocompleteDescripcion"].valueChanges.subscribe(value => {
+
+      //Este if solo es para evaluar la primera vez que carga o se selecciona una nueva nacionalidad, por eso cuando entra al if, longPais se vuelve ''. 
+      //Para no permitir que igualando el tamaño con cualquier caracter se habilite el boton de actualizar
+     
+  if(value!== null ){
+      if(value.length > 2){
+        this.tarjetaService.getPaisDesc(value).subscribe(pais => { 
+          this.options = pais;
+
+        
+        });
+      }
+      }
+      else{
+        this.options = [];
+        
+      }
+      
+  
+    });
+  
+
+  }
+  cambiarPaisPa(pais:NrcPais){
+
+    //validacion para deshabilitar boton de actualizar
+    // this.tarjetaService.getNrcpaiscodigo().subscribe((data) => {
+    //   this.registroTa09 = data;
+      
+    // });
+
+    console.log(this.options);
+    this.formPais.patchValue({
+      paiCodigo: pais.paiCodigo,
+      paiNacionalidad: pais.paiNacionalidad,
+      paiDescripcion: pais.paiDescripcion,
+      paiUsuarioCreacion: pais.paiUsuarioCreacion,
+      paiFechaCreacion: pais.paiFechaCreacion,
+      paiUsuarioModificacion: pais.paiUsuarioModificacion,
+      paiFechaModificacion: pais.paiFechaModificacion,
+      paiCveNacionalidad: pais.paiCveNacionalidad
+    });
+    
   }
 
   cancelar(){
@@ -65,17 +110,19 @@ export class CuartoFormularioComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       
-      this.tarjetaService.postNacionalidad(formPaises).subscribe(res => {
-        
-        this.toastService.success("Se agregó una nueva nacionalidad" , " Éxito" , {
+      this.tarjetaService.putNacionalidad( formPaises.paiCodigo, formPaises ).subscribe(res => {
+        this.toastService.success("Edito Nacionalidad" , " Éxito" , {
           closeButton: true,
           timeOut: 7000,
         })
 
-        this.formPais.reset();
+         this.formPais.reset();
       }, error => {
-        this.toastService.error("Error al agregar una nueva nacionalidad" , "Error al agregar")
+        this.toastService.error("Ya exite este código busca otro" , "Error al agregar")
+        
+       
       });
+    
     })
     
 

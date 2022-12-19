@@ -10,9 +10,11 @@
             <div class="col-mt-5 mb-3">
                 <!-- Value de Autocomplete guarda la descripcion del pais para no mostrar id en la interfaz -->
                 <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option>
+                    <mat-option *ngFor="let option of options" [value]="option.paiDescripcion" (onSelectionChange)="cambiarPaisPa(option)">
                         
-                    </mat-option>
+                    {{option.paiDescripcion}}
+                </mat-option>
+                
                 </mat-autocomplete>
                 <input type="text" placeholder="Nacionalidad" matInput formControlName="autocompleteDescripcion"
                     [matAutocomplete]="auto" class="col-8">
