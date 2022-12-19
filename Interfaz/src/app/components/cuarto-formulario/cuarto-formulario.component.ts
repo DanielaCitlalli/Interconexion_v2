@@ -20,15 +20,15 @@ export class CuartoFormularioComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private tarjetaService: TarjetaServiceService, private toastService: ToastrService) {
     this.formPais = this.formBuilder.group({
-      paiCodigo:[{value:'' , disabled: false} , [Validators.required]],
-      paiNacionalidad:[{value:'' , disabled: false} , [Validators.required]],
-      paiDescripcion:[{value:'' , disabled: false} , [Validators.required]],
-      paiUsuarioCreacion:[{value:'' , disabled: false} , [Validators.required]],
-      paiFechaCreacion:[{value:'' , disabled: false} , [Validators.required]],
-      paiUsuarioModificacion:[{value:'' , disabled: false} , [Validators.required]],
-      paiFechaModificacion:[{value:'' , disabled: false} , [Validators.required]],
-      paiCveNacionalidad:[{value:'' , disabled: false} , [Validators.required]],
-      autocompleteDescripcion: [{value: '', disabled:false} , [Validators.required]]
+      paiCodigo:[{value:'' , disabled: false} , [Validators.required , Validators.minLength(1) , Validators.maxLength(3) , Validators.pattern(this.tarjetaService.rxNumeros)]],
+      paiNacionalidad:[{value:'' , disabled: false}],
+      paiDescripcion:[{value:'' , disabled: false} , [Validators.required , Validators.minLength(1) , Validators.maxLength(30) , Validators.pattern(this.tarjetaService.rxLetrasEspacio)]],
+      paiUsuarioCreacion:[{value:'' , disabled: false}],
+      paiFechaCreacion:[{value:'' , disabled: false}],
+      paiUsuarioModificacion:[{value:'' , disabled: false}],
+      paiFechaModificacion:[{value:'' , disabled: false}],
+      paiCveNacionalidad:[{value:'' , disabled: false} , [Validators.required , Validators.minLength(1) , Validators.maxLength(3) , Validators.pattern(this.tarjetaService.rxCveNacionalidad)]],
+      autocompleteDescripcion: [{value: '', disabled:false}]
     });
    }
 

@@ -19,7 +19,10 @@ export class TarjetaServiceService {
 
 
   rxCadena = /^[0-9]{20,20}$/;
+  rxNumeros = /^[0-9]*$/;
   rxCrip = /^[0-9A-Za-z]{14,14}$/;
+  rxLetrasEspacio = /^[A-Z a-znÑ().]*$/;
+  rxCveNacionalidad = /^[A-Za-z]{3,3}$/
 
   myAppUrl = environment.apiUrl;
   myApiUrl = 'api/Tarjeta/';
