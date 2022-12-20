@@ -26,31 +26,40 @@
     <div class="campos row mt-5">
         <mat-form-field appearance="fill" class="col-3">
             <mat-label>Código de Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiCodigo">
+            <input matInput type="text" formControlName="paiCodigo" maxlength="3">
+            <mat-error *ngIf="formPais.controls['paiCodigo'].hasError('required')">Campo obligatorio</mat-error>
+            <mat-error *ngIf="formPais.controls['paiCodigo'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
+            <mat-error *ngIf="formPais.controls['paiCodigo'].hasError('pattern')">Solo se admiten números</mat-error>
         </mat-form-field>
     
         <mat-form-field appearance="fill" class="col-6">
             <mat-label>Descripción de Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiDescripcion">
+            <input matInput type="text" formControlName="paiDescripcion" maxlength="30" onkeyup=" this.value = this.value.toUpperCase();">
+            <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('required')">Campo obligatorio</mat-error>
+            <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('maxlength')">Maximo 30 caracteres</mat-error>
+            <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('pattern')">Solo se admiten letras, parentesis y puntos</mat-error>
         </mat-form-field>
     
         <mat-form-field appearance="fill" class="col-3">
             <mat-label>Clave Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiCveNacionalidad">
+            <input matInput type="text" formControlName="paiCveNacionalidad" maxlength="3" onkeyup=" this.value = this.value.toUpperCase();">
+            <mat-error *ngIf="formPais.controls['paiCveNacionalidad'].hasError('required')">Campo obligatorio</mat-error>
+            <mat-error *ngIf="formPais.controls['paiCveNacionalidad'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
+            <mat-error *ngIf="formPais.controls['paiCveNacionalidad'].hasError('pattern')">Solo se admiten letras</mat-error>
         </mat-form-field>
     </div>
 
     <div style="text-align:center">
         <div class="form-group atext-align:cente contenedor-botones mt-4" >
-            <button class="btn btn-success ">
+            <button class="btn btn-success d-flex justify-content-between " [disabled]="formPais.invalid">
                 <i class="fas fa-sharp fa-solid fa-circle-check fs-3"></i>
-                Guardar Cambios
+                <p class="m-2 mt-0 mr-0 mb-0">Guardar Cambios</p>
                 
             </button>
-            <button class="btn btn-danger" type="button" (click)="cancelar()">
+            <button class="btn btn-danger d-flex justify-content-between" type="button" (click)="cancelar()">
                 <i class="fa-sharp fa-solid fa-xmark fs-3"></i>
-                Cancelar
-               
+                <p class="m-2 mt-0 mr-0 mb-0">Cancelar</p>
+                
             </button>
         </div>
     </div>

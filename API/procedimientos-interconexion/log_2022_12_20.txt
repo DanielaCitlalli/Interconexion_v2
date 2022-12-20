@@ -1,0 +1,7 @@
+20/12/2022 09:17:57 a. m. , ::1 , Se actualizó Pais , 21
+20/12/2022 09:24:39 a. m. , ::1 , Se agregó nuevo país , 21
+20/12/2022 09:26:02 a. m. , ::1 , Se agregó nuevo país , 22
+20/12/2022 09:28:03 a. m. , ::1 , Se actualizó Pais , 22
+20/12/2022 09:33:16 a. m. , ::1 , Se actualizó Pais , 21
+20/12/2022 09:41:16 a. m. , ::1 , Se actualizó Pais , 21
+20/12/2022 09:42:29 a. m. , ::1 , Se agregó nuevo país , 23
