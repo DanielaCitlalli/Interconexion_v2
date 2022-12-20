@@ -5,3 +5,21 @@
 20/12/2022 09:33:16 a. m. , ::1 , Se actualizó Pais , 21
 20/12/2022 09:41:16 a. m. , ::1 , Se actualizó Pais , 21
 20/12/2022 09:42:29 a. m. , ::1 , Se agregó nuevo país , 23
+20/12/2022 12:06:21 p. m. , ::1 , Se agregó nuevo país , 24
+20/12/2022 12:11:37 p. m. , ::1 , Se agregó nuevo país , 27
+20/12/2022 12:14:38 p. m. , ::1 , Se agregó nuevo país , 29
+20/12/2022 12:19:36 p. m. , ::1 , Se agregó nuevo país , 31
+20/12/2022 12:19:50 p. m. , ::1 , Se agregó nuevo país , 32
+20/12/2022 12:21:48 p. m. , ::1 , Se actualizó Pais , 400
+20/12/2022 12:23:43 p. m. , ::1 , Se agregó nuevo país , 34
+20/12/2022 12:26:15 p. m. , ::1 , Se agregó nuevo país , 36
+20/12/2022 12:26:57 p. m. , ::1 , Se agregó nuevo país , 37
+20/12/2022 12:34:09 p. m. , ::1 , Se agregó nuevo país , 38
+20/12/2022 12:37:19 p. m. , ::1 , Se agregó nuevo país , 40
+20/12/2022 12:44:13 p. m. , ::1 , Se agregó nuevo país , 41
+20/12/2022 12:45:31 p. m. , ::1 , Se actualizó Pais , 41
+20/12/2022 01:05:05 p. m. , ::1 , Se agregó nuevo país , 51
+20/12/2022 01:27:29 p. m. , ::1 , Se actualizó Pais , 229
+20/12/2022 01:29:34 p. m. , ::1 , Se actualizó Pais , 609
+20/12/2022 01:39:40 p. m. , ::1 , Se actualizó Pais , 621
+20/12/2022 01:40:53 p. m. , ::1 , Se agregó nuevo país , 52

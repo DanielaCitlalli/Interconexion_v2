@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj": {}
+    "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj": {
+    "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
+        "projectUniqueName": "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
         "projectName": "procedimientos-interconexion",
-        "projectPath": "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
+        "projectPath": "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\procedimientos-interconexion.csproj",
         "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrador\\Documents\\Documentos-Oscar\\Proyectos\\Github\\Interconexion_v2\\API\\procedimientos-interconexion\\obj\\",
+        "outputPath": "C:\\Users\\Administrador\\Documents\\GitHub\\Interconexion_v2\\API\\procedimientos-interconexion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
