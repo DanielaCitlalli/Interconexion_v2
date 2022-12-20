@@ -21,7 +21,7 @@ export class CuartoFormularioComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private tarjetaService: TarjetaServiceService, private toastService: ToastrService) {
     this.formPais = this.formBuilder.group({
-      paiCodigo:[{value:'' , disabled: false} , [Validators.required , Validators.minLength(1) , Validators.maxLength(3) , Validators.pattern(this.tarjetaService.rxNumeros)]],
+      paiCodigo:[{value:'' , disabled: true} , [Validators.required , Validators.minLength(1) , Validators.maxLength(3) , Validators.pattern(this.tarjetaService.rxNumeros)]],
       paiNacionalidad:[{value:'' , disabled: false}],
       paiDescripcion:[{value:'' , disabled: false} , [Validators.required , Validators.minLength(1) , Validators.maxLength(30) , Validators.pattern(this.tarjetaService.rxLetrasEspacio)]],
       paiUsuarioCreacion:[{value:'' , disabled: false}],
@@ -34,24 +34,32 @@ export class CuartoFormularioComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    //Para habilitar campo Codigo, cuando se quiera agregar una nueva nacionalidad
+    if(!this.Editable){
+      this.formPais.controls['paiCodigo'].enable()
+    }
+
+
     this.formPais.controls["autocompleteDescripcion"].valueChanges.subscribe(value => {
 
       //Este if solo es para evaluar la primera vez que carga o se selecciona una nueva nacionalidad, por eso cuando entra al if, longPais se vuelve ''. 
       //Para no permitir que igualando el tamaño con cualquier caracter se habilite el boton de actualizar
      
-  if(value!== null ){
-      if(value.length > 2){
-        this.tarjetaService.getPaisDesc(value).subscribe(pais => { 
-          this.options = pais;
+      if(value!== null ){
+          if(value.length > 2){
+            this.tarjetaService.getPaisDesc(value).subscribe(pais => { 
+              this.options = pais;
 
-        
-        });
+            
+            });
+          }
+          else{
+            this.options = [];
+            
+          }
       }
-      }
-      else{
-        this.options = [];
-        
-      }
+
       
   
     });
@@ -90,13 +98,13 @@ export class CuartoFormularioComponent implements OnInit {
 
     const formPaises: NrcPais = {
       paiCodigo : parseInt(this.formPais.controls["paiCodigo"].value),
-      paiNacionalidad : this.formPais.controls["paiDescripcion"].value,
-      paiDescripcion : this.formPais.controls["paiDescripcion"].value,
+      paiNacionalidad : this.formPais.controls["paiDescripcion"].value.toUpperCase(),
+      paiDescripcion : this.formPais.controls["paiDescripcion"].value.toUpperCase(),
       paiUsuarioCreacion : 'NRCIVIL',
       paiFechaCreacion :  new Date(`${fecha.toDateString()}`),
       paiUsuarioModificacion : null,
       paiFechaModificacion: null,
-      paiCveNacionalidad : this.formPais.controls["paiCveNacionalidad"].value,
+      paiCveNacionalidad : this.formPais.controls["paiCveNacionalidad"].value.toUpperCase(),
     } 
 
     Swal.fire({
@@ -110,18 +118,37 @@ export class CuartoFormularioComponent implements OnInit {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       
-      this.tarjetaService.putNacionalidad( formPaises.paiCodigo, formPaises ).subscribe(res => {
-        this.toastService.success("Edito Nacionalidad" , " Éxito" , {
-          closeButton: true,
-          timeOut: 7000,
-        })
+      if(this.Editable){
 
-         this.formPais.reset();
-      }, error => {
-        this.toastService.error("Ya exite este código busca otro" , "Error al agregar")
-        
-       
-      });
+        this.tarjetaService.putNacionalidad( formPaises.paiCodigo, formPaises ).subscribe(res => {
+          this.toastService.success("Editó Nacionalidad" , " Éxito" , {
+            closeButton: true,
+            timeOut: 7000,
+          })
+  
+           this.formPais.reset();
+        }, error => {
+          this.enviarDatos.emit(undefined);
+          this.toastService.error("Ocurrió un error al editar nacionalidad" , "Error")
+          
+         
+        });
+      }
+      else{
+        this.tarjetaService.postNacionalidad(formPaises).subscribe(res => {
+          this.toastService.success("Se agregó país correctamente" , "Éxito" , {
+            closeButton: true,
+            timeOut: 7000
+          })
+
+          this.formPais.reset();
+        }, error => {
+          this.enviarDatos.emit(undefined);
+          this.toastService.error("Ocurrió un error al agregar nacionalidad" , "Error");
+        });
+      }
+
+
     
     })
     
