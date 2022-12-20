@@ -35,6 +35,8 @@ export class CuartoFormularioComponent implements OnInit {
 
   ngOnInit(): void {
 
+    console.log('this.formPais.paiFechaCreacion');
+
     //Para habilitar campo Codigo, cuando se quiera agregar una nueva nacionalidad
     if(!this.Editable){
       this.formPais.controls['paiCodigo'].enable()
@@ -95,13 +97,21 @@ export class CuartoFormularioComponent implements OnInit {
   guardarCambios(){
 
     const fecha = new Date();
+    let fechaCreacion;
+
+    if(this.Editable){
+      fechaCreacion = this.formPais.controls["paiFechaCreacion"].value;
+    }
+    else{
+      fechaCreacion = new Date(`${fecha.toDateString()}`);
+    }
 
     const formPaises: NrcPais = {
       paiCodigo : parseInt(this.formPais.controls["paiCodigo"].value),
       paiNacionalidad : this.formPais.controls["paiDescripcion"].value.toUpperCase(),
       paiDescripcion : this.formPais.controls["paiDescripcion"].value.toUpperCase(),
       paiUsuarioCreacion : 'NRCIVIL',
-      paiFechaCreacion :  new Date(`${fecha.toDateString()}`),
+      paiFechaCreacion :  fechaCreacion,
       paiUsuarioModificacion : null,
       paiFechaModificacion: null,
       paiCveNacionalidad : this.formPais.controls["paiCveNacionalidad"].value.toUpperCase(),
@@ -117,16 +127,18 @@ export class CuartoFormularioComponent implements OnInit {
       confirmButtonText: 'Continuar',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
-      
-      if(this.Editable){
+  if(result.isConfirmed){
 
+     
+      if (this.Editable) {
+        console.log('true');
         this.tarjetaService.putNacionalidad( formPaises.paiCodigo, formPaises ).subscribe(res => {
           this.toastService.success("Editó Nacionalidad" , " Éxito" , {
             closeButton: true,
             timeOut: 7000,
           })
   
-           this.formPais.reset();
+          this.formPais.reset();
         }, error => {
           this.enviarDatos.emit(undefined);
           this.toastService.error("Ocurrió un error al editar nacionalidad" , "Error")
@@ -135,8 +147,9 @@ export class CuartoFormularioComponent implements OnInit {
         });
       }
       else{
+        console.log('false');
         this.tarjetaService.postNacionalidad(formPaises).subscribe(res => {
-          this.toastService.success("Se agregó país correctamente" , "Éxito" , {
+          this.toastService.success("Se agregó nacionalidad correctamente" , "Éxito" , {
             closeButton: true,
             timeOut: 7000
           })
@@ -149,9 +162,14 @@ export class CuartoFormularioComponent implements OnInit {
       }
 
 
-    
+  }
+
+  else{
+    this.toastService.warning(" " , "Operacion Cancelada");
+    this.formPais.reset();
+  }
     })
-    
+  
 
     
   }
