@@ -21,6 +21,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
   //agregar/editar nacionalidad
   paisesDisponibles: boolean = false;
   editarPais: boolean = false;
+  BuscarPais: number = 1;
 
   registronacimientos:any;
 
@@ -70,6 +71,7 @@ export class TarjetaComponent implements OnInit, OnChanges {
     else if(event.habilitarFormPais === true){
       this.paisesDisponibles = true;
       this.editarPais = event.editarPais;
+      this.BuscarPais = event.BuscarPais;
       this.verSpinner = false;
 
       return;
