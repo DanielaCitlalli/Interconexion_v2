@@ -1,5 +1,5 @@
 
-<form [formGroup]="formPais" (ngSubmit)="guardarCambios()">
+<form [formGroup]="formPais" (ngSubmit)="guardarCambios()" *ngIf="Buscar !== 1">
 
     <h3 class="centrarTitulo">{{Editable ? "Editar Nacionalidad" : "Agregar Nacionalidad"}}</h3>
 
@@ -17,7 +17,7 @@
                 
                 </mat-autocomplete>
                 <input type="text" placeholder="Nacionalidad" matInput formControlName="autocompleteDescripcion"
-                    [matAutocomplete]="auto" class="col-8">
+                    [matAutocomplete]="auto" class="col-8" autocomplete="off">
 
             </div>
         </mat-form-field>
@@ -26,7 +26,7 @@
     <div class="campos row mt-5">
         <mat-form-field appearance="fill" class="col-3">
             <mat-label>Código de Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiCodigo" maxlength="3">
+            <input matInput type="text" formControlName="paiCodigo" maxlength="3" autocomplete="off">
             <mat-error *ngIf="formPais.controls['paiCodigo'].hasError('required')">Campo obligatorio</mat-error>
             <mat-error *ngIf="formPais.controls['paiCodigo'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
             <mat-error *ngIf="formPais.controls['paiCodigo'].hasError('pattern')">Solo se admiten números</mat-error>
@@ -34,7 +34,7 @@
     
         <mat-form-field appearance="fill" class="col-6">
             <mat-label>Descripción de Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiDescripcion" maxlength="30" onkeyup=" this.value = this.value.toUpperCase();">
+            <input matInput type="text" formControlName="paiDescripcion" maxlength="30" onkeyup=" this.value = this.value.toUpperCase();" autocomplete="off">
             <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('required')">Campo obligatorio</mat-error>
             <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('maxlength')">Maximo 30 caracteres</mat-error>
             <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('pattern')">Solo se admiten letras, parentesis y puntos</mat-error>
@@ -42,7 +42,7 @@
     
         <mat-form-field appearance="fill" class="col-3">
             <mat-label>Clave Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiCveNacionalidad" maxlength="3" onkeyup=" this.value = this.value.toUpperCase();">
+            <input matInput type="text" formControlName="paiCveNacionalidad" maxlength="3" onkeyup=" this.value = this.value.toUpperCase();" autocomplete="off">
             <mat-error *ngIf="formPais.controls['paiCveNacionalidad'].hasError('required')">Campo obligatorio</mat-error>
             <mat-error *ngIf="formPais.controls['paiCveNacionalidad'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
             <mat-error *ngIf="formPais.controls['paiCveNacionalidad'].hasError('pattern')">Solo se admiten letras</mat-error>
@@ -63,5 +63,75 @@
             </button>
         </div>
     </div>
+
+</form>
+
+<form [formGroup]="formPaisBuscar" *ngIf="Buscar == 1">
+
+
+
+    
+        
+        <h3 class="centrarTitulo" >Buscar Nacionalidad</h3>
+        <div class="row mt-4">
+        
+            <h6>Seleccione la nacionalidad</h6>
+            <mat-form-field class="example-full-width">
+                <div class="col-mt-5 mb-3">
+                    <!-- Value de Autocomplete guarda la descripcion del pais para no mostrar id en la interfaz -->
+                    <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let option of options" [value]="option.paiDescripcion" (onSelectionChange)="cambiarPaisPa(option)">
+                            
+                        {{option.paiDescripcion}}
+                    </mat-option>
+                    
+                    </mat-autocomplete>
+                    <input type="text" placeholder="Nacionalidad" matInput formControlName="autocompleteDescripcion"
+                        [matAutocomplete]="auto" class="col-8" autocomplete="off">
+    
+                </div>
+            </mat-form-field>
+        </div>
+    
+
+    <div class="campos row mt-5">
+        <mat-form-field appearance="fill" class="col-3">
+            <mat-label>Código de Nacionalidad</mat-label>
+            <input matInput type="text" formControlName="paiCodigo" maxlength="3">
+            <mat-error *ngIf="formPaisBuscar.controls['paiCodigo'].hasError('required')">Campo obligatorio</mat-error>
+            <mat-error *ngIf="formPaisBuscar.controls['paiCodigo'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
+            <mat-error *ngIf="formPaisBuscar.controls['paiCodigo'].hasError('pattern')">Solo se admiten números</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" class="col-6">
+            <mat-label>Descripción de Nacionalidad</mat-label>
+            <input matInput type="text" formControlName="paiDescripcion" maxlength="30" onkeyup=" this.value = this.value.toUpperCase();">
+            <mat-error *ngIf="formPaisBuscar.controls['paiDescripcion'].hasError('required')">Campo obligatorio</mat-error>
+            <mat-error *ngIf="formPaisBuscar.controls['paiDescripcion'].hasError('maxlength')">Maximo 30 caracteres</mat-error>
+            <mat-error *ngIf="formPaisBuscar.controls['paiDescripcion'].hasError('pattern')">Solo se admiten letras, parentesis y puntos</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field appearance="fill" class="col-3">
+            <mat-label>Clave Nacionalidad</mat-label>
+            <input matInput type="text" formControlName="paiCveNacionalidad" maxlength="3" onkeyup=" this.value = this.value.toUpperCase();">
+            <mat-error *ngIf="formPaisBuscar.controls['paiCveNacionalidad'].hasError('required')">Campo obligatorio</mat-error>
+            <mat-error *ngIf="formPaisBuscar.controls['paiCveNacionalidad'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
+            <mat-error *ngIf="formPaisBuscar.controls['paiCveNacionalidad'].hasError('pattern')">Solo se admiten letras</mat-error>
+        </mat-form-field>
+
+    </div>
+
+    <div class="botonalert">
+        <button class="btn btn-danger d-flex justify-content-between" type="button" (click)="cancelar()" >
+            <i class="fa-sharp fa-solid fa-xmark fs-3"></i>
+            <p class="m-2 mt-0 mr-0 mb-0">Regresar</p>
+            
+        </button>
+    </div>
+    
+
+    
+
+    
 
 </form>
