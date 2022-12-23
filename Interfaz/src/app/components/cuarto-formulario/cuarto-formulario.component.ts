@@ -4,6 +4,7 @@ import { NrcPais } from 'src/app/models/NrcPais.model';
 import { TarjetaServiceService } from 'src/app/services/tarjeta-service.service';
 import Swal  from "sweetalert2";
 import { ToastrService } from 'ngx-toastr';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cuarto-formulario',
@@ -87,6 +88,8 @@ export class CuartoFormularioComponent implements OnInit {
       paiFechaModificacion: pais.paiFechaModificacion,
       paiCveNacionalidad: pais.paiCveNacionalidad
     });
+
+    
     
   }
 
@@ -94,16 +97,32 @@ export class CuartoFormularioComponent implements OnInit {
     this.enviarDatos.emit(null); 
   }
 
+  castDateFormat(fechaNacimiento:any) {
+    let fecha = fechaNacimiento
+    let datePipe = new DatePipe('en-US');
+    let date = datePipe.transform(fecha, 'yyyy-MM-dd HH:mm:ss')
+    //TODO:
+    let rightDate = date
+    let dateParts = rightDate!.split(' ')
+    rightDate = dateParts[0] + 'T' + dateParts[1];
+    // let rightDate = dateParts[2] + '/' + dateParts[1] + '/' + dateParts[0]
+    
+    
+    return rightDate
+  }
+
   guardarCambios(){
 
     const fecha = new Date();
     let fechaCreacion;
 
+    this.castDateFormat(fecha);
+
     if(this.Editable){
       fechaCreacion = this.formPais.controls["paiFechaCreacion"].value;
     }
     else{
-      fechaCreacion = new Date(`${fecha.toDateString()}`);
+      fechaCreacion = this.castDateFormat(fecha);
     }
 
     const formPaises: NrcPais = {
@@ -129,7 +148,10 @@ export class CuartoFormularioComponent implements OnInit {
     }).then((result) => {
   if(result.isConfirmed){
 
-     
+    //Limpiar variable de resultados(autocomplete) para evitar confusiones a la hora de editar una nacionalidad
+    this.options = [];
+
+
       if (this.Editable) {
         console.log('true');
         this.tarjetaService.putNacionalidad( formPaises.paiCodigo, formPaises ).subscribe(res => {
