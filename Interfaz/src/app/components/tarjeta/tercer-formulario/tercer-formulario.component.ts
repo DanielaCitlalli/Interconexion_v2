@@ -201,7 +201,7 @@ guardarCambios() {
 
   this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
     if(datos !== null && datos !== undefined){
-      this.toastr.success("Cambio de nacionalidad exitoso", "Cambio de nacionalidad" , {
+      this.toastr.success("Se cambio nacionalidad", "Operación Exitosa" , {
         closeButton: true,
         timeOut: 7000,
       });
@@ -224,7 +224,7 @@ guardarCambios() {
   this.servicioeditar.postCirrTa01Napeticion1(form01).subscribe(datos=> {
 
      
-      this.toastr.success("Actualizacion de tabla CIRR_TA01_NAPETICION " , " Éxito" , {
+      this.toastr.success("Se actualizo la tabla CIRR_TA01_NAPETICION " , " Operación Exitosa" , {
         closeButton: true,
         timeOut: 7000,
       });
@@ -232,7 +232,7 @@ guardarCambios() {
       this.myStepper.next();
       
     },error => {
-      this.toastr.error("Error al actualizar tabla CIRR_TA01_NAPETICION", " Error" , {
+      this.toastr.error("Ocurrio un error al actualizar tabla CIRR_TA01_NAPETICION", " Operación Fallida" , {
         timeOut: 7000,
         closeButton: true,
       })
@@ -241,7 +241,7 @@ guardarCambios() {
 }
 
 else{
-  this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
+  this.toastr.error("Ocurrio un error al actualizar ","Operación Fallida",{
     timeOut: 7000,
     closeButton: true,
 
@@ -250,7 +250,7 @@ else{
 
 
 } , error => {
-this.toastr.error("Error al actualizar sexo","Error de altualizar matrimonios ",{
+this.toastr.error("Ocurrio un error al actualizar nacimientos ","Operación Fallida ",{
 timeOut: 7000,
 closeButton: true,
 

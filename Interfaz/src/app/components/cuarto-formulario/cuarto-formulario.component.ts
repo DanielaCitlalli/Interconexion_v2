@@ -50,7 +50,7 @@ export class CuartoFormularioComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log('this.formPais.paiFechaCreacion');
+    // console.log('this.formPais.paiFechaCreacion');
 
     //Para habilitar campo Codigo, cuando se quiera agregar una nueva nacionalidad
     if(!this.Editable){
@@ -118,7 +118,7 @@ export class CuartoFormularioComponent implements OnInit {
       
     // });
 
-    console.log(this.options);
+    // console.log(this.options);
     this.formPais.patchValue({
       paiCodigo: pais.paiCodigo,
       paiNacionalidad: pais.paiNacionalidad,
@@ -203,9 +203,9 @@ export class CuartoFormularioComponent implements OnInit {
 
 
       if (this.Editable) {
-        console.log('true');
+      
         this.tarjetaService.putNacionalidad( formPaises.paiCodigo, formPaises ).subscribe(res => {
-          this.toastService.success("Editó Nacionalidad" , " Éxito" , {
+          this.toastService.success("Se editó Nacionalidad" , " Operación Exitosa" , {
             closeButton: true,
             timeOut: 7000,
           })
@@ -213,15 +213,14 @@ export class CuartoFormularioComponent implements OnInit {
           this.formPais.reset();
         }, error => {
           this.enviarDatos.emit(undefined);
-          this.toastService.error("Ocurrió un error al editar nacionalidad" , "Error")
+          this.toastService.error("Ocurrió un error al editar nacionalidad" , "Opeación Fallida")
           
          
         });
       }
       else{
-        console.log('false');
         this.tarjetaService.postNacionalidad(formPaises).subscribe(res => {
-          this.toastService.success("Se agregó nacionalidad correctamente" , "Éxito" , {
+          this.toastService.success("Se agregó nacionalidad " , "Operación Exitosa" , {
             closeButton: true,
             timeOut: 7000
           })
@@ -229,7 +228,7 @@ export class CuartoFormularioComponent implements OnInit {
           this.formPais.reset();
         }, error => {
           this.enviarDatos.emit(undefined);
-          this.toastService.error("Ocurrió un error al agregar nacionalidad" , "Error");
+          this.toastService.error("Ocurrió un error al agregar nacionalidad" , "Opeación Fallida");
         });
       }
 
@@ -237,8 +236,8 @@ export class CuartoFormularioComponent implements OnInit {
   }
 
   else{
-    this.toastService.warning(" " , "Operacion Cancelada");
-    this.formPais.reset();
+    this.toastService.warning(" " , "Operación Cancelada");
+    
   }
     })
   

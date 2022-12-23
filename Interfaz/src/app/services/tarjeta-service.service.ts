@@ -24,9 +24,6 @@ export class TarjetaServiceService {
   rxLetrasEspacio = /^[A-Z a-znÑ().]*$/;
   rxCveNacionalidad = /^[A-Za-z]{3,3}$/
 
-  myAppUrl = environment.apiUrl;
-  myApiUrl = 'api/Tarjeta/';
-  list: TarjetaCredito[] = [];
 
   myAppUrl_inter = environment.apiUrl_inter;
   myApiUrl_inter = 'api/CirrTa01Napeticion/';
@@ -66,11 +63,6 @@ export class TarjetaServiceService {
 
   constructor(private http: HttpClient) { }
 
- 
-
-  
-
-  
 
   // Endpoint para API Interconexion 
 
