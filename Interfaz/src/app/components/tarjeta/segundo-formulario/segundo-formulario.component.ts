@@ -74,7 +74,7 @@ export class SegundoFormularioComponent implements OnInit {
         this.servicioeditar.putNrcMatrimonios(this.datosRetornados.registro.cadena, formMatrimonio).subscribe(data => {
     
           if(data !== null && data !== undefined){
-            this.toastr.success("Cambio de sexo actualizado", " Cambio de sexo exitoso " , {
+            this.toastr.success("Se actualizo el cambio de sexo", "Operación Exitosa" , {
               closeButton: true,
               timeOut: 7000,
             });
@@ -99,13 +99,13 @@ export class SegundoFormularioComponent implements OnInit {
             this.servicioeditar.postCirrTa09Mapeticion(form09f).subscribe(data=> {
     
                 this.enviarRegistro.emit(data);
-                this.toastr.success("Actualizacion de tabla CIRR_TA09_MAPETICION " , " Éxito" , {
+                this.toastr.success("Se actualizo de tabla CIRR_TA09_MAPETICION " , " Operación Exitosa" , {
                   closeButton: true,
                   timeOut: 7000,
                 })
                 
               },error => {
-                this.toastr.error("Error al actualizar tabla CIRR_TA09_MAPETICION", " Error" , {
+                this.toastr.error("Ocurrió un error al actualizar tabla CIRR_TA09_MAPETICION", " Error" , {
                   timeOut: 7000,
                   closeButton: true,
                 })
@@ -113,7 +113,7 @@ export class SegundoFormularioComponent implements OnInit {
             
           }
           else{
-            this.toastr.error("Ocurrio un error al actualizar ","Error de altualizar",{
+            this.toastr.error("Ocurrio un error al actualizar ","Opeación Fallida",{
               timeOut: 7000,
               closeButton: true,
     
@@ -122,7 +122,7 @@ export class SegundoFormularioComponent implements OnInit {
     
     
       } , error => {
-        this.toastr.error("Error al actualizar sexo","Error de altualizar matrimonios ",{
+        this.toastr.error("Ocurrió un error al actualizar matrimonios"," Opeación Fallida ",{
           timeOut: 7000,
           closeButton: true,
     
