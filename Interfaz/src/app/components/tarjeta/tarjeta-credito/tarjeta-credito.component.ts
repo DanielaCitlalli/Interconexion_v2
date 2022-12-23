@@ -127,7 +127,7 @@ limpiar(){
 }
 
 irFormPais(editar: boolean){
-  console.log(editar);
+ 
   
   this.registroDevuelto.emit(undefined);
 
@@ -138,7 +138,7 @@ irFormPais(editar: boolean){
     editarPais: editar
     
   }
-  console.log(infoEnviada)
+ 
   this.registroDevuelto.emit(infoEnviada);
 }
 
@@ -154,7 +154,7 @@ Buscarpais(buscar : number){
     BuscarPais: buscar
     
   }
-  console.log(infoEnviada)
+  
   this.registroDevuelto.emit(infoEnviada);
 }
 
@@ -368,11 +368,7 @@ ejecutarGlobal(){
 
       }
 
-      // for(let i = 0; i < form1.ta01CCadena.length; i++){
-      //   if(form1.ta01CCadena[i]){
-
-      //   }
-      // }
+    
 
       if(form1.ta01CCadena[0] !== '1'){
         this.toastr.error('La cadena debe comenzar con 1' , 'Operación fallida');
@@ -587,7 +583,7 @@ ejecutarGlobal(){
           habilitarFormNacionalidad:true
           
         }
-        console.log(infoEnviada)
+      
         this.registroDevuelto.emit(infoEnviada);
       this.toastr.success('Se encontro registro ', "Operación Exitosa" , {
         closeButton: true,
@@ -618,7 +614,7 @@ ejecutarGlobal(){
         habilitarFormNacionalidad:true
         
       }
-      console.log(infoEnviada)
+      
       this.registroDevuelto.emit(infoEnviada);
     this.toastr.success('Registro encontrado ', "Operación exitosa" , {
       closeButton: true,
@@ -649,7 +645,7 @@ ejecutarGlobal(){
         habilitarFormPais:true
         
       }
-      console.log(infoEnviada)
+   
       this.registroDevuelto.emit(infoEnviada);
 
     
@@ -665,7 +661,7 @@ ejecutarGlobal(){
       habilitarFormPais:true
       
     }
-    console.log(inforEnviada)
+    
     this.registroDevuelto.emit(inforEnviada);
 
 
