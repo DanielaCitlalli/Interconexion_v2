@@ -1,0 +1,27 @@
+21/12/2022 10:14:54 a. m. , ::1 , Se agregó nuevo país , 42
+21/12/2022 10:17:07 a. m. , ::1 , Se agregó nuevo país , 43
+21/12/2022 10:17:55 a. m. , ::1 , Se agregó nuevo país , 44
+21/12/2022 10:19:47 a. m. , ::1 , Se actualizó Pais , 44
+21/12/2022 10:23:16 a. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+21/12/2022 10:23:16 a. m. , ::1 , Se subio Acta de nacimiento  , 11100100011924001830
+21/12/2022 03:13:40 p. m. , ::1 , Se borro defuncion  , 22222222222222222222
+21/12/2022 03:13:54 p. m. , ::1 , Se borro Nacimiento , 11111111111111111111
+21/12/2022 03:16:22 p. m. , ::1 , Se borro Nacimiento , 11111111111111111111
+21/12/2022 03:16:46 p. m. , ::1 , Se borro Nacimiento , 11111111111111111111
+21/12/2022 03:17:01 p. m. , ::1 , Se borro Nacimiento , 11111111111111111111
+21/12/2022 03:18:52 p. m. , ::1 , Se borro Nacimiento , 11111111111111111111
+21/12/2022 03:19:01 p. m. , ::1 , Se borro defuncion  , 22222222222222222222
+21/12/2022 03:19:12 p. m. , ::1 , Se Borro Matrimonios   , 33333333333333333333
+21/12/2022 03:19:40 p. m. , ::1 , Se borro defuncion  , 22222222222222222222
+21/12/2022 03:25:40 p. m. , ::1 , Se subio Acta de Defuncion  , 22222222222222222222
+21/12/2022 03:25:40 p. m. , ::1 , Se subio Acta de Matrimonio   , 31102300031989004390
+21/12/2022 03:25:55 p. m. , ::1 , Se subio Acta de Defuncion  , 22222222222222222222
+21/12/2022 03:26:59 p. m. , ::1 , Se subio Acta de Defuncion  , 22222222222222222222
+21/12/2022 03:27:11 p. m. , ::1 , Se subio Acta de nacimiento  , 11111111111111111111
+21/12/2022 03:27:25 p. m. , ::1 , Se subio Acta de Matrimonio   , 33333333333333333333
+21/12/2022 03:29:10 p. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+21/12/2022 03:29:10 p. m. , ::1 , Se subio Acta de nacimiento  , 11100100011924001830
+21/12/2022 03:30:23 p. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+21/12/2022 03:30:23 p. m. , ::1 , Se subio Acta de nacimiento  , 11100100011924001830
+21/12/2022 03:31:08 p. m. , ::1 , Se actualizó nacionalidad , 11100100011924001830
+21/12/2022 03:31:08 p. m. , ::1 , Se subio Acta de nacimiento  , 11100100011924001830

@@ -161,7 +161,7 @@ ejecutarGlobal(){
 
       }
       if(form03.ta03CCadena[0] !== '2'){
-        this.toastr.error('Debe comenzar con 2' , 'Error');
+        this.toastr.error('La cadena debe comenzar con 2' , 'Opeación Fallida');
         return;
       }
 
@@ -182,7 +182,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Defunción borrada con exito', "Defunción borrada" , {
+              this.toastr.success('Se borro Defunción', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -194,7 +194,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Error al ingresar dato', " Error  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -225,7 +225,7 @@ ejecutarGlobal(){
 
       }
       if(form09.ta09CCadena[0] !== '3'){
-        this.toastr.error('Debe comenzar con 3' , 'Error');
+        this.toastr.error('La cadena debe comenzar con 3' , 'Opeación Fallida');
         return;
       }
 
@@ -246,7 +246,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa09Mapeticion(form09).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Matrimonio borrado con exito', "Matrimonio borrado" , {
+              this.toastr.success('Se borro Matrimonio', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -258,7 +258,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Error al ingresar dato', " Error  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -287,7 +287,7 @@ ejecutarGlobal(){
 
       }
       if(form.ta01CCadena[0] !== '1'){
-        this.toastr.error('Debe comenzar con 1' , 'Error');
+        this.toastr.error('La cadena debe comenzar con 1' , 'Operación fallida');
         return;
       }
 
@@ -308,7 +308,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Nacimiento borrado con exito', "Nacimiento borrado" , {
+              this.toastr.success('Se borro Nacimiento', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -320,7 +320,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Error al ingresar dato', " Error  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Operación fallida  " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -355,7 +355,7 @@ ejecutarGlobal(){
       // }
 
       if(form1.ta01CCadena[0] !== '1'){
-        this.toastr.error('Debe comenzar con 1' , 'Error');
+        this.toastr.error('La cadena debe comenzar con 1' , 'Operación fallida');
         return;
       }
 
@@ -377,7 +377,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Nacimiento ingresado con exito', "Nacimiento ingresado" , {
+              this.toastr.success('Se ingreso Nacimiento', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -389,7 +389,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Error al ingresar dato', " Error  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida  " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -417,7 +417,7 @@ ejecutarGlobal(){
 
       }
       if(form09f.ta09CCadena[0] !== '3'){
-        this.toastr.error('Debe comenzar con 3' , 'Error');
+        this.toastr.error('La cadena debe comenzar con 3' , 'Opeación Fallida');
         return;
       }
       Swal.fire({
@@ -439,7 +439,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Matrimonio ingresado con exito', "Matrimonio ingresado" , {
+              this.toastr.success('Se ingreso Matrimonio ', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -451,7 +451,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Error al ingresar dato', " Error  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida  " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -479,7 +479,7 @@ ejecutarGlobal(){
         
       }
       if(form03F.ta03CCadena[0] !== '2'){
-        this.toastr.error('Debe comenzar con 2' , 'Error');
+        this.toastr.error('La cadena debe comenzar con 2' , 'Opeación Fallida');
         return;
       }
       
@@ -501,7 +501,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Defunción ingresada con exito', "Defunción ingresada" , {
+              this.toastr.success('Se ingreso Defunción ', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -513,7 +513,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Error al ingresar dato', " Error  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', "Opeación Fallida " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -536,14 +536,14 @@ ejecutarGlobal(){
           
         }
         this.registroDevuelto.emit(infoEnviada);
-        this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+        this.toastr.success('Se encontro registro ', "Operación Exitosa" , {
           closeButton: true,
           disableTimeOut: false,
         })
         
       },
       error => {
-        this.toastr.error(error.error , 'Ocurrio un error',{
+        this.toastr.error(error.error , 'Opeación Fallida',{
           closeButton: true,
           disableTimeOut: false,
 
@@ -569,14 +569,14 @@ ejecutarGlobal(){
         }
         console.log(infoEnviada)
         this.registroDevuelto.emit(infoEnviada);
-      this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+      this.toastr.success('Se encontro registro ', "Operación Exitosa" , {
         closeButton: true,
         disableTimeOut: false,
       })
       
     },
     error => {
-      this.toastr.error(error.error , 'Ocurrio un error',{
+      this.toastr.error(error.error , 'Opeación Fallida',{
         closeButton: true,
         disableTimeOut: false,
 
@@ -598,30 +598,6 @@ ejecutarGlobal(){
       console.log(infoEnviada)
       this.registroDevuelto.emit(infoEnviada);
 
-    //   this.tarjetaService.getNrcNacimientos(this.globalForm.get('cadena')?.value).subscribe((data:Nrc_Nacimientos) => {
-      
-    //     let infoEnviada = {
-    //       registro: data,
-    //       habilitarForm: false,
-    //       habilitarFormNacionalidad:true
-          
-    //     }
-    //     console.log(infoEnviada)
-    //     this.registroDevuelto.emit(infoEnviada);
-    //   this.toastr.success('Registro encontrado ', "Operación exitosa" , {
-    //     closeButton: true,
-    //     disableTimeOut: false,
-    //   })
-      
-    // },
-    // error => {
-    //   this.toastr.error(error.error , 'Ocurrio un error',{
-    //     closeButton: true,
-    //     disableTimeOut: false,
-
-    //   });
-    //   this.registroDevuelto.emit('error');
-    // });
     
     break;
 
@@ -651,14 +627,10 @@ ejecutarBusqueda(){
     }
     this.registroDevuelto.emit(infoEnviada);
     this.limpiar();
-    // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
-    //   closeButton: true,
-    //   disableTimeOut: false,
-    // })
-    
+   
   },
   error => {
-    this.toastr.error(error.error , 'Ocurrio un error',{
+    this.toastr.error(error.error , 'Opeación Fallida',{
       closeButton: true,
       disableTimeOut: false,
 
@@ -689,7 +661,7 @@ ejecutarBusqueda(){
       
     },
     error => {
-      this.toastr.error(error.error , 'Ocurrio un error',{
+      this.toastr.error(error.error , 'Opeación Fallida',{
         closeButton: true,
         disableTimeOut: false,
 
@@ -721,7 +693,7 @@ ejecutarBusqueda(){
       
     },
     error => {
-      this.toastr.error(error.error , 'Ocurrio un error',{
+      this.toastr.error(error.error , 'Opeación Fallida',{
         closeButton: true,
         disableTimeOut: false,
 
