@@ -69,6 +69,7 @@ namespace procedimientos_interconexion.Models
         public virtual DbSet<NrcMatrimonios> NrcMatrimonios { get; set; }
         public virtual DbSet<NrcNacimientos> NrcNacimientos { get; set; }
         public virtual DbSet<NrcNacimientosBak> NrcNacimientosBak { get; set; }
+        public virtual DbSet<NrcNacionalidad> NrcNacionalidad { get; set; }
         public virtual DbSet<NrcPais> NrcPais { get; set; }
         public virtual DbSet<NrcReconocimientos> NrcReconocimientos { get; set; }
         public virtual DbSet<Paises> Paises { get; set; }
@@ -88,7 +89,7 @@ namespace procedimientos_interconexion.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=10.254.65.232; Database=Interconexion; User=usuario; Password=123;");
+                optionsBuilder.UseSqlServer("Server=10.254.65.232; Database=Interconexion; User=usuario; Password=123");
             }
         }
 
@@ -5109,9 +5110,56 @@ namespace procedimientos_interconexion.Models
                     .HasColumnType("datetime");
             });
 
-            modelBuilder.Entity<NrcPais>(entity =>
+            modelBuilder.Entity<NrcNacionalidad>(entity =>
             {
                 entity.HasKey(e => e.PaiCodigo);
+
+                entity.ToTable("NRC_NACIONALIDAD");
+
+                entity.Property(e => e.PaiCodigo)
+                    .HasColumnName("PAI_CODIGO")
+                    .HasColumnType("numeric(3, 0)");
+
+                entity.Property(e => e.PaiCveNacionalidad)
+                    .HasColumnName("PAI_CVE_NACIONALIDAD")
+                    .HasMaxLength(3)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PaiDescripcion)
+                    .IsRequired()
+                    .HasColumnName("PAI_DESCRIPCION")
+                    .HasMaxLength(120)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PaiFechaCreacion)
+                    .HasColumnName("PAI_FECHA_CREACION")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.PaiFechaModificacion)
+                    .HasColumnName("PAI_FECHA_MODIFICACION")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.PaiNacionalidad)
+                    .IsRequired()
+                    .HasColumnName("PAI_NACIONALIDAD")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PaiUsuarioCreacion)
+                    .IsRequired()
+                    .HasColumnName("PAI_USUARIO_CREACION")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.PaiUsuarioModificacion)
+                    .HasColumnName("PAI_USUARIO_MODIFICACION")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<NrcPais>(entity =>
+            {
+                entity.HasNoKey();
 
                 entity.ToTable("NRC_PAIS");
 

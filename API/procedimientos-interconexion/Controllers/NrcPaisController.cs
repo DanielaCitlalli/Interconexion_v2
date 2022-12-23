@@ -24,11 +24,11 @@ namespace procedimientos_interconexion.Controllers
 
         // GET: api/NrcPais
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<NrcPais>>> GetNrcPais()
+        public async Task<ActionResult<IEnumerable<NrcNacionalidad>>> GetNrcPais()
         {
             try
             {
-                return await _context.NrcPais.ToListAsync();
+                return await _context.NrcNacionalidad.ToListAsync();
             }
             catch
             {
@@ -38,13 +38,13 @@ namespace procedimientos_interconexion.Controllers
 
         // GET: api/NrcPais/5
         [HttpGet("{codigo}")]
-        public async Task<ActionResult<NrcPais>> GetNrcPaisId(decimal codigo)
+        public async Task<ActionResult<NrcNacionalidad>> GetNrcPaisId(decimal codigo)
         {
             //Si se desea hacer una busqueda, se debe definir primero una primary key para usar FindAsync. La tabla no tiene. 
 
             try
             {
-                var nrcPais = await _context.NrcPais.FindAsync(codigo);
+                var nrcPais = await _context.NrcNacionalidad.FindAsync(codigo);
 
                 return nrcPais;
             }
@@ -57,14 +57,14 @@ namespace procedimientos_interconexion.Controllers
 
         // GET: api/NrcPais/5
         [HttpGet("busquedaPais/{desc}")]
-        public async Task<ActionResult<NrcPais>> GetNrcPaisDesc(string desc)
+        public async Task<ActionResult<NrcNacionalidad>> GetNrcPaisDesc(string desc)
         {
             //BUSQUEDA POR COINCIDENCIA
 
             try
             {
 
-                var res = await (from _NrcPais in _context.NrcPais where EF.Functions.Like(_NrcPais.PaiDescripcion, $"{desc}%") 
+                var res = await (from _NrcPais in _context.NrcNacionalidad where EF.Functions.Like(_NrcPais.PaiDescripcion, $"{desc}%") 
                                  select new { 
                                      _NrcPais.PaiCodigo,
                                      _NrcPais.PaiNacionalidad,
@@ -91,7 +91,7 @@ namespace procedimientos_interconexion.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<NrcPais>> PostNrcPais(NrcPais nrcPais)
+        public async Task<ActionResult<NrcNacionalidad>> PostNrcPais(NrcNacionalidad nrcPais)
         {
             try
             {
@@ -118,7 +118,7 @@ namespace procedimientos_interconexion.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{codigo}")]
-        public async Task<IActionResult> PutNrcPais(decimal codigo, NrcPais nrcPais)
+        public async Task<IActionResult> PutNrcPais(decimal codigo, NrcNacionalidad nrcPais)
         {
             if (codigo != nrcPais.PaiCodigo)
             {
