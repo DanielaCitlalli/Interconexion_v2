@@ -13,10 +13,12 @@ import { ToastrService } from 'ngx-toastr';
 export class CuartoFormularioComponent implements OnInit {
   
   formPais: FormGroup;
+  formPaisBuscar: FormGroup;
   options!:NrcPais[];
 
 
   @Input() Editable: any;
+  @Input() Buscar: any;
   @Output() enviarDatos: EventEmitter<any> = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder, private tarjetaService: TarjetaServiceService, private toastService: ToastrService) {
@@ -29,6 +31,18 @@ export class CuartoFormularioComponent implements OnInit {
       paiUsuarioModificacion:[{value:'' , disabled: false}],
       paiFechaModificacion:[{value:'' , disabled: false}],
       paiCveNacionalidad:[{value:'' , disabled: false} , [Validators.required , Validators.minLength(1) , Validators.maxLength(3) , Validators.pattern(this.tarjetaService.rxCveNacionalidad)]],
+      autocompleteDescripcion: [{value: '', disabled:false}]
+    });
+
+    this.formPaisBuscar = this.formBuilder.group({
+      paiCodigo:[{value:'' , disabled: true} , [Validators.required , Validators.minLength(1) , Validators.maxLength(3) , Validators.pattern(this.tarjetaService.rxNumeros)]],
+      paiNacionalidad:[{value:'' , disabled: false}],
+      paiDescripcion:[{value:'' , disabled: true} , [Validators.required , Validators.minLength(1) , Validators.maxLength(30) , Validators.pattern(this.tarjetaService.rxLetrasEspacio)]],
+      paiUsuarioCreacion:[{value:'' , disabled: false}],
+      paiFechaCreacion:[{value:'' , disabled: false}],
+      paiUsuarioModificacion:[{value:'' , disabled: false}],
+      paiFechaModificacion:[{value:'' , disabled: false}],
+      paiCveNacionalidad:[{value:'' , disabled: true} , [Validators.required , Validators.minLength(1) , Validators.maxLength(3) , Validators.pattern(this.tarjetaService.rxCveNacionalidad)]],
       autocompleteDescripcion: [{value: '', disabled:false}]
     });
    }
@@ -63,6 +77,33 @@ export class CuartoFormularioComponent implements OnInit {
       }
 
       
+
+      
+  
+    });
+
+    this.formPaisBuscar.controls["autocompleteDescripcion"].valueChanges.subscribe(value => {
+
+      //Este if solo es para evaluar la primera vez que carga o se selecciona una nueva nacionalidad, por eso cuando entra al if, longPais se vuelve ''. 
+      //Para no permitir que igualando el tamaño con cualquier caracter se habilite el boton de actualizar
+     
+      if(value!== null ){
+          if(value.length > 2){
+            this.tarjetaService.getPaisDesc(value).subscribe(pais => { 
+              this.options = pais;
+
+            
+            });
+          }
+          else{
+            this.options = [];
+            
+          }
+      }
+
+      
+
+      
   
     });
   
@@ -87,6 +128,17 @@ export class CuartoFormularioComponent implements OnInit {
       paiFechaModificacion: pais.paiFechaModificacion,
       paiCveNacionalidad: pais.paiCveNacionalidad
     });
+    this.formPaisBuscar.patchValue({
+      paiCodigo: pais.paiCodigo,
+      paiNacionalidad: pais.paiNacionalidad,
+      paiDescripcion: pais.paiDescripcion,
+      paiUsuarioCreacion: pais.paiUsuarioCreacion,
+      paiFechaCreacion: pais.paiFechaCreacion,
+      paiUsuarioModificacion: pais.paiUsuarioModificacion,
+      paiFechaModificacion: pais.paiFechaModificacion,
+      paiCveNacionalidad: pais.paiCveNacionalidad
+    });
+    
     
   }
 

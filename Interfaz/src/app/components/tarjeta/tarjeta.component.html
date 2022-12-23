@@ -46,6 +46,7 @@
 
                 <app-cuarto-formulario *ngIf="paisesDisponibles === true"
                                         [Editable]="editarPais"
+                                        [Buscar]="BuscarPais"
                                         (enviarDatos)="mostrarRegistroDevuletoPais($event)">
 
                 </app-cuarto-formulario>

@@ -82,8 +82,12 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
 
  
    
+
   validar(){
 
+    if(this.globalForm.controls['proceso'].value === 'BuscarPais'){
+      this.Buscarpais(1);
+    }
     if(this.globalForm.controls['proceso'].value === 'agregarPais'){
       this.irFormPais(false);
     }
@@ -132,6 +136,22 @@ irFormPais(editar: boolean){
     habilitarForm: false,
     habilitarFormPais:true,
     editarPais: editar
+    
+  }
+  console.log(infoEnviada)
+  this.registroDevuelto.emit(infoEnviada);
+}
+
+Buscarpais(buscar : number){
+ 
+  
+  this.registroDevuelto.emit(undefined);
+
+  let infoEnviada = {
+    registro: 'data',
+    habilitarForm: false,
+    habilitarFormPais:true,
+    BuscarPais: buscar
     
   }
   console.log(infoEnviada)
@@ -585,6 +605,40 @@ ejecutarGlobal(){
     });
     
     break;
+
+    case "BuscarPais":
+
+    this.registroDevuelto.emit(undefined);
+
+    this.tarjetaService.getNrcNacimientos(this.globalForm.get('cadena')?.value).subscribe((data:Nrc_Nacimientos) => {
+    
+      let infoEnviada = {
+        registro: data,
+        habilitarForm: false,
+        habilitarFormNacionalidad:true
+        
+      }
+      console.log(infoEnviada)
+      this.registroDevuelto.emit(infoEnviada);
+    this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+      closeButton: true,
+      disableTimeOut: false,
+    })
+    
+  },
+  error => {
+    this.toastr.error(error.error , 'Ocurrio un error',{
+      closeButton: true,
+      disableTimeOut: false,
+
+    });
+    this.registroDevuelto.emit('error');
+  });
+  
+  break;
+
+
+
     case "agregarPais":
 
       this.registroDevuelto.emit(undefined);
@@ -600,6 +654,23 @@ ejecutarGlobal(){
 
     
     break;
+
+    case "BuscarPais":
+
+    this.registroDevuelto.emit(undefined);
+
+    let inforEnviada = {
+      registro: 'data',
+      habilitarForm: false,
+      habilitarFormPais:true
+      
+    }
+    console.log(inforEnviada)
+    this.registroDevuelto.emit(inforEnviada);
+
+
+  
+  break;
 
     default:
       break;
