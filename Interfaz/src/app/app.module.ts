@@ -13,6 +13,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatInputModule} from '@angular/material/input';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -54,7 +55,8 @@ import { CuartoFormularioComponent } from './components/cuarto-formulario/cuarto
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatStepperModule
+    MatStepperModule,
+    MatTooltipModule
 
   
   ],

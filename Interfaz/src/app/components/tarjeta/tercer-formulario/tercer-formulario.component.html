@@ -6,7 +6,7 @@
 
       
       <mat-horizontal-stepper linear  #stepper >
-        <mat-step [stepControl]="formCambioNacionalidad" [editable]="false" [completed]="formCambioNacionalidad.valid">
+        <mat-step [stepControl]="formCambioNacionalidad" [editable]="true" [completed]="formCambioNacionalidad.valid">
             <ng-template matStepLabel>Editar Nacionalidad</ng-template>
             <form [formGroup]="formCambioNacionalidad" (ngSubmit)="guardarCambios()">
             
@@ -241,7 +241,7 @@
        
         <mat-step [stepControl]="secondFormGroup" [editable]="false" [completed]="true" >
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Forzar subida de Nacimiento</ng-template>
+            <ng-template matStepLabel>Forzar Subida de Nacimiento</ng-template>
             <div class="contenedor-cadenas">
 
                 <h6>Subir Acta de nacimiento:</h6>
@@ -303,7 +303,7 @@
           </form>
         </mat-step>
         <mat-step [editable]="true">
-          <ng-template matStepLabel>Finalizó</ng-template>
+          <ng-template matStepLabel>Finalizar</ng-template>
           <div class="card border-primary" style="width: 25rem;">
             <img class="card-img-top" src="https://i.scdn.co/image/ab6765630000ba8adc604b6f8a5295d349139b1f">
             <div class="card-header text-white bg-primary "><h4 class="card-title" style="width: 17rem;"><i class="fas fa-duotone fa-thumbs-up"></i> Exito al guardar</h4></div>
