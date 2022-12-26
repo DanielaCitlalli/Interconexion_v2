@@ -16,6 +16,7 @@ export class CuartoFormularioComponent implements OnInit {
   formPais: FormGroup;
   formPaisBuscar: FormGroup;
   options!:NrcPais[];
+  tabla! : NrcPais;
 
 
   @Input() Editable: any;
@@ -129,6 +130,10 @@ export class CuartoFormularioComponent implements OnInit {
       paiFechaModificacion: pais.paiFechaModificacion,
       paiCveNacionalidad: pais.paiCveNacionalidad
     });
+
+    this.tabla = pais;
+
+    
     this.formPaisBuscar.patchValue({
       paiCodigo: pais.paiCodigo,
       paiNacionalidad: pais.paiNacionalidad,
@@ -213,7 +218,7 @@ export class CuartoFormularioComponent implements OnInit {
           this.formPais.reset();
         }, error => {
           this.enviarDatos.emit(undefined);
-          this.toastService.error("Ocurrió un error al editar nacionalidad" , "Opeación Fallida")
+          this.toastService.error("Ocurrió un error al editar nacionalidad" , "Operación Fallida")
           
          
         });
@@ -228,7 +233,7 @@ export class CuartoFormularioComponent implements OnInit {
           this.formPais.reset();
         }, error => {
           this.enviarDatos.emit(undefined);
-          this.toastService.error("Ocurrió un error al agregar nacionalidad" , "Opeación Fallida");
+          this.toastService.error("Ocurrió un error al agregar nacionalidad" , "Operación Fallida");
         });
       }
 

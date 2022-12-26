@@ -181,7 +181,7 @@ ejecutarGlobal(){
 
       }
       if(form03.ta03CCadena[0] !== '2'){
-        this.toastr.error('La cadena debe comenzar con 2' , 'Opeación Fallida');
+        this.toastr.error('La cadena debe comenzar con 2' , 'Operación Fallida');
         return;
       }
 
@@ -214,7 +214,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Operación Fallida " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -245,7 +245,7 @@ ejecutarGlobal(){
 
       }
       if(form09.ta09CCadena[0] !== '3'){
-        this.toastr.error('La cadena debe comenzar con 3' , 'Opeación Fallida');
+        this.toastr.error('La cadena debe comenzar con 3' , 'Operación Fallida');
         return;
       }
 
@@ -278,7 +278,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Operación Fallida " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
