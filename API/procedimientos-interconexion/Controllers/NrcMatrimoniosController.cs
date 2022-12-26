@@ -65,7 +65,7 @@ namespace procedimientos_interconexion.Controllers
 
             Log oLog = new Log(path);
             string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            oLog.Add(remoteIpAddress + " , " + "Actualizo el Sexo " + " , " + nrcMatrimonios.Cadena);
+            oLog.Add(remoteIpAddress + " , " + "Se actualizó el sexo " + " , " + nrcMatrimonios.Cadena);
 
             try
             {
