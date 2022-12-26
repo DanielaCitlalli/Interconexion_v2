@@ -70,7 +70,7 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " , " + "Se actualizó nacionalidad" + " , " + nrcNacimientos.Cadena);
+                oLog.Add(remoteIpAddress + " , " + "Se actualizó nacionalidad en nacimientos" + " , " + nrcNacimientos.Cadena);
 
                 await _context.SaveChangesAsync();
             }
