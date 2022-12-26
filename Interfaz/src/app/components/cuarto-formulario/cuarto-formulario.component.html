@@ -23,7 +23,7 @@
         </mat-form-field>
     </div>
 
-    <div class="campos row mt-5">
+    <div class="campos row mt-5 formNac">
         <mat-form-field appearance="fill" class="col-3">
             <mat-label>Código de Nacionalidad</mat-label>
             <input matInput type="text" formControlName="paiCodigo" maxlength="3" autocomplete="off">
@@ -66,6 +66,8 @@
 
 </form>
 
+
+
 <form [formGroup]="formPaisBuscar" *ngIf="Buscar == 1">
 
 
@@ -94,30 +96,23 @@
         </div>
     
 
-    <div class="campos row mt-5">
-        <mat-form-field appearance="fill" class="col-3">
-            <mat-label>Código de Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiCodigo" maxlength="3">
-            <mat-error *ngIf="formPaisBuscar.controls['paiCodigo'].hasError('required')">Campo obligatorio</mat-error>
-            <mat-error *ngIf="formPaisBuscar.controls['paiCodigo'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
-            <mat-error *ngIf="formPaisBuscar.controls['paiCodigo'].hasError('pattern')">Solo se admiten números</mat-error>
-        </mat-form-field>
-    
-        <mat-form-field appearance="fill" class="col-6">
-            <mat-label>Descripción de Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiDescripcion" maxlength="30" onkeyup=" this.value = this.value.toUpperCase();">
-            <mat-error *ngIf="formPaisBuscar.controls['paiDescripcion'].hasError('required')">Campo obligatorio</mat-error>
-            <mat-error *ngIf="formPaisBuscar.controls['paiDescripcion'].hasError('maxlength')">Maximo 30 caracteres</mat-error>
-            <mat-error *ngIf="formPaisBuscar.controls['paiDescripcion'].hasError('pattern')">Solo se admiten letras, parentesis y puntos</mat-error>
-        </mat-form-field>
-    
-        <mat-form-field appearance="fill" class="col-3">
-            <mat-label>Clave Nacionalidad</mat-label>
-            <input matInput type="text" formControlName="paiCveNacionalidad" maxlength="3" onkeyup=" this.value = this.value.toUpperCase();">
-            <mat-error *ngIf="formPaisBuscar.controls['paiCveNacionalidad'].hasError('required')">Campo obligatorio</mat-error>
-            <mat-error *ngIf="formPaisBuscar.controls['paiCveNacionalidad'].hasError('maxlength')">Maximo 3 caracteres</mat-error>
-            <mat-error *ngIf="formPaisBuscar.controls['paiCveNacionalidad'].hasError('pattern')">Solo se admiten letras</mat-error>
-        </mat-form-field>
+    <div class="contenedor-cadenas" *ngIf=" tabla !== null && tabla !== undefined">
+        <table class="table table-light table-hover ">
+            <thead>
+              <th class="tabla" >Codigo de nacionalidad</th>
+              <th class="tabla">Descripcion</th>
+              <th class="tabla">Clave de nacionalidad</th>
+             
+            </thead>
+          <tbody>  
+              <tr> 
+                <td class="tabla" >{{tabla.paiCodigo}}</td>
+                <td class="tabla">{{tabla.paiDescripcion}}</td>
+                <td class="tabla">{{tabla.paiCveNacionalidad}}</td>
+               
+              </tr>
+          </tbody>   
+        </table>
 
     </div>
 
