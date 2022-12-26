@@ -135,7 +135,7 @@ namespace procedimientos_interconexion.Controllers
 
                 Log oLog = new Log(path);
                 string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-                oLog.Add(remoteIpAddress + " , " + "Se actualizó Nacionalidad" + " , " + nrcNacionalidad.PaiCodigo);
+                oLog.Add(remoteIpAddress + " , " + "Se actualizó nacionalidad" + " , " + nrcNacionalidad.PaiCodigo);
 
                 await _context.SaveChangesAsync();
             }
