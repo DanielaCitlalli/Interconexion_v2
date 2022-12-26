@@ -202,7 +202,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa03Depeticion(form03).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Se borro Defunción', "Operación Exitosa" , {
+              this.toastr.success('Se borró Defunción', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -266,7 +266,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa09Mapeticion(form09).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Se borro Matrimonio', "Operación Exitosa" , {
+              this.toastr.success('Se borró Matrimonio', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -328,7 +328,7 @@ ejecutarGlobal(){
           this.tarjetaService.postCirrTa01Napeticion(form).subscribe(data => {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Se borro Nacimiento', "Operación Exitosa" , {
+              this.toastr.success('Se borró Nacimiento', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -393,7 +393,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Se ingreso Nacimiento', "Operación Exitosa" , {
+              this.toastr.success('Se ingresó Nacimiento', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -405,7 +405,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Operación Fallida  " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -433,7 +433,7 @@ ejecutarGlobal(){
 
       }
       if(form09f.ta09CCadena[0] !== '3'){
-        this.toastr.error('La cadena debe comenzar con 3' , 'Opeación Fallida');
+        this.toastr.error('La cadena debe comenzar con 3' , 'Operación Fallida');
         return;
       }
       Swal.fire({
@@ -455,7 +455,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Se ingreso Matrimonio ', "Operación Exitosa" , {
+              this.toastr.success('Se ingresó Matrimonio ', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -467,7 +467,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Ocurrió un error al ingresar dato', " Opeación Fallida  " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', " Operación Fallida  " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -517,7 +517,7 @@ ejecutarGlobal(){
             {
     
             if(data !== null && data !== undefined){
-              this.toastr.success('Se ingreso Defunción ', "Operación Exitosa" , {
+              this.toastr.success('Se ingresó Defunción ', "Operación Exitosa" , {
                 closeButton: true,
                 disableTimeOut: false,
               });
@@ -529,7 +529,7 @@ ejecutarGlobal(){
               this.registroDevuelto.emit(infoEnviada);
             }
             else{
-              this.toastr.error('Ocurrió un error al ingresar dato', "Opeación Fallida " , {
+              this.toastr.error('Ocurrió un error al ingresar dato', "Operación Fallida " , {
                 closeButton: true,
                 disableTimeOut: false,
               }
@@ -552,14 +552,14 @@ ejecutarGlobal(){
           
         }
         this.registroDevuelto.emit(infoEnviada);
-        this.toastr.success('Se encontro registro ', "Operación Exitosa" , {
+        this.toastr.success('Se encontró registro ', "Operación Exitosa" , {
           closeButton: true,
           disableTimeOut: false,
         })
         
       },
       error => {
-        this.toastr.error(error.error , 'Opeación Fallida',{
+        this.toastr.error(error.error , 'Operación Fallida',{
           closeButton: true,
           disableTimeOut: false,
 
@@ -585,14 +585,14 @@ ejecutarGlobal(){
         }
       
         this.registroDevuelto.emit(infoEnviada);
-      this.toastr.success('Se encontro registro ', "Operación Exitosa" , {
+      this.toastr.success('Se encontró registro ', "Operación Exitosa" , {
         closeButton: true,
         disableTimeOut: false,
       })
       
     },
     error => {
-      this.toastr.error(error.error , 'Opeación Fallida',{
+      this.toastr.error(error.error , 'Operación Fallida',{
         closeButton: true,
         disableTimeOut: false,
 
@@ -623,7 +623,7 @@ ejecutarGlobal(){
     
   },
   error => {
-    this.toastr.error(error.error , 'Ocurrio un error',{
+    this.toastr.error(error.error , 'Ocurrió un error',{
       closeButton: true,
       disableTimeOut: false,
 
@@ -696,7 +696,7 @@ ejecutarBusqueda(){
    
   },
   error => {
-    this.toastr.error(error.error , 'Opeación Fallida',{
+    this.toastr.error(error.error , 'Operación Fallida',{
       closeButton: true,
       disableTimeOut: false,
 
@@ -728,7 +728,7 @@ ejecutarBusqueda(){
 
     },
     error => {
-      this.toastr.error(error.error , 'Opeación Fallida',{
+      this.toastr.error(error.error , 'Operación Fallida',{
         closeButton: true,
         disableTimeOut: false,
 
@@ -759,7 +759,7 @@ ejecutarBusqueda(){
         
       },
       error => {
-        this.toastr.error(error.error , 'Ocurrio un error',{
+        this.toastr.error(error.error , 'Ocurrió un error',{
           closeButton: true,
           disableTimeOut: false,
 
@@ -790,7 +790,7 @@ ejecutarBusqueda(){
         
       },
       error => {
-        this.toastr.error(error.error , 'Ocurrio un error',{
+        this.toastr.error(error.error , 'Ocurrió un error',{
           closeButton: true,
           disableTimeOut: false,
 
@@ -852,7 +852,7 @@ ejecutarBusqueda(){
         
       },
       error => {
-        this.toastr.error(error.error , 'Ocurrio un error',{
+        this.toastr.error(error.error , 'Ocurrió un error',{
           closeButton: true,
           disableTimeOut: false,
 
@@ -883,7 +883,7 @@ ejecutarBusqueda(){
         
       },
       error => {
-        this.toastr.error(error.error , 'Ocurrio un error',{
+        this.toastr.error(error.error , 'Ocurrió un error',{
           closeButton: true,
           disableTimeOut: false,
 
@@ -916,7 +916,7 @@ ejecutarBusqueda(){
       
     },
     error => {
-      this.toastr.error(error.error , 'Opeación Fallida',{
+      this.toastr.error(error.error , 'Operación Fallida',{
         closeButton: true,
         disableTimeOut: false,
 
