@@ -18,13 +18,6 @@ export class TercerFormularioComponent implements OnInit {
   
   formCambioNacionalidad: FormGroup;
 
- 
-
-  
-
- 
-  
-  
   //Guardan los paises que coincidan con lo buscado en autocomplete
   optionsPa!: NrcPais[];
   optionsMa!: NrcPais[];
@@ -86,8 +79,6 @@ constructor(private formBuilder: FormBuilder
 ngOnInit(): void {
 
   //Inicializar variables de nacionalidad con valores del registro encontrado
-
-  console.log(this.datosRetornados);
   
 
   this.paNuevaNacionalidad = this.datosRetornados.paNacionalidad;
@@ -197,11 +188,9 @@ guardarCambios() {
   formNacionalidad.maNacionalidad = this.maNuevaNacionalidad;
   formNacionalidad.paNacionalidad = this.paNuevaNacionalidad;
 
-  console.log("Variable para guardar form:" , formNacionalidad);
-
   this.servicioeditar.putNrcNacimiento(this.datosRetornados.cadena, formNacionalidad).subscribe(datos => {
     if(datos !== null && datos !== undefined){
-      this.toastr.success("Se cambio nacionalidad", "Operación Exitosa" , {
+      this.toastr.success("Se cambió nacionalidad", "Operación Exitosa" , {
         closeButton: true,
         timeOut: 7000,
       });
@@ -224,7 +213,7 @@ guardarCambios() {
   this.servicioeditar.postCirrTa01Napeticion1(form01).subscribe(datos=> {
 
      
-      this.toastr.success("Se actualizo la tabla CIRR_TA01_NAPETICION " , " Operación Exitosa" , {
+      this.toastr.success("Se actualizó la tabla CIRR_TA01_NAPETICION " , " Operación Exitosa" , {
         closeButton: true,
         timeOut: 7000,
       });
@@ -232,7 +221,7 @@ guardarCambios() {
       this.myStepper.next();
       
     },error => {
-      this.toastr.error("Ocurrio un error al actualizar tabla CIRR_TA01_NAPETICION", " Operación Fallida" , {
+      this.toastr.error("Ocurrió un error al actualizar tabla CIRR_TA01_NAPETICION", " Operación Fallida" , {
         timeOut: 7000,
         closeButton: true,
       })
@@ -241,7 +230,7 @@ guardarCambios() {
 }
 
 else{
-  this.toastr.error("Ocurrio un error al actualizar ","Operación Fallida",{
+  this.toastr.error("Ocurrió un error al actualizar ","Operación Fallida",{
     timeOut: 7000,
     closeButton: true,
 
@@ -250,7 +239,7 @@ else{
 
 
 } , error => {
-this.toastr.error("Ocurrio un error al actualizar nacimientos ","Operación Fallida ",{
+this.toastr.error("Ocurrió un error al actualizar nacimientos ","Operación Fallida ",{
 timeOut: 7000,
 closeButton: true,
 
