@@ -37,7 +37,7 @@
             <input matInput type="text" formControlName="paiDescripcion" maxlength="30" onkeyup=" this.value = this.value.toUpperCase();" autocomplete="off">
             <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('required')">Campo obligatorio</mat-error>
             <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('maxlength')">Maximo 30 caracteres</mat-error>
-            <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('pattern')">Solo se admiten letras, parentesis y puntos</mat-error>
+            <mat-error *ngIf="formPais.controls['paiDescripcion'].hasError('pattern')">Solo se admiten letras, paréntesis y puntos</mat-error>
         </mat-form-field>
     
         <mat-form-field appearance="fill" class="col-3">
@@ -99,8 +99,8 @@
     <div class="contenedor-cadenas" *ngIf=" tabla !== null && tabla !== undefined">
         <table class="table table-light table-hover ">
             <thead>
-              <th class="tabla" >Codigo de nacionalidad</th>
-              <th class="tabla">Descripcion</th>
+              <th class="tabla" >Código de nacionalidad</th>
+              <th class="tabla">Descripción</th>
               <th class="tabla">Clave de nacionalidad</th>
              
             </thead>
@@ -119,7 +119,7 @@
     <div class="botonalert">
         <button class="btn btn-danger d-flex justify-content-between" type="button" (click)="cancelar()" >
             <i class="fa-sharp fa-solid fa-xmark fs-3"></i>
-            <p class="m-2 mt-0 mr-0 mb-0">Regresar</p>
+            <p class="m-2 mt-0 mr-0 mb-0">Cancelar</p>
             
         </button>
     </div>

@@ -1,0 +1,4 @@
+27/12/2022 10:04:10 a. m. , ::1 , Se actualizó nacionalidad en nacimientos , 11102300031989004400
+27/12/2022 10:04:11 a. m. , ::1 , Se subió acta de nacimiento  , 11102300031989004400
+27/12/2022 10:08:18 a. m. , ::1 , Se actualizó el sexo  , 31102300031989004450
+27/12/2022 10:08:18 a. m. , ::1 , Se actualizó registro   , 31102300031989004450
