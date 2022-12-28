@@ -1,4 +1,4 @@
-<form [formGroup]="formCambioNacionalidadM"(ngSubmit)="guardarCambios()" class="contenedor">
+<form [formGroup]="formCambioNacionalidadM"(ngSubmit)="guardarCambios()" class="contenedor" *ngIf="CambiarP === true">
 
     <table class="table alert alert-light border border-2 border border-primary    ">
     <div class="persona1">
@@ -199,7 +199,7 @@
 
 
 
-<form [formGroup]="formCambioSexo"(ngSubmit)="guardarCambios()" class="contenedor">
+<form [formGroup]="formCambioSexo"(ngSubmit)="guardarCambios()" class="contenedor" *ngIf="CambiarP !== true" >
     <div class="persona1">
         <div class="row ms-3 ">
         <h5>Contrayente 1:</h5>

@@ -23,7 +23,7 @@ export class SegundoFormularioComponent implements OnInit {
   ]
 
   @Input()datosRetornados: any;
-
+  @Input() CambiarP: any;
   @Output() enviarRegistro: EventEmitter<any> = new EventEmitter();
   
 

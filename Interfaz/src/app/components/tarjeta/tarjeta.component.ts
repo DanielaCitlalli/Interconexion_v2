@@ -21,7 +21,8 @@ export class TarjetaComponent implements OnInit, OnChanges {
   //agregar/editar nacionalidad
   paisesDisponibles: boolean = false;
   editarPais: boolean = false;
-  BuscarPais: number = 1;
+  editarPaisMat: boolean = false;
+   BuscarPais: number = 1;
 
   registronacimientos:any;
 
@@ -71,11 +72,15 @@ export class TarjetaComponent implements OnInit, OnChanges {
     else if(event.habilitarFormPais === true){
       this.paisesDisponibles = true;
       this.editarPais = event.editarPais;
-      this.BuscarPais = event.BuscarPais;
+       this.BuscarPais = event.BuscarPais;
       this.verSpinner = false;
 
       return;
     }
+
+ 
+
+  
 
 
     //Para mandar registro afectado en procesos de borrar y subir actas
@@ -88,6 +93,10 @@ export class TarjetaComponent implements OnInit, OnChanges {
 
     //habilitarForm - Para mostrar formulario de cambio de sexo
     this.cambioSexoDisponible = event.habilitarForm;
+
+    //Decide que formulario usar del segundo formulario (cambio de sexo o de nacionalidad)
+    this.editarPaisMat = event.editarNacionalidad;
+   
 
     // Para enviar registro afectado despues de cambio de sexo en segundo formulario, 
     // se envia null porque no debe mostrar nada en tabla de resultados de matrimonio
