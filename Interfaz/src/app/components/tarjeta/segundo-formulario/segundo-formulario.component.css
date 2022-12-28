@@ -15,7 +15,16 @@
     justify-content: space-around;
   }
   .tabla{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    transform-origin: top left;
+    margin-left: 4rem;
+   
     
-    min-width: 130px;
-    
+}
+
+mat-form-field {
+  width: 150px;
 }
