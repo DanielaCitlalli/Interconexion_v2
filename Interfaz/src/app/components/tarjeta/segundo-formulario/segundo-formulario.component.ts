@@ -15,6 +15,7 @@ import Swal  from "sweetalert2";
 export class SegundoFormularioComponent implements OnInit {
 
   formCambioSexo: FormGroup;
+  formCambioNacionalidadM: FormGroup;
 
   listSexo: Genericos[] = [
     { valor: 'F', nombre: 'Femenino' },
@@ -35,11 +36,30 @@ export class SegundoFormularioComponent implements OnInit {
       p1Segundoapellido: [{value:'' , disabled:true} , [Validators.required]],
       p1Sexo: [{value:'' , disabled:false} , [Validators.required]],
       
+
       p2Nombres: [{value:'' , disabled:true} , [Validators.required]],
       p2Primerapellido: [{value:'' , disabled:true} , [Validators.required]],
       p2Segundoapellido: [{value:'' , disabled:true} , [Validators.required]],
       
       p2Sexo: [{value:'' , disabled:false} , [Validators.required]],
+      
+     
+    })
+
+    this.formCambioNacionalidadM = this.formBuilder.group({
+      p1Nombres: [{value:'' , disabled:true} , [Validators.required]],
+      p1Primerapellido: [{value:'' , disabled:true} , [Validators.required]],
+      p1Segundoapellido: [{value:'' , disabled:true} , [Validators.required]],
+      p1Sexo: [{value:'' , disabled:true} , [Validators.required]],
+      p1Nacionalidad: [{value:'' , disabled:false} , [Validators.required]],
+      
+      p2Nombres: [{value:'' , disabled:true} , [Validators.required]],
+      p2Primerapellido: [{value:'' , disabled:true} , [Validators.required]],
+      p2Segundoapellido: [{value:'' , disabled:true} , [Validators.required]],
+      
+      p2Sexo: [{value:'' , disabled:true} , [Validators.required]],
+      p2Nacionalidad: [{value:'' , disabled:false} , [Validators.required]],
+      
      
     })
   }
@@ -141,6 +161,9 @@ export class SegundoFormularioComponent implements OnInit {
 
   actualizar(){
     this.formCambioSexo.patchValue(this.datosRetornados.registro);
+
+    this.formCambioNacionalidadM.patchValue(this.datosRetornados.registro);
+console.log(this.datosRetornados.registro);
     
   }
   

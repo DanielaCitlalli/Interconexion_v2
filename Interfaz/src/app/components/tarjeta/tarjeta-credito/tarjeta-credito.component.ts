@@ -668,6 +668,38 @@ ejecutarGlobal(){
   
   break;
 
+  case "cambionacionalidadM":
+      
+  this.registroDevuelto.emit(undefined);
+
+  this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
+    
+    let infoEnviada = {
+      registro: data,
+      habilitarForm: true
+      
+    }
+    this.registroDevuelto.emit(infoEnviada);
+    this.toastr.success('Se encontró registro ', "Operación Exitosa" , {
+      closeButton: true,
+      disableTimeOut: false,
+    })
+    
+  },
+  error => {
+    this.toastr.error(error.error , 'Operación Fallida',{
+      closeButton: true,
+      disableTimeOut: false,
+
+    });
+    this.registroDevuelto.emit('error');
+  });
+  
+
+ 
+  
+  break;
+
     default:
       break;
 
@@ -932,6 +964,37 @@ ejecutarBusqueda(){
     default:
         console.log('Otra opción....!');
         this.registroDevuelto.emit('error');
+    break;
+
+    case "cambionacionalidadM":
+  
+      this.tarjetaService.getDuplicadosMat(this.globalFormbuscar.get('crip')?.value).subscribe(data => {
+        
+        let infoEnviada = {
+          registro: data,
+          habilitarForm: false,
+          tarea: 'busquedaCrip'
+          
+        }
+        this.registroDevuelto.emit(infoEnviada);
+        this.limpiar();
+        // this.toastr.success('Registro encontrado ', "Operación exitosa" , {
+        //   closeButton: true,
+        //   disableTimeOut: false,
+        // })
+        
+      },
+      error => {
+        this.toastr.error(error.error , 'Ocurrió un error',{
+          closeButton: true,
+          disableTimeOut: false,
+
+        });
+        this.registroDevuelto.emit('error');
+      });
+      
+
+      // this.globalFormbuscar.reset();
     break;
         
   }
