@@ -1,6 +1,205 @@
-<form [formGroup]="formCambioSexo"(ngSubmit)="guardarCambios()" class="contenedor">
+<form [formGroup]="formCambioNacionalidadM"(ngSubmit)="guardarCambios()" class="contenedor">
+
+    <table class="table alert alert-light border border-2 border border-primary    ">
+    <div class="persona1">
+        <div class="row ms-3 ">
+        <h5>Contrayente 1:</h5>
+        <!-- <fieldset disabled> -->
+       
+            <!-- P1 Nombres -->
+        <div class="form-group col-mt-5 mb-3 t"  *ngIf="this.datosRetornados.registro.p1Nombres !== null">
+            <mat-form-field>
+                <div class=" col-mt-5 mb-3 ">
+    
+                    <input type="text" matInput placeholder="Nombres" formControlName="p1Nombres"
+                        maxlength="20">
+                    <div>
+                        <mat-icon>person</mat-icon>
+                    </div>
+                </div>
+            </mat-form-field>
+           
+        </div>
+        <!-- <div class="row mt-5"> -->
+            <!-- P1 Primer Apellido -->
+            <div class="form-group col-mt-5 mb-3 " *ngIf="this.datosRetornados.registro.p1Primerapellido !== null">
+                <mat-form-field>
+                    <div class=" col-mt-5 mb-3 ">
+        
+                        <input type="text" matInput placeholder="Primer Apellido" formControlName="p1Primerapellido"
+                            maxlength="20">
+                        <div>
+                            <mat-icon>person</mat-icon>
+                        </div>
+                    </div>
+                </mat-form-field>
+        </div>
+        </div>
+        <div class="row ms-3">
+            <!-- P1 Segundo Apellido -->
+            <div class="form-group col-mt-5 mb-3 "  *ngIf="this.datosRetornados.registro.p1Segundoapellido !== null">
+                <mat-form-field>
+                    <div class=" col-mt-5 mb-3 ">
+        
+                        <input type="text" matInput placeholder="Segunfo Apellido" formControlName="p1Segundoapellido"
+                            maxlength="20">
+                        <div>
+                            <mat-icon>person</mat-icon>
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>      
+        
+        <!-- </fieldset> -->
+        <!-- <div class="row ms-3"> -->
+            <!-- P1 Sexo -->
+            <mat-form-field>
+                <div class=" col-mt-5 mb-3 ">
+    
+                    <input type="text" matInput placeholder="Sexo" formControlName="p1Sexo"
+                        maxlength="20">
+                    <div>
+                        <mat-icon>person</mat-icon>
+                    </div>
+                </div>
+            </mat-form-field>
+            <!-- P1 Nacionalidad -->
+            <mat-form-field>
+                <div class=" col-mt-5 mb-3 ">
+    
+                    <input type="text" matInput placeholder="Nacionalidad" formControlName="p1Nacionalidad"
+                        maxlength="20">
+                    <div>
+                        <mat-icon>person</mat-icon>
+                    </div>
+                </div>
+            </mat-form-field>
+        <!-- </div> -->
+        </div>
+    <!-- </div> -->
 
     
+
+    <!-- <div class="persona2"> -->
+        <div class="row ms-3">
+        <h5>Contrayente 2:</h5>
+        <!-- <fieldset disabled> -->
+        
+            <!-- P2 Nombres -->
+            <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Nombres !== null">
+                <mat-form-field>
+                    <div class=" col-mt-5 mb-3 ">
+        
+                        <input type="text" matInput placeholder="Nombres" formControlName="p2Nombres"
+                            maxlength="20">
+                        <div>
+                            <mat-icon>person</mat-icon>
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+      
+        <!-- <div class="row mt-5"> -->
+            <!-- P2 Primer Apellido -->
+            <div class="form-group col-mt-7 mb-3"  *ngIf="this.datosRetornados.registro.p2Primerapellido !== null">
+                <mat-form-field>
+                    <div class=" col-mt-5 mb-3 ">
+        
+                        <input type="text" matInput placeholder="Primer Apellido" formControlName="p2Primerapellido"
+                            maxlength="20">
+                        <div>
+                            <mat-icon>person</mat-icon>
+                        </div>
+                    </div>
+                </mat-form-field>
+           
+            </div>
+        <!-- </div> -->
+        </div>
+        <div class="row ms-3">   
+            <!-- P2 Segundo Apellido -->
+            <div class="form-group col-mt-5 mb-3"  *ngIf="this.datosRetornados.registro.p2Segundoapellido !== null">
+                <mat-form-field>
+                    <div class=" col-mt-5 mb-3 ">
+        
+                        <input type="text" matInput placeholder="Segundo Apellido" formControlName="p2Segundoapellido"
+                            maxlength="20">
+                        <div>
+                            <mat-icon>person</mat-icon>
+                        </div>
+                    </div>
+                </mat-form-field>
+            </div>
+            
+        </div>
+    <!-- </fieldset> -->
+        <div class="row ms-3">
+            <!-- P2 Sexo -->
+            <mat-form-field>
+                <div class=" col-mt-5 mb-3 ">
+    
+                    <input type="text" matInput placeholder="Sexo" formControlName="p2Sexo"
+                        maxlength="20">
+                    <div>
+                        <mat-icon>person</mat-icon>
+                    </div>
+                </div>
+            </mat-form-field>
+
+            <!-- P2 Nacionalidad -->
+            <mat-form-field>
+                <div class=" col-mt-5 mb-3 ">
+    
+                    <input type="text" matInput placeholder="Nacionalidad" formControlName="p2Nacionalidad"
+                        maxlength="20">
+                    <div>
+                        <mat-icon>person</mat-icon>
+                    </div>
+                </div>
+            </mat-form-field>
+
+                
+        </div>       
+        <div style="text-align:center">
+            <div class="form-group atext-align:cente contenedor-botones">
+                <button class="btn btn-success d-flex justify-content-between">
+                    <i class="fas fa-sharp fa-solid fa-circle-check fs-3"></i>
+                    
+                    <p class="m-2 mt-0 mr-0 mb-0">Guardar Cambios</p>
+                    
+                </button>
+                <button class="btn btn-danger d-flex justify-content-between" type="button" (click)="cancelar()">
+                    <i class="fa-sharp fa-solid fa-xmark fs-3"></i>
+
+                    <p class="m-2 mt-0 mr-0 mb-0">Cancelar</p>
+                   
+                </button>
+            </div>
+        </div>
+    </div>
+</table>
+               
+    <div class="form-group mb-3 ">
+        <div class="input-group">
+            <p class="msjError" *ngIf="campoNoEsValido('p1Nombres')">Campo obligatorio. Solo admite caracteres numéricos</p>
+        </div>
+    </div>
+
+     
+    
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<form [formGroup]="formCambioSexo"(ngSubmit)="guardarCambios()" class="contenedor">
     <div class="persona1">
         <div class="row ms-3 ">
         <h5>Contrayente 1:</h5>
@@ -195,7 +394,4 @@
             <p class="msjError" *ngIf="campoNoEsValido('p1Nombres')">Campo obligatorio. Solo admite caracteres numéricos</p>
         </div>
     </div>
-
-     
-    
 </form>

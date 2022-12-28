@@ -14,3 +14,8 @@
     display: flex;
     justify-content: space-around;
   }
+  .tabla{
+    
+    min-width: 130px;
+    
+}
