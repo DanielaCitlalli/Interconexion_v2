@@ -69,6 +69,7 @@
 
                 <app-segundo-formulario [datosRetornados]="datos"  
                                         *ngIf="cambioSexoDisponible === true"
+                                        [CambiarP]="editarPaisMat"
                                         (enviarRegistro)="mostrarRegistroDevuletoCambioSexo($event)">
                 </app-segundo-formulario>
 
@@ -80,7 +81,7 @@
 
                 <app-cuarto-formulario *ngIf="paisesDisponibles === true"
                                         [Editable]="editarPais"
-                                        [Buscar]="BuscarPais"
+                                         [Buscar]="BuscarPais" 
                                         (enviarDatos)="mostrarRegistroDevuletoPais($event)">
 
                 </app-cuarto-formulario>

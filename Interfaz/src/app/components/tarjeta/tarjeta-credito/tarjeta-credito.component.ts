@@ -88,12 +88,14 @@ export class TarjetaCreditoComponent implements OnInit, OnDestroy {
     if(this.globalForm.controls['proceso'].value === 'BuscarPais'){
       this.Buscarpais(1);
     }
+
     if(this.globalForm.controls['proceso'].value === 'agregarPais'){
       this.irFormPais(false);
     }
     else if(this.globalForm.controls['proceso'].value === 'editarPais'){
       this.irFormPais(true);
     }
+
 
     if( this.globalForm !== undefined){
       let infoEnviada = {
@@ -140,6 +142,36 @@ irFormPais(editar: boolean){
   }
  
   this.registroDevuelto.emit(infoEnviada);
+}
+
+FormPaisS(formS: number){
+ 
+  
+  this.registroDevuelto.emit(undefined);
+
+  let infoEnviada2 = {
+    registro: 'data',
+    habilitarForm: true,
+    cambiarpais: formS
+    
+  }
+ 
+  this.registroDevuelto.emit(infoEnviada2);
+}
+
+FormPaisN(formN: number){
+ 
+  
+  this.registroDevuelto.emit(undefined);
+
+  let infoEnviada2 = {
+    registro: 'data',
+    habilitarForm: true,
+    cambiarpais: formN
+    
+  }
+ 
+  this.registroDevuelto.emit(infoEnviada2);
 }
 
 Buscarpais(buscar : number){
@@ -552,6 +584,8 @@ ejecutarGlobal(){
           
         }
         this.registroDevuelto.emit(infoEnviada);
+      
+        
         this.toastr.success('Se encontró registro ', "Operación Exitosa" , {
           closeButton: true,
           disableTimeOut: false,
@@ -674,12 +708,15 @@ ejecutarGlobal(){
 
   this.tarjetaService.getNrcmatrimoniosId(this.globalForm.get('cadena')?.value).subscribe(data => {
     
+    
     let infoEnviada = {
       registro: data,
-      habilitarForm: true
+      habilitarForm: true,
+      editarNacionalidad: true
       
     }
     this.registroDevuelto.emit(infoEnviada);
+  
     this.toastr.success('Se encontró registro ', "Operación Exitosa" , {
       closeButton: true,
       disableTimeOut: false,
