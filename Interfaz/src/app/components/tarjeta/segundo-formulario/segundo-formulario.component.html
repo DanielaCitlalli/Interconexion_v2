@@ -62,16 +62,17 @@
             </mat-form-field>
             <!-- P1 Nacionalidad -->
             <mat-form-field>
-                <div class=" col-mt-5 mb-3 ">
-    
-                    <input type="text" matInput placeholder="Nacionalidad" formControlName="p1Nacionalidad"
-                        maxlength="20">
-                    <div>
-                        <mat-icon>person</mat-icon>
-                    </div>
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let option of optionsNa" [value]="option.paiDescripcion" (onSelectionChange)="cambiarNa(option)">
+                    {{option.paiDescripcion}}
+                </mat-option>
+            </mat-autocomplete>
+            <input type="text" placeholder="Nacionalidad" matInput formControlName="p1Nacionalidad"
+                [matAutocomplete]="auto">
+                <div>
+                    <mat-icon>public</mat-icon>
                 </div>
             </mat-form-field>
-       
 
     
 
@@ -141,15 +142,17 @@
 
             <!-- P2 Nacionalidad -->
             <mat-form-field>
-                <div class=" col-mt-5 mb-3 ">
-    
-                    <input type="text" matInput placeholder="Nacionalidad" formControlName="p2Nacionalidad"
-                        maxlength="20">
+                <mat-autocomplete #auto2="matAutocomplete">
+                    <mat-option *ngFor="let option of optionsNa2" [value]="option.paiDescripcion" (onSelectionChange)="cambiarNa2(option)">
+                        {{option.paiDescripcion}}
+                    </mat-option>
+                </mat-autocomplete>
+                <input type="text" placeholder="Nacionalidad" matInput formControlName="p2Nacionalidad"
+                    [matAutocomplete]="auto2">
                     <div>
-                        <mat-icon>person</mat-icon>
+                        <mat-icon>public</mat-icon>
                     </div>
-                </div>
-            </mat-form-field>
+                </mat-form-field>
 
                
         <div style="text-align:center">
