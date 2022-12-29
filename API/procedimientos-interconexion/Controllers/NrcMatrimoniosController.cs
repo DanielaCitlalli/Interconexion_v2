@@ -51,40 +51,72 @@ namespace procedimientos_interconexion.Controllers
         // PUT: api/NrcMatrimonios/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutNrcMatrimonios(string id, NrcMatrimonios nrcMatrimonios)
+        [HttpPut("{id}/{nacionalidad}")]
+        public async Task<IActionResult> PutNrcMatrimonios(string id, string nacionalidad, NrcMatrimonios nrcMatrimonios)
         {
             if (id != nrcMatrimonios.Cadena)
             {
                 return BadRequest();
             }
+
+            if (nacionalidad == "1")
+            {
+                _context.Entry(nrcMatrimonios).State = EntityState.Modified;
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se actualizó la nacionalidad " + " , " + nrcMatrimonios.Cadena);
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!NrcMatrimoniosExists(id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
+            }
+            else
+            {
+                _context.Entry(nrcMatrimonios).State = EntityState.Modified;
+                string path = Directory.GetCurrentDirectory();
+
+                Log oLog = new Log(path);
+                string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+                oLog.Add(remoteIpAddress + " , " + "Se actualizó el sexo " + " , " + nrcMatrimonios.Cadena);
+
+                try
+                {
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!NrcMatrimoniosExists(id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                // return NoContent();
+                return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
+            }
            
 
-            _context.Entry(nrcMatrimonios).State = EntityState.Modified;
-            string path = Directory.GetCurrentDirectory();
 
-            Log oLog = new Log(path);
-            string remoteIpAddress = HttpContext.Connection.RemoteIpAddress.ToString();
-            oLog.Add(remoteIpAddress + " , " + "Se actualizó el sexo " + " , " + nrcMatrimonios.Cadena);
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!NrcMatrimoniosExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-           // return NoContent();
-            return CreatedAtAction(nameof(GetNrcMatrimonios), new { id = nrcMatrimonios.Cadena }, nrcMatrimonios);
         }
 
         // POST: api/NrcMatrimonios
