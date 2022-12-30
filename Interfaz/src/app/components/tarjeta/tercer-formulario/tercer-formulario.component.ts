@@ -164,7 +164,6 @@ cambiarPaisPa(option: NrcPais){
   this.longPaisPa = option.paiDescripcion;
 
   this.paNuevaNacionalidad = option.paiCodigo;
-  console.log("NACIONALIDAD - PADRE" , option , this.paNuevaNacionalidad);
 }
 
 //Para guardar el id del pais seleccionado en el Autocomplete de nacionalidad del madre
@@ -174,7 +173,6 @@ cambiarPaisMa(option: NrcPais){
   this.longPaisMa = option.paiDescripcion;
 
   this.maNuevaNacionalidad = option.paiCodigo;
-  console.log("NACIONALIDAD - MADRE" , option , this.maNuevaNacionalidad);
 }
 
 
