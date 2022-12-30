@@ -4,7 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <History>True|2022-12-28T19:34:04.6986204Z;False|2022-12-28T13:32:51.5866315-06:00;True|2022-12-27T10:54:27.4154789-06:00;False|2022-11-04T15:52:12.7952694-06:00;True|2022-11-04T14:08:20.1311955-06:00;False|2022-11-04T14:05:24.1256454-06:00;</History>
+    <History>True|2022-12-30T15:55:33.1987932Z;False|2022-12-30T09:54:42.6700958-06:00;True|2022-12-28T13:34:04.6986204-06:00;False|2022-12-28T13:32:51.5866315-06:00;True|2022-12-27T10:54:27.4154789-06:00;False|2022-11-04T15:52:12.7952694-06:00;True|2022-11-04T14:08:20.1311955-06:00;False|2022-11-04T14:05:24.1256454-06:00;</History>
     <_PublishTargetUrl>C:\Users\Administrador\Documents\GitHub\Interconexion_v2\API\procedimientos-interconexion\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
   </PropertyGroup>
 </Project>
