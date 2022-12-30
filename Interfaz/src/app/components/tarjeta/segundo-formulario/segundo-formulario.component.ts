@@ -164,7 +164,8 @@ export class SegundoFormularioComponent implements OnInit {
           const formMatrimonioNacionalidad: Nrc_Matrimonios = this.datosRetornados.registro;
           formMatrimonioNacionalidad.p1nacionalidad = this.NuevaNacionalidad;
           formMatrimonioNacionalidad.p2nacionalidad = this.NuevaNacionalidad2;
-          
+          formMatrimonioNacionalidad.p1sexo = this.formCambioNacionalidadM.get('p1Sexo')?.value;
+          formMatrimonioNacionalidad.p2sexo = this.formCambioNacionalidadM.get('p2Sexo')?.value;
       
           this.servicioeditar.putNrcMatrimonios(this.datosRetornados.registro.cadena, '1', formMatrimonioNacionalidad).subscribe(data => {
       
