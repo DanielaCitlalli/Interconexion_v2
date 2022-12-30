@@ -1,0 +1,30 @@
+30/12/2022 09:44:44 a. m. , ::1 , Se borró defunción  , 21100100011931001080
+30/12/2022 09:45:41 a. m. , ::1 , Se subió acta de defunción  , 21100100011931001080
+30/12/2022 09:47:56 a. m. , ::1 , Se borró nacimiento , 11102000122005034570
+30/12/2022 09:48:06 a. m. , ::1 , Se subió acta de nacimiento  , 11102000122005034570
+30/12/2022 09:58:43 a. m. , ::1 , Se actualizó nacionalidad en nacimientos , 11102000122005034570
+30/12/2022 09:58:44 a. m. , ::1 , Se subió acta de nacimiento  , 11102000122005034570
+30/12/2022 10:00:03 a. m. , ::1 , Se actualizó nacionalidad en nacimientos , 11102000122005034570
+30/12/2022 10:00:03 a. m. , ::1 , Se subió acta de nacimiento  , 11102000122005034570
+30/12/2022 10:12:25 a. m. , ::1 , Se borró matrimonios   , 31101700031992012350
+30/12/2022 10:12:38 a. m. , ::1 , Se subió acta de matrimonio   , 31101700031992012350
+30/12/2022 10:14:57 a. m. , ::1 , Se actualizó la nacionalidad  , 31101700031992012350
+30/12/2022 10:15:00 a. m. , ::1 , Se actualizó registro   , 31101700031992012350
+30/12/2022 10:22:38 a. m. , ::1 , Se borró matrimonios   , 31101700031992012350
+30/12/2022 10:22:57 a. m. , ::1 , Se subió acta de matrimonio   , 31101700031992012350
+30/12/2022 10:23:09 a. m. , ::1 , Se borró matrimonios   , 31101700031992012350
+30/12/2022 10:23:18 a. m. , ::1 , Se subió acta de matrimonio   , 31101700031992012350
+30/12/2022 10:24:11 a. m. , ::1 , Se actualizó la nacionalidad  , 31101700031992012350
+30/12/2022 10:24:11 a. m. , ::1 , Se actualizó registro   , 31101700031992012350
+30/12/2022 10:25:20 a. m. , ::1 , Se actualizó la nacionalidad  , 31102300031989004390
+30/12/2022 10:25:20 a. m. , ::1 , Se actualizó registro   , 31102300031989004390
+30/12/2022 10:30:36 a. m. , ::1 , Se actualizó el sexo  , 31101700031992012350
+30/12/2022 10:30:36 a. m. , ::1 , Se actualizó registro   , 31101700031992012350
+30/12/2022 10:31:03 a. m. , ::1 , Se actualizó el sexo  , 31101700031992012350
+30/12/2022 10:31:03 a. m. , ::1 , Se actualizó registro   , 31101700031992012350
+30/12/2022 10:31:35 a. m. , ::1 , Se actualizó el sexo  , 31101700031992012350
+30/12/2022 10:31:35 a. m. , ::1 , Se actualizó registro   , 31101700031992012350
+30/12/2022 10:33:15 a. m. , ::1 , Se agregó nueva nacionalidad , 11
+30/12/2022 10:33:58 a. m. , ::1 , Se actualizó nacionalidad  , 11
+30/12/2022 10:34:17 a. m. , ::1 , Se actualizó nacionalidad  , 11
+30/12/2022 10:34:46 a. m. , ::1 , Se actualizó nacionalidad  , 11
